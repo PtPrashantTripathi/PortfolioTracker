@@ -1,6 +1,6 @@
 [
     {
-        "datetime":1587480090000,
+        "datetime":1587530490000,
         "stock_name":"TATAMOTORS",
         "trade_type":"Buy",
         "trade_quantity":14,
@@ -10,7 +10,7 @@
         "avg_price":75.1
     },
     {
-        "datetime":1588602825000,
+        "datetime":1588653225000,
         "stock_name":"TATAMOTORS",
         "trade_type":"Buy",
         "trade_quantity":5,
@@ -20,7 +20,7 @@
         "avg_price":77.39
     },
     {
-        "datetime":1588678280000,
+        "datetime":1588728680000,
         "stock_name":"BHAGERIA",
         "trade_type":"Buy",
         "trade_quantity":10,
@@ -30,7 +30,7 @@
         "avg_price":116.55
     },
     {
-        "datetime":1589899446000,
+        "datetime":1589949846000,
         "stock_name":"BHAGERIA",
         "trade_type":"Buy",
         "trade_quantity":5,
@@ -40,7 +40,7 @@
         "avg_price":111.03
     },
     {
-        "datetime":1592218662000,
+        "datetime":1592269062000,
         "stock_name":"BHAGERIA",
         "trade_type":"Sell",
         "trade_quantity":15,
@@ -50,7 +50,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1593783079000,
+        "datetime":1593833479000,
         "stock_name":"TATAMOTORS",
         "trade_type":"Buy",
         "trade_quantity":15,
@@ -60,7 +60,7 @@
         "avg_price":89.13
     },
     {
-        "datetime":1595846871000,
+        "datetime":1595897271000,
         "stock_name":"YESBANK",
         "trade_type":"Buy",
         "trade_quantity":100,
@@ -70,7 +70,7 @@
         "avg_price":12.3
     },
     {
-        "datetime":1596031861000,
+        "datetime":1596082261000,
         "stock_name":"YESBANK",
         "trade_type":"Buy",
         "trade_quantity":50,
@@ -80,7 +80,7 @@
         "avg_price":12.12
     },
     {
-        "datetime":1596031972000,
+        "datetime":1596082372000,
         "stock_name":"PNB",
         "trade_type":"Buy",
         "trade_quantity":30,
@@ -90,7 +90,7 @@
         "avg_price":32.95
     },
     {
-        "datetime":1596032041000,
+        "datetime":1596082441000,
         "stock_name":"IDEA",
         "trade_type":"Buy",
         "trade_quantity":20,
@@ -100,7 +100,7 @@
         "avg_price":8.2
     },
     {
-        "datetime":1596122154000,
+        "datetime":1596172554000,
         "stock_name":"IDEA",
         "trade_type":"Buy",
         "trade_quantity":50,
@@ -110,7 +110,7 @@
         "avg_price":8.02
     },
     {
-        "datetime":1612784373000,
+        "datetime":1612834773000,
         "stock_name":"TATAPOWER",
         "trade_type":"Buy",
         "trade_quantity":72,
@@ -120,7 +120,7 @@
         "avg_price":90.0
     },
     {
-        "datetime":1612880700000,
+        "datetime":1612931100000,
         "stock_name":"GOLDBEES",
         "trade_type":"Buy",
         "trade_quantity":2,
@@ -130,7 +130,7 @@
         "avg_price":41.82
     },
     {
-        "datetime":1612880700000,
+        "datetime":1612931100000,
         "stock_name":"NIFTYBEES",
         "trade_type":"Buy",
         "trade_quantity":1,
@@ -140,7 +140,7 @@
         "avg_price":162.52
     },
     {
-        "datetime":1613994275000,
+        "datetime":1614044675000,
         "stock_name":"TATAPOWER",
         "trade_type":"Buy",
         "trade_quantity":33,
@@ -150,7 +150,7 @@
         "avg_price":90.0
     },
     {
-        "datetime":1614816000000,
+        "datetime":1614866400000,
         "stock_name":"HERANBA",
         "trade_type":"Buy",
         "trade_quantity":23,
@@ -160,7 +160,7 @@
         "avg_price":627.0
     },
     {
-        "datetime":1614957867000,
+        "datetime":1615008267000,
         "stock_name":"HERANBA",
         "trade_type":"Sell",
         "trade_quantity":12,
@@ -170,7 +170,7 @@
         "avg_price":627.0
     },
     {
-        "datetime":1615286315000,
+        "datetime":1615336715000,
         "stock_name":"HERANBA",
         "trade_type":"Sell",
         "trade_quantity":11,
@@ -180,7 +180,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1618224273000,
+        "datetime":1618274673000,
         "stock_name":"TATAMOTORS",
         "trade_type":"Buy",
         "trade_quantity":26,
@@ -190,7 +190,7 @@
         "avg_price":178.34
     },
     {
-        "datetime":1618224601000,
+        "datetime":1618275001000,
         "stock_name":"INFY",
         "trade_type":"Buy",
         "trade_quantity":3,
@@ -200,7 +200,7 @@
         "avg_price":1434.6
     },
     {
-        "datetime":1618224951000,
+        "datetime":1618275351000,
         "stock_name":"INFY",
         "trade_type":"Buy",
         "trade_quantity":5,
@@ -210,7 +210,7 @@
         "avg_price":1434.19
     },
     {
-        "datetime":1620644656000,
+        "datetime":1620695056000,
         "stock_name":"SBIN",
         "trade_type":"Buy",
         "trade_quantity":14,
@@ -220,7 +220,7 @@
         "avg_price":365.0
     },
     {
-        "datetime":1622808654000,
+        "datetime":1622859054000,
         "stock_name":"GOLDBEES",
         "trade_type":"Sell",
         "trade_quantity":2,
@@ -230,7 +230,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1622808906000,
+        "datetime":1622859306000,
         "stock_name":"SBIN",
         "trade_type":"Sell",
         "trade_quantity":14,
@@ -240,7 +240,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1623676741000,
+        "datetime":1623727141000,
         "stock_name":"NIFTYBEES",
         "trade_type":"Sell",
         "trade_quantity":1,
@@ -250,7 +250,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1623676829000,
+        "datetime":1623727229000,
         "stock_name":"PNB",
         "trade_type":"Sell",
         "trade_quantity":30,
@@ -260,7 +260,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1623676913000,
+        "datetime":1623727313000,
         "stock_name":"IDEA",
         "trade_type":"Sell",
         "trade_quantity":70,
@@ -270,7 +270,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1623677036000,
+        "datetime":1623727436000,
         "stock_name":"INFY",
         "trade_type":"Sell",
         "trade_quantity":8,
@@ -280,7 +280,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1623762977000,
+        "datetime":1623813377000,
         "stock_name":"TATACHEM",
         "trade_type":"Buy",
         "trade_quantity":20,
@@ -290,7 +290,7 @@
         "avg_price":751.2
     },
     {
-        "datetime":1623764217000,
+        "datetime":1623814617000,
         "stock_name":"VOLTAS",
         "trade_type":"Buy",
         "trade_quantity":4,
@@ -300,7 +300,7 @@
         "avg_price":1059.0
     },
     {
-        "datetime":1628250134000,
+        "datetime":1628300534000,
         "stock_name":"BPCL",
         "trade_type":"Buy",
         "trade_quantity":43,
@@ -310,7 +310,7 @@
         "avg_price":457.0
     },
     {
-        "datetime":1636550186000,
+        "datetime":1636600586000,
         "stock_name":"YESBANK",
         "trade_type":"Sell",
         "trade_quantity":150,
@@ -320,7 +320,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1652269835000,
+        "datetime":1652320235000,
         "stock_name":"TATAMOTORS",
         "trade_type":"Buy",
         "trade_quantity":40,
@@ -330,7 +330,7 @@
         "avg_price":261.0
     },
     {
-        "datetime":1652270294000,
+        "datetime":1652320694000,
         "stock_name":"TATAPOWER",
         "trade_type":"Buy",
         "trade_quantity":64,
@@ -340,7 +340,7 @@
         "avg_price":141.03
     },
     {
-        "datetime":1652400000000,
+        "datetime":1652450400000,
         "stock_name":"LICI",
         "trade_type":"Buy",
         "trade_quantity":15,
@@ -350,7 +350,7 @@
         "avg_price":904.0
     },
     {
-        "datetime":1660122900000,
+        "datetime":1660173300000,
         "stock_name":"VOLTAS",
         "trade_type":"Sell",
         "trade_quantity":4,
@@ -360,7 +360,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1660123572000,
+        "datetime":1660173972000,
         "stock_name":"BPCL",
         "trade_type":"Sell",
         "trade_quantity":43,
@@ -370,7 +370,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1660123620000,
+        "datetime":1660174020000,
         "stock_name":"LICI",
         "trade_type":"Sell",
         "trade_quantity":15,
@@ -380,7 +380,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1660123824000,
+        "datetime":1660174224000,
         "stock_name":"TATAPOWER",
         "trade_type":"Sell",
         "trade_quantity":19,
@@ -390,7 +390,7 @@
         "avg_price":147.49
     },
     {
-        "datetime":1660124006000,
+        "datetime":1660174406000,
         "stock_name":"TATACHEM",
         "trade_type":"Sell",
         "trade_quantity":20,
@@ -400,7 +400,7 @@
         "avg_price":0.0
     },
     {
-        "datetime":1717503561000,
+        "datetime":1717553961000,
         "stock_name":"IRCTC",
         "trade_type":"Buy",
         "trade_quantity":3,
@@ -410,7 +410,7 @@
         "avg_price":896.2
     },
     {
-        "datetime":1718287083000,
+        "datetime":1718337483000,
         "stock_name":"KPITTECH",
         "trade_type":"Buy",
         "trade_quantity":2,
