@@ -12,6 +12,8 @@ stock_names_dict = {
     532461: "PNB",
     532648: "YESBANK",
     532822: "IDEA",
+    542651: "KPITTECH",
+    542830: "IRCTC",
     543266: "HERANBA",
     543526: "LICI",
     590095: "GOLDBEES",

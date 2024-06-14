@@ -1,0 +1,1 @@
+source : https://finance.yahoo.com/quote/KPITTECH.NS/history/?period1=1717200000&period2=1718323200
