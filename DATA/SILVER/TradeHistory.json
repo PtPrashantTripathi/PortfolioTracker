@@ -13,7 +13,8 @@
         "trade_time":"14:41:30",
         "side":"Buy",
         "quantity":14,
-        "price":75.1
+        "price":75.1,
+        "datetime":"2020-04-21 14:41:30"
     },
     {
         "date":"2020-05-04",
@@ -29,7 +30,8 @@
         "trade_time":"14:33:45",
         "side":"Buy",
         "quantity":5,
-        "price":83.8
+        "price":83.8,
+        "datetime":"2020-05-04 14:33:45"
     },
     {
         "date":"2020-05-05",
@@ -45,7 +47,8 @@
         "trade_time":"11:31:20",
         "side":"Buy",
         "quantity":10,
-        "price":116.55
+        "price":116.55,
+        "datetime":"2020-05-05 11:31:20"
     },
     {
         "date":"2020-05-19",
@@ -61,7 +64,8 @@
         "trade_time":"14:44:06",
         "side":"Buy",
         "quantity":5,
-        "price":100.0
+        "price":100.0,
+        "datetime":"2020-05-19 14:44:06"
     },
     {
         "date":"2020-06-15",
@@ -77,7 +81,8 @@
         "trade_time":"10:57:42",
         "side":"Sell",
         "quantity":15,
-        "price":113.0
+        "price":113.0,
+        "datetime":"2020-06-15 10:57:42"
     },
     {
         "date":"2020-07-03",
@@ -93,7 +98,8 @@
         "trade_time":"13:31:19",
         "side":"Buy",
         "quantity":15,
-        "price":104.0
+        "price":104.0,
+        "datetime":"2020-07-03 13:31:19"
     },
     {
         "date":"2020-07-27",
@@ -109,7 +115,8 @@
         "trade_time":"10:47:51",
         "side":"Buy",
         "quantity":100,
-        "price":12.3
+        "price":12.3,
+        "datetime":"2020-07-27 10:47:51"
     },
     {
         "date":"2020-07-29",
@@ -125,7 +132,8 @@
         "trade_time":"14:11:01",
         "side":"Buy",
         "quantity":50,
-        "price":11.75
+        "price":11.75,
+        "datetime":"2020-07-29 14:11:01"
     },
     {
         "date":"2020-07-29",
@@ -141,7 +149,8 @@
         "trade_time":"14:12:52",
         "side":"Buy",
         "quantity":30,
-        "price":32.95
+        "price":32.95,
+        "datetime":"2020-07-29 14:12:52"
     },
     {
         "date":"2020-07-29",
@@ -157,7 +166,8 @@
         "trade_time":"14:14:01",
         "side":"Buy",
         "quantity":20,
-        "price":8.2
+        "price":8.2,
+        "datetime":"2020-07-29 14:14:01"
     },
     {
         "date":"2020-07-30",
@@ -173,7 +183,8 @@
         "trade_time":"15:15:54",
         "side":"Buy",
         "quantity":50,
-        "price":7.95
+        "price":7.95,
+        "datetime":"2020-07-30 15:15:54"
     },
     {
         "date":"2021-02-08",
@@ -189,7 +200,8 @@
         "trade_time":"11:39:33",
         "side":"Buy",
         "quantity":72,
-        "price":90.0
+        "price":90.0,
+        "datetime":"2021-02-08 11:39:33"
     },
     {
         "date":"2021-02-09",
@@ -205,7 +217,8 @@
         "trade_time":"14:25:00",
         "side":"Buy",
         "quantity":2,
-        "price":41.82
+        "price":41.82,
+        "datetime":"2021-02-09 14:25:00"
     },
     {
         "date":"2021-02-09",
@@ -221,7 +234,8 @@
         "trade_time":"14:25:00",
         "side":"Buy",
         "quantity":1,
-        "price":162.52
+        "price":162.52,
+        "datetime":"2021-02-09 14:25:00"
     },
     {
         "date":"2021-02-22",
@@ -237,7 +251,8 @@
         "trade_time":"11:44:35",
         "side":"Buy",
         "quantity":33,
-        "price":90.0
+        "price":90.0,
+        "datetime":"2021-02-22 11:44:35"
     },
     {
         "date":"2021-03-04",
@@ -253,7 +268,8 @@
         "trade_time":null,
         "side":"Buy",
         "quantity":23,
-        "price":627.0
+        "price":627.0,
+        "datetime":"2021-03-04 nan"
     },
     {
         "date":"2021-03-05",
@@ -269,7 +285,8 @@
         "trade_time":"15:24:27",
         "side":"Sell",
         "quantity":12,
-        "price":820.0
+        "price":820.0,
+        "datetime":"2021-03-05 15:24:27"
     },
     {
         "date":"2021-03-09",
@@ -285,7 +302,8 @@
         "trade_time":"10:38:35",
         "side":"Sell",
         "quantity":11,
-        "price":775.0
+        "price":775.0,
+        "datetime":"2021-03-09 10:38:35"
     },
     {
         "date":"2021-04-12",
@@ -301,7 +319,8 @@
         "trade_time":"10:44:33",
         "side":"Buy",
         "quantity":26,
-        "price":295.0
+        "price":295.0,
+        "datetime":"2021-04-12 10:44:33"
     },
     {
         "date":"2021-04-12",
@@ -317,7 +336,8 @@
         "trade_time":"10:50:01",
         "side":"Buy",
         "quantity":3,
-        "price":1434.6
+        "price":1434.6,
+        "datetime":"2021-04-12 10:50:01"
     },
     {
         "date":"2021-04-12",
@@ -333,7 +353,8 @@
         "trade_time":"10:55:51",
         "side":"Buy",
         "quantity":5,
-        "price":1433.95
+        "price":1433.95,
+        "datetime":"2021-04-12 10:55:51"
     },
     {
         "date":"2021-05-10",
@@ -349,7 +370,8 @@
         "trade_time":"11:04:16",
         "side":"Buy",
         "quantity":14,
-        "price":365.0
+        "price":365.0,
+        "datetime":"2021-05-10 11:04:16"
     },
     {
         "date":"2021-06-04",
@@ -365,7 +387,8 @@
         "trade_time":"12:10:54",
         "side":"Sell",
         "quantity":2,
-        "price":42.03
+        "price":42.03,
+        "datetime":"2021-06-04 12:10:54"
     },
     {
         "date":"2021-06-04",
@@ -381,7 +404,8 @@
         "trade_time":"12:15:06",
         "side":"Sell",
         "quantity":14,
-        "price":436.0
+        "price":436.0,
+        "datetime":"2021-06-04 12:15:06"
     },
     {
         "date":"2021-06-14",
@@ -397,7 +421,8 @@
         "trade_time":"13:19:01",
         "side":"Sell",
         "quantity":1,
-        "price":168.95
+        "price":168.95,
+        "datetime":"2021-06-14 13:19:01"
     },
     {
         "date":"2021-06-14",
@@ -413,7 +438,8 @@
         "trade_time":"13:20:29",
         "side":"Sell",
         "quantity":30,
-        "price":41.45
+        "price":41.45,
+        "datetime":"2021-06-14 13:20:29"
     },
     {
         "date":"2021-06-14",
@@ -429,7 +455,8 @@
         "trade_time":"13:21:53",
         "side":"Sell",
         "quantity":70,
-        "price":9.65
+        "price":9.65,
+        "datetime":"2021-06-14 13:21:53"
     },
     {
         "date":"2021-06-14",
@@ -445,7 +472,8 @@
         "trade_time":"13:23:56",
         "side":"Sell",
         "quantity":8,
-        "price":1457.0
+        "price":1457.0,
+        "datetime":"2021-06-14 13:23:56"
     },
     {
         "date":"2021-06-15",
@@ -461,7 +489,8 @@
         "trade_time":"13:16:17",
         "side":"Buy",
         "quantity":20,
-        "price":751.2
+        "price":751.2,
+        "datetime":"2021-06-15 13:16:17"
     },
     {
         "date":"2021-06-15",
@@ -477,7 +506,8 @@
         "trade_time":"13:36:57",
         "side":"Buy",
         "quantity":4,
-        "price":1059.0
+        "price":1059.0,
+        "datetime":"2021-06-15 13:36:57"
     },
     {
         "date":"2021-08-06",
@@ -493,7 +523,8 @@
         "trade_time":"11:42:14",
         "side":"Buy",
         "quantity":43,
-        "price":457.0
+        "price":457.0,
+        "datetime":"2021-08-06 11:42:14"
     },
     {
         "date":"2021-11-10",
@@ -509,7 +540,8 @@
         "trade_time":"13:16:26",
         "side":"Sell",
         "quantity":150,
-        "price":13.0
+        "price":13.0,
+        "datetime":"2021-11-10 13:16:26"
     },
     {
         "date":"2022-05-11",
@@ -525,7 +557,8 @@
         "trade_time":"11:50:35",
         "side":"Buy",
         "quantity":40,
-        "price":385.0
+        "price":385.0,
+        "datetime":"2022-05-11 11:50:35"
     },
     {
         "date":"2022-05-11",
@@ -541,7 +574,8 @@
         "trade_time":"11:58:14",
         "side":"Buy",
         "quantity":64,
-        "price":224.75
+        "price":224.75,
+        "datetime":"2022-05-11 11:58:14"
     },
     {
         "date":"2022-05-13",
@@ -557,7 +591,8 @@
         "trade_time":null,
         "side":"Buy",
         "quantity":15,
-        "price":904.0
+        "price":904.0,
+        "datetime":"2022-05-13 nan"
     },
     {
         "date":"2022-08-10",
@@ -573,7 +608,8 @@
         "trade_time":"09:15:00",
         "side":"Sell",
         "quantity":4,
-        "price":986.0
+        "price":986.0,
+        "datetime":"2022-08-10 09:15:00"
     },
     {
         "date":"2022-08-10",
@@ -589,7 +625,8 @@
         "trade_time":"09:26:12",
         "side":"Sell",
         "quantity":43,
-        "price":328.85
+        "price":328.85,
+        "datetime":"2022-08-10 09:26:12"
     },
     {
         "date":"2022-08-10",
@@ -605,7 +642,8 @@
         "trade_time":"09:27:00",
         "side":"Sell",
         "quantity":15,
-        "price":684.35
+        "price":684.35,
+        "datetime":"2022-08-10 09:27:00"
     },
     {
         "date":"2022-08-10",
@@ -621,7 +659,8 @@
         "trade_time":"09:30:24",
         "side":"Sell",
         "quantity":19,
-        "price":230.15
+        "price":230.15,
+        "datetime":"2022-08-10 09:30:24"
     },
     {
         "date":"2022-08-10",
@@ -637,7 +676,8 @@
         "trade_time":"09:33:26",
         "side":"Sell",
         "quantity":20,
-        "price":1030.0
+        "price":1030.0,
+        "datetime":"2022-08-10 09:33:26"
     },
     {
         "date":"2024-06-04",
@@ -653,7 +693,8 @@
         "trade_time":"12:19:21",
         "side":"Buy",
         "quantity":3,
-        "price":896.2
+        "price":896.2,
+        "datetime":"2024-06-04 12:19:21"
     },
     {
         "date":"2024-06-13",
@@ -669,6 +710,7 @@
         "trade_time":"13:58:03",
         "side":"Buy",
         "quantity":2,
-        "price":1500.0
+        "price":1500.0,
+        "datetime":"2024-06-13 13:58:03"
     }
 ]
