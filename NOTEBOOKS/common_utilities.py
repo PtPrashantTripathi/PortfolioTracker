@@ -1,28 +1,11 @@
 import re
-
-stock_names_dict = {
-    500112: "SBIN",
-    500209: "INFY",
-    500400: "TATAPOWER",
-    500547: "BPCL",
-    500570: "TATAMOTORS",
-    500575: "VOLTAS",
-    500770: "TATACHEM",
-    530803: "BHAGERIA",
-    532461: "PNB",
-    532648: "YESBANK",
-    532822: "IDEA",
-    542651: "KPITTECH",
-    542830: "IRCTC",
-    543266: "HERANBA",
-    543526: "LICI",
-    590095: "GOLDBEES",
-    590103: "NIFTYBEES",
-}
+import time
+import requests
+from datetime import datetime
 
 
-# fun to Removing punctuations from the columns
 def replace_punctuation_from_columns(columns):
+    """fun to Removing punctuations from the columns"""
     clean_columns = []
     for each in columns:
         # Remove '_' as it replace space 'Stock Name' => stock_name
@@ -39,35 +22,37 @@ def replace_punctuation_from_columns(columns):
     return clean_columns
 
 
-class TradeHistory:
-    def __init__(self, stock_name):
-        self.stock_name = stock_name
-        self.trade_price = list()
-        self.trade_quantity = list()
+def get_stock_price_data(name, from_date, to_date):
+    """
+    Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
 
-    def fifo_sell_calc(self, trade_quantity):
-        old_self = self.trade_quantity.copy()
-        for i in range(len(self.trade_price)):
-            if i == 0:
-                self.trade_quantity[i] -= trade_quantity
-            else:
-                if self.trade_quantity[i - 1] < 0:
-                    self.trade_quantity[i] += self.trade_quantity[i - 1]
-                    self.trade_quantity[i - 1] = 0
-                else:
-                    break
-        buy_price = 0
-        for i in range(len(self.trade_quantity)):
-            buy_price += (old_self[i] - self.trade_quantity[i]) * self.trade_price[i]
-        return buy_price / trade_quantity
+    Parameters:
+    name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
+    from_date (str): Start date in 'YYYY-MM-DD' format.
+    to_date (str): End date in 'YYYY-MM-DD' format.
 
-    def holding_quantity(self):
-        return sum(self.trade_quantity)
+    Returns:
+    str: CSV data as text.
+    """
 
-    def calc_avg_price(self):
-        invested = 0
-        for i in range(len(self.trade_quantity)):
-            invested += self.trade_quantity[i] * self.trade_price[i]
-        if self.holding_quantity() != 0:
-            return invested / self.holding_quantity()
-        return 0
+    # Convert date strings to Unix timestamps
+    from_date_unix_ts = int(
+        time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple())
+    )
+    to_date_unix_ts = int(
+        time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple())
+    )
+
+    # Construct the URL for the API call
+    url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
+
+    # Make the API call
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Return the CSV data as text
+        return response.text
+    else:
+        # Raise an exception if the request failed
+        response.raise_for_status()
