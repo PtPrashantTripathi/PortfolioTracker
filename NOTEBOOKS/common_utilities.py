@@ -1,8 +1,9 @@
+import os
 import re
 import time
+import pathlib
 import requests
 from datetime import datetime
-
 
 def replace_punctuation_from_columns(columns):
     """fun to Removing punctuations from the columns"""
@@ -20,7 +21,6 @@ def replace_punctuation_from_columns(columns):
             clean_column_name = clean_column_name.replace("__", "_")
         clean_columns.append(clean_column_name)
     return clean_columns
-
 
 def get_stock_price_data(name, from_date, to_date):
     """
@@ -94,3 +94,29 @@ class TradeHistory:
         if self.holding_quantity() != 0:
             return investment / self.holding_quantity()
         return 0
+    
+class GlobalPaths:
+    """
+    Global Paths Class
+    """
+
+    def __init__(self, source_name: str, object_name: str):
+        """
+        Initialize the GlobalPaths object with source name and object name.
+
+        Args:
+            source_name (str): The name of the source.
+            object_name (str): The name of the object.
+        """
+        self.source_name = source_name
+        self.object_name = object_name
+        self.cwd = pathlib.Path(os.getcwd())
+        if self.cwd.name != "Upstox":
+            self.cwd = self.cwd.parent
+
+    def createLayer(self, layer_name):
+        data_path = self.cwd.joinpath(
+            f"{self.source_name}/{layer_name}/{self.object_name}"
+        ).resolve()
+        data_path.mkdir(parents=True, exist_ok=True)
+        return data_path    
