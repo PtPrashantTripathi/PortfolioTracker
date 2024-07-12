@@ -1,4 +1,4 @@
-security_code,security_id,security_name,isin_no,instrument
+scrip_code,symbol,scrip_name,isin_no,instrument_type
 500002,ABB,ABB India Limited,INE117A01022,Equity
 500003,AEGISLOG,AEGIS LOGISTICS LTD.,INE208C01025,Equity
 500008,ARE&M,Amara Raja Energy & Mobility Ltd,INE885A01032,Equity
