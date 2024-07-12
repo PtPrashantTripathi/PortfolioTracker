@@ -1,4 +1,4 @@
-datetime,trade_num,exchange,segment,company,instrument_type,scrip_code,strike_price,expiry,side,amount,quantity,price
+datetime,trade_num,exchange,segment,company,instrument_type,scrip_code,strike_price,expiry,trade_type,amount,trade_quantity,trade_price
 2020-04-21 14:41:30,79300205,NSE,EQ,TATA MOTORS,Equity,500570,0,,BUY,1051.4,14.0,75.1
 2020-05-04 14:33:45,79614488,NSE,EQ,TATA MOTORS,Equity,500570,0,,BUY,419.0,5.0,83.8
 2020-05-05 11:31:20,2154030,NSE,EQ,BHAGERI IND,Equity,530803,0,,BUY,1165.5,10.0,116.55
