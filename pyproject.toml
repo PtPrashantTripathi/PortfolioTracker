@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "pnl-analysis"
+name = "upstox-analysis"
 version = "0.1.0"
 description = "Fetch trades from exchanges and calculate PNL"
 license = "Apache License"
