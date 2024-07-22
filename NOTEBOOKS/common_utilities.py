@@ -57,44 +57,6 @@ def get_stock_price_data(name, from_date, to_date):
         # Raise an exception if the request failed
         response.raise_for_status()
 
-class TradeHistory:
-    """Class Tread History"""
-
-    def __init__(self, stock_name):
-        self.stock_name = stock_name
-        self.trade_price = []
-        self.trade_quantity = []
-
-    def fifo_sell_calc(self, trade_quantity):
-        """Function to get fifo sell price"""
-        old_self = self.trade_quantity.copy()
-        for i, _ in enumerate(self.trade_price):
-            if i == 0:
-                self.trade_quantity[i] -= trade_quantity
-            else:
-                if self.trade_quantity[i - 1] < 0:
-                    self.trade_quantity[i] += self.trade_quantity[i - 1]
-                    self.trade_quantity[i - 1] = 0
-                else:
-                    break
-        buy_price = 0
-        for i, _ in enumerate(self.trade_quantity):
-            buy_price += (old_self[i] - self.trade_quantity[i]) * self.trade_price[i]
-        return buy_price / trade_quantity
-
-    def holding_quantity(self):
-        """Function to get Holding Quantity"""
-        return sum(self.trade_quantity)
-
-    def calc_avg_price(self):
-        """Function to get avg price"""
-        investment = 0
-        for i, _ in enumerate(self.trade_quantity):
-            investment += self.trade_quantity[i] * self.trade_price[i]
-        if self.holding_quantity() != 0:
-            return investment / self.holding_quantity()
-        return 0
-    
 class GlobalPaths:
     """
     Global Paths Class
