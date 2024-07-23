@@ -47,19 +47,6 @@ repos:
     name: isort (pyi)
     types: [pyi]
 
-- repo: https://github.com/pycqa/flake8
-  rev: 3.9.2
-  hooks:
-    - id: flake8
-      additional_dependencies: [
-        'pep8-naming',
-        'flake8-comprehensions',
-        'flake8-bugbear',
-        'flake8-pytest-style',
-        'flake8-keyword-arguments',
-        'flake8-class-attributes-order',
-      ]
-
 - repo: https://github.com/pre-commit/mirrors-mypy
   rev: v0.910-1
   hooks:
