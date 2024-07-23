@@ -1,9 +1,6 @@
 name: Pre-Commit Auto-Update
 
-on:
-  schedule:
-    - cron: "0 0 1 * *" # midnight every first of the month
-
+on: pull_request
 jobs:
   auto-update:
     runs-on: ubuntu-20.04
