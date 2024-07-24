@@ -1,4 +1,4 @@
-﻿Date,Company,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
+﻿Date,stock_name,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
 09-03-2021,Heranba Industries Limited,"₹8,525.00",NSE,EQ,543266,Equity,0,,26612985,10:38:35,Sell,11,₹775.00
 05-03-2021,Heranba Industries Limited,"₹9,840.00",NSE,EQ,543266,Equity,0,,31557281,15:24:27,Sell,12,₹820.00
 04-03-2021,Heranba Industries Limited,"₹14,421.00",NSE,EQ,543266,Equity,0,,,,Buy,23,₹627.00

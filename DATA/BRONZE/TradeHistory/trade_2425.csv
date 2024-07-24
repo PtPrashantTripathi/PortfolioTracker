@@ -1,4 +1,4 @@
-﻿Date,Company,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
+﻿Date,stock_name,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
 22-07-2024,NIFTY,"₹19,020.00",FON,FO,NIFTY,European Put,24600,25-07-2024,721833698,11:24:32,Sell,75,₹253.60
 22-07-2024,NIFTY,"₹18,911.25",FON,FO,NIFTY,European Put,24600,25-07-2024,721637062,11:06:51,Buy,75,₹252.15
 18-07-2024,NIFTY,"₹4,000.00",FON,FO,NIFTY,European Call,24650,18-07-2024,5839682,10:22:23,Sell,100,₹40.00
