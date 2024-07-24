@@ -12,7 +12,7 @@ def global_path(source_path):
     funcation to generate file path
     """
     data_path = cwd.joinpath("DATA").joinpath(source_path).resolve()
-    data_path.mkdir(parents=True, exist_ok=True)
+    data_path.parent.mkdir(parents=True, exist_ok=True)
     return data_path
 
 
