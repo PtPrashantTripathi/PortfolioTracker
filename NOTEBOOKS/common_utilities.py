@@ -13,11 +13,7 @@ def replace_punctuation_from_columns(columns):
     for each in columns:
         # Remove '_' as it replace space 'Stock Name' => stock_name
         clean_column_name = (
-            re.compile("[%s]" % re.escape(r"""!"#$%&'()*+,-./:;<=>?@[\]^`{|}~"""))
-            .sub("", each.strip())
-            .strip()
-            .replace(" ", "_")
-            .lower()
+            re.compile("[%s]" % re.escape(r"""!"#$%&'()*+,-./:;<=>?@[\]^`{|}~""")).sub("", each.strip()).strip().replace(" ", "_").lower()
         )
         while "__" in clean_column_name:
             clean_column_name = clean_column_name.replace("__", "_")
@@ -88,7 +84,7 @@ class Stock:
         if self.holding_quantity != 0:
             self.holding_price = self.holding_amount / self.holding_quantity
         else:
-            self.holding_price =0
+            self.holding_price = 0
         return {
             "buy_price": buy_price,
             "buy_quantity": buy_quantity,
@@ -118,12 +114,8 @@ class GlobalPath:
         self.tradehistory_bronze_layer_path = self.make_path("BRONZE/TradeHistory")
         self.tradehistory_silver_layer_path = self.make_path("SILVER/TradeHistory")
         self.tradehistory_gold_layer_path = self.make_path("GOLD/TradeHistory")
-        self.tradehistory_silver_file_path = self.make_path(
-            "SILVER/TradeHistory/TradeHistory_data.csv"
-        )
-        self.tradehistory_gold_file_path = self.make_path(
-            "GOLD/TradeHistory/TradeHistory_data.csv"
-        )
+        self.tradehistory_silver_file_path = self.make_path("SILVER/TradeHistory/TradeHistory_data.csv")
+        self.tradehistory_gold_file_path = self.make_path("GOLD/TradeHistory/TradeHistory_data.csv")
 
         # Ledger Paths
         self.ledger_bronze_layer_path = self.make_path("BRONZE/Ledger")
@@ -133,9 +125,7 @@ class GlobalPath:
         # StockPrice Paths
         self.stockprice_bronze_layer_path = self.make_path("BRONZE/StockPrice")
         self.stockprice_silver_layer_path = self.make_path("SILVER/StockPrice")
-        self.stockprice_silver_file_path = self.make_path(
-            "SILVER/StockPrice/StockPrice_data.csv"
-        )
+        self.stockprice_silver_file_path = self.make_path("SILVER/StockPrice/StockPrice_data.csv")
 
         # Symbol Paths
         self.symbol_bronze_layer_path = self.make_path("BRONZE/Symbol")
@@ -144,9 +134,7 @@ class GlobalPath:
 
         # ProfitLoss Paths
         self.profitloss_gold_layer_path = self.make_path("GOLD/ProfitLoss")
-        self.profitloss_gold_file_path = self.make_path(
-            "GOLD/ProfitLoss/ProfitLoss_data.csv"
-        )
+        self.profitloss_gold_file_path = self.make_path("GOLD/ProfitLoss/ProfitLoss_data.csv")
 
         # Holdings Paths
         self.holdings_gold_layer_path = self.make_path("GOLD/Holdings")
