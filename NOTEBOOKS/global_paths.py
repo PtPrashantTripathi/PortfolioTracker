@@ -19,9 +19,14 @@ def global_path(source_path):
 # TradeHistory
 TradeHistoryBronzeLayerPath = global_path("BRONZE/TradeHistory")
 TradeHistorySilverLayerPath = global_path("SILVER/TradeHistory")
-TradeHistorySilverFilePath = global_path("SILVER/TradeHistory/TradeHistory_data.csv")
 TradeHistoryGoldLayerPath = global_path("GOLD/TradeHistory")
+TradeHistorySilverFilePath = global_path("SILVER/TradeHistory/TradeHistory_data.csv")
 TradeHistoryGoldFilePath = global_path("GOLD/TradeHistory/TradeHistory_data.csv")
+
+# BillSummary
+BillSummaryBronzeLayerPath = global_path("BRONZE/BillSummary")
+BillSummarySilverLayerPath = global_path("SILVER/BillSummary")
+BillSummarySilverFilePath = global_path("SILVER/BillSummary/BillSummary_data.csv")
 
 # StockPrice
 StockPriceBronzeLayerPath = global_path("BRONZE/StockPrice")
