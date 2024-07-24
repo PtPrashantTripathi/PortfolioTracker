@@ -1,11 +1,16 @@
 name: Run pre-commit
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+      - 'releases/**'
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2.0.0
+      - uses: actions/checkout@latest
+      - uses: actions/setup-python@latest
+      - uses: pre-commit/action@latest
