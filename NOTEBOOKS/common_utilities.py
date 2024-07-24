@@ -1,10 +1,10 @@
 import os
 import re
-import time
 import pathlib
-import requests
-from enum import Enum
-from datetime import datetime
+
+# import time
+# import requests
+# from datetime import datetime
 
 
 def replace_punctuation_from_columns(columns):
@@ -23,42 +23,6 @@ def replace_punctuation_from_columns(columns):
             clean_column_name = clean_column_name.replace("__", "_")
         clean_columns.append(clean_column_name)
     return clean_columns
-
-
-def get_stock_price_data(name, from_date, to_date):
-    """
-    Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
-
-    Parameters:
-    name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
-    from_date (str): Start date in 'YYYY-MM-DD' format.
-    to_date (str): End date in 'YYYY-MM-DD' format.
-
-    Returns:
-    str: CSV data as text.
-    """
-
-    # Convert date strings to Unix timestamps
-    from_date_unix_ts = int(
-        time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple())
-    )
-    to_date_unix_ts = int(
-        time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple())
-    )
-
-    # Construct the URL for the API call
-    url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
-
-    # Make the API call
-    response = requests.get(url)
-
-    # Check if the request was successful
-    if response.status_code == 200:
-        # Return the CSV data as text
-        return response.text
-    else:
-        # Raise an exception if the request failed
-        response.raise_for_status()
 
 
 class Portfolio:
@@ -137,59 +101,97 @@ class Stock:
         }
 
 
-# Current Working Dirctory Path
-cwd = pathlib.Path(os.getcwd())
-if cwd.name != "Upstox":
-    cwd = cwd.parent
-
-
-def global_path(source_path):
+class GlobalPath:
     """
-    funcation to generate file path
-    """
-    data_path = cwd.joinpath("DATA").joinpath(source_path).resolve()
-    data_path.parent.mkdir(parents=True, exist_ok=True)
-    return data_path
-
-
-class GlobalPath(Enum):
-    """
-    Global Paths ENUM
+    Global Paths Class
     """
 
-    # Current Working Dirctory Path
-    CWD = cwd
+    def __init__(self) -> None:
+        # Base Location (Current Working Dirctory Path)
+        self.base_path = pathlib.Path(os.getcwd())
+        if self.base_path.name != "Upstox":
+            self.base_path = self.base_path.parent
+        self.base_path = self.base_path.joinpath("DATA")
 
-    # TradeHistory
-    TRADEHISTORY_BRONZE_LAYER_PATH = global_path("BRONZE/TradeHistory")
-    TRADEHISTORY_SILVER_LAYER_PATH = global_path("SILVER/TradeHistory")
-    TRADEHISTORY_GOLD_LAYER_PATH = global_path("GOLD/TradeHistory")
-    TRADEHISTORY_SILVER_FILE_PATH = global_path(
-        "SILVER/TradeHistory/TradeHistory_data.csv"
-    )
-    TRADEHISTORY_GOLD_FILE_PATH = global_path("GOLD/TradeHistory/TradeHistory_data.csv")
+        # TradeHistory Paths
+        self.tradehistory_bronze_layer_path = self.make_path("BRONZE/TradeHistory")
+        self.tradehistory_silver_layer_path = self.make_path("SILVER/TradeHistory")
+        self.tradehistory_gold_layer_path = self.make_path("GOLD/TradeHistory")
+        self.tradehistory_silver_file_path = self.make_path(
+            "SILVER/TradeHistory/TradeHistory_data.csv"
+        )
+        self.tradehistory_gold_file_path = self.make_path(
+            "GOLD/TradeHistory/TradeHistory_data.csv"
+        )
 
-    # BillSummary
-    BILLSUMMARY_BRONZE_LAYER_PATH = global_path("BRONZE/BillSummary")
-    BILLSUMMARY_SILVER_LAYER_PATH = global_path("SILVER/BillSummary")
-    BILLSUMMARY_SILVER_FILE_PATH = global_path(
-        "SILVER/BillSummary/BillSummary_data.csv"
-    )
+        # BillSummary Paths
+        self.billsummary_bronze_layer_path = self.make_path("BRONZE/BillSummary")
+        self.billsummary_silver_layer_path = self.make_path("SILVER/BillSummary")
+        self.billsummary_silver_file_path = self.make_path(
+            "SILVER/BillSummary/BillSummary_data.csv"
+        )
 
-    # StockPrice
-    STOCKPRICE_BRONZE_LAYER_PATH = global_path("BRONZE/StockPrice")
-    STOCKPRICE_SILVER_LAYER_PATH = global_path("SILVER/StockPrice")
-    STOCKPRICE_SILVER_FILE_PATH = global_path("SILVER/StockPrice/StockPrice_data.csv")
+        # StockPrice Paths
+        self.stockprice_bronze_layer_path = self.make_path("BRONZE/StockPrice")
+        self.stockprice_silver_layer_path = self.make_path("SILVER/StockPrice")
+        self.stockprice_silver_file_path = self.make_path(
+            "SILVER/StockPrice/StockPrice_data.csv"
+        )
 
-    # Symbol
-    SYMBOL_BRONZE_LAYER_PATH = global_path("BRONZE/Symbol")
-    SYMBOL_SILVER_LAYER_PATH = global_path("SILVER/Symbol")
-    SYMBOL_SILVER_FILE_PATH = global_path("SILVER/Symbol/Symbol_data.csv")
+        # Symbol Paths
+        self.symbol_bronze_layer_path = self.make_path("BRONZE/Symbol")
+        self.symbol_silver_layer_path = self.make_path("SILVER/Symbol")
+        self.symbol_silver_file_path = self.make_path("SILVER/Symbol/Symbol_data.csv")
 
-    # ProfitLoss
-    PROFITLOSS_GOLD_LAYER_PATH = global_path("GOLD/ProfitLoss")
-    PROFITLOSS_GOLD_FILE_PATH = global_path("GOLD/ProfitLoss/ProfitLoss_data.csv")
+        # ProfitLoss Paths
+        self.profitloss_gold_layer_path = self.make_path("GOLD/ProfitLoss")
+        self.profitloss_gold_file_path = self.make_path(
+            "GOLD/ProfitLoss/ProfitLoss_data.csv"
+        )
 
-    # Holdings
-    HOLDINGS_GOLD_LAYER_PATH = global_path("GOLD/Holdings")
-    HOLDINGS_GOLD_FILE_PATH = global_path("GOLD/Holdings/Holdings_data.csv")
+        # Holdings Paths
+        self.holdings_gold_layer_path = self.make_path("GOLD/Holdings")
+        self.holdings_gold_file_path = self.make_path("GOLD/Holdings/Holdings_data.csv")
+
+    def make_path(self, source_path):
+        """
+        funcation to generate file path
+        """
+        data_path = self.base_path.joinpath(source_path).resolve()
+        data_path.parent.mkdir(parents=True, exist_ok=True)
+        return data_path
+
+
+global_path = GlobalPath()
+
+
+# def get_stock_price_data(name, from_date, to_date):
+#     """
+#     Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
+
+#     Parameters:
+#     name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
+#     from_date (str): Start date in 'YYYY-MM-DD' format.
+#     to_date (str): End date in 'YYYY-MM-DD' format.
+
+#     Returns:
+#     str: CSV data as text.
+#     """
+
+#     # Convert date strings to Unix timestamps
+#     from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
+#     to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
+
+#     # Construct the URL for the API call
+#     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
+
+#     # Make the API call
+#     response = requests.get(url)
+
+#     # Check if the request was successful
+#     if response.status_code == 200:
+#         # Return the CSV data as text
+#         return response.text
+#     else:
+#         # Raise an exception if the request failed
+#         response.raise_for_status()
