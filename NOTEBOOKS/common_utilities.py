@@ -36,8 +36,12 @@ def get_stock_price_data(name, from_date, to_date):
     """
 
     # Convert date strings to Unix timestamps
-    from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
-    to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
+    from_date_unix_ts = int(
+        time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple())
+    )
+    to_date_unix_ts = int(
+        time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple())
+    )
 
     # Construct the URL for the API call
     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"

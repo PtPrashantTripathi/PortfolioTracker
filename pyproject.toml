@@ -15,19 +15,15 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 
-[tool.black]
-line-length = 120
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.git
-  | \.mypy_cache
-  | \.tox
-  | \venv
-  | build
-  | dist
-)/
-'''
+ [tool.black]
+    py36 = true
+    include = '.*py.*'
+    exclude = '''
+    /(
+        \.git
+      | \.venv
+      | \__pycache__
+    )/'''
 
 [tool.isort]
 profile = "black"
