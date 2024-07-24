@@ -1,6 +1,10 @@
-name: Pre-Commit Auto-Update
+name: Auto-Update
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
+      
 jobs:
   auto-update:
     runs-on: ubuntu-20.04
@@ -16,3 +20,6 @@ jobs:
           title: "Chore: Update Pre-Commit Hooks"
           commit-message: "chore: update pre-commit hooks"
           body: Update versions of pre-commit hooks to latest version.
+
+
+
