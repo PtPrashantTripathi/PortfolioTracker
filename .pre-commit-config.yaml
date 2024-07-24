@@ -1,7 +1,7 @@
 exclude: .idea/
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: 0c625349aa4def4cc52fc560f7a94311b8be0607
+  rev: 2c9f875913ee60ca25ce70243dc24d5b6415598c  # frozen: v4.6.0
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
@@ -13,6 +13,6 @@ repos:
   - id: debug-statements
   - id: check-merge-conflict
 - repo: https://github.com/ambv/black
-  rev: 24.4.2
+  rev: 3702ba224ecffbcec30af640c149f231d90aebdb  # frozen: 24.4.2
   hooks:
   - id: black
