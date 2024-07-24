@@ -16,20 +16,15 @@ classifiers = [
 ]
 
 [tool.black]
-line-length = 120
-include = '\.pyi?$'
+include = '.*py.*'
 exclude = '''
-/(
-    \.git
-  | \.mypy_cache
-  | \.tox
-  | \venv
-  | build
-  | dist
-)/
-'''
+    /(
+        \.git
+      | \.venv
+      | \__pycache__
+    )/'''
 
 [tool.isort]
 profile = "black"
 multi_line_output = 3
-line_length = 120
+line_length = 100
