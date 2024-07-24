@@ -1,0 +1,9 @@
+Wallet,Trade Date,Settlement Date,Exchange,Segment,Type,Narration,Debit,Credit,Closing Balance
+Securities,2022-05-11,2022-05-11,FON,FO,Fund transfer,Funds added to your trading wallet,,30000,29823.0
+Securities,2022-05-11,2022-05-13,NSE,EQ,Order,BILL POSTING,29819.26,,3.74
+Securities,2022-05-19,2022-05-19,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for january 2022 to march 2022,88.5,,-84.76
+Securities,2022-07-12,2022-07-12,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for april 2022 to june 2022,88.5,,-173.26
+Securities,2022-08-10,2022-08-12,NSE,EQ,Order,BILL POSTING,,53158.26,52985.0
+Securities,2022-08-13,2022-08-13,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,52985,,0.0
+Securities,2022-10-04,2022-10-04,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for july 2022 to september 2022,88.5,,-88.5
+Securities,2023-01-05,2023-01-05,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for october 2022 to december 2022,88.5,,-177.0
