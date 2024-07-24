@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "upstox"
+version = "0.1.0"
+description = "Completed ETL from upstox exchanges and calculate PNL and other stuff"
+license = "MIT"
+authors = ["ptptrashanttripathi"]
+readme = "README.md"
+repository = "https://github.com/ptptrashanttripathi/upstox"
+
+keywords = []
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+]
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | \venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 120
