@@ -1,0 +1,101 @@
+wallet,trade_date,settlement_date,exchange,segment,type,narration,debit,credit,closing_balance
+Securities,2020-04-21,2020-04-22,FON,FO,Fund transfer,Funds added to your trading wallet,,1200.0,1200.0
+Securities,2020-04-21,2020-04-23,NSE,EQ,Order,BILL POSTING,1052.56,,147.44
+Securities,2020-05-03,2020-05-03,FON,FO,Fund transfer,Funds added to your trading wallet,,2000.0,2147.44
+Securities,2020-05-04,2020-05-06,NSE,EQ,Order,BILL POSTING,419.06,,1728.38
+Securities,2020-05-05,2020-05-08,NSE,EQ,Order,BILL POSTING,1166.68,,561.7
+Securities,2020-05-19,2020-05-21,NSE,EQ,Order,BILL POSTING,501.08,,60.62
+Securities,2020-06-15,2020-06-17,NSE,EQ,Order,BILL POSTING,,1670.92,1731.54
+Securities,2020-06-24,2020-06-24,BSE,EQ,Journal voucher,Being amount debited towards Demat MMC for the month of March20,29.5,,1702.04
+Securities,2020-07-03,2020-07-03,FON,FO,Fund transfer,Funds added to your trading wallet,,4000.0,5702.04
+Securities,2020-07-03,2020-07-07,NSE,EQ,Order,BILL POSTING,1562.3,,4139.74
+Securities,2020-07-05,2020-07-05,BSE,EQ,Journal voucher,Being amount debited towards Demat MMC for the month of April20,29.5,,4110.24
+Securities,2020-07-20,2020-07-20,NSE,EQ,Journal voucher,Being Amount Debited towards MMC Charges for  the Month of June 2020.,29.5,,4080.74
+Securities,2020-07-27,2020-07-29,NSE,EQ,Order,BILL POSTING,1231.06,,2849.68
+Securities,2020-07-29,2020-07-31,NSE,EQ,Order,BILL POSTING,1742.08,,1107.6
+Securities,2020-07-30,2020-08-03,NSE,EQ,Order,BILL POSTING,397.52,,710.08
+Securities,2020-08-07,2020-08-07,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,710.08,,0.0
+Securities,2020-08-29,2020-08-29,NSE,EQ,Journal voucher,Being Amount Debited Towards Demat MMC for the Month July 2020,29.5,,-29.5
+Securities,2020-09-04,2020-09-04,NSE,EQ,Journal voucher,Being Amount Debited Towards Demat MMC for the month of May 2020.,29.5,,-59.0
+Securities,2020-09-14,2020-09-14,NSE,EQ,Journal voucher,"Being Amount Debited towards MMC Charges, for the Month of August 2020.",29.5,,-88.5
+Securities,2020-10-20,2020-10-20,NSE,EQ,Journal voucher,Being amount debited towards Demat MMC for the month September 2020.,29.5,,-118.0
+Securities,2020-11-27,2020-11-27,NSE,EQ,Journal voucher,Amount Debited towards Demat MMC for the month of October 2020.,29.5,,-147.5
+Securities,2020-12-29,2020-12-29,NSE,EQ,Journal voucher,Amount Debited towards Demat MMC for the month of November 2020.,29.5,,-177.0
+Securities,2021-02-07,2021-02-07,FON,FO,Fund transfer,Funds added to your trading wallet,,7000.0,6823.0
+Securities,2021-02-08,2021-02-10,NSE,EQ,Order,BILL POSTING,6487.27,,335.73
+Securities,2021-02-09,2021-02-09,FON,FO,Debit Note,Being fee charged for transacting on Smallcase,6.15,,83.4
+Securities,2021-02-09,2021-02-11,NSE,EQ,Order,BILL POSTING,246.18,,89.55
+Securities,2021-02-12,2021-02-12,NSE,EQ,Journal voucher,Amount debited towards MMC for the month of December 2020.,29.5,,53.9
+Securities,2021-02-21,2021-02-21,FON,FO,Fund transfer,Funds added to your trading wallet,,3000.0,3053.9
+Securities,2021-02-22,2021-02-24,NSE,EQ,Order,BILL POSTING,2973.13,,80.77
+Securities,2021-03-01,2021-03-01,FON,FO,Fund transfer,Funds added to your trading wallet,,5000.0,5080.77
+Securities,2021-03-05,2021-03-09,NSE,EQ,Order,BILL POSTING,,9807.76,14888.53
+Securities,2021-03-09,2021-03-12,NSE,EQ,Order,BILL POSTING,,8493.82,23382.35
+Securities,2021-03-12,2021-03-12,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,23300.0,,82.35
+Securities,2021-04-12,2021-04-12,FON,FO,Fund transfer,Funds added to your trading wallet,,15000.0,15082.35
+Securities,2021-04-12,2021-04-12,FON,FO,Fund transfer,Funds added to your trading wallet,,5000.0,20082.35
+Securities,2021-04-12,2021-04-16,NSE,EQ,Order,BILL POSTING,19166.36,,915.99
+Securities,2021-05-09,2021-05-09,FON,FO,Fund transfer,Funds added to your trading wallet,,4419.0,5334.99
+Securities,2021-05-10,2021-05-12,NSE,EQ,Order,BILL POSTING,5116.23,,218.76
+Securities,2021-06-04,2021-06-08,NSE,EQ,Order,BILL POSTING,,6138.13,6356.89
+Securities,2021-06-14,2021-06-16,NSE,EQ,Order,BILL POSTING,,13642.06,19998.95
+Securities,2021-06-15,2021-06-17,NSE,EQ,Order,BILL POSTING,19282.81,,716.14
+Securities,2021-06-25,2021-06-25,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for january 2021 to march 2021.,88.5,,627.64
+Securities,2021-07-10,2021-07-10,FON,FO,Quarterly settlement,Amount credited to registered bank account for quarterly settlement (july 2021 to september 2021),627.64,,0.0
+Securities,2021-08-03,2021-08-03,FON,FO,Fund transfer,Funds added to your trading wallet,,20000.0,20000.0
+Securities,2021-08-06,2021-08-10,NSE,EQ,Order,BILL POSTING,19674.83,,325.17
+Securities,2021-08-13,2021-08-13,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for april 2021 to june 2021.,88.5,,236.67
+Securities,2021-09-04,2021-09-04,FON,FO,Quarterly settlement,Amount credited to registered bank account for quarterly settlement (july 2021 to september 2021),236.67,,0.0
+Securities,2021-11-10,2021-11-12,NSE,EQ,Order,BILL POSTING,,1926.08,1926.08
+Securities,2021-11-13,2021-11-13,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,1926.08,,0.0
+Securities,2021-11-23,2021-11-23,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for july 2021 to september 2021.,88.5,,-88.5
+Securities,2022-01-24,2022-01-24,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for october 2021 to december 2021.,88.5,,-177.0
+Securities,2022-05-11,2022-05-11,FON,FO,Fund transfer,Funds added to your trading wallet,,30000.0,29823.0
+Securities,2022-05-11,2022-05-13,NSE,EQ,Order,BILL POSTING,29819.26,,3.74
+Securities,2022-05-19,2022-05-19,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for january 2022 to march 2022,88.5,,-84.76
+Securities,2022-07-12,2022-07-12,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for april 2022 to june 2022,88.5,,-173.26
+Securities,2022-08-10,2022-08-12,NSE,EQ,Order,BILL POSTING,,53158.26,52985.0
+Securities,2022-08-13,2022-08-13,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,52985.0,,0.0
+Securities,2022-10-04,2022-10-04,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for july 2022 to september 2022,88.5,,-88.5
+Securities,2023-01-05,2023-01-05,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for october 2022 to december 2022,88.5,,-177.0
+Securities,2023-04-05,2023-04-05,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for january 2023 to march 2023,88.5,,-265.5
+Securities,2023-06-27,2023-06-27,FON,FO,Fund transfer,Funds added to your trading wallet,,265.5,0.0
+Securities,2023-07-04,2023-07-04,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for april 2023 to june 2023,88.5,,-88.5
+Securities,2023-10-04,2023-10-04,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for july 2023 to september 2023,88.5,,-177.0
+Securities,2024-01-03,2024-01-03,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for october 2023 to december 2023,88.5,,-265.5
+Securities,2024-04-03,2024-04-03,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for january 2024 to march 2024,88.5,,-354.0
+Securities,2024-05-24,2024-05-24,FON,FO,Fund transfer,Funds added to your trading wallet,,500.0,146.0
+Securities,2024-05-24,2024-05-27,BMF,MF,Order,BILL POSTING,,,146.0
+Securities,2024-06-04,2024-06-04,FON,FO,Fund transfer,Funds added to your trading wallet,,20000.0,20146.0
+Securities,2024-06-04,2024-06-05,NSE,EQ,Order,BILL POSTING,2691.72,,17454.28
+Securities,2024-06-13,2024-06-14,FON,FO,Order,BILL POSTING,,22.51,17476.79
+Securities,2024-06-13,2024-06-14,NSE,EQ,Order,BILL POSTING,3003.13,,14473.66
+Securities,2024-06-14,2024-06-18,FON,FO,Order,BILL POSTING,,29.56,14503.22
+Securities,2024-06-18,2024-06-19,FON,FO,Order,BILL POSTING,,338.28,14841.5
+Securities,2024-06-19,2024-06-20,FON,FO,Order,BILL POSTING,,900.08,15741.58
+Securities,2024-06-20,2024-06-21,FON,FO,Order,BILL POSTING,887.53,,14854.05
+Securities,2024-06-21,2024-06-24,FON,FO,Order,BILL POSTING,,2527.51,17381.56
+Securities,2024-06-24,2024-06-25,FON,FO,Order,BILL POSTING,,259.85,17641.41
+Securities,2024-06-25,2024-06-26,FON,FO,Order,BILL POSTING,,139.77,17781.18
+Securities,2024-06-26,2024-06-27,FON,FO,Order,BILL POSTING,11010.54,,6770.64
+Securities,2024-06-27,2024-06-28,FON,FO,Order,BILL POSTING,,17523.91,24294.55
+Securities,2024-06-28,2024-07-01,FON,FO,Order,BILL POSTING,,1148.88,25443.43
+Securities,2024-07-01,2024-07-02,FON,FO,Order,BILL POSTING,,798.94,26242.37
+Securities,2024-07-02,2024-07-03,BMF,MF,Order,BILL POSTING,,,28441.73
+Securities,2024-07-02,2024-07-03,FON,FO,Order,BILL POSTING,,2199.36,28441.73
+Securities,2024-07-03,2024-07-03,FON,FO,Withdrawal processed,Amount credited to registered bank account via our standard withdrawal process,10000.0,,13134.4
+Securities,2024-07-03,2024-07-03,NSE,EQ,Demat quaterly maintenance charges,Demat quaterly maintenance charges for april 2024 to june 2024,88.5,,28353.23
+Securities,2024-07-03,2024-07-04,FON,FO,Order,BILL POSTING,5218.83,,23134.4
+Securities,2024-07-04,2024-07-05,FON,FO,Order,BILL POSTING,,17.79,13152.19
+Securities,2024-07-05,2024-07-06,FON,FO,Quarterly settlement,Amount credited to registered bank account for quarterly settlement (july 2024 to september 2024),13152.19,,2135.99
+Securities,2024-07-05,2024-07-08,FON,FO,Order,BILL POSTING,,2135.99,15288.18
+Securities,2024-07-06,2024-07-06,FON,FO,Fund transfer,Funds added to your trading wallet,,13152.19,15288.18
+Securities,2024-07-08,2024-07-09,FON,FO,Order,BILL POSTING,12030.68,,3257.5
+Securities,2024-07-09,2024-07-10,FON,FO,Order,BILL POSTING,,18283.34,21540.84
+Securities,2024-07-10,2024-07-11,FON,FO,Order,BILL POSTING,,1608.83,23149.67
+Securities,2024-07-11,2024-07-12,FON,FO,Order,BILL POSTING,5689.72,,17459.95
+Securities,2024-07-15,2024-07-16,FON,FO,Order,BILL POSTING,33.02,,17426.93
+Securities,2024-07-16,2024-07-18,FON,FO,Order,BILL POSTING,7439.07,,9987.86
+Securities,2024-07-18,2024-07-19,FON,FO,Order,BILL POSTING,,11916.27,21904.13
+Securities,2024-07-22,2024-07-23,FON,FO,Order,BILL POSTING,,26.15,21930.28
+Securities,2024-07-23,2024-07-24,FON,FO,Order,BILL POSTING,9714.99,,12215.29

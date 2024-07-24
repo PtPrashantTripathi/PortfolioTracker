@@ -124,12 +124,10 @@ class GlobalPath:
             "GOLD/TradeHistory/TradeHistory_data.csv"
         )
 
-        # BillSummary Paths
-        self.billsummary_bronze_layer_path = self.make_path("BRONZE/BillSummary")
-        self.billsummary_silver_layer_path = self.make_path("SILVER/BillSummary")
-        self.billsummary_silver_file_path = self.make_path(
-            "SILVER/BillSummary/BillSummary_data.csv"
-        )
+        # Ledger Paths
+        self.ledger_bronze_layer_path = self.make_path("BRONZE/Ledger")
+        self.ledger_silver_layer_path = self.make_path("SILVER/Ledger")
+        self.ledger_silver_file_path = self.make_path("SILVER/Ledger/Ledger_data.csv")
 
         # StockPrice Paths
         self.stockprice_bronze_layer_path = self.make_path("BRONZE/StockPrice")
