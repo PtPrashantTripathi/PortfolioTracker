@@ -1,7 +1,7 @@
 exclude: .idea/
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.6.0
+  rev: 0c625349aa4def4cc52fc560f7a94311b8be0607
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
