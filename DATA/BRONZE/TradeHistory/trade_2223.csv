@@ -1,4 +1,4 @@
-﻿Date,stock_name,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
+﻿Date,Company,Amount,Exchange,Segment,Scrip Code,Instrument Type,Strike Price,Expiry,Trade Num,Trade Time,Side,Quantity,Price
 10-08-2022,TATA POWER,"₹4,372.85",NSE,EQ,500400,Equity,0,,75674343,09:30:24,Sell,19,₹230.15
 10-08-2022,BHARAT PETROLEUM CORPORATION L,"₹14,140.55",NSE,EQ,500547,Equity,0,,402909,09:26:12,Sell,43,₹328.85
 10-08-2022,VOLTAS LTD,"₹3,944.00",NSE,EQ,500575,Equity,0,,75047870,09:15:00,Sell,4,₹986.00
