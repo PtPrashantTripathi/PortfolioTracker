@@ -1,5 +1,74 @@
 import pandas as pd
 from common_utilities import Portfolio, global_path
+from IPython.display import display
+from prettytable import PrettyTable
+from tabulate import tabulate
+import pandas as pd
+
+
+def display_tabulate(df):
+    print(tabulate(df, headers="keys", tablefmt="pretty"))
+
+
+def display_prettytable(df):
+    table = PrettyTable()
+    table.field_names = df.columns.tolist()
+    for row in df.itertuples(index=False):
+        table.add_row(row)
+    print(table)
+
+
+def display_pandas(df):
+    print(df.to_string(index=False, justify="left"))
+
+
+def main():
+    # read the csv file
+    df_TradeHistory = pd.read_csv(global_path.tradehistory_silver_file_path)
+    # Convert 'datetime' to datetime type
+    df_TradeHistory["datetime"] = pd.to_datetime(df_TradeHistory["datetime"])
+    # sort the dataframe by date
+    df_TradeHistory = df_TradeHistory.sort_values(by="datetime")
+    # replace scrip code to compnay name
+    df_Symbol = pd.read_csv(global_path.symbol_silver_file_path)
+    df_Symbol["scrip_code"] = df_Symbol["scrip_code"].astype(str)
+    # Merge df_TradeHistory with df_Symbol on the matching columns
+    df_TradeHistory = df_TradeHistory.merge(
+        df_Symbol[["scrip_code", "symbol"]],
+        left_on="scrip_code",
+        right_on="scrip_code",
+        how="left",
+    )
+    # Assign the new column 'stock_name' in df_TradeHistory to the values from 'symbol'
+    df_TradeHistory["stock_name"] = df_TradeHistory["symbol"].combine_first(df_TradeHistory["stock_name"])
+    df_TradeHistory = df_TradeHistory[df_TradeHistory["stock_name"] == "NIFTY-CE-24400-11Jul2024"].sort_values(by="datetime")
+
+    portfolio = Portfolio()
+
+    # Apply the function of trade logic to each row of the DataFrame
+    data = [portfolio.trade(row.to_dict()) for _, row in df_TradeHistory.iterrows()]
+    df_TradeHistory = pd.DataFrame(data)
+
+    # Select columns that end with 'price' or 'amount'
+    columns_to_round = [col for col in df_TradeHistory.columns if col.endswith("price") or col.endswith("amount")]
+    # Round the values in the selected columns to two decimal places
+    df_TradeHistory[columns_to_round] = df_TradeHistory[columns_to_round].round(2)
+    df = df_TradeHistory.drop(columns=["exchange", "segment", "scrip_code", "stock_name", "amount", "price", "symbol"])
+
+    print("\n\nnormal")
+    print(df)
+
+    print("\n\nDisplay")
+    display(df)
+
+    print("\n\nDisplay using tabulate")
+    display_tabulate(df)
+
+    print("\n\nDisplay using prettytable")
+    display_prettytable(df)
+
+    print("\n\nDisplay using Pandas built-in formatting")
+    display_pandas(df)
 
 
 class Portfolio:
@@ -76,34 +145,4 @@ class Stock:
         }
 
 
-# read the csv file
-df_TradeHistory = pd.read_csv(global_path.tradehistory_silver_file_path)
-# Convert 'datetime' to datetime type
-df_TradeHistory["datetime"] = pd.to_datetime(df_TradeHistory["datetime"])
-# sort the dataframe by date
-df_TradeHistory = df_TradeHistory.sort_values(by="datetime")
-# replace scrip code to compnay name
-df_Symbol = pd.read_csv(global_path.symbol_silver_file_path)
-df_Symbol["scrip_code"] = df_Symbol["scrip_code"].astype(str)
-# Merge df_TradeHistory with df_Symbol on the matching columns
-df_TradeHistory = df_TradeHistory.merge(
-    df_Symbol[["scrip_code", "symbol"]],
-    left_on="scrip_code",
-    right_on="scrip_code",
-    how="left",
-)
-# Assign the new column 'stock_name' in df_TradeHistory to the values from 'symbol'
-df_TradeHistory["stock_name"] = df_TradeHistory["symbol"].combine_first(df_TradeHistory["stock_name"])
-df_TradeHistory = df_TradeHistory[df_TradeHistory["stock_name"] == "NIFTY-CE-24400-11Jul2024"].sort_values(by="datetime")
-
-portfolio = Portfolio()
-
-# Apply the function of trade logic to each row of the DataFrame
-data = [portfolio.trade(row.to_dict()) for _, row in df_TradeHistory.iterrows()]
-df_TradeHistory = pd.DataFrame(data)
-
-# Select columns that end with 'price' or 'amount'
-columns_to_round = [col for col in df_TradeHistory.columns if col.endswith("price") or col.endswith("amount")]
-# Round the values in the selected columns to two decimal places
-df_TradeHistory[columns_to_round] = df_TradeHistory[columns_to_round].round(2)
-df_TradeHistory.drop(columns=["exchange", "segment", "scrip_code", "stock_name", "amount", "price", "symbol"])
+main()
