@@ -86,9 +86,6 @@ class Stock:
         else:
             self.holding_price = 0
 
-
-
-
         return {
             "buy_price": buy_price,
             "buy_quantity": buy_quantity,
