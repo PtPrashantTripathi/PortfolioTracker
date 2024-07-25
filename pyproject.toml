@@ -15,10 +15,9 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 
- [tool.black]
-    py36 = true
-    include = '.*py.*'
-    exclude = '''
+[tool.black]
+include = '.*py.*'
+exclude = '''
     /(
         \.git
       | \.venv
