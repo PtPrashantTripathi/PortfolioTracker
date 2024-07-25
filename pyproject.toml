@@ -5,26 +5,46 @@ description = "Completed ETL from upstox exchanges and calculate PNL and other s
 license = "MIT"
 authors = ["ptptrashanttripathi"]
 readme = "README.md"
+homepage = "https://ptprashanttripathi.github.io/upstox"
 repository = "https://github.com/ptptrashanttripathi/upstox"
-
-keywords = []
-
+keywords = ["packaging", "poetry"]
 classifiers = [
-  "Development Status :: 3 - Alpha",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
 ]
 
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/ptptrashanttripathi/upstox/issues"
+# Black formatting
 [tool.black]
-include = '.*py.*'
-exclude = '''
-    /(
-        \.git
-      | \.venv
-      | \__pycache__
-    )/'''
-
+line-length = 150
+include = '\.pyi?$'
+exclude = '\<.git'
+# iSort
 [tool.isort]
 profile = "black"
+line_length = 150
 multi_line_output = 3
-line_length = 100
+include_trailing_comma = true
+virtual_env = "venv"  
+
+[tool.flake8]
+exclude = "venv"
+ignore = ["E501", "W503", "E226"]
+# E501: Line too long
+# W503: Line break occurred before binary operator
+# E226: Missing white space around arithmetic operator
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+requests = "^2.13.0"
+pandas = "^2.2.1"
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/markdown"
+fragments = [
+     { path = "README.md" },
+     { path = "CHANGES.md" },
+   ]

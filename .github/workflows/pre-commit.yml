@@ -13,7 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2
+
+
+
+      - uses: pre-commit/action@v3
+
       - run: |
           # Note: the following account information will not work on GHES
           git config user.name "github-actions[bot]"
