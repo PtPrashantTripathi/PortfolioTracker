@@ -34,9 +34,9 @@ class Portfolio:
         record.update(
             self.stocks[stock_name].trade(
                 side=str(record.get("side")).upper(),
-                amount=float(record.get("amount")),
-                quantity=int(record.get("quantity")),
                 price=float(record.get("price")),
+                quantity=int(record.get("quantity")),
+                amount=float(record.get("amount")),
             )
         )
         return record
@@ -48,13 +48,14 @@ class Stock:
         self.holding_price = 0
         self.holding_quantity = 0
         self.holding_amount = 0
+        self.pnl_amount = 0
 
     def trade(
         self,
         side: str,
-        amount: float,
-        quantity: int,
         price: float,
+        quantity: int,
+        amount: float,
     ):
         buy_price = 0
         buy_quantity = 0
@@ -77,6 +78,7 @@ class Stock:
             buy_amount = quantity * buy_price
             self.holding_quantity -= sell_quantity
             self.holding_amount -= buy_amount
+            self.pnl_amount += sell_amount - buy_amount
         else:
             raise Exception(f"{side} was never excepected")
 
@@ -96,7 +98,17 @@ class Stock:
             "holding_price": self.holding_price,
             "holding_quantity": self.holding_quantity,
             "holding_amount": self.holding_quantity,
+            "pnl_amount": self.pnl_amount,
         }
+
+
+# stock = Stock("test")
+# stock.trade(
+#     "SELL",
+#     100,
+#     100,
+#     10000,
+# )
 
 
 class GlobalPath:
