@@ -87,6 +87,8 @@ class Stock:
         # Update the holding price only if there is remaining quantity
         if self.holding_quantity != 0:
             self.holding_price = self.holding_amount / self.holding_quantity
+        else:
+            self.holding_price = 0
 
         return {
             "buy_price": buy_price,
