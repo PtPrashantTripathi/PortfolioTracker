@@ -1,2 +1,0 @@
-self._avg_price = (self._avg_price * self._quantity + price * quantity) / (self._quantity + quantity)
-        self._quantity += quantity
