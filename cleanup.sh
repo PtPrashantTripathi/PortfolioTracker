@@ -1,0 +1,16 @@
+rm -rf NOTEBOOKS/00_ETL_Source2Bronze_Layer_TradeHistory.py
+rm -rf NOTEBOOKS/01_ETL_Bronze2Silver_Layer_Symbol.py
+rm -rf NOTEBOOKS/02_ETL_Bronze2Silver_Layer_TradeHistory.py
+rm -rf NOTEBOOKS/03_ETL_Bronze2Silver_Layer_StockPrice.py
+rm -rf NOTEBOOKS/04_ETL_Bronze2Silver_Layer_Ledger.py
+rm -rf NOTEBOOKS/05_ETL_Silver2Gold_Layer_TradeHistory.py
+rm -rf NOTEBOOKS/06_ETL_Silver2Gold_Layer_ProfitLoss.py
+rm -rf NOTEBOOKS/07_ETL_Silver2Gold_Layer_Holdings.py
+rm -rf NOTEBOOKS/08_ETL_Silver2Gold_Layer_Investment.py
+rm -rf NOTEBOOKS/09_PRESENTATION_Layer.py
+rm -rf NOTEBOOKS/common_utilities.ipynb
+rm -rf NOTEBOOKS/runner.ipynb
+rm -rf NOTEBOOKS/t.ipynb
+rm -rf NOTEBOOKS/test.py
+rm -rf companyAction/companyAction.py
+rm -rf test/trading_pnl.ipynb

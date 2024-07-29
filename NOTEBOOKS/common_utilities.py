@@ -1,14 +1,12 @@
+import os
+
 # Importing necessary files and packages
 import re
-import os
 import json
 import pathlib
 import datetime
-import dateutil
 
-# import time
-# import requests
-# from datetime import datetime
+import dateutil
 
 
 class Portfolio:
@@ -23,7 +21,9 @@ class Portfolio:
 
         record.update(
             self.stocks[stock_name].trade(
-                side=str(record.get("side")).upper(), traded_price=float(record.get("price")), traded_quantity=int(record.get("quantity"))
+                side=str(record.get("side")).upper(),
+                traded_price=float(record.get("price")),
+                traded_quantity=int(record.get("quantity")),
             )
         )
         return record
@@ -36,28 +36,30 @@ class Stock:
 
     def trade(self, side: str, traded_price, traded_quantity):
         # buy: positive position, sell: negative position
-        quantity_with_direction = traded_quantity if side == "BUY" else (-1) * traded_quantity
-        is_still_open = (self.holding_quantity * quantity_with_direction) >= 0
-        pnl_amount = 0
-        # realized pnl
-        if not is_still_open:
-            # Remember to keep the sign as the net position
+        traded_quantity = (
+            traded_quantity if side == "BUY" else (-1) * traded_quantity
+        )
+
+        if (self.holding_quantity * traded_quantity) >= 0:
+            # realized pnl
+            pnl_amount = 0
+            # avg open price
+            self.avg_price = (
+                (self.avg_price * self.holding_quantity)
+                + (traded_price * traded_quantity)
+            ) / (self.holding_quantity + traded_quantity)
+        else:
             pnl_amount = (
                 (traded_price - self.avg_price)
-                * min(abs(quantity_with_direction), abs(self.holding_quantity))
+                * min(abs(traded_quantity), abs(self.holding_quantity))
                 * (abs(self.holding_quantity) / self.holding_quantity)
             )
-        # avg open price
-        if is_still_open:
-            self.avg_price = ((self.avg_price * self.holding_quantity) + (traded_price * quantity_with_direction)) / (
-                self.holding_quantity + quantity_with_direction
-            )
-        else:
             # Check if it is close-and-open
-            if traded_quantity > abs(self.holding_quantity):
+            if abs(traded_quantity) > abs(self.holding_quantity):
                 self.avg_price = traded_price
+
         # net position
-        self.holding_quantity += quantity_with_direction
+        self.holding_quantity += traded_quantity
 
         return {
             "avg_price": self.avg_price,
@@ -80,35 +82,55 @@ class GlobalPath:
         self.base_path = self.base_path.joinpath("DATA")
 
         # TradeHistory Paths
-        self.tradehistory_source_layer_path = self.make_path("SOURCE/TradeHistory")
-        self.tradehistory_bronze_layer_path = self.make_path("BRONZE/TradeHistory")
-        self.tradehistory_silver_layer_path = self.make_path("SILVER/TradeHistory")
+        self.tradehistory_source_layer_path = self.make_path(
+            "SOURCE/TradeHistory"
+        )
+        self.tradehistory_bronze_layer_path = self.make_path(
+            "BRONZE/TradeHistory"
+        )
+        self.tradehistory_silver_layer_path = self.make_path(
+            "SILVER/TradeHistory"
+        )
         self.tradehistory_gold_layer_path = self.make_path("GOLD/TradeHistory")
-        self.tradehistory_silver_file_path = self.make_path("SILVER/TradeHistory/TradeHistory_data.csv")
-        self.tradehistory_gold_file_path = self.make_path("GOLD/TradeHistory/TradeHistory_data.csv")
+        self.tradehistory_silver_file_path = self.make_path(
+            "SILVER/TradeHistory/TradeHistory_data.csv"
+        )
+        self.tradehistory_gold_file_path = self.make_path(
+            "GOLD/TradeHistory/TradeHistory_data.csv"
+        )
 
         # Ledger Paths
         self.ledger_bronze_layer_path = self.make_path("BRONZE/Ledger")
         self.ledger_silver_layer_path = self.make_path("SILVER/Ledger")
-        self.ledger_silver_file_path = self.make_path("SILVER/Ledger/Ledger_data.csv")
+        self.ledger_silver_file_path = self.make_path(
+            "SILVER/Ledger/Ledger_data.csv"
+        )
 
         # StockPrice Paths
         self.stockprice_bronze_layer_path = self.make_path("BRONZE/StockPrice")
         self.stockprice_silver_layer_path = self.make_path("SILVER/StockPrice")
-        self.stockprice_silver_file_path = self.make_path("SILVER/StockPrice/StockPrice_data.csv")
+        self.stockprice_silver_file_path = self.make_path(
+            "SILVER/StockPrice/StockPrice_data.csv"
+        )
 
         # Symbol Paths
         self.symbol_bronze_layer_path = self.make_path("BRONZE/Symbol")
         self.symbol_silver_layer_path = self.make_path("SILVER/Symbol")
-        self.symbol_silver_file_path = self.make_path("SILVER/Symbol/Symbol_data.csv")
+        self.symbol_silver_file_path = self.make_path(
+            "SILVER/Symbol/Symbol_data.csv"
+        )
 
         # ProfitLoss Paths
         self.profitloss_gold_layer_path = self.make_path("GOLD/ProfitLoss")
-        self.profitloss_gold_file_path = self.make_path("GOLD/ProfitLoss/ProfitLoss_data.csv")
+        self.profitloss_gold_file_path = self.make_path(
+            "GOLD/ProfitLoss/ProfitLoss_data.csv"
+        )
 
         # Holdings Paths
         self.holdings_gold_layer_path = self.make_path("GOLD/Holdings")
-        self.holdings_gold_file_path = self.make_path("GOLD/Holdings/Holdings_data.csv")
+        self.holdings_gold_file_path = self.make_path(
+            "GOLD/Holdings/Holdings_data.csv"
+        )
 
     def make_path(self, source_path):
         """
@@ -126,24 +148,30 @@ global_path = GlobalPath()
 #     """
 #     Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
 
+
 #     Parameters:
 #     name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
 #     from_date (str): Start date in 'YYYY-MM-DD' format.
 #     to_date (str): End date in 'YYYY-MM-DD' format.
 
+
 #     Returns:
 #     str: CSV data as text.
 #     """
+
 
 #     # Convert date strings to Unix timestamps
 #     from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
 #     to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
 
+
 #     # Construct the URL for the API call
 #     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
 
+
 #     # Make the API call
 #     response = requests.get(url)
+
 
 #     # Check if the request was successful
 #     if response.status_code == 200:
@@ -177,9 +205,17 @@ def check_files_availability(directory, file_pattern="*"):
 def replace_punctuation_from_string(input_str):
     """replace punctuation from string funcation"""
     regex_escape_string = r"""!"#$%&'()*+,-./:;<=>?@[\]^`{|}~"""
-    regex_remove_punctuation = re.compile("[%s]" % re.escape(regex_escape_string))
+    regex_remove_punctuation = re.compile(
+        "[%s]" % re.escape(regex_escape_string)
+    )
     output_str = (
-        regex_remove_punctuation.sub("", str(input_str)).strip().replace(" ", "_").replace("\n", "_").replace("\t", "_").replace("\r", "_").lower()
+        regex_remove_punctuation.sub("", str(input_str))
+        .strip()
+        .replace(" ", "_")
+        .replace("\n", "_")
+        .replace("\t", "_")
+        .replace("\r", "_")
+        .lower()
     )
     while "__" in output_str:
         output_str = output_str.replace("__", "_")
@@ -230,7 +266,9 @@ def get_schema_from_data_contract(json_path):
         contract_fields = json.load(f)
 
     # Create a list of formatted strings with field names and types
-    field_info = [f'{each["field_name"]} {each["field_type"]}' for each in contract_fields]
+    field_info = [
+        f'{each["field_name"]} {each["field_type"]}' for each in contract_fields
+    ]
     # Join the strings with commas and print the result
     schema = ", ".join(field_info)
 
@@ -366,9 +404,13 @@ def find_correct_headers(df_pandas, global_header_regex=None):
 def get_first_date_of_week(year, week):
     first_day_of_year = datetime.date(year, 1, 1)
     if first_day_of_year.weekday() > 3:
-        first_day_of_year = first_day_of_year + datetime.timedelta(7 - first_day_of_year.weekday())
+        first_day_of_year = first_day_of_year + datetime.timedelta(
+            7 - first_day_of_year.weekday()
+        )
     else:
-        first_day_of_year = first_day_of_year - datetime.timedelta(first_day_of_year.weekday())
+        first_day_of_year = first_day_of_year - datetime.timedelta(
+            first_day_of_year.weekday()
+        )
     return first_day_of_year + datetime.timedelta(weeks=week - 1)
 
 

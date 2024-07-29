@@ -1,12 +1,13 @@
-"""
-Analyzes trades that a hypothetical trading firm makes in some stocks and outputs paired trades.
-No third party packages (numpy, pandas) are allowed.
-"""
+# Analyzes trades that a hypothetical trading firm makes in some stocks and outputs paired trades.
+# No third party packages (numpy, pandas) are allowed.
 
 import csv
 import sys
 
 input_csv = sys.argv[1]
+
+
+# "https://www.moneycontrol.com/stocks/marketstats/nse-mostactive-stocks/nifty-50-9/"
 
 
 # A single trade
@@ -20,7 +21,18 @@ class Trade(object):
 
 
 class ClosedTrade(object):
-    def __init__(self, open_time, close_time, symbol, quantity, pnl, open_side, close_side, open_price, close_price):
+    def __init__(
+        self,
+        open_time,
+        close_time,
+        symbol,
+        quantity,
+        pnl,
+        open_side,
+        close_side,
+        open_price,
+        close_price,
+    ):
         self.open_time = open_time
         self.close_time = close_time
         self.symbol = symbol
@@ -34,7 +46,15 @@ class ClosedTrade(object):
     # For printing out the closed trades
     def __str__(self):
         return "{},{},{},{},{},{},{},{},{}".format(
-            self.open_time, self.close_time, self.symbol, self.quantity, self.pnl, self.open_side, self.close_side, self.open_price, self.close_price
+            self.open_time,
+            self.close_time,
+            self.symbol,
+            self.quantity,
+            self.pnl,
+            self.open_side,
+            self.close_side,
+            self.open_price,
+            self.close_price,
         )
 
 
@@ -51,17 +71,24 @@ def trade_pnl(input_file):
         closed_trades = []
 
         for row in csv_reader:
-            time, symbol, side, price, quantity = int(row[0]), row[1], row[2], float(row[3]), int(row[4])
+            time, symbol, side, price, quantity = (
+                int(row[0]),
+                row[1],
+                row[2],
+                float(row[3]),
+                int(row[4]),
+            )
 
             if trade_list == []:
                 trade_list.append(Trade(time, symbol, side, price, quantity))
 
             # Matching symbols, and reverse orders
             if trade_list[0].symbol == symbol and trade_list[0].side != side:
-
                 # CLOSING ORDER IS CLOSED AND MATCHED
                 if trade_list[0].quantity >= quantity:
-                    total_pnl += abs(price * quantity - trade_list[0].price * quantity)
+                    total_pnl += abs(
+                        price * quantity - trade_list[0].price * quantity
+                    )
                     trade_list[0].quantity -= quantity
 
                     # Adding result to closed_trade list
@@ -71,7 +98,10 @@ def trade_pnl(input_file):
                             time,
                             symbol,
                             quantity,
-                            abs(price * quantity - trade_list[0].price * quantity),
+                            abs(
+                                price * quantity
+                                - trade_list[0].price * quantity
+                            ),
                             trade_list[0].side,
                             side,
                             trade_list[0].price,
@@ -84,7 +114,10 @@ def trade_pnl(input_file):
 
                 # CLOSING ORDER IS BIGGER THAN OPENING ORDER
                 elif trade_list[0].quantity < quantity:
-                    total_pnl += abs(trade_list[0].price * trade_list[0].quantity - price * trade_list[0].quantity)
+                    total_pnl += abs(
+                        trade_list[0].price * trade_list[0].quantity
+                        - price * trade_list[0].quantity
+                    )
                     quantity -= trade_list[0].quantity
 
                     closed_trades.append(
@@ -93,7 +126,10 @@ def trade_pnl(input_file):
                             time,
                             symbol,
                             trade_list[0].quantity,
-                            abs(trade_list[0].price * trade_list[0].quantity - price * trade_list[0].quantity),
+                            abs(
+                                trade_list[0].price * trade_list[0].quantity
+                                - price * trade_list[0].quantity
+                            ),
                             trade_list[0].side,
                             side,
                             trade_list[0].price,
@@ -106,7 +142,10 @@ def trade_pnl(input_file):
                         if open_trade.symbol == symbol:
                             # CLOSING TRADE IS FINALLY MATCHED
                             if quantity <= open_trade.quantity:
-                                total_pnl += abs(price * quantity - open_trade.price * quantity)
+                                total_pnl += abs(
+                                    price * quantity
+                                    - open_trade.price * quantity
+                                )
                                 open_trade.quantity -= quantity
 
                                 # Adding result to the closed_trade list
@@ -116,7 +155,10 @@ def trade_pnl(input_file):
                                         time,
                                         symbol,
                                         quantity,
-                                        abs(price * quantity - open_trade.price * quantity),
+                                        abs(
+                                            price * quantity
+                                            - open_trade.price * quantity
+                                        ),
                                         open_trade.side,
                                         side,
                                         open_trade.price,
@@ -128,7 +170,10 @@ def trade_pnl(input_file):
                                     break
                             # CLOSING TRADE REMAINS UNMATCHED
                             else:
-                                total_pnl += abs(open_trade.price * open_trade.quantity - price * open_trade.quantity)
+                                total_pnl += abs(
+                                    open_trade.price * open_trade.quantity
+                                    - price * open_trade.quantity
+                                )
                                 quantity -= open_trade.quantity
                                 trade_list.remove(open_trade)
                                 continue
@@ -137,7 +182,9 @@ def trade_pnl(input_file):
 
                     # CLOSING ORDER IS BIGGER THAN ENTIRE INVENTORY
                     if quantity > 0:
-                        trade_list.append(Trade(time, symbol, side, price, quantity))
+                        trade_list.append(
+                            Trade(time, symbol, side, price, quantity)
+                        )
 
             else:
                 trade_list.append(Trade(time, symbol, side, price, quantity))
@@ -145,7 +192,9 @@ def trade_pnl(input_file):
                 # Sorting for efficiency every 25000 lines
                 # This is useful when a closing trade is not match the first time
                 if line_count > 25000:
-                    trade_list = sorted(trade_list, key=lambda x: (x.symbol, x.symbol))
+                    trade_list = sorted(
+                        trade_list, key=lambda x: (x.symbol, x.symbol)
+                    )
                     line_count = 0
                 else:
                     line_count = line_count + 1
@@ -157,5 +206,7 @@ def trade_pnl(input_file):
 
 
 if __name__ == "__main__":
-    print("OPEN_TIME,CLOSE_TIME,SYMBOL,QUANTITY,PNL,OPEN_SIDE,CLOSE_SIDE,OPEN_PRICE,CLOSE_PRICE")
+    print(
+        "OPEN_TIME,CLOSE_TIME,SYMBOL,QUANTITY,PNL,OPEN_SIDE,CLOSE_SIDE,OPEN_PRICE,CLOSE_PRICE"
+    )
     print(trade_pnl(input_csv))
