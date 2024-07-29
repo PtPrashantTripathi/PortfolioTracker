@@ -220,7 +220,7 @@ def replace_punctuation_from_string(input_str):
     return output_str
 
 
-def replace_punctuation_from_col(df_pandas):
+def replace_punctuation_from_columns(df_pandas):
     """Pandas version of replace punctuation funcation"""
     new_col_names = []
     for col_name in df_pandas.columns:
