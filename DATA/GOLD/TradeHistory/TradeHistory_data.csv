@@ -1,4 +1,4 @@
-datetime,exchange,segment,stock_name,side,buy_quantity,buy_price,buy_amount,sell_quantity,sell_price,sell_amount,holding_quantity,holding_price,holding_amount,pnl_amount
+datetime,exchange,segment,stock_name,side,buy_quantity,buy_price,buy_amount,sell_quantity,sell_price,sell_amount,holding_quantity,avg_price,holding_amount,pnl_amount
 2020-05-05 11:31:20,NSE,EQ,BHAGERIA,BUY,10,116.55,1165.5,0,0.0,0.0,10,116.55,10,0.0
 2020-05-19 14:44:06,NSE,EQ,BHAGERIA,BUY,5,100.0,500.0,0,0.0,0.0,15,111.03,15,0.0
 2020-06-15 10:57:42,NSE,EQ,BHAGERIA,SELL,0,111.03,1665.5,15,113.0,1695.0,0,0.0,0,29.5

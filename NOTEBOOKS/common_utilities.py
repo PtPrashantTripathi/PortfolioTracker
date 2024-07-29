@@ -19,86 +19,52 @@ class Portfolio:
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock(stock_name)
+            self.stocks[stock_name] = Stock()
 
         record.update(
             self.stocks[stock_name].trade(
-                side=str(record.get("side")).upper(),
-                price=float(record.get("price")),
-                quantity=int(record.get("quantity")),
-                amount=float(record.get("amount")),
+                side=str(record.get("side")).upper(), traded_price=float(record.get("price")), traded_quantity=int(record.get("quantity"))
             )
         )
         return record
 
 
 class Stock:
-    def __init__(self, stock_name):
-        self.stock_name = stock_name
-        self.holding_price = 0
+    def __init__(self):
         self.holding_quantity = 0
-        self.holding_amount = 0
-        self.pnl_amount = 0
+        self.avg_price = 0
 
-    def trade(
-        self,
-        side: str,
-        price: float,
-        quantity: int,
-        amount: float,
-    ):
-        buy_price = 0
-        buy_quantity = 0
-        buy_amount = 0
-        sell_price = 0
-        sell_quantity = 0
-        sell_amount = 0
-
-        if side == "BUY":
-            buy_price = price
-            buy_quantity = quantity
-            buy_amount = amount
-            self.holding_quantity += buy_quantity
-            self.holding_amount += buy_amount
-        elif side == "SELL":
-            sell_price = price
-            sell_quantity = quantity
-            sell_amount = amount
-            buy_price = self.holding_price
-            buy_amount = quantity * buy_price
-            self.holding_quantity -= sell_quantity
-            self.holding_amount -= buy_amount
-            self.pnl_amount += sell_amount - buy_amount
+    def trade(self, side: str, traded_price, traded_quantity):
+        # buy: positive position, sell: negative position
+        quantity_with_direction = traded_quantity if side == "BUY" else (-1) * traded_quantity
+        is_still_open = (self.holding_quantity * quantity_with_direction) >= 0
+        pnl_amount = 0
+        # realized pnl
+        if not is_still_open:
+            # Remember to keep the sign as the net position
+            pnl_amount = (
+                (traded_price - self.avg_price)
+                * min(abs(quantity_with_direction), abs(self.holding_quantity))
+                * (abs(self.holding_quantity) / self.holding_quantity)
+            )
+        # avg open price
+        if is_still_open:
+            self.avg_price = ((self.avg_price * self.holding_quantity) + (traded_price * quantity_with_direction)) / (
+                self.holding_quantity + quantity_with_direction
+            )
         else:
-            raise Exception(f"{side} was never excepected")
-
-        # Update the holding price only if there is remaining quantity
-        if self.holding_quantity != 0:
-            self.holding_price = self.holding_amount / self.holding_quantity
-        else:
-            self.holding_price = 0
+            # Check if it is close-and-open
+            if traded_quantity > abs(self.holding_quantity):
+                self.avg_price = traded_price
+        # net position
+        self.holding_quantity += quantity_with_direction
 
         return {
-            "buy_price": buy_price,
-            "buy_quantity": buy_quantity,
-            "buy_amount": buy_amount,
-            "sell_price": sell_price,
-            "sell_quantity": sell_quantity,
-            "sell_amount": sell_amount,
-            "holding_price": self.holding_price,
+            "avg_price": self.avg_price,
             "holding_quantity": self.holding_quantity,
-            "holding_amount": self.holding_quantity,
-            "pnl_amount": self.pnl_amount,
+            "holding_amount": self.holding_quantity * self.avg_price,
+            "pnl_amount": pnl_amount,
         }
-
-
-# stock = Stock("test")
-# stock.trade(
-#     "SELL",
-#     100,
-#     100,
-#     10000,
-# )
 
 
 class GlobalPath:
