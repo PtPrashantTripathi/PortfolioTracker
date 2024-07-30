@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "upstox"
 version = "0.1.0"
-description = "Completed ETL from upstox exchanges and calculate PNL and other stuff"
+description = "Completed ETL from upstox exchanges and calculate PNL_AMOUNT and other stuff"
 license = "MIT"
 authors = ["ptptrashanttripathi"]
 readme = "README.md"
@@ -9,25 +9,25 @@ homepage = "https://ptprashanttripathi.github.io/upstox"
 repository = "https://github.com/ptptrashanttripathi/upstox"
 keywords = ["packaging", "poetry"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Operating System :: OS Independent",
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
 ]
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/ptptrashanttripathi/upstox/issues"
+
 # Black formatting
 [tool.black]
-line-length = 150
-include = '\.pyi?$'
-exclude = '\<.git'
+line-length = 80
+
 # iSort
 [tool.isort]
 profile = "black"
-line_length = 150
+line_length = 80
 multi_line_output = 3
 include_trailing_comma = true
-virtual_env = "venv"  
+virtual_env = "venv"
 
 [tool.flake8]
 exclude = "venv"
@@ -35,7 +35,6 @@ ignore = ["E501", "W503", "E226"]
 # E501: Line too long
 # W503: Line break occurred before binary operator
 # E226: Missing white space around arithmetic operator
-
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -46,5 +45,11 @@ pandas = "^2.2.1"
 content-type = "text/markdown"
 fragments = [
      { path = "README.md" },
-     { path = "CHANGES.md" },
+     { path = "ABOUT.md" },
+     { path = "CODE_OF_CONDUCT.md" },
+     { path = "CONTRIBUTING.md" },
+     { path = "SECURITY.md" },
    ]
+
+[tool.jupytext]
+formats = "ipynb,py:percent"
