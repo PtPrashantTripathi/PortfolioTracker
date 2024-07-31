@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "upstox"
 version = "0.1.0"
-description = "Completed ETL from upstox exchanges and calculate PNL_AMOUNT and other stuff"
+description = "Completed ETL from upstox exchanges and calculate PNL AMOUNT and other stuff"
 license = "MIT"
 authors = ["ptptrashanttripathi"]
 readme = "README.md"
