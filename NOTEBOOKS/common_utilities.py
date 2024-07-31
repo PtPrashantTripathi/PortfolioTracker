@@ -1,40 +1,105 @@
-import os
-
 # Importing necessary files and packages
+import os
 import re
 import json
+import logging
 import pathlib
 import datetime
 
 import dateutil
 
+# Set up the logger
+logging.basicConfig(
+    level=logging.INFO,
+    format="{asctime} - {levelname} - {message}",
+    style="{",
+    datefmt="%Y-%m-%dT%H:%M:%SZ",
+)
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
 
 class Portfolio:
     def __init__(self):
-        self.stocks = dict()
+        self.stocks = {}
 
-    def trade(self, record: dict = None):
+    def trade(self, record: dict = None) -> dict:
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock()
+            self.stocks[stock_name] = Stock(record)
 
-        record.update(
-            self.stocks[stock_name].trade(
-                side=str(record.get("side")).upper(),
-                traded_price=float(record.get("price")),
-                traded_quantity=int(record.get("quantity")),
-            )
+        trade_result = self.stocks[stock_name].trade(
+            side=str(record.get("side")).upper(),
+            traded_price=float(record.get("price")),
+            traded_quantity=int(record.get("quantity")),
         )
+
+        record.update(trade_result)
         return record
+
+    def check_expired_stocks(self) -> list[dict]:
+        expired_trades = []
+
+        for stock in self.stocks.values():
+            if stock.holding_quantity != 0:
+                # logger.info("%s => %s", stock.stock_name, stock.holding_quantity)
+                if self.is_expired(stock.expiry_date):
+                    trade_result = stock.trade(
+                        side="SELL" if stock.holding_quantity > 0 else "BUY",
+                        traded_price=0,
+                        traded_quantity=abs(stock.holding_quantity),
+                    )
+                    expired_trades.append(
+                        {
+                            "datetime": datetime.datetime.combine(
+                                datetime.datetime.strptime(
+                                    stock.expiry_date, "%Y-%m-%d"
+                                ),
+                                datetime.time(15, 30),
+                            ),
+                            "exchange": stock.exchange,
+                            "segment": stock.segment,
+                            "stock_name": stock.stock_name,
+                            "scrip_code": stock.scrip_code,
+                            "expiry_date": stock.expiry_date,
+                            "side": "EXPIRED",
+                            "amount": trade_result["amount"],
+                            "quantity": trade_result["quantity"],
+                            "price": trade_result["price"],
+                            "avg_price": trade_result["avg_price"],
+                            "holding_quantity": trade_result[
+                                "holding_quantity"
+                            ],
+                            "holding_amount": trade_result["holding_amount"],
+                            "pnl_amount": trade_result["pnl_amount"],
+                        }
+                    )
+
+        return expired_trades
+
+    def is_expired(self, date_str) -> bool:
+        try:
+            return datetime.datetime.today() > datetime.datetime.strptime(
+                date_str, "%Y-%m-%d"
+            )
+        except:
+            # logger.warning(e)
+            return False
 
 
 class Stock:
-    def __init__(self):
+    def __init__(self, record):
+        self.stock_name = str(record.get("stock_name"))
+        self.exchange = str(record.get("exchange"))
+        self.segment = str(record.get("segment"))
+        self.scrip_code = str(record.get("scrip_code"))
+        self.expiry_date = str(record.get("expiry_date"))
         self.holding_quantity = 0
         self.avg_price = 0
 
-    def trade(self, side: str, traded_price, traded_quantity):
+    def trade(self, side: str, traded_price, traded_quantity) -> dict:
         # buy: positive position, sell: negative position
         traded_quantity = (
             traded_quantity if side == "BUY" else (-1) * traded_quantity
@@ -62,6 +127,10 @@ class Stock:
         self.holding_quantity += traded_quantity
 
         return {
+            "side": side,
+            "amount": abs(traded_price * traded_quantity),
+            "quantity": abs(traded_quantity),
+            "price": traded_price,
             "avg_price": self.avg_price,
             "holding_quantity": self.holding_quantity,
             "holding_amount": self.holding_quantity * self.avg_price,
@@ -74,7 +143,7 @@ class GlobalPath:
     Global Paths Class
     """
 
-    def __init__(self) -> None:
+    def __init__(self):
         # Base Location (Current Working Dirctory Path)
         self.base_path = pathlib.Path(os.getcwd())
         if self.base_path.name != "Upstox":
@@ -195,7 +264,7 @@ def check_files_availability(directory, file_pattern="*"):
     # Log the number of detected files
     num_files = len(file_paths)
     if num_files > 0:
-        print(f"Number of Files Detected: {num_files}")
+        logger.info(f"Number of Files Detected: {num_files}")
         return file_paths
     else:
         raise FileNotFoundError("No processable data available")
@@ -229,7 +298,6 @@ def replace_punctuation_from_columns(df_pandas):
         new_col_name = replace_punctuation_from_string(col_name)
         new_col_names.append(new_col_name)
     df_pandas.columns = new_col_names
-    # print("display from column_rename")
     return df_pandas
 
 
@@ -305,7 +373,7 @@ def find_correct_sheetname(df_pandas, sheet_name_regex):
     for sheet_name in df_pandas.keys():
         # Check if the sheet name matches the regex pattern
         if pattern.match(sheet_name):
-            print("Sheet name =>", sheet_name)
+            logger.info("Sheet name => %s", sheet_name)
             return df_pandas[sheet_name]
 
     # Raise an error if no matching sheet name is found
@@ -439,7 +507,7 @@ def get_correct_datatype(input_datatype):
     for datatype_name, datatype_values in datatypes_list.items():
         if input_datatype in datatype_values:
             return datatype_name
-    print(f"undefined data type => {input_datatype}")
+    logger.warning(f"undefined data type => {input_datatype}")
     return input_datatype
 
 
