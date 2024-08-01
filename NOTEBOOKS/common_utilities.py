@@ -1,13 +1,12 @@
 # Importing necessary files and packages
 import os
 import re
+import copy
 import json
 import logging
 import pathlib
 import datetime
 from typing import Any, Dict, List
-
-import dateutil
 
 # Set up the logger
 logging.basicConfig(
@@ -76,7 +75,7 @@ class Portfolio:
                         traded_price=0,
                         traded_quantity=abs(stock.holding_quantity),
                     )
-                    expired_trades.append(
+                    trade_result.update(
                         {
                             "datetime": datetime.datetime.combine(
                                 datetime.datetime.strptime(
@@ -84,23 +83,10 @@ class Portfolio:
                                 ),
                                 datetime.time(15, 30),
                             ),
-                            "exchange": stock.exchange,
-                            "segment": stock.segment,
-                            "stock_name": stock.stock_name,
-                            "scrip_code": stock.scrip_code,
-                            "expiry_date": stock.expiry_date,
                             "side": "EXPIRED",
-                            "amount": trade_result["amount"],
-                            "quantity": trade_result["quantity"],
-                            "price": trade_result["price"],
-                            "avg_price": trade_result["avg_price"],
-                            "holding_quantity": trade_result[
-                                "holding_quantity"
-                            ],
-                            "holding_amount": trade_result["holding_amount"],
-                            "pnl_amount": trade_result["pnl_amount"],
                         }
                     )
+                    expired_trades.append(trade_result)
 
         return expired_trades
 
@@ -167,17 +153,27 @@ class Stock:
         if (self.holding_quantity * traded_quantity) >= 0:
             # Realized PnL
             pnl_amount = 0
+            pnl_percentage = 0
             # Avg open price
             self.avg_price = (
                 (self.avg_price * self.holding_quantity)
                 + (traded_price * traded_quantity)
             ) / (self.holding_quantity + traded_quantity)
         else:
+            # Calculate PnL and percentage
             pnl_amount = (
                 (traded_price - self.avg_price)
                 * min(abs(traded_quantity), abs(self.holding_quantity))
                 * (abs(self.holding_quantity) / self.holding_quantity)
             )
+            pnl_percentage = (
+                pnl_amount
+                / (
+                    self.avg_price
+                    * min(abs(traded_quantity), abs(self.holding_quantity))
+                )
+            ) * 100
+
             # Check if it is close-and-open
             if abs(traded_quantity) > abs(self.holding_quantity):
                 self.avg_price = traded_price
@@ -185,16 +181,19 @@ class Stock:
         # Net position
         self.holding_quantity += traded_quantity
 
-        return {
-            "side": side,
-            "amount": abs(traded_price * traded_quantity),
-            "quantity": abs(traded_quantity),
-            "price": traded_price,
-            "avg_price": self.avg_price,
-            "holding_quantity": self.holding_quantity,
-            "holding_amount": self.holding_quantity * self.avg_price,
-            "pnl_amount": pnl_amount,
-        }
+        trade_result = copy.deepcopy(self.__dict__)
+        trade_result.update(
+            {
+                "side": side,
+                "amount": abs(traded_price * traded_quantity),
+                "quantity": abs(traded_quantity),
+                "price": traded_price,
+                "holding_amount": self.holding_quantity * self.avg_price,
+                "pnl_amount": pnl_amount,
+                "pnl_percentage": pnl_percentage,
+            }
+        )
+        return trade_result
 
 
 class GlobalPath:
@@ -419,17 +418,6 @@ def get_schema_from_data_contract(json_path):
     schema = ", ".join(field_info)
 
     return schema
-
-
-# UDF function to parse a datetime string
-def parse_datetime(datetime_str):
-    """
-    Attempt to parse the datetime string using dateutil.parser
-    """
-    try:
-        return dateutil.parser.parse(datetime_str)
-    except ValueError:
-        return None
 
 
 # Auxiliary functions to gather info of given pandas dataframe
