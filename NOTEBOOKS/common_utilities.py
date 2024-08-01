@@ -1,81 +1,211 @@
-import os
-
 # Importing necessary files and packages
+import os
 import re
+import copy
 import json
+import logging
 import pathlib
 import datetime
+from typing import Any, Dict, List
 
-import dateutil
+# Set up the logger
+logging.basicConfig(
+    level=logging.INFO,
+    format="{asctime} - {levelname} - {message}",
+    style="{",
+    datefmt="%Y-%m-%dT%H:%M:%SZ",
+)
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
 
 class Portfolio:
-    def __init__(self):
-        self.stocks = dict()
+    """
+    A class representing a portfolio of stocks.
+    It manages trades and checks for expired stocks.
+    """
 
-    def trade(self, record: dict = None):
+    def __init__(self) -> None:
+        """
+        Initializes a new Portfolio instance with an empty dictionary of stocks.
+        """
+        self.stocks: Dict[str, Stock] = {}
+
+    def trade(self, record: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Executes a trade for a stock in the portfolio based on the provided record.
+
+        Args:
+            record (dict): A dictionary containing details of the trade such as
+                           stock_name, side, price, and quantity.
+
+        Returns:
+            dict: The updated trade record with additional information.
+        """
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock()
+            self.stocks[stock_name] = Stock(record)
 
-        record.update(
-            self.stocks[stock_name].trade(
-                side=str(record.get("side")).upper(),
-                traded_price=float(record.get("price")),
-                traded_quantity=int(record.get("quantity")),
-            )
+        trade_result = self.stocks[stock_name].trade(
+            side=str(record.get("side")).upper(),
+            traded_price=float(record.get("price")),
+            traded_quantity=float(record.get("quantity")),
         )
+
+        record.update(trade_result)
         return record
+
+    def check_expired_stocks(self) -> List[Dict[str, Any]]:
+        """
+        Checks for expired stocks in the portfolio and performs necessary trades.
+
+        Returns:
+            list: A list of expired trade records with detailed information.
+        """
+        expired_trades = []
+
+        for stock in self.stocks.values():
+            if stock.holding_quantity != 0:
+                # logger.info("%s => %s", stock.stock_name, stock.holding_quantity)
+                if self.is_expired(stock.expiry_date):
+                    trade_result = stock.trade(
+                        side="SELL" if stock.holding_quantity > 0 else "BUY",
+                        traded_price=0,
+                        traded_quantity=abs(stock.holding_quantity),
+                    )
+                    trade_result.update(
+                        {
+                            "datetime": datetime.datetime.combine(
+                                datetime.datetime.strptime(
+                                    stock.expiry_date, "%Y-%m-%d"
+                                ),
+                                datetime.time(15, 30),
+                            ),
+                            "side": "EXPIRED",
+                        }
+                    )
+                    expired_trades.append(trade_result)
+
+        return expired_trades
+
+    def is_expired(self, date_str: str) -> bool:
+        """
+        Checks if a given date is in the past.
+
+        Args:
+            date_str (str): The date string to check.
+
+        Returns:
+            bool: True if the date is in the past, False otherwise.
+        """
+        try:
+            return datetime.datetime.today() > datetime.datetime.strptime(
+                date_str, "%Y-%m-%d"
+            )
+        except ValueError:
+            # logger.warning(e)
+            return False
 
 
 class Stock:
-    def __init__(self):
-        self.holding_quantity = 0
-        self.avg_price = 0
+    """
+    A class representing a single stock.
+    It manages trades and calculates the average price and profit/loss.
+    """
 
-    def trade(self, side: str, traded_price, traded_quantity):
-        # buy: positive position, sell: negative position
+    def __init__(self, record: Dict[str, Any]) -> None:
+        """
+        Initializes a new Stock instance with the given record details.
+
+        Args:
+            record (dict): A dictionary containing details of the stock such as
+                           stock_name, exchange, segment, scrip_code, and expiry_date.
+        """
+        self.stock_name = str(record.get("stock_name"))
+        self.exchange = str(record.get("exchange"))
+        self.segment = str(record.get("segment"))
+        self.scrip_code = str(record.get("scrip_code"))
+        self.expiry_date = str(record.get("expiry_date")).replace("nan", "")
+        self.holding_quantity = 0.0
+        self.avg_price = 0.0
+
+    def trade(
+        self, side: str, traded_price: float, traded_quantity: float
+    ) -> Dict[str, Any]:
+        """
+        Executes a trade for the stock and updates its state.
+
+        Args:
+            side (str): The side of the trade, either 'BUY' or 'SELL'.
+            traded_price (float): The price at which the stock was traded.
+            traded_quantity (float): The quantity of the stock traded.
+
+        Returns:
+            dict: A dictionary containing details of the trade and updated stock state.
+        """
+        # BUY: positive position, SELL: negative position
         traded_quantity = (
             traded_quantity if side == "BUY" else (-1) * traded_quantity
         )
 
         if (self.holding_quantity * traded_quantity) >= 0:
-            # realized pnl
+            # Realized PnL
             pnl_amount = 0
-            # avg open price
+            pnl_percentage = 0
+            # Avg open price
             self.avg_price = (
                 (self.avg_price * self.holding_quantity)
                 + (traded_price * traded_quantity)
             ) / (self.holding_quantity + traded_quantity)
         else:
+            # Calculate PnL and percentage
             pnl_amount = (
                 (traded_price - self.avg_price)
                 * min(abs(traded_quantity), abs(self.holding_quantity))
                 * (abs(self.holding_quantity) / self.holding_quantity)
             )
+            pnl_percentage = (
+                pnl_amount
+                / (
+                    self.avg_price
+                    * min(abs(traded_quantity), abs(self.holding_quantity))
+                )
+            ) * 100
+
             # Check if it is close-and-open
             if abs(traded_quantity) > abs(self.holding_quantity):
                 self.avg_price = traded_price
 
-        # net position
+        # Net position
         self.holding_quantity += traded_quantity
 
-        return {
-            "avg_price": self.avg_price,
-            "holding_quantity": self.holding_quantity,
-            "holding_amount": self.holding_quantity * self.avg_price,
-            "pnl_amount": pnl_amount,
-        }
+        trade_result = copy.deepcopy(self.__dict__)
+        trade_result.update(
+            {
+                "side": side,
+                "amount": abs(traded_price * traded_quantity),
+                "quantity": abs(traded_quantity),
+                "price": traded_price,
+                "holding_amount": self.holding_quantity * self.avg_price,
+                "pnl_amount": pnl_amount,
+                "pnl_percentage": pnl_percentage,
+            }
+        )
+        return trade_result
 
 
 class GlobalPath:
     """
-    Global Paths Class
+    A Global Paths Class for managing global paths for various data layers and files.
     """
 
     def __init__(self) -> None:
-        # Base Location (Current Working Dirctory Path)
+        """
+        Initializes a new GlobalPath instance and sets up directory paths.
+        """
+        # Base Location (Current Working Directory Path)
         self.base_path = pathlib.Path(os.getcwd())
         if self.base_path.name != "Upstox":
             self.base_path = self.base_path.parent
@@ -132,9 +262,15 @@ class GlobalPath:
             "GOLD/Holdings/Holdings_data.csv"
         )
 
-    def make_path(self, source_path):
+    def make_path(self, source_path: str) -> pathlib.Path:
         """
-        funcation to generate file path
+        Generates and creates a directory path.
+
+        Args:
+            source_path (str): The source path to append to the base path.
+
+        Returns:
+            pathlib.Path: The full resolved path.
         """
         data_path = self.base_path.joinpath(source_path).resolve()
         data_path.parent.mkdir(parents=True, exist_ok=True)
@@ -147,32 +283,20 @@ global_path = GlobalPath()
 # def get_stock_price_data(name, from_date, to_date):
 #     """
 #     Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
-
-
 #     Parameters:
 #     name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
 #     from_date (str): Start date in 'YYYY-MM-DD' format.
 #     to_date (str): End date in 'YYYY-MM-DD' format.
-
-
 #     Returns:
 #     str: CSV data as text.
 #     """
-
-
 #     # Convert date strings to Unix timestamps
 #     from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
 #     to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
-
-
 #     # Construct the URL for the API call
 #     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
-
-
 #     # Make the API call
 #     response = requests.get(url)
-
-
 #     # Check if the request was successful
 #     if response.status_code == 200:
 #         # Return the CSV data as text
@@ -183,19 +307,41 @@ global_path = GlobalPath()
 
 
 # Check for newly added or modified files
-def check_files_availability(directory, file_pattern="*"):
+def check_files_availability(
+    directory: str,
+    file_pattern: str = "*",
+    timestamp: datetime.datetime = datetime.datetime.strptime(
+        "2000-01-01", "%Y-%m-%d"
+    ),
+) -> List[str]:
+    """
+    Checks for newly added or modified files in a directory after a specific timestamp.
+
+    Args:
+        directory (str): The directory to check for files.
+        file_pattern (str) :
+        timestamp (datetime.datetime): The timestamp to compare file modification times against.
+
+    Returns:
+        list: A list of paths to files that were added or modified after the given timestamp.
+    """
     # List to store paths of matched files
     file_paths = []
 
     # Iterate over all files in the directory and subdirectories
     for path in pathlib.Path(directory).rglob(file_pattern):
         if path.is_file():
-            file_paths.append(path)
+            file_modified_time = datetime.datetime.fromtimestamp(
+                os.path.getmtime(path)
+            )
+            # Check if file was modified after the given timestamp
+            if file_modified_time > timestamp:
+                file_paths.append(path)
 
     # Log the number of detected files
     num_files = len(file_paths)
     if num_files > 0:
-        print(f"Number of Files Detected: {num_files}")
+        logger.info(f"Number of Files Detected: {num_files}")
         return file_paths
     else:
         raise FileNotFoundError("No processable data available")
@@ -229,7 +375,6 @@ def replace_punctuation_from_columns(df_pandas):
         new_col_name = replace_punctuation_from_string(col_name)
         new_col_names.append(new_col_name)
     df_pandas.columns = new_col_names
-    # print("display from column_rename")
     return df_pandas
 
 
@@ -275,17 +420,6 @@ def get_schema_from_data_contract(json_path):
     return schema
 
 
-# UDF function to parse a datetime string
-def parse_datetime(datetime_str):
-    """
-    Attempt to parse the datetime string using dateutil.parser
-    """
-    try:
-        return dateutil.parser.parse(datetime_str)
-    except ValueError:
-        return None
-
-
 # Auxiliary functions to gather info of given pandas dataframe
 def find_correct_sheetname(df_pandas, sheet_name_regex):
     """
@@ -305,7 +439,7 @@ def find_correct_sheetname(df_pandas, sheet_name_regex):
     for sheet_name in df_pandas.keys():
         # Check if the sheet name matches the regex pattern
         if pattern.match(sheet_name):
-            print("Sheet name =>", sheet_name)
+            logger.info("Sheet name => %s", sheet_name)
             return df_pandas[sheet_name]
 
     # Raise an error if no matching sheet name is found
@@ -439,7 +573,7 @@ def get_correct_datatype(input_datatype):
     for datatype_name, datatype_values in datatypes_list.items():
         if input_datatype in datatype_values:
             return datatype_name
-    print(f"undefined data type => {input_datatype}")
+    logger.warning(f"undefined data type => {input_datatype}")
     return input_datatype
 
 
