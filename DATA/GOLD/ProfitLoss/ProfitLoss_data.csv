@@ -1,4 +1,4 @@
-datetime,exchange,segment,stock_name,side,quantity,open_side_price,open_side_amount,close_side_price,close_side_amount,pnl_amount,pnl_percentage
+datetime,exchange,segment,stock_name,side,quantity,open_price,open_amount,close_price,close_amount,pnl_amount,pnl_percentage
 2020-06-15 10:57:42,NSE,EQ,BHAGERIA,LONG,15.0,111.03,1665.45,113.0,1695.0,29.5,1.77
 2022-08-10 09:26:12,NSE,EQ,BPCL,LONG,43.0,457.0,19651.0,328.85,14140.55,-5510.45,-28.04
 2021-06-04 12:10:54,NSE,EQ,GOLDBEES,LONG,2.0,41.82,83.64,42.03,84.06,0.42,0.5
@@ -82,3 +82,4 @@ datetime,exchange,segment,stock_name,side,quantity,open_side_price,open_side_amo
 2024-07-26 12:33:43,FON,FO,NIFTY-PE-24650-01AUG2024,LONG,25.0,138.0,3450.0,106.15,2653.75,-796.25,-23.08
 2024-07-15 14:18:31,FON,FO,NIFTY-PE-24650-18JUL2024,LONG,50.0,115.25,5762.5,115.75,5787.5,25.0,0.43
 2024-07-18 09:47:40,FON,FO,NIFTY-PE-24650-18JUL2024,LONG,50.0,77.68,3884.0,70.25,3512.5,-371.25,-9.56
+2024-07-18 15:30:00,FON,FO,NIFTY-PE-24650-18JUL2024,EXPIRED,100.0,3.0,300.0,0.0,0.0,-300.0,-100.0

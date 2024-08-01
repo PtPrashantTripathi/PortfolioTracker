@@ -5,6 +5,7 @@ import json
 import logging
 import pathlib
 import datetime
+from typing import Any, Dict, List
 
 import dateutil
 
@@ -21,10 +22,28 @@ logger.setLevel(logging.DEBUG)
 
 
 class Portfolio:
-    def __init__(self):
-        self.stocks = {}
+    """
+    A class representing a portfolio of stocks.
+    It manages trades and checks for expired stocks.
+    """
 
-    def trade(self, record: dict = None) -> dict:
+    def __init__(self) -> None:
+        """
+        Initializes a new Portfolio instance with an empty dictionary of stocks.
+        """
+        self.stocks: Dict[str, Stock] = {}
+
+    def trade(self, record: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Executes a trade for a stock in the portfolio based on the provided record.
+
+        Args:
+            record (dict): A dictionary containing details of the trade such as
+                           stock_name, side, price, and quantity.
+
+        Returns:
+            dict: The updated trade record with additional information.
+        """
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
@@ -33,13 +52,19 @@ class Portfolio:
         trade_result = self.stocks[stock_name].trade(
             side=str(record.get("side")).upper(),
             traded_price=float(record.get("price")),
-            traded_quantity=int(record.get("quantity")),
+            traded_quantity=float(record.get("quantity")),
         )
 
         record.update(trade_result)
         return record
 
-    def check_expired_stocks(self) -> list[dict]:
+    def check_expired_stocks(self) -> List[Dict[str, Any]]:
+        """
+        Checks for expired stocks in the portfolio and performs necessary trades.
+
+        Returns:
+            list: A list of expired trade records with detailed information.
+        """
         expired_trades = []
 
         for stock in self.stocks.values():
@@ -79,36 +104,70 @@ class Portfolio:
 
         return expired_trades
 
-    def is_expired(self, date_str) -> bool:
+    def is_expired(self, date_str: str) -> bool:
+        """
+        Checks if a given date is in the past.
+
+        Args:
+            date_str (str): The date string to check.
+
+        Returns:
+            bool: True if the date is in the past, False otherwise.
+        """
         try:
             return datetime.datetime.today() > datetime.datetime.strptime(
                 date_str, "%Y-%m-%d"
             )
-        except:
+        except ValueError:
             # logger.warning(e)
             return False
 
 
 class Stock:
-    def __init__(self, record):
+    """
+    A class representing a single stock.
+    It manages trades and calculates the average price and profit/loss.
+    """
+
+    def __init__(self, record: Dict[str, Any]) -> None:
+        """
+        Initializes a new Stock instance with the given record details.
+
+        Args:
+            record (dict): A dictionary containing details of the stock such as
+                           stock_name, exchange, segment, scrip_code, and expiry_date.
+        """
         self.stock_name = str(record.get("stock_name"))
         self.exchange = str(record.get("exchange"))
         self.segment = str(record.get("segment"))
         self.scrip_code = str(record.get("scrip_code"))
         self.expiry_date = str(record.get("expiry_date"))
-        self.holding_quantity = 0
-        self.avg_price = 0
+        self.holding_quantity = 0.0
+        self.avg_price = 0.0
 
-    def trade(self, side: str, traded_price, traded_quantity) -> dict:
-        # buy: positive position, sell: negative position
+    def trade(
+        self, side: str, traded_price: float, traded_quantity: float
+    ) -> Dict[str, Any]:
+        """
+        Executes a trade for the stock and updates its state.
+
+        Args:
+            side (str): The side of the trade, either 'BUY' or 'SELL'.
+            traded_price (float): The price at which the stock was traded.
+            traded_quantity (float): The quantity of the stock traded.
+
+        Returns:
+            dict: A dictionary containing details of the trade and updated stock state.
+        """
+        # BUY: positive position, SELL: negative position
         traded_quantity = (
             traded_quantity if side == "BUY" else (-1) * traded_quantity
         )
 
         if (self.holding_quantity * traded_quantity) >= 0:
-            # realized pnl
+            # Realized PnL
             pnl_amount = 0
-            # avg open price
+            # Avg open price
             self.avg_price = (
                 (self.avg_price * self.holding_quantity)
                 + (traded_price * traded_quantity)
@@ -123,7 +182,7 @@ class Stock:
             if abs(traded_quantity) > abs(self.holding_quantity):
                 self.avg_price = traded_price
 
-        # net position
+        # Net position
         self.holding_quantity += traded_quantity
 
         return {
@@ -140,11 +199,14 @@ class Stock:
 
 class GlobalPath:
     """
-    Global Paths Class
+    A Global Paths Class for managing global paths for various data layers and files.
     """
 
-    def __init__(self):
-        # Base Location (Current Working Dirctory Path)
+    def __init__(self) -> None:
+        """
+        Initializes a new GlobalPath instance and sets up directory paths.
+        """
+        # Base Location (Current Working Directory Path)
         self.base_path = pathlib.Path(os.getcwd())
         if self.base_path.name != "Upstox":
             self.base_path = self.base_path.parent
@@ -201,9 +263,15 @@ class GlobalPath:
             "GOLD/Holdings/Holdings_data.csv"
         )
 
-    def make_path(self, source_path):
+    def make_path(self, source_path: str) -> pathlib.Path:
         """
-        funcation to generate file path
+        Generates and creates a directory path.
+
+        Args:
+            source_path (str): The source path to append to the base path.
+
+        Returns:
+            pathlib.Path: The full resolved path.
         """
         data_path = self.base_path.joinpath(source_path).resolve()
         data_path.parent.mkdir(parents=True, exist_ok=True)
@@ -216,32 +284,20 @@ global_path = GlobalPath()
 # def get_stock_price_data(name, from_date, to_date):
 #     """
 #     Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
-
-
 #     Parameters:
 #     name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
 #     from_date (str): Start date in 'YYYY-MM-DD' format.
 #     to_date (str): End date in 'YYYY-MM-DD' format.
-
-
 #     Returns:
 #     str: CSV data as text.
 #     """
-
-
 #     # Convert date strings to Unix timestamps
 #     from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
 #     to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
-
-
 #     # Construct the URL for the API call
 #     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
-
-
 #     # Make the API call
 #     response = requests.get(url)
-
-
 #     # Check if the request was successful
 #     if response.status_code == 200:
 #         # Return the CSV data as text
@@ -252,14 +308,36 @@ global_path = GlobalPath()
 
 
 # Check for newly added or modified files
-def check_files_availability(directory, file_pattern="*"):
+def check_files_availability(
+    directory: str,
+    file_pattern: str = "*",
+    timestamp: datetime.datetime = datetime.datetime.strptime(
+        "2000-01-01", "%Y-%m-%d"
+    ),
+) -> List[str]:
+    """
+    Checks for newly added or modified files in a directory after a specific timestamp.
+
+    Args:
+        directory (str): The directory to check for files.
+        file_pattern (str) :
+        timestamp (datetime.datetime): The timestamp to compare file modification times against.
+
+    Returns:
+        list: A list of paths to files that were added or modified after the given timestamp.
+    """
     # List to store paths of matched files
     file_paths = []
 
     # Iterate over all files in the directory and subdirectories
     for path in pathlib.Path(directory).rglob(file_pattern):
         if path.is_file():
-            file_paths.append(path)
+            file_modified_time = datetime.datetime.fromtimestamp(
+                os.path.getmtime(path)
+            )
+            # Check if file was modified after the given timestamp
+            if file_modified_time > timestamp:
+                file_paths.append(path)
 
     # Log the number of detected files
     num_files = len(file_paths)
