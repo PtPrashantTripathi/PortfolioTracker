@@ -127,7 +127,7 @@ class Stock:
         self.exchange = str(record.get("exchange"))
         self.segment = str(record.get("segment"))
         self.scrip_code = str(record.get("scrip_code"))
-        self.expiry_date = str(record.get("expiry_date"))
+        self.expiry_date = str(record.get("expiry_date")).replace("nan", "")
         self.holding_quantity = 0.0
         self.avg_price = 0.0
 
