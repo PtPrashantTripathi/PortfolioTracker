@@ -1,1 +1,1 @@
-date,company,amount,exchange,segment,scrip_code,instrument_type,strike_price,expiry,trade_num,trade_time,side,quantity,price
+date,trade_time,trade_num,exchange,segment,scrip_code,instrument_type,strike_price,expiry,company,side,quantity,price,amount
