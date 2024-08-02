@@ -6,7 +6,9 @@ import json
 import logging
 import pathlib
 import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
+
+from pydantic import BaseModel, field_validator
 
 # Set up the logger
 logging.basicConfig(
@@ -18,6 +20,30 @@ logging.basicConfig(
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
+
+
+class Trade(BaseModel):
+    datetime: datetime.datetime
+    exchange: str
+    segment: str
+    stock_name: str
+    scrip_code: str
+    side: str
+    amount: float
+    quantity: float
+    price: float
+    expiry_date: Optional[datetime.datetime]
+
+    @field_validator("expiry_date", mode="before")
+    def parse_expiry_date(cls, value):
+        try:
+            return (
+                None
+                if str(value) in (None, "nan", "")
+                else datetime.datetime.strptime(str(value), "%Y-%m-%d")
+            )
+        except ValueError:
+            raise ValueError("Invalid expiry date format")
 
 
 class Portfolio:
