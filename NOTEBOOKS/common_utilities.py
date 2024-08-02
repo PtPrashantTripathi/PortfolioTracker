@@ -4,9 +4,11 @@ import re
 import copy
 import json
 import logging
-import pathlib
-import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Union, Optional
+from pathlib import Path
+from datetime import datetime
+
+from pydantic import BaseModel, field_validator
 
 # Set up the logger
 logging.basicConfig(
@@ -46,7 +48,7 @@ class Portfolio:
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock(record)
+            self.stocks[stock_name] = Stock(**record)
 
         trade_result = self.stocks[stock_name].trade(
             side=str(record.get("side")).upper(),
@@ -69,7 +71,7 @@ class Portfolio:
         for stock in self.stocks.values():
             if stock.holding_quantity != 0:
                 # logger.info("%s => %s", stock.stock_name, stock.holding_quantity)
-                if self.is_expired(stock.expiry_date):
+                if stock.is_expired():
                     trade_result = stock.trade(
                         side="SELL" if stock.holding_quantity > 0 else "BUY",
                         traded_price=0,
@@ -77,8 +79,8 @@ class Portfolio:
                     )
                     trade_result.update(
                         {
-                            "datetime": datetime.datetime.combine(
-                                datetime.datetime.strptime(
+                            "datetime": datetime.combine(
+                                datetime.strptime(
                                     stock.expiry_date, "%Y-%m-%d"
                                 ),
                                 datetime.time(15, 30),
@@ -90,46 +92,38 @@ class Portfolio:
 
         return expired_trades
 
-    def is_expired(self, date_str: str) -> bool:
-        """
-        Checks if a given date is in the past.
 
-        Args:
-            date_str (str): The date string to check.
-
-        Returns:
-            bool: True if the date is in the past, False otherwise.
-        """
-        try:
-            return datetime.datetime.today() > datetime.datetime.strptime(
-                date_str, "%Y-%m-%d"
-            )
-        except ValueError:
-            # logger.warning(e)
-            return False
-
-
-class Stock:
+class Stock(BaseModel):
     """
     A class representing a single stock.
     It manages trades and calculates the average price and profit/loss.
     """
 
-    def __init__(self, record: Dict[str, Any]) -> None:
-        """
-        Initializes a new Stock instance with the given record details.
+    datetime: datetime
+    exchange: Optional[str]
+    segment: Optional[str]
+    stock_name: str
+    side: str
+    amount: Union[float, int]
+    quantity: Union[float, int]
+    price: Union[float, int]
+    expiry_date: Optional[datetime]
+    holding_quantity: Optional[Union[float, int]] = 0.0
+    avg_price: Optional[Union[float, int]] = 0.0
+    holding_amount: Optional[Union[float, int]] = 0.0
+    pnl_amount: Optional[Union[float, int]] = 0.0
+    pnl_percentage: Optional[Union[float, int]] = 0.0
 
-        Args:
-            record (dict): A dictionary containing details of the stock such as
-                           stock_name, exchange, segment, scrip_code, and expiry_date.
-        """
-        self.stock_name = str(record.get("stock_name"))
-        self.exchange = str(record.get("exchange"))
-        self.segment = str(record.get("segment"))
-        self.scrip_code = str(record.get("scrip_code"))
-        self.expiry_date = str(record.get("expiry_date")).replace("nan", "")
-        self.holding_quantity = 0.0
-        self.avg_price = 0.0
+    @field_validator("expiry_date", mode="before")
+    def parse_expiry_date(cls, value):
+        try:
+            return (
+                None
+                if str(value) in (None, "nan", "")
+                else datetime.strptime(str(value), "%Y-%m-%d")
+            )
+        except ValueError as e:
+            raise ValueError(f"Invalid expiry date format : {e}")
 
     def trade(
         self, side: str, traded_price: float, traded_quantity: float
@@ -180,20 +174,29 @@ class Stock:
 
         # Net position
         self.holding_quantity += traded_quantity
+        self.side = side
+        self.amount = abs(traded_price * traded_quantity)
+        self.quantity = abs(traded_quantity)
+        self.price = traded_price
+        self.holding_amount = self.holding_quantity * self.avg_price
+        self.pnl_amount = pnl_amount
+        self.pnl_percentage = pnl_percentage
 
-        trade_result = copy.deepcopy(self.__dict__)
-        trade_result.update(
-            {
-                "side": side,
-                "amount": abs(traded_price * traded_quantity),
-                "quantity": abs(traded_quantity),
-                "price": traded_price,
-                "holding_amount": self.holding_quantity * self.avg_price,
-                "pnl_amount": pnl_amount,
-                "pnl_percentage": pnl_percentage,
-            }
+        return self.model_dump()
+
+    def is_expired(self) -> bool:
+        """
+        Checks if a expiry_date is in the past.
+
+        Returns:
+            bool: True if the date is in the past, False otherwise.
+        """
+
+        return (
+            datetime.today() > self.expiry_date
+            if self.expiry_date is not None
+            else False
         )
-        return trade_result
 
 
 class GlobalPath:
@@ -206,7 +209,7 @@ class GlobalPath:
         Initializes a new GlobalPath instance and sets up directory paths.
         """
         # Base Location (Current Working Directory Path)
-        self.base_path = pathlib.Path(os.getcwd())
+        self.base_path = Path(os.getcwd())
         if self.base_path.name != "Upstox":
             self.base_path = self.base_path.parent
         self.base_path = self.base_path.joinpath("DATA")
@@ -262,7 +265,7 @@ class GlobalPath:
             "GOLD/Holdings/Holdings_data.csv"
         )
 
-    def make_path(self, source_path: str) -> pathlib.Path:
+    def make_path(self, source_path: str) -> Path:
         """
         Generates and creates a directory path.
 
@@ -270,7 +273,7 @@ class GlobalPath:
             source_path (str): The source path to append to the base path.
 
         Returns:
-            pathlib.Path: The full resolved path.
+            Path: The full resolved path.
         """
         data_path = self.base_path.joinpath(source_path).resolve()
         data_path.parent.mkdir(parents=True, exist_ok=True)
@@ -310,9 +313,7 @@ global_path = GlobalPath()
 def check_files_availability(
     directory: str,
     file_pattern: str = "*",
-    timestamp: datetime.datetime = datetime.datetime.strptime(
-        "2000-01-01", "%Y-%m-%d"
-    ),
+    timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
 ) -> List[str]:
     """
     Checks for newly added or modified files in a directory after a specific timestamp.
@@ -320,7 +321,7 @@ def check_files_availability(
     Args:
         directory (str): The directory to check for files.
         file_pattern (str) :
-        timestamp (datetime.datetime): The timestamp to compare file modification times against.
+        timestamp (datetime): The timestamp to compare file modification times against.
 
     Returns:
         list: A list of paths to files that were added or modified after the given timestamp.
@@ -329,11 +330,9 @@ def check_files_availability(
     file_paths = []
 
     # Iterate over all files in the directory and subdirectories
-    for path in pathlib.Path(directory).rglob(file_pattern):
+    for path in Path(directory).rglob(file_pattern):
         if path.is_file():
-            file_modified_time = datetime.datetime.fromtimestamp(
-                os.path.getmtime(path)
-            )
+            file_modified_time = datetime.fromtimestamp(os.path.getmtime(path))
             # Check if file was modified after the given timestamp
             if file_modified_time > timestamp:
                 file_paths.append(path)
@@ -510,7 +509,7 @@ def extract_year_month(file_name):
 
     # Combine year and month to form a date string and convert to date object
     date_str = f"{year}-{month}-01"
-    return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+    return datetime.strptime(date_str, "%Y-%m-%d").date()
 
 
 # Functions to find data with correct header column
