@@ -22,30 +22,6 @@ logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 
-class Trade(BaseModel):
-    datetime: datetime.datetime
-    exchange: str
-    segment: str
-    stock_name: str
-    scrip_code: str
-    side: str
-    amount: float
-    quantity: float
-    price: float
-    expiry_date: Optional[datetime.datetime]
-
-    @field_validator("expiry_date", mode="before")
-    def parse_expiry_date(cls, value):
-        try:
-            return (
-                None
-                if str(value) in (None, "nan", "")
-                else datetime.datetime.strptime(str(value), "%Y-%m-%d")
-            )
-        except ValueError:
-            raise ValueError("Invalid expiry date format")
-
-
 class Portfolio:
     """
     A class representing a portfolio of stocks.
@@ -72,7 +48,7 @@ class Portfolio:
         stock_name = str(record.get("stock_name"))
 
         if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock(record)
+            self.stocks[stock_name] = Stock(**record)
 
         trade_result = self.stocks[stock_name].trade(
             side=str(record.get("side")).upper(),
@@ -95,7 +71,7 @@ class Portfolio:
         for stock in self.stocks.values():
             if stock.holding_quantity != 0:
                 # logger.info("%s => %s", stock.stock_name, stock.holding_quantity)
-                if self.is_expired(stock.expiry_date):
+                if stock.is_expired():
                     trade_result = stock.trade(
                         side="SELL" if stock.holding_quantity > 0 else "BUY",
                         traded_price=0,
@@ -116,46 +92,39 @@ class Portfolio:
 
         return expired_trades
 
-    def is_expired(self, date_str: str) -> bool:
-        """
-        Checks if a given date is in the past.
 
-        Args:
-            date_str (str): The date string to check.
-
-        Returns:
-            bool: True if the date is in the past, False otherwise.
-        """
-        try:
-            return datetime.datetime.today() > datetime.datetime.strptime(
-                date_str, "%Y-%m-%d"
-            )
-        except ValueError:
-            # logger.warning(e)
-            return False
-
-
-class Stock:
+class Stock(BaseModel):
     """
     A class representing a single stock.
     It manages trades and calculates the average price and profit/loss.
     """
 
-    def __init__(self, record: Dict[str, Any]) -> None:
-        """
-        Initializes a new Stock instance with the given record details.
+    datetime: datetime.datetime
+    exchange: str
+    segment: str
+    stock_name: str
+    scrip_code: str
+    side: str
+    amount: float
+    quantity: float
+    price: float
+    expiry_date: Optional[datetime.datetime]
+    holding_quantity: float = 0.0
+    avg_price: float = 0.0
+    holding_amount: float = 0.0
+    pnl_amount: float = 0.0
+    pnl_percentage: float = 0.0
 
-        Args:
-            record (dict): A dictionary containing details of the stock such as
-                           stock_name, exchange, segment, scrip_code, and expiry_date.
-        """
-        self.stock_name = str(record.get("stock_name"))
-        self.exchange = str(record.get("exchange"))
-        self.segment = str(record.get("segment"))
-        self.scrip_code = str(record.get("scrip_code"))
-        self.expiry_date = str(record.get("expiry_date"))
-        self.holding_quantity = 0.0
-        self.avg_price = 0.0
+    @field_validator("expiry_date", mode="before")
+    def parse_expiry_date(cls, value):
+        try:
+            return (
+                None
+                if str(value) in (None, "nan", "")
+                else datetime.datetime.strptime(str(value), "%Y-%m-%d")
+            )
+        except ValueError as e:
+            raise ValueError(f"Invalid expiry date format : {e}")
 
     def trade(
         self, side: str, traded_price: float, traded_quantity: float
@@ -206,20 +175,29 @@ class Stock:
 
         # Net position
         self.holding_quantity += traded_quantity
+        self.side = side
+        self.amount = abs(traded_price * traded_quantity)
+        self.quantity = abs(traded_quantity)
+        self.price = traded_price
+        self.holding_amount = self.holding_quantity * self.avg_price
+        self.pnl_amount = pnl_amount
+        self.pnl_percentage = pnl_percentage
 
-        trade_result = copy.deepcopy(self.__dict__)
-        trade_result.update(
-            {
-                "side": side,
-                "amount": abs(traded_price * traded_quantity),
-                "quantity": abs(traded_quantity),
-                "price": traded_price,
-                "holding_amount": self.holding_quantity * self.avg_price,
-                "pnl_amount": pnl_amount,
-                "pnl_percentage": pnl_percentage,
-            }
+        return self.model_dump()
+
+    def is_expired(self) -> bool:
+        """
+        Checks if a expiry_date is in the past.
+
+        Returns:
+            bool: True if the date is in the past, False otherwise.
+        """
+
+        return (
+            datetime.datetime.today() > self.expiry_date
+            if self.expiry_date is not None
+            else False
         )
-        return trade_result
 
 
 class GlobalPath:
