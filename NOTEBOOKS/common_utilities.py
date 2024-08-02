@@ -4,9 +4,9 @@ import re
 import copy
 import json
 import logging
-import pathlib
-import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Union, Optional
+from pathlib import Path
+from datetime import datetime
 
 from pydantic import BaseModel, field_validator
 
@@ -79,8 +79,8 @@ class Portfolio:
                     )
                     trade_result.update(
                         {
-                            "datetime": datetime.datetime.combine(
-                                datetime.datetime.strptime(
+                            "datetime": datetime.combine(
+                                datetime.strptime(
                                     stock.expiry_date, "%Y-%m-%d"
                                 ),
                                 datetime.time(15, 30),
@@ -99,21 +99,20 @@ class Stock(BaseModel):
     It manages trades and calculates the average price and profit/loss.
     """
 
-    datetime: datetime.datetime
-    exchange: str
-    segment: str
+    datetime: datetime
+    exchange: Optional[str]
+    segment: Optional[str]
     stock_name: str
-    scrip_code: str
     side: str
-    amount: float
-    quantity: float
-    price: float
-    expiry_date: Optional[datetime.datetime]
-    holding_quantity: float = 0.0
-    avg_price: float = 0.0
-    holding_amount: float = 0.0
-    pnl_amount: float = 0.0
-    pnl_percentage: float = 0.0
+    amount: Union[float, int]
+    quantity: Union[float, int]
+    price: Union[float, int]
+    expiry_date: Optional[datetime]
+    holding_quantity: Optional[Union[float, int]] = 0.0
+    avg_price: Optional[Union[float, int]] = 0.0
+    holding_amount: Optional[Union[float, int]] = 0.0
+    pnl_amount: Optional[Union[float, int]] = 0.0
+    pnl_percentage: Optional[Union[float, int]] = 0.0
 
     @field_validator("expiry_date", mode="before")
     def parse_expiry_date(cls, value):
@@ -121,7 +120,7 @@ class Stock(BaseModel):
             return (
                 None
                 if str(value) in (None, "nan", "")
-                else datetime.datetime.strptime(str(value), "%Y-%m-%d")
+                else datetime.strptime(str(value), "%Y-%m-%d")
             )
         except ValueError as e:
             raise ValueError(f"Invalid expiry date format : {e}")
@@ -194,7 +193,7 @@ class Stock(BaseModel):
         """
 
         return (
-            datetime.datetime.today() > self.expiry_date
+            datetime.today() > self.expiry_date
             if self.expiry_date is not None
             else False
         )
@@ -210,7 +209,7 @@ class GlobalPath:
         Initializes a new GlobalPath instance and sets up directory paths.
         """
         # Base Location (Current Working Directory Path)
-        self.base_path = pathlib.Path(os.getcwd())
+        self.base_path = Path(os.getcwd())
         if self.base_path.name != "Upstox":
             self.base_path = self.base_path.parent
         self.base_path = self.base_path.joinpath("DATA")
@@ -266,7 +265,7 @@ class GlobalPath:
             "GOLD/Holdings/Holdings_data.csv"
         )
 
-    def make_path(self, source_path: str) -> pathlib.Path:
+    def make_path(self, source_path: str) -> Path:
         """
         Generates and creates a directory path.
 
@@ -274,7 +273,7 @@ class GlobalPath:
             source_path (str): The source path to append to the base path.
 
         Returns:
-            pathlib.Path: The full resolved path.
+            Path: The full resolved path.
         """
         data_path = self.base_path.joinpath(source_path).resolve()
         data_path.parent.mkdir(parents=True, exist_ok=True)
@@ -314,9 +313,7 @@ global_path = GlobalPath()
 def check_files_availability(
     directory: str,
     file_pattern: str = "*",
-    timestamp: datetime.datetime = datetime.datetime.strptime(
-        "2000-01-01", "%Y-%m-%d"
-    ),
+    timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
 ) -> List[str]:
     """
     Checks for newly added or modified files in a directory after a specific timestamp.
@@ -324,7 +321,7 @@ def check_files_availability(
     Args:
         directory (str): The directory to check for files.
         file_pattern (str) :
-        timestamp (datetime.datetime): The timestamp to compare file modification times against.
+        timestamp (datetime): The timestamp to compare file modification times against.
 
     Returns:
         list: A list of paths to files that were added or modified after the given timestamp.
@@ -333,11 +330,9 @@ def check_files_availability(
     file_paths = []
 
     # Iterate over all files in the directory and subdirectories
-    for path in pathlib.Path(directory).rglob(file_pattern):
+    for path in Path(directory).rglob(file_pattern):
         if path.is_file():
-            file_modified_time = datetime.datetime.fromtimestamp(
-                os.path.getmtime(path)
-            )
+            file_modified_time = datetime.fromtimestamp(os.path.getmtime(path))
             # Check if file was modified after the given timestamp
             if file_modified_time > timestamp:
                 file_paths.append(path)
@@ -514,7 +509,7 @@ def extract_year_month(file_name):
 
     # Combine year and month to form a date string and convert to date object
     date_str = f"{year}-{month}-01"
-    return datetime.datetime.strptime(date_str, "%Y-%m-%d").date()
+    return datetime.strptime(date_str, "%Y-%m-%d").date()
 
 
 # Functions to find data with correct header column
