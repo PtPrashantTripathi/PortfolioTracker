@@ -1,39 +1,19 @@
-from typing import Any, Dict, List, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
-import pandas as pd
 from pydantic import BaseModel, field_validator
-from common_utilities import Portfolio, logger, global_path
+from common_utilities import logger
 
 
-class TradeRecord(BaseModel):
+class HoldingRecord(BaseModel):
     datetime: datetime
+    stock_name: str
     exchange: Optional[str] = None
     segment: Optional[str] = None
-    stock_name: str
-    side: str
-    amount: Union[float, int]
-    quantity: Union[float, int]
-    price: Union[float, int]
-    expiry_date: Optional[datetime] = None
     # HOLDING INFO
-    holding_quantity: Optional[Union[float, int]] = None
-    holding_price_avg: Optional[Union[float, int]] = None
-    holding_amount: Optional[Union[float, int]] = None
-
-    @field_validator("expiry_date", mode="before")
-    def parse_expiry_date(cls, value):
-        try:
-            return (
-                None
-                if str(value) in (None, "nan", "")
-                else datetime.combine(
-                    datetime.strptime(str(value), "%Y-%m-%d"),
-                    time(15, 30),
-                )
-            )
-        except ValueError as e:
-            raise ValueError(f"Invalid expiry date format: {e}")
+    holding_quantity: Union[float, int] = None
+    holding_price_avg: Union[float, int] = None
+    holding_amount: Union[float, int] = None
 
 
 class TradePosition(BaseModel):
@@ -58,15 +38,45 @@ class TradePosition(BaseModel):
     pnl_percentage: Optional[Union[float, int]] = None
 
 
+class TradeRecord(BaseModel):
+    datetime: datetime
+    exchange: Optional[str] = None
+    segment: Optional[str] = None
+    stock_name: str
+    side: str
+    amount: Union[float, int]
+    quantity: Union[float, int]
+    price: Union[float, int]
+    expiry_date: Optional[datetime] = None
+
+    @field_validator("expiry_date", mode="before")
+    def parse_expiry_date(cls, value):
+        try:
+            return (
+                None
+                if str(value) in (None, "nan", "")
+                else datetime.combine(
+                    datetime.strptime(str(value), "%Y-%m-%d"),
+                    time(15, 30),
+                )
+            )
+        except ValueError as e:
+            raise ValueError(f"Invalid expiry date format: {e}")
+
+
 class Stock(BaseModel):
     stock_name: str
     exchange: Optional[str] = None
     segment: Optional[str] = None
     expiry_date: Optional[datetime] = None
+    holding_quantity: Union[float, int] = 0
+    holding_amount: Union[float, int] = 0
+    holding_price_avg: Union[float, int] = 0
     open_positions: List[TradePosition] = []
     closed_positions: List[TradePosition] = []
+    holding_records: List[HoldingRecord] = []
 
-    def trade(self, trade_record: TradeRecord) -> TradeRecord:
+    def trade(self, trade_record: TradeRecord):
         # logger.info(trade_record)
         trade_qt = trade_record.quantity
         for open_position in self.open_positions:
@@ -146,16 +156,14 @@ class Stock(BaseModel):
                 )
             )
 
-        holding_data = self.calc_holding()
-        trade_record.holding_quantity = holding_data["holding_quantity"]
-        trade_record.holding_price_avg = holding_data["holding_price_avg"]
-        trade_record.holding_amount = holding_data["holding_amount"]
+        # ADDING holding record
+        updated_holding_record = self.calc_holding()
+        updated_holding_record.datetime = trade_record.datetime
+        self.holding_records.append(updated_holding_record)
 
-        return trade_record
-
-    def calc_holding(self) -> Dict[str, Union[float, int]]:
-        holding_quantity = 0
-        holding_amount = 0
+    def calc_holding(self):
+        self.holding_quantity = 0
+        self.holding_amount = 0
         for open_position in self.open_positions:
             # BUY: positive position, SELL: negative position
             open_position_quantity = (
@@ -163,15 +171,26 @@ class Stock(BaseModel):
                 if open_position.open_side == "BUY"
                 else (-1) * open_position.quantity
             )
-            holding_quantity += open_position_quantity
-            holding_amount += open_position.open_price * open_position_quantity
-        holding_price_avg = holding_amount / holding_quantity
+            self.holding_quantity += open_position_quantity
+            self.holding_amount += (
+                open_position.open_price * open_position_quantity
+            )
+        if self.holding_quantity != 0:
+            self.holding_price_avg = self.holding_amount / self.holding_quantity
+        else:
+            self.holding_price_avg = 0
 
-        return {
-            "holding_quantity": holding_quantity,
-            "holding_price_avg": holding_price_avg,
-            "holding_amount": holding_amount,
-        }
+        return HoldingRecord(
+            # INFO
+            stock_name=self.stock_name,
+            exchange=self.exchange,
+            segment=self.segment,
+            datetime=datetime.now(),
+            # HOLDING INFO
+            holding_quantity=self.holding_quantity,
+            holding_price_avg=self.holding_price_avg,
+            holding_amount=self.holding_amount,
+        )
 
     def check_expired(self):
         if self.expiry_date and datetime.now() > self.expiry_date:
@@ -197,11 +216,12 @@ class Stock(BaseModel):
         )
 
 
-class Portfolio:
-    def __init__(self):
-        self.stocks: Dict[str, Stock] = {}
+class Portfolio(BaseModel):
+    stocks: Optional[Dict[str, Stock]] = {}
 
-    def trade(self, trade_record: TradeRecord) -> TradeRecord:
+    def trade(self, record: Dict):
+        logger.info(record)
+        trade_record = TradeRecord(**record)
         if trade_record.stock_name not in self.stocks:
             self.stocks[trade_record.stock_name] = Stock(
                 stock_name=trade_record.stock_name,
@@ -209,46 +229,29 @@ class Portfolio:
                 segment=trade_record.segment,
                 expiry_date=trade_record.expiry_date,
             )
-        return self.stocks[trade_record.stock_name].trade(trade_record)
+            self.stocks[trade_record.stock_name].trade(trade_record)
 
     def check_expired_stocks(self):
         for stock in self.stocks.values():
             stock.check_expired()
 
+    def get_holding_records(self):
+        holding_records = []
+        for stock in self.stocks.values():
+            for holding_record in stock.holding_records:
+                holding_records.append(holding_record.model_dump())
+        return holding_records
 
-portfolio = Portfolio()
+    def get_holdings(self):
+        holding_records = []
+        for stock in self.stocks.values():
+            for holding_record in stock.holding_records:
+                holding_records.append(holding_record.model_dump())
+        return holding_records
 
-df_trade_history = pd.read_csv(global_path.tradehistory_silver_file_path)
-df_trade_history = df_trade_history[
-    df_trade_history["stock_name"].isin(
-        ["TATAPOWER"]  # "NIFTY-PE-24650-18JUL2024",
-    )
-]
-
-trade_history = []
-for record in df_trade_history.astype(str).to_dict(orient="records"):
-    trade_history.append(portfolio.trade(TradeRecord(**record)).model_dump())
-
-df_pnl = pd.DataFrame(data=trade_history)
-df_pnl.to_csv("trade_history.csv", index=False)
-# portfolio.check_expired_stocks()
-
-trade_history = []
-for stock in portfolio.stocks.values():
-    for each in stock.open_positions:
-        trade_history.append(each.model_dump())
-
-df_pnl = pd.DataFrame(data=trade_history)
-
-df_pnl.to_csv("open_positions.csv", index=False)
-
-trade_history = []
-for stock in portfolio.stocks.values():
-    for each in stock.closed_positions:
-        trade_history.append(each.model_dump())
-
-df_pnl = pd.DataFrame(data=trade_history)
-
-df_pnl.to_csv("closed_positions.csv", index=False)
-
-print(portfolio.stocks["TATAPOWER"].calc_holding())
+    def get_pnl(self):
+        closed_positions = []
+        for stock in self.stocks.values():
+            for holding_record in stock.closed_positions:
+                closed_positions.append(holding_record.model_dump())
+        return closed_positions
