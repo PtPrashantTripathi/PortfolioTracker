@@ -2,6 +2,7 @@ from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
+from common_utilities import logger
 
 
 class HoldingRecord(BaseModel):
@@ -138,7 +139,7 @@ class Stock(BaseModel):
             filter(lambda position: position.quantity, self.open_positions)
         )
 
-        if trade_qt > 0:
+        if trade_qt != 0:
             self.open_positions.append(
                 TradePosition(
                     # INFO
@@ -197,6 +198,7 @@ class Stock(BaseModel):
             and self.expiry_date
             and datetime.now() > self.expiry_date
         ):
+            logger.info(f"{self.stock_name} => {self.holding_quantity}")
             self.trade(
                 TradeRecord(
                     stock_name=self.stock_name,
@@ -237,13 +239,6 @@ class Portfolio(BaseModel):
     def check_expired_stocks(self):
         for stock in self.stocks.values():
             stock.check_expired()
-
-    def get_holding_records(self):
-        holding_records = []
-        for stock in self.stocks.values():
-            for holding_record in stock.holding_records:
-                holding_records.append(holding_record.model_dump())
-        return holding_records
 
     def get_holdings(self):
         holding_records = []
