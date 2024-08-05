@@ -66,7 +66,7 @@ class Stock(BaseModel):
     open_positions: List[TradePosition] = []
     closed_positions: List[TradePosition] = []
 
-    def trade(self, trade_record: TradeRecord):
+    def trade(self, trade_record: TradeRecord) -> TradeRecord:
         # logger.info(trade_record)
         trade_qt = trade_record.quantity
         for open_position in self.open_positions:
@@ -201,7 +201,7 @@ class Portfolio:
     def __init__(self):
         self.stocks: Dict[str, Stock] = {}
 
-    def trade(self, trade_record: TradeRecord):
+    def trade(self, trade_record: TradeRecord) -> TradeRecord:
         if trade_record.stock_name not in self.stocks:
             self.stocks[trade_record.stock_name] = Stock(
                 stock_name=trade_record.stock_name,
@@ -209,7 +209,7 @@ class Portfolio:
                 segment=trade_record.segment,
                 expiry_date=trade_record.expiry_date,
             )
-        self.stocks[trade_record.stock_name].trade(trade_record)
+        return self.stocks[trade_record.stock_name].trade(trade_record)
 
     def check_expired_stocks(self):
         for stock in self.stocks.values():
@@ -227,7 +227,7 @@ df_trade_history = df_trade_history[
 
 trade_history = []
 for record in df_trade_history.astype(str).to_dict(orient="records"):
-    trade_history.append(portfolio.trade(TradeRecord(**record)))
+    trade_history.append(portfolio.trade(TradeRecord(**record)).model_dump())
 
 df_pnl = pd.DataFrame(data=trade_history)
 df_pnl.to_csv("trade_history.csv", index=False)
@@ -239,7 +239,7 @@ for stock in portfolio.stocks.values():
         trade_history.append(each.model_dump())
 
 df_pnl = pd.DataFrame(data=trade_history)
-print(df_pnl)
+
 df_pnl.to_csv("open_positions.csv", index=False)
 
 trade_history = []
@@ -248,5 +248,7 @@ for stock in portfolio.stocks.values():
         trade_history.append(each.model_dump())
 
 df_pnl = pd.DataFrame(data=trade_history)
-print(df_pnl)
+
 df_pnl.to_csv("closed_positions.csv", index=False)
+
+print(portfolio.stocks["TATAPOWER"].calc_holding())

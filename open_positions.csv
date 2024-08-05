@@ -1,0 +1,4 @@
+stock_name,exchange,segment,quantity,open_datetime,open_side,open_price,open_amount,close_datetime,close_side,close_price,close_amount,pnl_amount,pnl_percentage
+TATAPOWER,NSE,EQ,53.0,2021-02-08 11:39:33,BUY,90.0,4770.0,,,,,,
+TATAPOWER,NSE,EQ,33.0,2021-02-22 11:44:35,BUY,90.0,2970.0,,,,,,
+TATAPOWER,NSE,EQ,64.0,2022-05-11 11:58:14,BUY,224.75,14384.0,,,,,,
