@@ -2,7 +2,6 @@ from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
-from common_utilities import logger
 
 
 class HoldingRecord(BaseModel):
@@ -220,7 +219,7 @@ class Portfolio(BaseModel):
     stocks: Optional[Dict[str, Stock]] = {}
 
     def trade(self, record: Dict):
-        logger.info(record)
+        # logger.info(record)
         trade_record = TradeRecord(**record)
         if trade_record.stock_name not in self.stocks:
             self.stocks[trade_record.stock_name] = Stock(
@@ -229,7 +228,7 @@ class Portfolio(BaseModel):
                 segment=trade_record.segment,
                 expiry_date=trade_record.expiry_date,
             )
-            self.stocks[trade_record.stock_name].trade(trade_record)
+        self.stocks[trade_record.stock_name].trade(trade_record)
 
     def check_expired_stocks(self):
         for stock in self.stocks.values():
