@@ -2,7 +2,7 @@ from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
-from UTILITIES.common_utilities import logger
+from common_utilities import logger
 
 
 class StockInfo(BaseModel):
@@ -157,7 +157,7 @@ class Stock(StockInfo):
                 min_qt = min(trade_qt, open_position.quantity)
                 pnl_amount = (
                     (trade_record.price - open_position.open_price) * min_qt
-                    if trade_record.side == "SELL"
+                    if open_position.open_side == "BUY"
                     else (open_position.open_price - trade_record.price)
                     * min_qt
                 )
@@ -199,12 +199,9 @@ class Stock(StockInfo):
                 trade_qt -= min_qt
 
         # Remove fully closed positions
-        self.open_positions = [
-            pos for pos in self.open_positions if pos.quantity > 0
-        ]
-        # list(
-        #     filter(lambda position: position.quantity, self.open_positions)
-        # )
+        self.open_positions = list(
+            filter(lambda position: position.quantity, self.open_positions)
+        )
 
         # Add new position if trade is not fully matched
         if trade_qt != 0:
@@ -270,7 +267,11 @@ class Stock(StockInfo):
         """
         Checks if the stock has expired and processes expiry if applicable.
         """
-        if self.holding_quantity != 0 and self.is_expired():
+        if (
+            self.holding_quantity != 0
+            and self.expiry_date is not None
+            and datetime.today() > self.expiry_date
+        ):
             logger.info(f"{self.stock_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
@@ -287,17 +288,6 @@ class Stock(StockInfo):
                     amount=0,
                 )
             )
-
-    def is_expired(self) -> bool:
-        """
-        Checks if the stock is expired.
-
-        Returns:
-            bool: True if the stock is expired, otherwise False.
-        """
-        return (
-            self.expiry_date is not None and datetime.today() > self.expiry_date
-        )
 
 
 class Portfolio(BaseModel):
