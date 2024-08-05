@@ -2,26 +2,59 @@ from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
-from common_utilities import logger
+from UTILITIES.common_utilities import logger
 
 
-class HoldingRecord(BaseModel):
-    datetime: datetime
+class StockInfo(BaseModel):
+    """
+    Base class for models that include stock information.
+
+    Attributes:
+        stock_name (str): The name of the stock.
+        exchange (Optional[str]): The exchange where the stock is traded.
+        segment (Optional[str]): The market segment of the stock.
+    """
+
     stock_name: str
     exchange: Optional[str] = None
     segment: Optional[str] = None
-    # HOLDING INFO
-    holding_quantity: Union[float, int] = None
-    holding_price_avg: Union[float, int] = None
-    holding_amount: Union[float, int] = None
 
 
-class TradePosition(BaseModel):
-    # INFO
-    stock_name: str
-    exchange: Optional[str]
-    segment: Optional[str]
-    # STATUS
+class HoldingRecord(StockInfo):
+    """
+    Represents a record of stock holdings.
+
+    Attributes:
+        datetime (datetime): The timestamp of the holding record.
+        holding_quantity (Union[float, int]): The quantity of stock held.
+        holding_price_avg (Union[float, int]): The average price of the held stock.
+        holding_amount (Union[float, int]): The total amount of the holding.
+    """
+
+    datetime: datetime
+    holding_quantity: Union[float, int] = 0
+    holding_price_avg: Union[float, int] = 0
+    holding_amount: Union[float, int] = 0
+
+
+class TradePosition(StockInfo):
+    """
+    Represents a trade position, including open and close details.
+
+    Attributes:
+        quantity (Union[float, int]): The quantity of stock in the position.
+        open_datetime (datetime): The time when the position was opened.
+        open_side (str): The side of the trade ("BUY" or "SELL").
+        open_price (Union[float, int]): The price at which the position was opened.
+        open_amount (Union[float, int]): The total amount for the open position.
+        close_datetime (Optional[datetime]): The time when the position was closed.
+        close_side (Optional[str]): The side of the closing trade ("BUY" or "SELL").
+        close_price (Optional[Union[float, int]]): The price at which the position was closed.
+        close_amount (Optional[Union[float, int]]): The total amount for the closed position.
+        pnl_amount (Optional[Union[float, int]]): The profit or loss amount for the position.
+        pnl_percentage (Optional[Union[float, int]]): The profit or loss percentage for the position.
+    """
+
     quantity: Union[float, int]
     # OPEN INFO
     open_datetime: datetime
@@ -38,11 +71,20 @@ class TradePosition(BaseModel):
     pnl_percentage: Optional[Union[float, int]] = None
 
 
-class TradeRecord(BaseModel):
+class TradeRecord(StockInfo):
+    """
+    Represents a trade record.
+
+    Attributes:
+        datetime (datetime): The timestamp of the trade.
+        side (str): The side of the trade ("BUY" or "SELL").
+        amount (Union[float, int]): The total amount of the trade.
+        quantity (Union[float, int]): The quantity of stock traded.
+        price (Union[float, int]): The price at which the trade occurred.
+        expiry_date (Optional[datetime]): The expiry date for options or futures.
+    """
+
     datetime: datetime
-    exchange: Optional[str] = None
-    segment: Optional[str] = None
-    stock_name: str
     side: str
     amount: Union[float, int]
     quantity: Union[float, int]
@@ -51,23 +93,42 @@ class TradeRecord(BaseModel):
 
     @field_validator("expiry_date", mode="before")
     def parse_expiry_date(cls, value):
+        """
+        Validates and parses the expiry date.
+
+        Args:
+            value: The input value for expiry_date.
+
+        Returns:
+            The parsed datetime object or None if invalid.
+
+        Raises:
+            ValueError: If the expiry date format is invalid.
+        """
         try:
-            return (
-                None
-                if str(value) in (None, "nan", "")
-                else datetime.combine(
-                    datetime.strptime(str(value), "%Y-%m-%d"),
-                    time(15, 30),
-                )
+            if value in (None, "nan", ""):
+                return None
+            return datetime.combine(
+                datetime.strptime(str(value), "%Y-%m-%d").date(), time(15, 30)
             )
         except ValueError as e:
             raise ValueError(f"Invalid expiry date format: {e}")
 
 
-class Stock(BaseModel):
-    stock_name: str
-    exchange: Optional[str] = None
-    segment: Optional[str] = None
+class Stock(StockInfo):
+    """
+    Represents a stock, including open and closed positions and holding records.
+
+    Attributes:
+        expiry_date (Optional[datetime]): The expiry date for options or futures.
+        holding_quantity (Union[float, int]): The total quantity of the stock held.
+        holding_amount (Union[float, int]): The total amount of the stock held.
+        holding_price_avg (Union[float, int]): The average price of the stock held.
+        open_positions (List[TradePosition]): List of open trade positions.
+        closed_positions (List[TradePosition]): List of closed trade positions.
+        holding_records (List[HoldingRecord]): List of holding records.
+    """
+
     expiry_date: Optional[datetime] = None
     holding_quantity: Union[float, int] = 0
     holding_amount: Union[float, int] = 0
@@ -77,78 +138,84 @@ class Stock(BaseModel):
     holding_records: List[HoldingRecord] = []
 
     def trade(self, trade_record: TradeRecord):
-        # logger.info(trade_record)
+        """
+        Processes a trade record and updates open and closed positions.
+
+        Args:
+            trade_record (TradeRecord): The trade record to be processed.
+        """
         trade_qt = trade_record.quantity
+
+        # Iterate through open positions to close trades if possible
         for open_position in self.open_positions:
-            # Matching symbols
             if (
                 trade_qt > 0
                 and open_position.quantity > 0
                 and open_position.open_side != trade_record.side
             ):
-                # CLOSING ORDER CALC
-                min_qt = min(trade_record.quantity, open_position.quantity)
-                if trade_record.side == "SELL":
-                    pnl_amount = (
-                        trade_record.price - open_position.open_price
-                    ) * min_qt
-                else:
-                    pnl_amount = (
-                        open_position.open_price - trade_record.price
-                    ) * min_qt
-
+                # Calculate PNL for closing trade
+                min_qt = min(trade_qt, open_position.quantity)
+                pnl_amount = (
+                    (trade_record.price - open_position.open_price) * min_qt
+                    if trade_record.side == "SELL"
+                    else (open_position.open_price - trade_record.price)
+                    * min_qt
+                )
                 pnl_percentage = (
                     pnl_amount / (open_position.open_price * min_qt)
                 ) * 100
 
-                # STATUS UPDATE
+                # Update open position quantity and amount
                 open_position.quantity -= min_qt
                 open_position.open_amount = (
                     open_position.quantity * open_position.open_price
                 )
 
-                # Adding result to closed_trade list
+                # Record closed position
                 self.closed_positions.append(
                     TradePosition(
                         # INFO
-                        stock_name=trade_record.stock_name,
-                        exchange=trade_record.exchange,
-                        segment=trade_record.segment,
+                        stock_name=self.stock_name,
+                        exchange=self.exchange,
+                        segment=self.segment,
                         # STATUS
-                        quantity=min_qt,
-                        # OPEN INFO
+                        quantity=min_qt,  # OPEN INFO
                         open_datetime=open_position.open_datetime,
                         open_side=open_position.open_side,
                         open_price=open_position.open_price,
-                        open_amount=(open_position.open_price * min_qt),
+                        open_amount=open_position.open_price * min_qt,
                         # CLOSE INFO
                         close_datetime=trade_record.datetime,
                         close_side=trade_record.side,
                         close_price=trade_record.price,
-                        close_amount=(trade_record.price * min_qt),
+                        close_amount=trade_record.price * min_qt,
                         # PNL INFO
                         pnl_amount=pnl_amount,
                         pnl_percentage=pnl_percentage,
                     )
                 )
-                # UPDATE LEFT OVER TRADE_QT
+
+                # Reduce the remaining trade quantity
                 trade_qt -= min_qt
 
-        # CLEANUP : Use filter to remove positions with zero quantity
-        self.open_positions = list(
-            filter(lambda position: position.quantity, self.open_positions)
-        )
+        # Remove fully closed positions
+        self.open_positions = [
+            pos for pos in self.open_positions if pos.quantity > 0
+        ]
+        # list(
+        #     filter(lambda position: position.quantity, self.open_positions)
+        # )
 
+        # Add new position if trade is not fully matched
         if trade_qt != 0:
             self.open_positions.append(
                 TradePosition(
                     # INFO
-                    stock_name=trade_record.stock_name,
-                    exchange=trade_record.exchange,
-                    segment=trade_record.segment,
-                    # STATUS
-                    quantity=trade_qt,
+                    stock_name=self.stock_name,
+                    exchange=self.exchange,
+                    segment=self.segment,
                     # OPEN INFO
+                    quantity=trade_qt,
                     open_datetime=trade_record.datetime,
                     open_side=trade_record.side,
                     open_price=trade_record.price,
@@ -156,55 +223,63 @@ class Stock(BaseModel):
                 )
             )
 
-        # ADDING holding record
+        # Update holding records
         updated_holding_record = self.calc_holding()
         updated_holding_record.datetime = trade_record.datetime
         self.holding_records.append(updated_holding_record)
 
-    def calc_holding(self):
+    def calc_holding(self) -> HoldingRecord:
+        """
+        Calculates the current holdings and updates holding metrics.
+
+        Returns:
+            HoldingRecord: The updated holding record.
+        """
         self.holding_quantity = 0
         self.holding_amount = 0
+
         for open_position in self.open_positions:
-            # BUY: positive position, SELL: negative position
-            open_position_quantity = (
+            # Calculate holding values
+            position_quantity = (
                 open_position.quantity
                 if open_position.open_side == "BUY"
-                else (-1) * open_position.quantity
+                else -open_position.quantity
             )
-            self.holding_quantity += open_position_quantity
-            self.holding_amount += (
-                open_position.open_price * open_position_quantity
-            )
-        if self.holding_quantity == 0:
-            self.holding_price_avg = 0
-        else:
-            self.holding_price_avg = self.holding_amount / self.holding_quantity
+            self.holding_quantity += position_quantity
+            self.holding_amount += open_position.open_price * position_quantity
+
+        self.holding_price_avg = (
+            0
+            if self.holding_quantity == 0
+            else self.holding_amount / self.holding_quantity
+        )
 
         return HoldingRecord(
             # INFO
             stock_name=self.stock_name,
             exchange=self.exchange,
             segment=self.segment,
-            datetime=datetime.now(),
             # HOLDING INFO
+            datetime=datetime.now(),
             holding_quantity=self.holding_quantity,
             holding_price_avg=self.holding_price_avg,
             holding_amount=self.holding_amount,
         )
 
     def check_expired(self):
-        if (
-            self.holding_quantity != 0
-            and self.expiry_date
-            and datetime.now() > self.expiry_date
-        ):
-            logger.info(f"{self.stock_name} => {self.holding_quantity}")
+        """
+        Checks if the stock has expired and processes expiry if applicable.
+        """
+        if self.holding_quantity != 0 and self.is_expired():
+            logger.info(f"{self.stock_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
+                    # INFO
                     stock_name=self.stock_name,
                     exchange=self.exchange,
                     segment=self.segment,
                     expiry_date=self.expiry_date.date(),
+                    # DETAILS
                     datetime=self.expiry_date,
                     side="EXPIRED",
                     quantity=abs(self.holding_quantity),
@@ -214,42 +289,78 @@ class Stock(BaseModel):
             )
 
     def is_expired(self) -> bool:
+        """
+        Checks if the stock is expired.
+
+        Returns:
+            bool: True if the stock is expired, otherwise False.
+        """
         return (
-            datetime.today() > self.expiry_date
-            if self.expiry_date is not None
-            else False
+            self.expiry_date is not None and datetime.today() > self.expiry_date
         )
 
 
 class Portfolio(BaseModel):
-    stocks: Optional[Dict[str, Stock]] = {}
+    """
+    Represents a portfolio of stocks.
+
+    Attributes:
+        stocks (Dict[str, Stock]): A dictionary mapping stock names to Stock objects.
+    """
+
+    stocks: Dict[str, Stock] = {}
 
     def trade(self, record: Dict):
-        # logger.info(record)
+        """
+        Processes a trade record for a specific stock in the portfolio.
+
+        Args:
+            record (Dict): The trade record to be processed.
+        """
         trade_record = TradeRecord(**record)
-        if trade_record.stock_name not in self.stocks:
-            self.stocks[trade_record.stock_name] = Stock(
-                stock_name=trade_record.stock_name,
+        stock_name = trade_record.stock_name
+
+        # Initialize stock if not exists
+        if stock_name not in self.stocks:
+            self.stocks[stock_name] = Stock(
+                stock_name=stock_name,
                 exchange=trade_record.exchange,
                 segment=trade_record.segment,
                 expiry_date=trade_record.expiry_date,
             )
-        self.stocks[trade_record.stock_name].trade(trade_record)
+
+        # Execute trade
+        self.stocks[stock_name].trade(trade_record)
 
     def check_expired_stocks(self):
+        """
+        Checks all stocks in the portfolio for expiry and processes them if expired.
+        """
         for stock in self.stocks.values():
             stock.check_expired()
 
-    def get_holdings(self):
-        holding_records = []
-        for stock in self.stocks.values():
-            for holding_record in stock.holding_records:
-                holding_records.append(holding_record.model_dump())
-        return holding_records
+    def get_holdings(self) -> List[Dict]:
+        """
+        Retrieves a list of holding records for all stocks in the portfolio.
 
-    def get_pnl(self):
-        closed_positions = []
-        for stock in self.stocks.values():
-            for holding_record in stock.closed_positions:
-                closed_positions.append(holding_record.model_dump())
-        return closed_positions
+        Returns:
+            List[Dict]: A list of dictionaries representing holding records.
+        """
+        return [
+            holding.model_dump()
+            for stock in self.stocks.values()
+            for holding in stock.holding_records
+        ]
+
+    def get_pnl(self) -> List[Dict]:
+        """
+        Retrieves a list of closed positions and their PnL details.
+
+        Returns:
+            List[Dict]: A list of dictionaries representing closed positions and PnL.
+        """
+        return [
+            position.model_dump()
+            for stock in self.stocks.values()
+            for position in stock.closed_positions
+        ]
