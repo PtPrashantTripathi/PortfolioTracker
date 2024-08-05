@@ -16,6 +16,10 @@ class TradeRecord(BaseModel):
     quantity: Union[float, int]
     price: Union[float, int]
     expiry_date: Optional[datetime] = None
+    # HOLDING INFO
+    holding_quantity: Optional[Union[float, int]] = None
+    holding_price_avg: Optional[Union[float, int]] = None
+    holding_amount: Optional[Union[float, int]] = None
 
     @field_validator("expiry_date", mode="before")
     def parse_expiry_date(cls, value):
@@ -59,23 +63,30 @@ class Stock(BaseModel):
     exchange: Optional[str] = None
     segment: Optional[str] = None
     expiry_date: Optional[datetime] = None
-    open_positions: List[Dict[str, TradePosition]] = []
-    closed_positions: List[Dict[str, TradePosition]] = []
+    open_positions: List[TradePosition] = []
+    closed_positions: List[TradePosition] = []
 
     def trade(self, trade_record: TradeRecord):
-        logger.info(trade_record)
+        # logger.info(trade_record)
         trade_qt = trade_record.quantity
         for open_position in self.open_positions:
             # Matching symbols
             if (
-                open_position.quantity > 0
+                trade_qt > 0
+                and open_position.quantity > 0
                 and open_position.open_side != trade_record.side
             ):
                 # CLOSING ORDER CALC
                 min_qt = min(trade_record.quantity, open_position.quantity)
-                pnl_amount = (
-                    trade_record.price - open_position.open_price
-                ) * min_qt
+                if trade_record.side == "SELL":
+                    pnl_amount = (
+                        trade_record.price - open_position.open_price
+                    ) * min_qt
+                else:
+                    pnl_amount = (
+                        open_position.open_price - trade_record.price
+                    ) * min_qt
+
                 pnl_percentage = (
                     pnl_amount / (open_position.open_price * min_qt)
                 ) * 100
@@ -113,6 +124,11 @@ class Stock(BaseModel):
                 # UPDATE LEFT OVER TRADE_QT
                 trade_qt -= min_qt
 
+        # CLEANUP : Use filter to remove positions with zero quantity
+        self.open_positions = list(
+            filter(lambda position: position.quantity, self.open_positions)
+        )
+
         if trade_qt > 0:
             self.open_positions.append(
                 TradePosition(
@@ -129,6 +145,33 @@ class Stock(BaseModel):
                     open_amount=trade_qt * trade_record.price,
                 )
             )
+
+        holding_data = self.calc_holding()
+        trade_record.holding_quantity = holding_data["holding_quantity"]
+        trade_record.holding_price_avg = holding_data["holding_price_avg"]
+        trade_record.holding_amount = holding_data["holding_amount"]
+
+        return trade_record
+
+    def calc_holding(self) -> Dict[str, Union[float, int]]:
+        holding_quantity = 0
+        holding_amount = 0
+        for open_position in self.open_positions:
+            # BUY: positive position, SELL: negative position
+            open_position_quantity = (
+                open_position.quantity
+                if open_position.open_side == "BUY"
+                else (-1) * open_position.quantity
+            )
+            holding_quantity += open_position_quantity
+            holding_amount += open_position.open_price * open_position_quantity
+        holding_price_avg = holding_amount / holding_quantity
+
+        return {
+            "holding_quantity": holding_quantity,
+            "holding_price_avg": holding_price_avg,
+            "holding_amount": holding_amount,
+        }
 
     def check_expired(self):
         if self.expiry_date and datetime.now() > self.expiry_date:
@@ -172,31 +215,38 @@ class Portfolio:
         for stock in self.stocks.values():
             stock.check_expired()
 
-    def get_trade_history(self):
-        trade_history = []
-        for stock in self.stocks.values():
-            for each in stock.closed_positions:
-                trade_history.append(each.model_dump())
-        return trade_history
-
 
 portfolio = Portfolio()
 
 df_trade_history = pd.read_csv(global_path.tradehistory_silver_file_path)
+df_trade_history = df_trade_history[
+    df_trade_history["stock_name"].isin(
+        ["TATAPOWER"]  # "NIFTY-PE-24650-18JUL2024",
+    )
+]
 
-for record in (
-    df_trade_history[
-        df_trade_history["stock_name"].isin(
-            ["TATAPOWER"]  # "NIFTY-PE-24650-18JUL2024",
-        )
-    ]
-    .astype(str)
-    .to_dict(orient="records")
-):
-    portfolio.trade(TradeRecord(**record))
+trade_history = []
+for record in df_trade_history.astype(str).to_dict(orient="records"):
+    trade_history.append(portfolio.trade(TradeRecord(**record)))
 
+df_pnl = pd.DataFrame(data=trade_history)
+df_pnl.to_csv("trade_history.csv", index=False)
 # portfolio.check_expired_stocks()
 
-df_pnl = pd.DataFrame(data=portfolio.get_trade_history())
+trade_history = []
+for stock in portfolio.stocks.values():
+    for each in stock.open_positions:
+        trade_history.append(each.model_dump())
+
+df_pnl = pd.DataFrame(data=trade_history)
 print(df_pnl)
-df_pnl.to_csv("out.csv", index=False)
+df_pnl.to_csv("open_positions.csv", index=False)
+
+trade_history = []
+for stock in portfolio.stocks.values():
+    for each in stock.closed_positions:
+        trade_history.append(each.model_dump())
+
+df_pnl = pd.DataFrame(data=trade_history)
+print(df_pnl)
+df_pnl.to_csv("closed_positions.csv", index=False)
