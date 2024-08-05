@@ -174,10 +174,10 @@ class Stock(BaseModel):
             self.holding_amount += (
                 open_position.open_price * open_position_quantity
             )
-        if self.holding_quantity != 0:
-            self.holding_price_avg = self.holding_amount / self.holding_quantity
-        else:
+        if self.holding_quantity == 0:
             self.holding_price_avg = 0
+        else:
+            self.holding_price_avg = self.holding_amount / self.holding_quantity
 
         return HoldingRecord(
             # INFO
@@ -192,7 +192,11 @@ class Stock(BaseModel):
         )
 
     def check_expired(self):
-        if self.expiry_date and datetime.now() > self.expiry_date:
+        if (
+            self.holding_quantity != 0
+            and self.expiry_date
+            and datetime.now() > self.expiry_date
+        ):
             self.trade(
                 TradeRecord(
                     stock_name=self.stock_name,
