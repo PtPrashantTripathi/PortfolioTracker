@@ -88,7 +88,7 @@ class GlobalPath:
             "GOLD/Holdings/Holdings_data.csv"
         )
         self.holdings_gold_file_path_v2 = self.make_path(
-            "GOLD/Holdings/Holdings_datav2.csv"
+            "GOLD/Holdings/Holdings_data_v2.csv"
         )
 
     def make_path(self, source_path: str) -> Path:
