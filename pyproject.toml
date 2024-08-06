@@ -1,27 +1,45 @@
-[tool.poetry]
-name = "upstox"
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "portfolio_tracker"
 version = "0.1.0"
-description = "Completed ETL from upstox exchanges and calculate PNL AMOUNT and other stuff"
+description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
 license = "MIT"
 authors = ["ptptrashanttripathi"]
 readme = "README.md"
-homepage = "https://ptprashanttripathi.github.io/upstox"
-repository = "https://github.com/ptptrashanttripathi/upstox"
-keywords = ["packaging", "poetry"]
+homepage = "https://ptprashanttripathi.github.io/portfolio_tracker"
+repository = "https://github.com/ptptrashanttripathi/portfolio_tracker"
+keywords = ["packaging", "setuptools"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.7",
 ]
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/ptptrashanttripathi/upstox/issues"
+[project.urls]
+"Bug Tracker" = "https://github.com/ptptrashanttripathi/portfolio_tracker/issues"
 
-# Black formatting
+[project.dependencies]
+python = "^3.7"
+requests = "^2.13.0"
+pandas = "^2.2.1"
+
+[tool.setuptools]
+packages = ["portfolio_tracker"]
+
+[tool.setuptools.package-dir]
+portfolio_tracker = "src/portfolio_tracker"
+
+[tool.setuptools.find]
+where = ["src"]
+
 [tool.black]
 line-length = 80
 
-# iSort
 [tool.isort]
 profile = "black"
 line_length = 80
@@ -35,21 +53,3 @@ ignore = ["E501", "W503", "E226"]
 # E501: Line too long
 # W503: Line break occurred before binary operator
 # E226: Missing white space around arithmetic operator
-
-[tool.poetry.dependencies]
-python = "^3.7"
-requests = "^2.13.0"
-pandas = "^2.2.1"
-
-[tool.hatch.metadata.hooks.fancy-pypi-readme]
-content-type = "text/markdown"
-fragments = [
-     { path = "README.md" },
-     { path = "ABOUT.md" },
-     { path = "CODE_OF_CONDUCT.md" },
-     { path = "CONTRIBUTING.md" },
-     { path = "SECURITY.md" },
-   ]
-
-[tool.jupytext]
-formats = "ipynb,py:percent"
