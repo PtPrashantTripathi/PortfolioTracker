@@ -1,20 +1,25 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
-
+name: Feature request 💄
+about: Suggest a new idea for PortfolioTracker.
+labels: enhancement
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+<!-- Provide a general summary of the feature in the Title above -->
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Summary 💡
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+<!-- Describe how it should work. -->
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Examples 🌈
+
+<!--
+  Provide a link to the PortfolioTracker specification, other implementations,
+  or screenshots of the expected behavior.
+-->
+
+## Motivation 🔦
+
+<!--
+  What are you trying to accomplish? How has the lack of this feature affected you?
+  Providing context helps us come up with a solution that is most useful in the real world.
+-->
