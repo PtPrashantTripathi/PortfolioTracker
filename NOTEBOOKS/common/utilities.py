@@ -1,14 +1,11 @@
 # Importing necessary files and packages
 import os
 import re
-import copy
 import json
 import logging
-from typing import Any, Dict, List, Union, Optional
+from typing import List
 from pathlib import Path
 from datetime import datetime
-
-from pydantic import BaseModel, field_validator
 
 # Set up the logger
 logging.basicConfig(
@@ -92,6 +89,11 @@ class GlobalPath:
         )
         self.holdings_gold_file_path_v2 = self.make_path(
             "GOLD/Holdings/Holdings_data_v2.csv"
+        )
+
+        # Holdings Paths
+        self.dividend_gold_file_path = self.make_path(
+            "GOLD/Holdings/Dividend_data.csv"
         )
 
     def make_path(self, source_path: str) -> Path:
@@ -243,8 +245,8 @@ def find_correct_sheetname(df_pandas, sheet_name_regex):
     # Iterate through the sheet names
     for sheet_name in df_pandas.keys():
         # Check if the sheet name matches the regex pattern
-        if pattern.match(sheet_name):
-            logger.info("Sheet name => %s", sheet_name)
+        if pattern.search(sheet_name):
+            logger.info(f"Sheet name => {sheet_name}")
             return df_pandas[sheet_name]
 
     # Raise an error if no matching sheet name is found
