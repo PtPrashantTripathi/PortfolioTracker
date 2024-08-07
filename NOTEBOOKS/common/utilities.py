@@ -229,7 +229,13 @@ def get_schema_from_data_contract(json_path):
 
 
 # Auxiliary functions to gather info of given pandas dataframe
-def find_correct_sheetname(df_pandas, sheet_name_regex):
+def find_correct_sheetname(df_pandas,                            
+                           
+                           
+                           
+                           
+                           
+                           sheet_name_regex):
     """
     Finds the first sheet name that matches the given regular expression.
 
