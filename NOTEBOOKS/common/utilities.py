@@ -55,25 +55,28 @@ class GlobalPath:
             "GOLD/TradeHistory/TradeHistory_data.csv"
         )
 
-        # Ledger Paths
-        self.ledger_bronze_layer_path = self.make_path("BRONZE/Ledger")
-        self.ledger_silver_layer_path = self.make_path("SILVER/Ledger")
-        self.ledger_silver_file_path = self.make_path(
-            "SILVER/Ledger/Ledger_data.csv"
-        )
-
-        # StockPrice Paths
-        self.stockprice_bronze_layer_path = self.make_path("BRONZE/StockPrice")
-        self.stockprice_silver_layer_path = self.make_path("SILVER/StockPrice")
-        self.stockprice_silver_file_path = self.make_path(
-            "SILVER/StockPrice/StockPrice_data.csv"
-        )
-
         # Symbol Paths
         self.symbol_bronze_layer_path = self.make_path("BRONZE/Symbol")
         self.symbol_silver_layer_path = self.make_path("SILVER/Symbol")
         self.symbol_silver_file_path = self.make_path(
             "SILVER/Symbol/Symbol_data.csv"
+        )
+
+        # StockData
+        self.stockdata_bronze_layer_path = self.make_path("BRONZE/StockData")
+
+        # StockPrice Paths
+        self.stockprice_silver_layer_path = self.make_path("SILVER/StockPrice")
+        self.stockprice_silver_file_path = self.make_path(
+            "SILVER/StockPrice/StockPrice_data.csv"
+        )
+
+        # StockEvents Paths
+        self.stockevents_silver_layer_path = self.make_path(
+            "SILVER/StockEvents"
+        )
+        self.stockevents_silver_file_path = self.make_path(
+            "SILVER/StockEvents/StockEvents_data.csv"
         )
 
         # ProfitLoss Paths
@@ -110,32 +113,6 @@ class GlobalPath:
 
 
 global_path = GlobalPath()
-
-
-# def get_stock_price_data(name, from_date, to_date):
-#     """
-#     Fetches stock price data from Yahoo Finance for a given stock within the specified date range.
-#     Parameters:
-#     name (str): Stock ticker name (e.g., 'SBIN.NS' for SBI).
-#     from_date (str): Start date in 'YYYY-MM-DD' format.
-#     to_date (str): End date in 'YYYY-MM-DD' format.
-#     Returns:
-#     str: CSV data as text.
-#     """
-#     # Convert date strings to Unix timestamps
-#     from_date_unix_ts = int(time.mktime(datetime.strptime(from_date, "%Y-%m-%d").timetuple()))
-#     to_date_unix_ts = int(time.mktime(datetime.strptime(to_date, "%Y-%m-%d").timetuple()))
-#     # Construct the URL for the API call
-#     url = f"https://query1.finance.yahoo.com/v7/finance/download/{name}?period1={from_date_unix_ts}&period2={to_date_unix_ts}&interval=1d&events=history&includeAdjustedClose=true"
-#     # Make the API call
-#     response = requests.get(url)
-#     # Check if the request was successful
-#     if response.status_code == 200:
-#         # Return the CSV data as text
-#         return response.text
-#     else:
-#         # Raise an exception if the request failed
-#         response.raise_for_status()
 
 
 # Check for newly added or modified files
