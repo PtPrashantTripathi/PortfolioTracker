@@ -1,7 +1,7 @@
 {
-  "name": "@adminkit/core",
+  "name": "@portfoliotracker/core",
   "version": "3.4.0",
-  "description": "AdminKit - Bootstrap 5 Admin Template",
+  "description": "PortfolioTracker - Bootstrap 5 Admin Template",
   "keywords": [
     "bootstrap",
     "bootstrap 5",
@@ -19,16 +19,16 @@
     "ui kit",
     "web"
   ],
-  "homepage": "https://adminkit.io/",
+  "homepage": "https://portfoliotracker.io/",
   "bugs": {
-    "url": "https://github.com/adminkit/adminkit/issues"
+    "url": "https://github.com/portfoliotracker/portfoliotracker/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adminkit/adminkit.git"
+    "url": "git+https://github.com/portfoliotracker/portfoliotracker.git"
   },
   "license": "MIT",
-  "author": "Paul Laros <support@adminkit.io>",
+  "author": "Paul Laros <support@portfoliotracker.io>",
   "files": [
     "dist"
   ],

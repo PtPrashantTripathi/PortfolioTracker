@@ -1,6 +1,6 @@
 ---
 name: Bug report 🐛
-about: Create a bug report for AdminKit
+about: Create a bug report for PortfolioTracker
 labels: bug
 ---
 

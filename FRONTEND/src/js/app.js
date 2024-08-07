@@ -1,6 +1,6 @@
 import "../scss/app.scss";
 
-// AdminKit (required)
+// PortfolioTracker (required)
 import "./modules/bootstrap";
 import "./modules/sidebar";
 import "./modules/theme";
