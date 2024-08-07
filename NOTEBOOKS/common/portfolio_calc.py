@@ -2,7 +2,8 @@ from typing import Dict, List, Union, Optional
 from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
-from utilities import logger
+
+from .utilities import logger
 
 
 class StockInfo(BaseModel):
