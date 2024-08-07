@@ -1,38 +1,40 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+name: Bug report 🐛
+about: Create a bug report for PortfolioTracker
+labels: bug
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!-- Provide a general summary of the issue in the Title above -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Current Behavior 😯
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+<!-- Describe what happens instead of the expected behavior. -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Expected Behavior 🤔
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+<!-- Describe what should happen. -->
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Steps to Reproduce 🕹
 
-**Additional context**
-Add any other context about the problem here.
+<!-- Describe how to reproduce the issue -->
+
+Steps:
+
+1.
+2.
+3.
+4.
+
+## Your Environment 🌎
+
+<!-- What version, browser, OS and screen size are you using -->
+
+- Theme version:
+- Free or paid version: 
+- Browser:
+- OS:
+- Screen size:
+
+## Screenshots 📷
+
+<!-- If applicable, add screenshots to help explain this problem. -->
