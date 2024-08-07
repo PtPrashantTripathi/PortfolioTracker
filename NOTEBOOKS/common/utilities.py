@@ -91,10 +91,13 @@ class GlobalPath:
         self.holdings_gold_file_path_v2 = self.make_path(
             "GOLD/Holdings/Holdings_data_v2.csv"
         )
+        self.holdings_gold_file_path_v3 = self.make_path(
+            "GOLD/Holdings/Holdings_data_v3.json"
+        )
 
         # Holdings Paths
         self.dividend_gold_file_path = self.make_path(
-            "GOLD/Holdings/Dividend_data.csv"
+            "GOLD/Dividend/Dividend_data.csv"
         )
 
     def make_path(self, source_path: str) -> Path:
@@ -229,13 +232,7 @@ def get_schema_from_data_contract(json_path):
 
 
 # Auxiliary functions to gather info of given pandas dataframe
-def find_correct_sheetname(df_pandas,                            
-                           
-                           
-                           
-                           
-                           
-                           sheet_name_regex):
+def find_correct_sheetname(df_pandas, sheet_name_regex):
     """
     Finds the first sheet name that matches the given regular expression.
 
