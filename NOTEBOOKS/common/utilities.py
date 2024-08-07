@@ -102,7 +102,10 @@ class GlobalPath:
             Path: The full resolved path.
         """
         data_path = self.base_path.joinpath(source_path).resolve()
-        data_path.parent.mkdir(parents=True, exist_ok=True)
+        if data_path.is_file():
+            data_path.parent.mkdir(parents=True, exist_ok=True)
+        else:
+            data_path.mkdir(parents=True, exist_ok=True)
         return data_path
 
 
