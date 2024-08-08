@@ -1,4 +1,4 @@
-date,segment,exchange,stock_name,holding_quantity,holding_price_avg,holding_amount
+date,segment,exchange,stock_name,holding_quantity,avg_price,holding_amount
 2020-05-05,EQ,NSE,BHAGERIA,10.0,116.55,1165.5
 2020-05-19,EQ,NSE,BHAGERIA,15.0,111.03,1665.5
 2020-06-15,EQ,NSE,BHAGERIA,0.0,0.0,0.0

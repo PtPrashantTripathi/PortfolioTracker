@@ -28,13 +28,13 @@ class HoldingRecord(StockInfo):
     Attributes:
         datetime (datetime): The timestamp of the holding record.
         holding_quantity (Union[float, int]): The quantity of stock held.
-        holding_price_avg (Union[float, int]): The average price of the held stock.
+        avg_price (Union[float, int]): The average price of the held stock.
         holding_amount (Union[float, int]): The total amount of the holding.
     """
 
     datetime: datetime
     holding_quantity: Union[float, int] = 0
-    holding_price_avg: Union[float, int] = 0
+    avg_price: Union[float, int] = 0
     holding_amount: Union[float, int] = 0
 
 
@@ -124,7 +124,7 @@ class Stock(StockInfo):
         expiry_date (Optional[datetime]): The expiry date for options or futures.
         holding_quantity (Union[float, int]): The total quantity of the stock held.
         holding_amount (Union[float, int]): The total amount of the stock held.
-        holding_price_avg (Union[float, int]): The average price of the stock held.
+        avg_price (Union[float, int]): The average price of the stock held.
         open_positions (List[TradePosition]): List of open trade positions.
         closed_positions (List[TradePosition]): List of closed trade positions.
         holding_records (List[HoldingRecord]): List of holding records.
@@ -133,7 +133,7 @@ class Stock(StockInfo):
     expiry_date: Optional[datetime] = None
     holding_quantity: Union[float, int] = 0
     holding_amount: Union[float, int] = 0
-    holding_price_avg: Union[float, int] = 0
+    avg_price: Union[float, int] = 0
     open_positions: List[TradePosition] = []
     closed_positions: List[TradePosition] = []
     holding_records: List[HoldingRecord] = []
@@ -246,7 +246,7 @@ class Stock(StockInfo):
             self.holding_quantity += position_quantity
             self.holding_amount += open_position.open_price * position_quantity
 
-        self.holding_price_avg = (
+        self.avg_price = (
             0
             if self.holding_quantity == 0
             else self.holding_amount / self.holding_quantity
@@ -260,7 +260,7 @@ class Stock(StockInfo):
             # HOLDING INFO
             datetime=datetime.now(),
             holding_quantity=self.holding_quantity,
-            holding_price_avg=self.holding_price_avg,
+            avg_price=self.avg_price,
             holding_amount=self.holding_amount,
         )
 
