@@ -1,103 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Line Chart Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
 </head>
-<body>
-    <div style="width: 80%; margin: auto;">
-        <canvas id="myChart"></canvas>
-    </div>
-    
-    <script>
-        async function fetchData(url) {
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const data = await response.json();
-                return data;
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-                return [];
-            }
-        }
 
-        function createChart(data) {
-            // Extract dates, close amounts, and holding amounts
-            const labels = data.map(item => new Date(item.date).toLocaleDateString());
-            const closeAmounts = data.map(item => item.close_amount);
-            const holdingAmounts = data.map(item => item.holding_amount);
-
-            // Create the chart
-            const ctx = document.getElementById('myChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Close Amount',
-                            data: closeAmounts,
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            borderWidth: 2,
-                            fill: false,pointStyle: 'circle'
-                        },
-                        {
-                            label: 'Holding Amount',
-                            data: holdingAmounts,
-                            borderColor: 'rgba(153, 102, 255, 1)',
-                            borderWidth: 2,
-                            fill: false,pointStyle: 'circle'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        x: {
-                            type: 'category',
-                            title: {
-                                display: true,
-                                text: 'Date'
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Amount'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Comparison of Close and Holding Amounts'
-                        }
-                    }
-                }
-            });
-        }
-
-        // URL to the JSON data
-        const dataUrl = '../DATA/GOLD/Holdings/Holdings_data_v3.json';
-
-        // Fetch data and create chart
-        fetchData(dataUrl).then(data => {
-            createChart(data);
-        });
-
-    </script>
+<body><a href="chart.js.html">chart.js.html</a><br><br>
+    <a href="highlight.html">highlight.html</a><br><br>
+    <a href="lightweight.html">lightweight.html</a><br><br>
+    <a href="ploty.html">ploty.html</a><br><br>
 </body>
+
 </html>
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>
-        // Initialize Eruda
-        eruda.init();
-    </script>
