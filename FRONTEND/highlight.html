@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highcharts Example</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+    <div id="container" style="width: 80%; height: 500px; margin: auto;"></div>
+    <script>
+        fetch('../DATA/GOLD/Holdings/Holdings_data_v3.json')
+            .then(response => response.json())
+            .then(data => {
+                Highcharts.chart('container', {
+                    title: {
+                        text: 'Comparison of Close and Holding Amounts'
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        title: {
+                            text: 'Date'
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Amount'
+                        }
+                    },
+                    series: [
+                        {
+                            name: 'Close Amount',
+                            data: data.map(item => [new Date(item.date).getTime(), item.close_amount])
+                        },
+                        {
+                            name: 'Holding Amount',
+                            data: data.map(item => [new Date(item.date).getTime(), item.holding_amount])
+                        }
+                    ],
+                    scrollbar: {
+                        enabled: true
+                    },
+                    rangeSelector: {
+                        enabled: true
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
