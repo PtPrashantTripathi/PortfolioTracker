@@ -1,0 +1,496 @@
+symbol,name
+0P00005UNZ.BO,ICICI Prudential Asset Allocator Fund(FOF) Growth
+0P00005UO4.BO,ICICI Prudential Multicap Fund Dividend Payout
+0P00005UOC.BO,ICICI Prudential Short Term Fund Fortnightly Dividend Payout
+0P00005UR1.BO,SBI Magnum Gilt Fund PF Plan Fixed Period 3 year Growth
+0P00005USH.BO,SBI Consumption Opportunities Fund Regular Plan Dividend Payout
+0P00005USL.BO,SBI Magnum Taxgain Scheme Regular Dividend Payout
+0P00005UTA.BO,Sundaram Corporate Bond Fund - Growth
+0P00005UTQ.BO,Sundaram Money Fund Daily Dividend Reinvestment
+0P00005UTS.BO,Sundaram Money Fund Institutional Daily Dividend Reinvestment
+0P00005UU6.BO,Sundaram Rural and Consumption Fund Growth
+0P00005UUJ.BO,Sundaram Mid Cap Growth
+0P00005UWA.BO,Tata Income Fund Regular Income Option Half Yearly Dividend Payout
+0P00005UWV.BO,Tata Equity Savings Regular Periodic Dividend Payout
+0P00005UY1.BO,UTI Regular Savings Fund Regluar Plan Growth
+0P00005UY2.BO,UTI Regular Savings Fund Regluar Plan Flexi Dividend Payout
+0P00005UY3.BO,UTI Regular Savings Fund Regluar Plan Monthly Dividend Payout
+0P00005UY4.BO,UTI - Treasury Advantage Fund - Discontinued - Annaul Dividend Payout Option
+0P00005UY5.BO,UTI - Treasury Advantage Fund - Discontinued Bonus Option
+0P00005UY7.BO,UTI - Treasury Advantage Fund - Discontinued Growth Option
+0P00005UYJ.BO,UTI Equity Fund Regular Plan Growth
+0P00005UYV.BO,UTI Overnight Fund Regular Plan Growth
+0P00005UZE.BO,UTI Mastershare Unit Regular Plan Dividend Payout
+0P00005UZF.BO,UTI Mastershare Unit Regular Plan Growth
+0P00005UZI.BO,UTI Money Market Fund- Discontinued - Regular Plan - Periodic Dividend Payout Option
+0P00005V4C.BO,Aditya Birla Sun Life Money Manager Fund Regular Plan Weekly Dividend Reinvestment
+0P00005V53.BO,Aditya Birla Sun Life India GenNext Fund Dividend Payout
+0P00005V54.BO,Aditya Birla Sun Life India GenNext Fund Growth
+0P00005V5W.BO,Aditya Birla Sun Life Tax Relief 96 Dividend Payout
+0P00005V62.BO,Aditya Birla Sun Life Equity Fund Growth
+0P00005V6S.BO,Baroda Gilt Fund - Plan A - Growth
+0P00005V6X.BO,Baroda Liquid Fund Regular Dividend Payout
+0P00005V7E.BO,Canara Robeco Equity Diversified Fund Growth
+0P00005V7F.BO,Canara Robeco Equity Taxsaver Regular Dividend Payout
+0P00005V7W.BO,L&amp;T Ultra Short Term Fund Regular Cumulative
+0P00005VAB.BO,DSP India T.I.G.E.R. Fund Regular Plan Dividend Payout
+0P00005VAC.BO,DSP India T.I.G.E.R. Fund - Regular Plan - Growth
+0P00005VD6.BO,Franklin India Index Fund NSE Nifty Plan Growth
+0P00005VDH.BO,Franklin India Taxshield Fund Dividend Payout
+0P00005VDI.BO,Franklin India Taxshield Fund Growth
+0P00005VE2.BO,Franklin India Dynamic Asst Allo Fund Of Funds Dividend Payout
+0P00005VE3.BO,Franklin India Dynamic Asst Allo Fund Of Funds Growth
+0P00005VEE.BO,Franklin India Life Stage Fund of Funds - The 50s Plus Plan Growth
+0P00005WF0.BO,SBI Bluechip Fund Regular Growth
+0P00005WF1.BO,SBI Magnum Children&apos;s Benefit Fund Regular Growth
+0P00005WFD.BO,SBI Large &amp; Midcap Fund Regular Growth
+0P00005WFN.BO,IDFC Multi Cap Fund Growth
+0P00005WFQ.BO,Sundaram Equity Hybrid Fund Dividend Payout
+0P00005WGZ.BO,Tata Equity P/E Trigger A 10% Dividend Payout
+0P00005WHH.BO,Tata Treasury Advantage Fund Regular Growth
+0P00005WHI.BO,Tata Treasury Advantage Fund Regular Weekly Dividend Payout
+0P00005WID.BO,Taurus Tax Shield-Growth Option
+0P00005WIE.BO,Taurus Starshare (Multi Cap) Fund - Growth
+0P00005WJF.BO,Franklin India Dynamic Accrual Fund Dividend Payout
+0P00005WJG.BO,Franklin India Dynamic Accrual Fund Growth
+0P00005WKG.BO,UTI Gilt Fund PF Prescribed Date Auto Dividend Payout
+0P00005WKW.BO,UTI - Liquid Cash Plan- Discontinued -Regular Plan Periodic Dividend Payout Option
+0P00005WKX.BO,UTI - Liquid Cash Plan- Discontinued - Regular Plan -Growth
+0P00005WL2.BO,UTI - Liquid Cash Plan- Discontinued - Regular Plan - Monthly Dividend Payout Option
+0P00005WLU.BO,HDFC Childrens Gift Fund(Lock-in)
+0P00005WMS.BO,HDFC Dynamic Debt Plan Quaterly Dividend Payout
+0P00005WNA.BO,HDFC TaxSaver Dividend Payout
+0P00005WNB.BO,HDFC TaxSaver Growth
+0P00005WSV.BO,Kotak Asset Allocator Fund Growth
+0P00005WU9.BO,Kotak Liquid Fund Weekly Dividend Payout
+0P00005WUL.BO,Kotak Taxsaver Fund Growth
+0P00005WUM.BO,Kotak Taxsaver Fund Dividend Payout
+0P00005WUX.BO,LIC MF Childrens Gift Fund
+0P00005WVS.BO,LIC MF Index Sensex Growth
+0P00005X09.BO,ICICI Prudential FMCG Fund Dividend Payout
+0P00005X0A.BO,ICICI Prudential FMCG Fund Growth
+0P00005X39.BO,Baroda ELSS 96 Plan A- Dividend Payout Option
+0P00005X3A.BO,Baroda Multi Cap Fund - Plan A - Growth
+0P00008T5J.BO,DSP Tax Saver Fund Dividend Payout
+0P00008TH7.BO,Kotak Emerging Equity Scheme Dividend Payout
+0P00008TMV.BO,DSP Tax Saver Fund Growth
+0P00008TPO.BO,Kotak Emerging Equity Scheme Growth
+0P00009J47.BO,SBI Magnum Equity ESG Fund Regular Growth
+0P00009J48.BO,SBI Magnum Taxgain Scheme Regular Growth
+0P00009JE1.BO,UTI - Treasury Advantage Fund - Discontinued - Periodic Dividend Payout Plan
+0P00009JEW.BO,Nippon India Low Duration Fund Weekly Dividend Payout
+0P00009MWY.BO,UTI - Treasury Advantage Fund - Discontinued Flexi Dividend Payout Plan
+0P00009MX2.BO,UTI - Treasury Advantage Fund - Discontinued Monthly Dividend Payout Option
+0P00009MX9.BO,UTI - Treasury Advantage Fund - Regular Plan - Growth Option
+0P00009QD8.BO,SBI Magnum Low Duration Fund Regular Plan Monthly Dividend Payout
+0P00009QD9.BO,SBI Magnum Low Duration Fund Regular Plan Fortnightly Dividend Payout
+0P0000A4KC.BO,Edelweiss Mid CapFund Growth
+0P0000ADWI.BO,Aditya Birla Sun Life Pure Value Fund Growth
+0P0000AEK3.BO,Kotak Infrastructure and Economic Reform Fund - Standard Plan-Growth
+0P0000AEK4.BO,Kotak Infrastructure and Economic Reform Fund Standard Plan-Dividend Payout
+0P0000AERT.BO,Edelweiss Liquid Fund Regular Planl Daily Dividend Reinvestment
+0P0000CN69.BO,Principal Ultra Short Term Fund Weekly Dividend Payout
+0P0000GB29.BO,Aditya Birla Sun Life Tax Relief 96 Growth
+0P0000GB2V.BO,Taurus Tax Shield-Dividend Payout Option
+0P0000GB48.BO,ICICI Prudential Bluechip Fund Growth
+0P0000IQ9C.BO,Principal Emerging Bluechip Fund Growth
+0P0000IQGY.BO,Principal Emerging Bluechip Fund Half Yearly Dividend Payout
+0P0000IX9F.BO,Canara Robeco Liquid Regular Plan Daily Dividend Reinvestment
+0P0000JWUO.BO,UTI Regular Savings Fund Regluar Plan Months Payment Dividend Payout
+0P0000JWUV.BO,Taurus Starshare (Multi Cap) Fund - Dividend Payout
+0P0000JXJE.BO,IDFC Tax Advantage (ELSS) Fund - Regular Plan - Growth
+0P0000JXJR.BO,Taurus Ethical Fund Dividend Payout Option
+0P0000K1D1.BO,Canara Robeco Equity Taxsaver Growth
+0P0000K8MT.BO,Edelweiss Large Cap Fund B Dividend Payout
+0P0000K9VG.BO,Sundaram Mid Cap Institutional Growth
+0P0000KPO3.BO,ICICI Prudential Corporate Bond Fund Fortnightly Dividend Payout
+0P0000KXQU.BO,UTI - Short Term Income Fund - Discontinued Regular Option -Growth Sub Option
+0P0000KXQV.BO,UTI - Short Term Income Fund - Discontinued Regular Option - Dividend Sub Payout Option
+0P0000MLHH.BO,Axis Bluechip Fund Growth
+0P0000MLHP.BO,Axis Bluechip Fund Dividend Payout
+0P0000N3LO.BO,Axis Short Terml Monthly Dividend Payout
+0P0000N3OO.BO,Tata Equity P/E Trigger A 5% Dividend Payout
+0P0000N41O.BO,Canara Robeco Consumer Trends Fund Regular Plan Dividend Payout
+0P0000N9YQ.BO,Sundaram Debt Oriented Hybrid Fund Growth
+0P0000N9YR.BO,Sundaram Debt Oriented Hybrid Fund Monthly Dividend Payout
+0P0000N9YS.BO,Sundaram Debt Oriented Hybrid Fund Quarterly Dividend Payout
+0P0000N9YT.BO,Sundaram Debt Oriented Hybrid Fund Half Yearly Dividend Payout
+0P0000NNCV.BO,AEGON Life - Nav Protector Fund
+0P0000NNCW.BO,Bharti AXA Life - Save and Grow
+0P0000NND2.BO,Bharti AXA Life - Growth Opportunities Plus Fund
+0P0000NND4.BO,Bharti AXA Life - Save and Grow Money Pension
+0P0000NND7.BO,Bharti AXA Life - Growth Opportunities Pension
+0P0000NNDG.BO,Aditya Birla Sun Life - Individual Balancer Fund
+0P0000NNDH.BO,Aditya Birla Sun Life - Individual Enhancer Fund
+0P0000NNDI.BO,Aditya Birla Sun Life - Individual Creator Fund
+0P0000NNDK.BO,Aditya Birla Sun Life - Individual Magnifier Fund
+0P0000NNDL.BO,Aditya Birla Sun Life - Individual Multiplier Fund
+0P0000NNDQ.BO,Aditya Birla Sun Life - Individual Pension Plan Nourish Fund
+0P0000NNDS.BO,Aditya Birla Sun Life - Individual Pension Plan Enrich Fund
+0P0000NNE2.BO,DHFL Pramerica Life - Balanced Fund
+0P0000NNE3.BO,DHFL Pramerica Life - Large Cap Fund
+0P0000NNE4.BO,DHFL Pramerica Life - Growth Fund
+0P0000NNE5.BO,DHFL Pramerica Life - Debt Fund
+0P0000NNE6.BO,DHFL Pramerica Life - Pension Balanced Fund
+0P0000NNE7.BO,DHFL Pramerica Life - Pension Debt Fund
+0P0000NNE8.BO,DHFL Pramerica Life - Pension Dynamic Equity Fund
+0P0000NNEA.BO,DHFL Pramerica Life - Pension Growth Fund
+0P0000NNF2.BO,HDFC Standard Life - Large Cap Niche Life Fund
+0P0000NNF7.BO,HDFC Standard Life - Mid Cap Niche Life Fund
+0P0000NNFG.BO,HDFC Standard Life - Secure Managed Investmment Life II
+0P0000NNFH.BO,HDFC Standard Life - Secure Managed Investmment Life
+0P0000NNH1.BO,Exide Life Balanced Fund
+0P0000NNH2.BO,Exide Life Growth Fund
+0P0000NNH5.BO,Exide Life Secure Fund
+0P0000NNYX.BO,Exide Life Group Gratuity Balanced Fund
+0P0000NNYZ.BO,Exide Life Group Gratuity Growth Fund
+0P0000NNZ2.BO,Exide Life Group Gratuity Secure Fund
+0P0000NNZB.BO,Kotak Mahindra Old Mutual Life - Kotak Advantage Multiplier Fund II
+0P0000NOLR.BO,Kotak Credit Risk Weekly Dividend Payout
+0P0000NONL.BO,IDFC Cash Fund - Regular Plan - Growth
+0P0000NPBB.BO,Kotak Mahindra Old Mutual Life - Kotak Classic Opportunities Fund
+0P0000NPBF.BO,Kotak Mahindra Old Mutual Life - Kotak Balanced Fund
+0P0000NPBY.BO,LIC of India - Jeevan Plus Bond
+0P0000NPC0.BO,LIC of India - Jeevan Plus Balanced
+0P0000NPC1.BO,LIC of India - Jeevan Plus Secure
+0P0000NPC3.BO,LIC of India - Jeevan Plus Growth
+0P0000NPD0.BO,LIC of India - Jeevan Saathi Plus Bond
+0P0000NPD2.BO,LIC of India - Jeevan Saathi Plus Balanced
+0P0000NPD3.BO,LIC of India - Jeevan Saathi Plus Secure
+0P0000NPD5.BO,LIC of India - Jeevan Saathi Plus Growth
+0P0000NPD8.BO,Max Life - Group Gratuity Growth Fund
+0P0000NPDA.BO,Max Life - Group SuperAnnuation Growth Fund
+0P0000NPDR.BO,PNB Met Life - Accelerator
+0P0000NPDT.BO,PNB Met Life - Balancer Fund II
+0P0000NPDU.BO,PNB Met Life - Group Gratuity Balanced
+0P0000NPDV.BO,PNB Met Life - Flexi Cap Fund
+0P0000NPE6.BO,PNB Met Life - Group Gratuity Debt
+0P0000NPE7.BO,PNB Met Life - Moderator
+0P0000NPE8.BO,PNB Met Life - Multiplier Fund II
+0P0000NPE9.BO,PNB Met Life - Multiplier
+0P0000NPEA.BO,PNB Met Life - Preserver
+0P0000NPEB.BO,PNB Met Life - Preserver Fund II
+0P0000NPED.BO,PNB Met Life - Protector
+0P0000NPEG.BO,PNB Met Life - Virtue
+0P0000NPEH.BO,PNB Met Life - Virtue Fund II
+0P0000NPN7.BO,Shriram Life - Maximus
+0P0000NPN8.BO,Shriram Life - Conservator
+0P0000NPNA.BO,Shriram Life - Accelerator
+0P0000NPNB.BO,Shriram Life - Conservator Gold
+0P0000NPNC.BO,Shriram Life - Wealth Creator
+0P0000NPND.BO,Shriram Life - Conservator Platinum
+0P0000NPNE.BO,Shriram Life - Maximus Gold
+0P0000NPNG.BO,Shriram Life - Maximus Plus
+0P0000NPNJ.BO,Shriram Life - Preserver
+0P0000NPNK.BO,Shriram Life - Tyaseer
+0P0000NPPX.BO,Aviva Life - Life Unit Linked Enhancer Fund
+0P0000NPR3.BO,Aviva Life - Life Unit Linked Enhancer Fund II
+0P0000NQ9J.BO,Bajaj Allianz Life - Accelerator Mid Cap Fund II
+0P0000NQ9R.BO,Bajaj Allianz Life - Accelerator Mid Cap Fund
+0P0000NQB3.BO,Bajaj Allianz Life - Accelerator Mid Cap Pension Fund
+0P0000NQBL.BO,Bajaj Allianz Life - LifeLong Gain
+0P0000NQJN.BO,Tata AIA Life - Life Growth Enabler Fund
+0P0000NQW1.BO,ICICI Prudential Life - Balancer Fund III
+0P0000NQW2.BO,ICICI Prudential Life - Balancer Fund II
+0P0000NQW4.BO,ICICI Prudential Life - Balancer Fund IV
+0P0000NQWQ.BO,ICICI Prudential Life - Group Leave Encashment Balance Fund
+0P0000NQWR.BO,ICICI Prudential Life - Group Leave Encashment Income Fund
+0P0000NQWZ.BO,ICICI Prudential Life - Health Multiplier Fund
+0P0000NQX0.BO,ICICI Prudential Life - Health Preserver Fund
+0P0000NQXA.BO,ICICI Prudential Life - Invest Sheild Fund Pension
+0P0000NQXK.BO,ICICI Prudential Life - Multiplier II
+0P0000NQXL.BO,ICICI Prudential Life - Multiplier III
+0P0000NQXM.BO,ICICI Prudential Life - Multiplier IV
+0P0000NQXP.BO,ICICI Prudential Life - Pension Balancer Fund
+0P0000NQXQ.BO,ICICI Prudential Life - Pension Balancer Fund II
+0P0000NRD9.BO,ICICI Prudential Life - Pension Multiplier Fund
+0P0000NRDA.BO,ICICI Prudential Life - Pension Multiplier Fund II
+0P0000NRDC.BO,ICICI Prudential Life - Pension Preserver Fund
+0P0000NRDD.BO,ICICI Prudential Life - Pension Protector Fund
+0P0000NRDM.BO,ICICI Prudential Life - Pension R.I.C.H. Fund II
+0P0000NRDN.BO,ICICI Prudential Life - Pension R.I.C.H. Fund
+0P0000NRDO.BO,ICICI Prudential Life - Preserver Fund
+0P0000NRDQ.BO,ICICI Prudential Life - Preserver Fund IV
+0P0000NRDR.BO,ICICI Prudential Life - Preserver Fund III
+0P0000NRDS.BO,ICICI Prudential Life - Protector Fund II
+0P0000NRE2.BO,ICICI Prudential Life - R.I.C.H. Fund
+0P0000NRE4.BO,ICICI Prudential Life - R.I.C.H. Fund III
+0P0000NRE5.BO,ICICI Prudential Life - R.I.C.H. Fund II
+0P0000NRE7.BO,ICICI Prudential Life - R.I.C.H. Fund IV
+0P0000NREA.BO,Sahara Life- Balance Fund
+0P0000NREC.BO,Sahara Life- Secured Fund
+0P0000NRED.BO,Sahara Life- Smart Fund
+0P0000NREF.BO,Sahara Life- Growth Fund
+0P0000NREH.BO,SBI Life - Equity Optimiser Pension Fund
+0P0000NRF9.BO,SBI Life - Equity Optimiser Fund
+0P0000NRGQ.BO,SBI Life - Group Growth Plus Fund - ULIP
+0P0000NRGR.BO,SBI Life - Group Balanced Plus Fund - ULIP
+0P0000NRGS.BO,SBI Life - Group Debt Plus Fund - ULIP
+0P0000NRR6.BO,Max Life - PensionSecure Fund
+0P0000NRR8.BO,Max Life - Group GratuityConservative Fund
+0P0000NRRD.BO,Max Life - Group Superannuation Balance Fund
+0P0000NRRE.BO,Max Life - Group SuperannuationConservative Fund
+0P0000NRSL.BO,Max Life - PensionGrowth Super Fund
+0P0000NRT4.BO,Max Life - PensionGrowth Fund
+0P0000NRT6.BO,Max Life - PensionConservative Fund
+0P0000O8SK.BO,SBI PSU Regular Growth
+0P0000ON3O.BO,Mirae Asset Emerging Bluechip Growth
+0P0000OOQ9.BO,Essel Regular Savings Fund Quarterly Dividend Payout
+0P0000OQWU.BO,HDFC Short Term Debt Fortnightly Dividend Payout
+0P0000P0VW.BO,Canara Robeco Bluechip Equity Fund Regular Plan Growth
+0P0000PUU8.BO,IDBI Ultra Short Term Growth
+0P0000PUUG.BO,IDBI Nifty Junior Index Growth
+0P0000PUUH.BO,IDBI Nifty Junior Index Dividend Payout
+0P0000PWE3.BO,Nippon India Index Fund Nifty Plan Quarterly Dividend Payout
+0P0000RXFA.BO,ICICI Prudential Life - Invest Sheild Fund Life
+0P0000RXFF.BO,ICICI Prudential Life - Investshield Cash Plus
+0P0000S1GV.BO,AEGON Life - Accelerator Fund
+0P0000S2JU.BO,Bharti AXA Life - Growth Opportunities Pension Plus Fund
+0P0000S2JW.BO,Bharti AXA Life - True Wealth Fund
+0P0000S4AZ.BO,Sahara Life- Prima Fund
+0P0000S4MP.BO,LIC of India - Endowment Plus Bond
+0P0000S4MQ.BO,LIC of India - Endowment Plus Secure
+0P0000S4MS.BO,LIC of India - Endowment Plus Balanced
+0P0000S4MT.BO,LIC of India - Endowment Plus Growth
+0P0000SDPE.BO,ICICI Prudential Life - Pension Return Gurantee X for 10 Years
+0P0000SLRS.BO,BajajAllianz Life - Assured Return
+0P0000SSUN.BO,LIC of India - Samridhi Plus
+0P0000SVRU.BO,Tata AIA Life - Maxima Fund - Group Pension
+0P0000T2D6.BO,Exide Life Active Asset Allocation Fund
+0P0000TFDZ.BO,SBI Life - GPF070211
+0P0000TFE1.BO,SBI Life - RGF070311
+0P0000TFYE.BO,Aditya Birla Sun Life Financial Planning FOF Prudent Dividend Payout
+0P0000TFYF.BO,Aditya Birla Sun Life Financial Planning FOF Aggressive Growth
+0P0000TGK1.BO,Reliance Gropu Infrastructure Fund 1
+0P0000TJHE.BO,Union Liquid Weekly Dividend Reinvestment
+0P0000TJHF.BO,Union Liquid Fortnightly Dividend Payout
+0P0000TZRC.BO,Essel Large Cap Equity Fund Growth
+0P0000UAZQ.BO,Essel Regular Savings Fund Monthly Dividend Payout
+0P0000UJI5.BO,Indiabulls Liquid Fund Growth
+0P0000V2QG.BO,Axis Gilt Fund Half Yearly Dividend Payout
+0P0000V77P.BO,IDBI Liquid Monthly Dividend Payout
+0P0000VCCW.BO,ICICI Prudential All Seasons Bond Fund Quaterly Dividend Payout
+0P0000VGVT.BO,Tata Treasury Advantage Fund Regular Periodic Dividend Payout
+0P0000VHE2.BO,IDBI Nifty Index Dividend Payout
+0P0000VN3N.BO,IDFC All Seasons Bond Fund Regular Plan Fortnightly Dividend Payout
+0P0000VRVN.BO,Edelweiss Tokio Life - Equity Top 250
+0P0000VRZL.BO,SBI Life - RGF150611
+0P0000WCG0.BO,Axis Focused 25 Fund Dividend Payout
+0P0000WEGR.BO,ICICI Prudential All Seasons Bond Fund Annual Dividend Payout
+0P0000X55N.BO,Aviva Life - Group Superannuation &amp; Gratuity Secure Fund
+0P0000X55O.BO,Aviva Life - Group Superannuation &amp; Gratuity Balanced Fund
+0P0000X55Q.BO,Aviva Life - Group Superannuation &amp; Gratuity Growth Fund
+0P0000X5GD.BO,HDFC Standard Life - Group Defined Benefit Superannuation Pension Secure Managed
+0P0000X5GE.BO,HDFC Standard Life - Group Defined Benefit Superannuation Pension Defensive Managed
+0P0000X5GF.BO,HDFC Standard Life - Group Defined Benefit Superannuation Pension Balanced Managed
+0P0000XUZ1.BO,ICICI Prudential Exports and Services Fund Direct Plan Growth
+0P0000XUZ9.BO,ICICI Prudential Multicap Fund Direct Plan Dividend Payout
+0P0000XV05.BO,IDBI Ultra Short Term Fund Direct Weekly Dividend Payout
+0P0000XV0P.BO,IDFC Focused Equity Fund - Direct Plan - Growth
+0P0000XV0S.BO,IDFC Infrastructure Fund - Direct Plan - Growth
+0P0000XV1A.BO,IDFC Bond Fund - Medium Term Plan Direct Plan Quartely Dividend Payout
+0P0000XV1Q.BO,Indiabulls Blue Chip Fund Direct Plan Dividend Payout Option
+0P0000XV1X.BO,Indiabulls Ultra Short Term Fund - Direct Plan - Growth Option
+0P0000XV5G.BO,Edelweiss Greater China Equity Off-shore Fund - Direct Plan - Growth Option
+0P0000XV5I.BO,Kotak Bluechip Growth Direct
+0P0000XV5N.BO,Kotak Bond Quaterly Dividend Payout Direct
+0P0000XV6C.BO,Kotak Gold Fund Growth - Direct
+0P0000XV6D.BO,Kotak Credit Risk FundGrowthDirect
+0P0000XV6Q.BO,Kotak Tax Saver-Scheme-Growth - Direct
+0P0000XV6R.BO,Kotak Tax Saver-Scheme-Dividend Payout Direct
+0P0000XV98.BO,LIC MF Index Fund-Sensex-Direct Plan Growthoption
+0P0000XV9L.BO,LIC MF Taxplan-Direct Plan Growth Option
+0P0000XV9M.BO,LIC MF Taxplan-Direct Plan Dividend Payout Option
+0P0000XV9V.BO,Mirae Asset Emerging Bluechip Fund - Direct Plan - Growth
+0P0000XVAN.BO,HDFC Dynamic PE Ratio Fund of Funds- Plan A Direct Quarterly Dividend Payout- Payout
+0P0000XVAX.BO,Essel Large Cap Equity Fund Direct Plan Growth Option
+0P0000XVAY.BO,Essel Liquid Fund Direct Plan Dividend Reinvestment OptionDaily
+0P0000XVB8.BO,Kotak Infrastructure &amp; Economic Reform Fund- Direct Plan- Growth Option
+0P0000XVC8.BO,Principal Equity Savings Direct Plan Dividend Payout Option Quaterly
+0P0000XVCG.BO,Principal Emerging Bluechip Fund Direct Plan Half Yearly Dividend Payout Option
+0P0000XVD0.BO,Principal Personal Tax Saver Fund - Direct Plan
+0P0000XVDQ.BO,Nippon India Gilt Securities Fund Direct Plan Automatic Capital Appreciation Dividend Payout
+0P0000XVG9.BO,Invesco India Corporate Bond Fund Direct Plan MonthlyDividend Payout
+0P0000XVGI.BO,IInvesco India Financial Services Fund Direct Plan Dividend Payout
+0P0000XVHC.BO,Invesco India Multicap Fund - Direct Plan - Growth Option
+0P0000XVHT.BO,Invesco India PSU Equity Fund Direct Plan Dividend Payout
+0P0000XVJL.BO,SBI Bluechip Fund Direct Dividend Payout
+0P0000XVJQ.BO,SBI Bluechip Fund Direct Growth
+0P0000XVJX.BO,SBI Consumption Opportunities Fund Direct Plan Growth
+0P0000XVK0.BO,SBI Consumption Opportunities Fund Direct Plan Dividend Payout
+0P0000XVL3.BO,SBI Magnum Taxgain Scheme Direct Dividend Payout
+0P0000XVL9.BO,SBI Magnum Taxgain Scheme Direct Growth
+0P0000XVLE.BO,SBI Short Term Debt Fund Direct Plan Fortnightly Dividend Payout
+0P0000XVLI.BO,SBI Magnum Low Duration Fund Direct Plan Fortnightly Dividend Payout
+0P0000XVMD.BO,Sundaram Banking &amp; PSU Debt Fund Direct Plan Daily Dividend Reinvestment Option
+0P0000XVMS.BO,Sundaram Debt Oriented Hybrid Fund - Direct Plan - Growth Option
+0P0000XVMZ.BO,Sundaram Debt Oriented Hybrid Fund Plan Direct Plan Quarterly Dividend Payout Option
+0P0000XVO6.BO,Sundaram Low Duration Direct Plan Fortnightly Dividend Payout Option
+0P0000XVOL.BO,Tata Equity P/E Fund Direct Plan Dividend Payout Trigger A (5%)
+0P0000XVOS.BO,Tata Equity P/E Fund Direct Plan Dividend Payout Trigger B (10%)
+0P0000XVOU.BO,Tata Ethical Fund Direct Plan Growth
+0P0000XVPH.BO,Tata Retirement Savings Progressive Fund Direct Plan Growth
+0P0000XVPN.BO,Taurus Banking &amp; Financial Services Fund-Direct Plan-Dividend Payout Option
+0P0000XVPU.BO,Taurus Ethical Fund-Direct Plan-Growth Option
+0P0000XVPV.BO,Taurus Ethical Fund-Direct Plan-Dividend Payout Option
+0P0000XVQ4.BO,Taurus Nifty Index Fund-Direct Plan-Dividend Payout Option
+0P0000XVQ8.BO,Taurus Starshare (Multi Cap) Fund - Direct Plan-Dividend Payout Option
+0P0000XVQB.BO,Taurus Starshare (Multi Cap) Fund - Direct Plan-Growth Option
+0P0000XVQD.BO,Taurus Tax Shield-Direct Plan-Growth Option
+0P0000XVR8.BO,Franklin India Dynamic Accrual Fund Direct Dividend Payout
+0P0000XVRA.BO,Franklin India Dynamic Accrual Fund - Direct - Growth
+0P0000XVV3.BO,Baroda ELSS 96 Plan B (Direct) Dividend Payout Option
+0P0000XVVB.BO,Baroda Conservative Hybrid Fund Plan B (Direct) Growth Option
+0P0000XVWM.BO,Aditya Birla Sun Life India Gennext Fund Dividend Payout Direct Plan
+0P0000XVWN.BO,Aditya Birla Sun Life India Gennext Fund Growth Direct Plan
+0P0000XVWT.BO,Aditya Birla Sun Life Government Securities Fund Growth Direct Plan
+0P0000XVYB.BO,Aditya Birla Sun Life Tax Relief 96 Dividend Payout Direct Plan
+0P0000XVYC.BO,Aditya Birla Sun Life Tax Relief 96 Growth Direct Plan
+0P0000XVYL.BO,BNP Paribas CorporateBond Fund Direct Plan Monthly Dividend Payout Option
+0P0000XVZS.BO,BOI AXA Treasury Advnatage Fund- Direct Plan- Daily Dividend Reinvestment
+0P0000XVZV.BO,Canara Robeco Equity Hybrid Fund - Direct Plan - Growth
+0P0000XW02.BO,Canara Robeco Equity Diversified Fund-Direct Plan -Growth Option
+0P0000XW03.BO,Canara Robeco Equity Taxsaver Direct Plan Dividend Payout Option
+0P0000XW04.BO,Canara Robeco Equity Taxsaver - Direct Plan - Growth Option
+0P0000XW09.BO,Canara Robeco Savings Fund Direct Plan Growth Option
+0P0000XW0O.BO,Canara Robeco Bluechip Equity Fund Direct Plan Growth
+0P0000XW1Y.BO,DSP India T.I.G.E.R. Fund Direct Plan Dividend Payout
+0P0000XW1Z.BO,DSP India T.I.G.E.R. Fund - Direct Plan - Growth
+0P0000XW2T.BO,DSP Tax Saver Fund - Direct Plan - Growth
+0P0000XW4W.BO,Quant Consumption Fund Dividend Payout Option Direct Plan
+0P0000XW57.BO,Franklin India Bluechip Fund- Direct - Growth
+0P0000XW5O.BO,Franklin India Taxshield Direct Dividend Payout
+0P0000XW5P.BO,Franklin India Taxshield - Direct - Growth
+0P0000XW5U.BO,Franklin India Dynamic Asst Allo Fund Of Funds Direct Dividend Payout
+0P0000XW72.BO,HDFC Childrens Gift Fund Direct Plan(Lock-in)
+0P0000XW7U.BO,HDFC Index Fund Sensex Plan-Direct Plan
+0P0000XW8Y.BO,HDFC TaxSaver -Direct Plan Dividend Payout Option
+0P0000XW8Z.BO,HDFC TaxSaver -Direct Plan - Growth Option
+0P0000XWAQ.BO,ICICI Prudential FMCG Fund Direct Plan Dividend Payout
+0P0000XWAR.BO,ICICI Prudential FMCG Fund Direct Plan Growth
+0P0000XWAT.BO,ICICI Prudential Bluechip Fund Direct Plan Growth
+0P0000XWC1.BO,Kotak Asset Allocator Fund - Direct Growth
+0P0000XWCR.BO,Baroda Large Cap Fund - Plan B (Direct) - Growth Option
+0P0000XXY7.BO,LIC MF Childrens Gift Fund Direct Plan
+0P0000XXY8.BO,Essel 3 in 1 Fund Direct Plan Dividend Payout Option Quarterly Dividend Payout
+0P0000XXY9.BO,Essel Ultra Short Term Fund Direct Plan Dividend Payout Option Monthly
+0P0000XXZ1.BO,Tata Treasury Advantage Fund Direct Plan Periodic Dividend Payout
+0P0000XXZB.BO,Tata Income Fund Direct Plan Periodic Dividend Payout
+0P0000XY0N.BO,ICICI Prudential Asset Allocator Fund(FOF) Direct Plan Growth
+0P0000XYE5.BO,PGIM India Premier Bond Fund Direct Plan Quarterly Dividend Payout
+0P0000XZRV.BO,Baroda Liquid Fund Plan B (Direct) Weekly Dividend Payout Option
+0P0000Y0IA.BO,Essel Liquid Fund Direct Plan Dividend Payout OptionMonthly
+0P0000Y0IB.BO,Essel Liquid Fund Direct Plan Dividend Payout OptionWeekly
+0P0000Y7UT.BO,Indiabulls Income Fund Regular Half YearlyDividend Payout
+0P0000Y7UV.BO,Indiabulls Income Fund Regular Quarterly Dividend Payout
+0P0000Y7UY.BO,Indiabulls Income Fund Direct Monthly Dividend Payout
+0P0000YCGL.BO,IDFC Banking &amp; PSU Debt Fund-Direct Plan- Fortnightly Dividend Payout
+0P0000YU92.BO,Motilal Oswal Focused 25 Regular Growth
+0P0000YWL0.BO,Parag Parikh Long Term Equity Regular Growth
+0P0000YWL1.BO,Parag Parikh Long Term Equity Direct Growth
+0P0000Z34R.BO,SBI Consumption Opportunities Fund Regular Plan Growth
+0P0000Z8NK.BO,Sundaram Low Duration Regular Quatterly Dividend Payout (Formerly Super Institutional Plan)
+0P0000Z9VZ.BO,Axis Dynamic Bond Fund Direct Plan Half Yearly Dividend Payout Option
+0P0000ZKI8.BO,ICICI Prudential Savings Fund Direct Plan Dividend Payout Others
+0P0000ZKJT.BO,Edelweiss Banking and PSU Debt Fund Direct Plan Monthly Dividend Payout Option
+0P0000ZKL0.BO,IDBI Equity Advantage Fund Regular Growth
+0P0000ZKLP.BO,DSP Banking &amp; PSU Debt Fund Regular Quarterly Dividend Payout
+0P0000ZLWY.BO,ICICI Prudential All Seasons Bond Fund Direct Plan Dividend Payout
+0P0000ZRWN.BO,Max Life- PensionPreserver Fund
+0P0000ZRWT.BO,ICICI Prudential Liquid Fund Direct Plan Dividend Payout Others
+0P0000ZTNO.BO,Kotak Bond Short Term Plan-(Half Yearly Dividend Payout) Direct
+0P000101RU.BO,IIFL Liquid Fund Regular Weekly Dividend Payout
+0P00011MOQ.BO,ICICI Prudential Savings Fund Dividend Payout Others
+0P00011R49.BO,Baroda ELSS 96 Fund - Plan A- Bonus Option
+0P00011SRW.BO,ICICI Prudential Money Market Fund Direct Plan Dividend Payout Others
+0P000123QC.BO,Edelweiss Government Securities Fund Regular Monthly Dividend Payout
+0P000124IS.BO,Nippon India Equity Hybrid Fund Quarterly Dividend Payout Option
+0P00012ALU.BO,Motilal Oswal Midcap 30 Regular Growth
+0P00012B07.BO,Baroda ELSS 96 - Plan B (Direct)- Bonus Option
+0P00012D9O.BO,BNP Paribas Medium Term Fund Regular Calendar Quarterly Dividend Payout
+0P00012D9T.BO,BNP Paribas Medium Term Fund Direct Calendar Quarterly Dividend Payout
+0P00012IEH.BO,BOI AXA Equity Debt Rebalancer Direct Dividend Payout
+0P00012IEI.BO,BOI AXA Equity Debt Rebalancer Direct Growth
+0P00012IEJ.BO,BOI AXA Equity Debt Rebalancer Regular Dividend Payout
+0P00012IEK.BO,BOI AXA Equity Debt Rebalancer Regular Growth
+0P00012O11.BO,Sundaram Low Duration Regular Fortnightly Dividend Payout (Formerly Super Institutional Plan)
+0P00012ZRK.BO,Motilal Oswal Multicap 35 Fund Direct Plan Dividend Payout
+0P00012ZRM.BO,Motilal Oswal Multicap 35 Fund - Direct Plan - Growth
+0P00012ZRO.BO,Motilal Oswal Multicap 35 Fund - Regular Plan - Growth
+0P000133S9.BO,L&amp;T Emerging Businesses Fund Regular Growth
+0P000133SA.BO,L&amp;T Emerging Businesses Fund Regular Dividend Payout
+0P000133SB.BO,L&amp;T Emerging Businesses Fund Direct Growth
+0P000133SC.BO,L&amp;T Emerging Businesses Fund Direct Dividend Payout
+0P000134CU.BO,L&amp;T Ultra Short Term Fund Direct Plan Bonus
+0P000135C7.BO,ICICI Prudential Money Market Fund Dividend Payout Others
+0P00013MFL.BO,Edelweiss Emerging Markets Opportunities Equity Offshore Regular Gwoth
+0P00013YAK.BO,Kotak Bond Short Term Plan-(Half Yearly Dividend Payout)
+0P00013YN1.BO,L&amp;T Business Cycles Regular Growth
+0P00013YN2.BO,L&amp;T Business Cycles Regular Dividend Payout
+0P00013YN3.BO,L&amp;T Business Cycles Direct Growth
+0P00013YN4.BO,L&amp;T Business Cycles Direct Dividend Payout
+0P000148ON.BO,IDFC Dynamic Bond Fund Direct Plan Periodic Dividend Payout
+0P00014BOR.BO,Edelweiss Corporate Bond Fund Regular Gwowth
+0P00014CFF.BO,ICICI Prudential Liquid Fund Dividend Payout Others
+0P00014JBM.BO,HDFC Corporate Bond Fund Direct Option Normal Dividend Payout Option
+0P00014JBP.BO,HDFC Medium Term Debt Plan Regular Plan Normal Dividend Payout Option
+0P00014JBQ.BO,HDFC Medium Term Debt Plan Direct Plan Normal Dividend Payout Option
+0P00014KAS.BO,IIFL Focused Equity Fund Regular Growth
+0P00014KAU.BO,IIFL Focused Equity Fund Direct Growth
+0P00014LYF.BO,Kotak Equity Arbitrage Fund Bimonthly Dividend Payout
+0P00014MH8.BO,Kotak Equity Arbitrage Fund Bimothly Dividend Payout Direct
+0P000150PR.BO,Aditya Birla Sun Life Equity Savings Fund Direct PlanGrowth
+0P000153GC.BO,Nippon India Gilt Securities Fund- Direct Plan- Growth Plan- Bonus Option
+0P0001540Z.BO,HDFC Dynamic Debt Plan Regular Plan Normal Dividend Payout Option
+0P00015410.BO,HDFC Income Fund Direct Plan Normal Dividend Payout Option
+0P00015411.BO,HDFC Income Fund Regular Plan Normal Dividend Payout Option
+0P00015412.BO,HDFC Short Term Debt Fund Direct Plan Normal Dividend Payout Option
+0P00015413.BO,HDFC Short Term Debt Regular Plan Normal Dividend Payout Option
+0P000156L7.BO,ICICI Prudential Short Term Fund Half Yearly Dividend Payout
+0P000159Q0.BO,Motilal Oswal Long Term Equity Fund - Direct Plan - Growth
+0P00015BYN.BO,L&amp;T Resurgent India Bond Fund Regular Growth
+0P00015BYP.BO,L&amp;T Resurgent India Bond Fund Regular Dividend Payout
+0P00015BYQ.BO,L&amp;T Resurgent India Bond Fund Direct Growth
+0P00015BYR.BO,L&amp;T Resurgent India Bond Fund Direct Dividend Payout
+0P00015BYS.BO,Edelweiss Multi-Cap Regular Growth
+0P00015DXJ.BO,Nippon India Retirement Fund - Wealth Creation Scheme - Regular Growth
+0P00015DXK.BO,Nippon India Retirement Fund - Wealth Creation Scheme - Regular Bonus
+0P00015DXL.BO,Nippon India Retirement Fund Wealth Creation Scheme Regular Dividend Payout
+0P00015FQH.BO,Tata Short Term Bond Fund Direct Plan Periodic Dividend Payout Option
+0P00015FQI.BO,Tata Short Term Bond Fund Regular Periodic Dividend Payout Option
+0P00015GXV.BO,Sundaram Money Fund Regular Qrtly Dividend Reinvestment
+0P00015H6K.BO,Baroda ELSS 96 Plan A -Growth Option
+0P00015I1U.BO,Baroda ELSS 96 Plan B(Direct) -Growth Option
+0P00015R9R.BO,UTI Medium Term Fund - Direct Plan - Growth Option
+0P00015XG1.BO,L&amp;T Resurgent India Bond Fund Annual Dividend Payout Option
+0P000168VX.BO,LIC MF Unit Linked Insurance-10 Yrs Single Premium-Regular-Dividend Reinvestment
+0P000168W0.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Reducing Cover Yearly-Regular-Dividend
+0P000168W2.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Uniform Cover Half-Yearly-Regular-Dividend
+0P000168W3.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Uniform Cover Yearly-Regular-Dividend
+0P000168W4.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Reducing Cover Monthly-Regular-Dividend
+0P000168W6.BO,LIC MF Unit Linked Insurance 15Yrs Regular Premium Reducing Cover Yearly-Regular-Dividend
+0P000168W9.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Uniform Cover Yearly-Regular-Dividend
+0P000168WA.BO,LIC MF Unit Linked Insurance-10 Yrs Single Premium-Direct-Dividend Reinvestment
+0P000168WC.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Reducing Cover Yearly-Direct-Dividend
+0P000168WF.BO,LIC MF Unit Linked Insurance-10 Yrs Regular Premium Uniform Cover Yearly-Direct-Dividend
+0P000168WG.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Uniform Cover Monthly-Direct-Dividend
+0P000168WI.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Reducing Cover Yearly-Direct-Dividend
+0P000168WJ.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Reducing Cover Monthly-Direct-Dividend
+0P000168WL.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Uniform Cover Yearly-Direct-Dividend
+0P00016H71.BO,Mirae Asset Hybrid Equity Fund -Direct Plan-Dividend Payout
+0P00016KOX.BO,Axis Equity Saver Fund Regular Plan Monthly Dividend Payout
+0P00016MTY.BO,UTI Money Market Fund - Regular Plan - Fortnightly Dividend Payout Option
+0P00016YNJ.BO,Essel Large Cap Equity Fund Regular Plan Yearly Dividend Payout Option
+0P000173N3.BO,L&amp;T Resurgent India Bond Fund Direct Plan Annual Dividend Payout Option
+0P000175WG.BO,Axis Children&apos;s Gift Regular No Lock in Growth
+0P000175WK.BO,Axis Children&apos;s Gift Direct No Lock in Growth
+0P000175WL.BO,Axis Children&apos;s Gift Direct No Lockin Dividend Payout
+0P00017842.BO,Mirae Asset Tax Saver Fund -Regular Plan-Growth
+0P00017844.BO,Mirae Asset Tax Saver Fund -Direct Plan-Growth
+0P00017894.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Reducing Cover Quarterly - Direct
+0P00017895.BO,LIC MF Unit Linked Insurance 10 Years Regular Premium Reducing Cover Quarterly-Regular
+0P00017896.BO,LIC MF Unit Linked Insurance 10 Years Regular Premium Uniform Cover Quarterly-Direct
+0P00017897.BO,LIC MF Unit Linked Insurance 10 Yrs Regular Premium Uniform Cover Quarterly-Regular
+0P00017898.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Reducing Cover Quarterly-Direct
+0P00017899.BO,LIC MF Unit Linked Insurance 15 Yrs Regular Premium Reducing Cover Quarterly-Regular
+0P000178SJ.BO,Essel Long Term Advantage Fund Regular Dividend Payout
