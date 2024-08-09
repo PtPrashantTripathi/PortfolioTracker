@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Charts Line Chart with Date Gaps</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #chart_div {
+            width: 100%;
+            height: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chart_div"></div>
+    <script>
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { packages: ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Fetch the JSON data
+            fetch('https://raw.githubusercontent.com/ptprashanttripathi/PortfolioTracker/main/DATA/GOLD/Holdings/Holdings_data_v3.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Create the data table
+                    var chartData = new google.visualization.DataTable();
+                    chartData.addColumn('string', 'Date');
+                    chartData.addColumn('number', 'Holding Amount');
+                    chartData.addColumn('number', 'Close Amount');
+
+                    // Convert the JSON data to rows
+                    var rows = [];
+                    var labels = [];
+                    data.forEach(item => {
+                        var formattedDate = formatDate(new Date(item.date));
+                        rows.push([formattedDate, item.holding_amount, item.close_amount]);
+                        if (!labels.includes(formattedDate)) {
+                            labels.push(formattedDate);
+                        }
+                    });
+
+                    chartData.addRows(rows);
+
+                    // Set chart options
+                    var options = {
+                        title: 'Holding Amount vs. Close Amount',
+                        hAxis: {
+                            title: 'Date',
+                            textStyle: { fontSize: 12 },
+                            titleTextStyle: { fontSize: 14 },
+                            ticks: generateTicks(labels), // Custom ticks for every third month
+                        },
+                        vAxis: {
+                            title: 'Amount',
+                            textStyle: { fontSize: 12 },
+                            titleTextStyle: { fontSize: 14 }
+                        },
+                        curveType: 'function',
+                        legend: { position: 'bottom' },
+                        height: 400,
+                        width: '100%',
+                        chartArea: { width: '80%', height: '70%' },
+                        hAxis: { 
+                            slantedText: true, // Rotate text for better readability
+                            slantedTextAngle: 45
+                        }
+                    };
+
+                    // Instantiate and draw our chart, passing in the options.
+                    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                    chart.draw(chartData, options);
+                })
+                .catch(error => console.error('Error loading the data:', error));
+        }
+
+        // Function to format date as "Month Year"
+        function formatDate(date) {
+            var options = { year: 'numeric', month: 'short' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Function to generate custom ticks for every third month
+        function generateTicks(labels) {
+            const ticks = [];
+            for (let i = 0; i < labels.length; i += 3) {
+                ticks.push({ v: labels[i], f: labels[i] });
+            }
+            return ticks;
+        }
+    </script>
+</body>
+
+</html>
