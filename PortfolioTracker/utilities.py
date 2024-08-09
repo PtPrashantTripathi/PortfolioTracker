@@ -6,7 +6,7 @@ from typing import List
 from pathlib import Path
 from datetime import datetime
 
-from logger import logger
+from PortfolioTracker.logger import logger
 
 
 # Check for newly added or modified files
