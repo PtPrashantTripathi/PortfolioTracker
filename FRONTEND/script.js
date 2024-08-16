@@ -1,3 +1,20 @@
+function smartConvert(value) {
+    // Try to convert to float
+    const floatValue = parseFloat(value);
+    if (!isNaN(floatValue) && !Number.isInteger(floatValue)) {
+        return floatValue;
+    }
+
+    // Try to convert to integer
+    const intValue = parseInt(value);
+    if (!isNaN(intValue)) {
+        return intValue;
+    }
+
+    // If all else fails, return as string
+    return String(value);
+}
+
 // Function to parse CSV data
 function parseCSV(csv) {
     const lines = csv.trim().split("\n");
@@ -25,13 +42,11 @@ async function getData(filePath) {
     const parsedData = parseCSV(csvData); // Parse the CSV data
     return parsedData;
 }
-getData("../DATA/GOLD/HoldingsTrands/HoldingsTrands_data.csv").then(
-    console.log
-);
+
 async function loadHoldingsTrandsChart(chartHolder) {
     try {
         // Fetch the data using getData
-        const filePath = "../DATA/GOLD/HoldingsTrands/HoldingsTrands_data.csv";
+        const filePath = "../DATA/GOLD/Holdings/HoldingsTrands_data.csv";
         const data = await getData(filePath);
 
         // Initialize and render the chart
