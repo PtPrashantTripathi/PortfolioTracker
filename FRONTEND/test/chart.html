@@ -21,9 +21,9 @@
     <canvas id="myChart" style="height: 400px;"></canvas>
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <!-- Chart.js Date Adapter -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Chart.js Date Adapter -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0"></script>
 
     <script>
         function generateRandomData(startDate, endDate) {
@@ -34,7 +34,7 @@
             while (currentDate <= endDate) {
                 value += Math.floor(Math.random() * 100) - 50;
                 data.push({ date: new Date(currentDate).toISOString().split('T')[0], value: value });
-                currentDate.setDate(currentDate.getDate() + 1);
+                currentDate.setDate(currentDate.getDate() + 1); // Increment the date by 1 day
             }
 
             return data;
@@ -78,6 +78,7 @@
                     tension: 0.1,
                     pointRadius: 0, // Remove points
                     pointHoverRadius: 0 // Disable point hover
+
                 }]
             },
             options: {
@@ -88,12 +89,6 @@
                         time: {
                             unit: 'day',
                             tooltipFormat: 'yyyy-MM-dd',
-                            displayFormats: {
-                                day: 'yyyy-MM-dd',
-                                month: 'yyyy-MM',
-                                year: 'yyyy',
-                                week: 'yyyy-WW'
-                            }
                         },
                         title: {
                             display: true,
@@ -113,23 +108,22 @@
         // Button Handlers for Aggregation
         document.getElementById("yearly").addEventListener("click", () => {
             const aggregatedData = Object.values(aggregateData(data, date => date.slice(0, 4)));
-            updateChart(aggregatedData, "Yearly Data", 'yyyy');
+            updateChart(aggregatedData, "Yearly Data");
         });
 
         document.getElementById("yearMonth").addEventListener("click", () => {
             const aggregatedData = Object.values(aggregateData(data, date => date.slice(0, 7)));
-            updateChart(aggregatedData, "Year-Month Data", 'yyyy-MM');
+            updateChart(aggregatedData, "Year-Month Data");
         });
 
         document.getElementById("yearWeek").addEventListener("click", () => {
             const aggregatedData = Object.values(aggregateData(data, getWeek));
-            updateChart(aggregatedData, "Year-Week Data", 'yyyy-WW');
+            updateChart(aggregatedData, "Year-Week Data");
         });
 
-        function updateChart(aggregatedData, title, timeUnit) {
+        function updateChart(aggregatedData, title) {
             chart.data.labels = aggregatedData.map(d => d.date);
             chart.data.datasets[0].data = aggregatedData.map(d => d.value);
-            chart.options.scales.x.time.unit = timeUnit;
             chart.options.plugins.title = { display: true, text: title };
             chart.update();
         }
