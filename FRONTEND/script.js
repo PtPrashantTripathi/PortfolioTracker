@@ -26,11 +26,7 @@ async function getData(filePath) {
     return parsedData;
 }
 
-async function loadHoldingsTrandsChart() {
-    // Fetch the data using getData
-    const filePath = "../DATA/GOLD/Holdings/HoldingsTrands_data.csv";
-    const data = await getData(filePath);
-
+async function loadHoldingsTrandsChart(data) {
     const chartHolder = document
         .getElementById("holdingsTrandsChart")
         .getContext("2d");
@@ -44,8 +40,8 @@ async function loadHoldingsTrandsChart() {
                 {
                     label: "Investment",
                     data: data.map((d) => parseFloat(d.holding)),
-                    borderColor: "rgba(70,130,180)",
-                    backgroundColor: "rgba(70,130,180)",
+                    borderColor: "#007bff",
+                    backgroundColor: "#007bff",
                     borderWidth: 2,
                     fill: false,
                     tension: 1,
@@ -53,18 +49,19 @@ async function loadHoldingsTrandsChart() {
                 {
                     label: "Market Value",
                     data: data.map((d) => parseFloat(d.close)),
-                    borderColor: "rgb(0,208,156)",
-                    backgroundColor: "rgb(0,208,156)",
+                    borderColor: "#28a745",
+                    backgroundColor: "#28a745",
                     borderWidth: 2,
                     fill: {
                         target: "origin",
-                        above: "rgb(0,208,156,0.5)",
+                        above: "#28a74570",
                     },
                     tension: 1,
                 },
             ],
         },
         options: {
+            responsive: true,
             elements: {
                 point: {
                     pointStyle: true,
@@ -108,96 +105,123 @@ function findMaxDateRecords(data) {
     );
 }
 
-function priceConvert(value) {
-    return parseFloat(value).toLocaleString("en-IN", {
+function priceConvert(value, short = false) {
+    const amount = parseFloat(value);
+
+    if (short) {
+        if (amount >= 1e7) return `₹${(amount / 1e7).toFixed(2)}Cr`;
+        if (amount >= 1e5) return `₹${(amount / 1e5).toFixed(2)}L`;
+        if (amount >= 1e3) return `₹${(amount / 1e3).toFixed(2)}K`;
+    }
+
+    return amount.toLocaleString("en-IN", {
         maximumFractionDigits: 2,
         style: "currency",
         currency: "INR",
     });
 }
 
-async function loadHoldingsDataTable() {
-    // Fetch the data using getData
-    const filePath = "../DATA/GOLD/Holdings/Holdings_data.csv";
-    const rawData = await getData(filePath);
-    const filterdData = findMaxDateRecords(rawData);
+function parseNum(value) {
+    return parseFloat(value) === parseInt(value)
+        ? parseInt(value)
+        : parseFloat(parseFloat(value).toFixed(2));
+}
+// Helper function to create a cell with text content and optional classes
+function createCell(text, classes = []) {
+    const cell = document.createElement("td");
+    cell.innerHTML = text;
+    classes.forEach((cls) => cell.classList.add(cls));
+    return cell;
+}
 
+async function loadHoldingsDataTable(data) {
     const tableBody = document.getElementById("CurrentHoldingsTable");
     tableBody.innerHTML = ""; // Clear existing table rows
 
-    filterdData.forEach((record) => {
+    data.forEach((record) => {
         const row = document.createElement("tr");
 
-        // Segment column
-        const segmentCell = document.createElement("td");
-        segmentCell.textContent = record.segment;
-        row.appendChild(segmentCell);
+        // Create and append cells
+        row.appendChild(createCell(record.segment));
+        row.appendChild(createCell(record.symbol));
+        row.appendChild(createCell(parseNum(record.holding_quantity)));
+        row.appendChild(createCell(priceConvert(record.avg_price)));
+        row.appendChild(createCell(priceConvert(record.holding_amount)));
 
-        // Stock Name column
-        const stockName = document.createElement("td");
-        stockName.textContent = record.symbol;
-        row.appendChild(stockName);
+        const closePrice = parseFloat(record.close_price);
+        const avgPrice = parseFloat(record.avg_price);
+        const ltpClasses =
+            closePrice < avgPrice ? ["text-danger"] : ["text-success"];
+        row.appendChild(
+            createCell(priceConvert(record.close_price), ltpClasses)
+        );
 
-        // Quantity column
-        const quantityCell = document.createElement("td");
-        quantityCell.textContent =
-            parseFloat(record.holding_quantity) ===
-            parseInt(record.holding_quantity)
-                ? parseInt(record.holding_quantity)
-                : parseFloat(record.holding_quantity);
-
-        row.appendChild(quantityCell);
-
-        // Avg Price column
-        const avgPriceCell = document.createElement("td");
-        avgPriceCell.textContent = priceConvert(record.avg_price);
-        row.appendChild(avgPriceCell);
-
-        // Invested Amount column
-        const investedAmountCell = document.createElement("td");
-        investedAmountCell.textContent = priceConvert(record.holding_amount);
-        row.appendChild(investedAmountCell);
-
-        // Last Traded Price column
-        const ltpCell = document.createElement("td");
-        ltpCell.textContent = priceConvert(record.close_price);
-        ltpCell.classList.add("text-success");
-        if (parseFloat(record.close_price) < parseFloat(record.avg_price)) {
-            ltpCell.classList.add("text-danger");
-        }
-        row.appendChild(ltpCell);
-
-        // Current Amount column
-        const currentAmountCell = document.createElement("td");
         const currentAmount = priceConvert(record.close_amount);
-        currentAmountCell.textContent = currentAmount;
-        currentAmountCell.classList.add("text-success");
-        if (currentAmount < 0) {
-            currentAmountCell.classList.add("text-danger");
-        }
-        row.appendChild(currentAmountCell);
+        const currentAmountClass =
+            parseFloat(record.close_amount) < 0
+                ? ["text-danger"]
+                : ["text-success"];
+        row.appendChild(createCell(currentAmount, currentAmountClass));
 
-        // PNL column = Current Amount - Invested Amount
-        const pnlCell = document.createElement("td");
-        const pnl =
-            parseFloat(record.close_amount) - parseFloat(record.holding_amount);
-        if (pnl < 0) {
-            pnlCell.innerHTML = "<b>" + priceConvert(pnl) + "</b>";
-            pnlCell.classList.add("text-danger");
-        } else {
-            pnlCell.innerHTML = "<b>+" + priceConvert(pnl) + "</b>";
-            pnlCell.classList.add("text-success");
-        }
-        row.appendChild(pnlCell);
+        const investedAmount = parseFloat(record.holding_amount);
+        const pnl = parseFloat(record.close_amount) - investedAmount;
+        const pnlClasses = pnl < 0 ? ["text-danger"] : ["text-success"];
+        const pnlText =
+            pnl < 0
+                ? `<b>${priceConvert(pnl)}</b>`
+                : `<b>+${priceConvert(pnl)}</b>`;
+        row.appendChild(createCell(pnlText, pnlClasses));
 
         // Append the row to the table body
         tableBody.appendChild(row);
     });
 }
 
-function main() {
-    loadHoldingsTrandsChart();
-    loadHoldingsDataTable();
+function updateLatestData(data) {
+    const { close, holding } = data;
+    const pnl = close - holding;
+    const returnPercentage = parseNum((pnl * 100) / holding);
+    const isProfit = pnl >= 0;
+
+    const investedAmountElem = document.getElementById("invested_amount");
+    const assetsWorthElem = document.getElementById("assets_worth");
+    const overallReturnElem = document.getElementById("overall_return");
+
+    // Update the invested amount
+    investedAmountElem.textContent = priceConvert(holding, true);
+
+    // Update the asset worth
+    assetsWorthElem.textContent = priceConvert(close, true);
+
+    // Update the asset overall return
+    const formattedPnl = priceConvert(pnl, true);
+    const formattedReturnPercentage = `${
+        isProfit ? "+" : ""
+    }${returnPercentage}%`;
+    overallReturnElem.textContent = `${formattedPnl} (${formattedReturnPercentage})`;
+
+    // Apply the appropriate status classes
+    const statusClass = isProfit ? "text-success" : "text-danger";
+    investedAmountElem.className = "text-primary";
+    assetsWorthElem.className = statusClass;
+    overallReturnElem.className = statusClass;
+}
+
+async function main() {
+    // Fetch the data using getData
+    const holdingsTrandsFilePath =
+        "../DATA/GOLD/Holdings/HoldingsTrands_data.csv";
+    const holdingsTrands_data = await getData(holdingsTrandsFilePath);
+    loadHoldingsTrandsChart(holdingsTrands_data);
+
+    const latestData = findMaxDateRecords(holdingsTrands_data)[0];
+    updateLatestData(latestData);
+
+    // Fetch the data using getData
+    const holdingsDataFilePath = "../DATA/GOLD/Holdings/Holdings_data.csv";
+    const holdingsData = await getData(holdingsDataFilePath);
+    const filterdData = findMaxDateRecords(holdingsData);
+    loadHoldingsDataTable(filterdData);
 }
 
 main();

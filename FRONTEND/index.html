@@ -14,27 +14,28 @@
     <div class="container">
         <!-- Jumbotron/Header -->
         <div class="jumbotron text-center bg-white p-3 shadow-sm mt-3">
-            <h1 class="display-4">Portfolio Tracker</h1>
-            <p class="lead">Your investments at a glance.</p>
+            <h1 class="display-4 text-success">Portfolio Tracker</h1>
+            <p class="text-secondary">Your investments at a glance.</p>
         </div>
 
         <!-- Investment Summary Cards -->
         <div class="row">
             <div class="col-sm-12 col-md-4 mb-3">
                 <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>₹1.73L</h2>
+                    <h2 id="assets_worth" class="text-success">₹1.84L</h2>
                     <p class="text-secondary">All your assets worth</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mb-3">
                 <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>₹53,912</h2>
+                    <h2 id="invested_amount" class="text-primary">₹59.91K</h2>
                     <p class="text-secondary">Invested amount</p>
                 </div>
             </div>
             <div class="col-sm-12 col-md-4 mb-3">
                 <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>Today's returns: ₹-285 (-0.53%)</h2>
+                    <h2 id="overall_return" class="text-success">₹1.25L (+207.86%)</h2>
+                    <p class="text-secondary">Overall Returns</p>
                 </div>
             </div>
         </div>
@@ -43,9 +44,11 @@
         <div class="card mb-4 shadow-sm">
             <div class="card-body">
                 <h5 class="card-title">Portfolio Performance</h5>
+
                 <canvas id="holdingsTrandsChart"></canvas>
             </div>
         </div>
+
 
         <!-- Current Holdings Section -->
         <div class="card mb-4 shadow-sm">
@@ -65,15 +68,14 @@
                                 <th>Unrealized PNL</th>
                             </tr>
                         </thead>
-                        <tbody id="CurrentHoldingsTable">
-                        </tbody>
+                        <tbody id="CurrentHoldingsTable"></tbody>
                     </table>
                 </div>
             </div>
         </div>
 
         <!-- Past Holdings (Realized PNL) Section -->
-        <div class="card mb-4 shadow-sm">
+        <!-- <div class="card mb-4 shadow-sm">
             <div class="card-body">
                 <h5 class="card-title">Past Holdings - Realized PNL</h5>
                 <div class="table-responsive">
@@ -88,7 +90,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Sample data - replace with your data -->
                             <tr>
                                 <td>INFY</td>
                                 <td>50</td>
@@ -100,7 +101,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -108,6 +109,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="./script.js"></script>
+    </script>
+
 
 </body>
 
