@@ -3,99 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Tracker</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
-    <div class="container">
-            <div class="row">
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <select id="interval">
+        <option value="default">Default</option>
+        <option value="yearly">Yearly</option>
+        <option value="monthly">Monthly</option>
+        <option value="weekly">Weekly</option>
+    </select>
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="a.html">a.html</a>
-                    </h2>
-                </div>
-            </div>
+    <script type="module">
+        import getData from "./test/get_data.js";
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="chart.js.html">chart.js.html</a>
-                    </h2>
-                </div>
-            </div>
+        // Get reference to chart holder DOM element
+        const chartHolder = document.getElementById("myChart").getContext("2d");
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="highlight.html">highlight.html</a>
-                    </h2>
-                </div>
-            </div>
+        function createChart(data) {
+            return new Chart(chartHolder, {
+                type: "line",
+                data: {
+                    labels: data.map((d) => d.date),
+                    datasets: [
+                        {
+                            label: "Market Value",
+                            data: data.map((d) => d.close),
+                            borderColor: "rgba(75, 192, 192, 1)",
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            pointHoverRadius: 0,
+                        },
+                        {
+                            label: "Investment",
+                            data: data.map((d) => d.holding),
+                            borderColor: "rgba(153, 102, 255, 1)",
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0,
+                            pointHoverRadius: 0,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            type: "time",
+                            time: {
+                                unit: "day",
+                                tooltipFormat: "yyyy-MM-dd",
+                            },
+                            title: {
+                                display: true,
+                                text: "Date",
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: "Value",
+                            },
+                        },
+                    },
+                },
+            });
+        }
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="index.html">index.html</a>
-                    </h2>
-                </div>
-            </div>
+        function aggregateData(data, keyFunc) {
+            return data.reduce((acc, current) => {
+                const key = keyFunc(current.date);
+                if (!acc[key] || current.date > acc[key].date) {
+                    acc[key] = current;
+                }
+                return acc;
+            }, {});
+        }
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="index2.html">index2.html</a>
-                    </h2>
-                </div>
-            </div>
+        async function main() {
+            try {
+                // Fetch the data using getData
+                const filePath = "../DATA/GOLD/HoldingsTrands/HoldingsTrands_data.csv";
+                const raw_data = await getData(filePath);
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="k.html">k.html</a>
-                    </h2>
-                </div>
-            </div>
+                // Map data
+                const data = raw_data.map((item) => ({
+                    date: new Date(item.date),
+                    holding: parseFloat(item.holding),
+                    close: parseFloat(item.close),
+                }));
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="lightweight.html">lightweight.html</a>
-                    </h2>
-                </div>
-            </div>
+                let chart = createChart(data);
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="local.html">local.html</a>
-                    </h2>
-                </div>
-            </div>
+                // Button Handlers for Aggregation
+                document.getElementById("interval").addEventListener("change", (event) => {
+                    const interval = event.target.value;
+                    let updatedData = [];
+                    switch (interval) {
+                        case "yearly":
+                            updatedData = Object.values(
+                                aggregateData(data, (date) => date.getFullYear())
+                            );
+                            break;
+                        case "monthly":
+                            updatedData = Object.values(
+                                aggregateData(data, (date) => date.getYearMonth())
+                            );
+                            break;
+                        case "weekly":
+                            updatedData = Object.values(
+                                aggregateData(data, (date) => date.getYearWeek())
+                            );
+                            break;
+                        default:
+                            updatedData = data;
+                    }
+                    chart.destroy();
+                    chart = createChart(updatedData);
+                });
+            } catch (error) {
+                console.error("Error creating chart:", error);
+            }
+        }
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="local1.html">local1.html</a>
-                    </h2>
-                </div>
-            </div>
+        Date.prototype.getYearMonth = function () {
+            const year = this.getFullYear();
+            const month = (this.getMonth() + 1).toString().padStart(2, "0");
+            return `${year}-${month}`;
+        };
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="local2.html">local2.html</a>
-                    </h2>
-                </div>
-            </div>
+        Date.prototype.getYearWeek = function () {
+            const dayMilliseconds = 86400000;
 
-                <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2>
-                        <a href="ploty.html">ploty.html</a>
-                    </h2>
-                </div>
-            </div>
-</div></div></body></html>
+            const oneJan = new Date(this.getFullYear(), 0, 1);
+            const oneJanDay = oneJan.getDay() || 7;
+            const firstMondayTime = oneJan.getTime() + (8 - oneJanDay) * dayMilliseconds;
+
+            const currentDate = new Date(
+                this.getFullYear(),
+                this.getMonth(),
+                this.getDate()
+            );
+            const daysFromFirstMonday = Math.round(
+                (currentDate - new Date(firstMondayTime)) / dayMilliseconds
+            );
+
+            let weekNum =
+                daysFromFirstMonday >= 0 && daysFromFirstMonday < 364
+                    ? Math.ceil((daysFromFirstMonday + 1) / 7)
+                    : 52;
+
+            if (daysFromFirstMonday < 0) {
+                weekNum = 52;
+            }
+
+            return `${this.getFullYear()}-${weekNum.toString().padStart(2, "0")}`;
+        };
+
+        main();
+    </script>
+</body>
+</html>

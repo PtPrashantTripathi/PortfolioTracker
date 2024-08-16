@@ -1,8 +1,0 @@
-{
-  "name": "carbon-charts-vanilla-js-example",
-  "description": "Carbon Charts Vanilla JavaScript Example",
-  "version": "0.0.0",
-  "dependencies": {
-    "@carbon/charts": "1.19.2"
-  }
-}

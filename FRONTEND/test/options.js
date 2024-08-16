@@ -1,15 +1,22 @@
 export default {
-  title: "Investment vs Market Value",
-  axes: {
-    left: {
-      mapsTo: "value",
-      stacked: true,
+    responsive: true,
+    scales: {
+        x: {
+            type: "time",
+            time: {
+                unit: "day",
+                tooltipFormat: "yyyy-MM-dd",
+            },
+            title: {
+                display: true,
+                text: "Date",
+            },
+        },
+        y: {
+            title: {
+                display: true,
+                text: "Value",
+            },
+        },
     },
-    bottom: {
-      mapsTo: "date",
-      scaleType: "time",
-    },
-  },
-  // curve: 'curveMonotoneX',
-  height: "400px",
 };
