@@ -27,70 +27,83 @@ async function getData(filePath) {
 }
 
 async function loadHoldingsTrandsChart(data) {
-    const chartHolder = document
-        .getElementById("holdingsTrandsChart")
-        .getContext("2d");
+    const options = {
+        series: [
+            {
+                name: "Investment",
+                data: data.map((d) => ({
+                    x: new Date(d.date),
+                    y: parseFloat(d.holding),
+                })),
+            },
+            {
+                name: "Market Value",
+                data: data.map((d) => ({
+                    x: new Date(d.date),
+                    y: parseFloat(d.close),
+                })),
+            },
+        ],
+        chart: {
+            type: "area",
+            toolbar: {
+                show: false,
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            curve: "smooth",
+            width: 2,
+        },
+        xaxis: {
+            type: "datetime",
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            },
+        },
+        yaxis: {
+            // tickAmount: 4,
+            // floating: false,
+            labels: {
+                formatter: (a) => priceConvert(a, true),
+                style: {
+                    colors: "#8e8da4",
+                },
+            },
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            },
+        },
+        fill: {
+            opacity: 0.25,
+        },
+        colors: ["#007bff", "#28a745"],
+        tooltip: {
+            x: {
+                format: "yyyy-MM-dd",
+            },
+            y: {
+                formatter: (a) => priceConvert(a),
+            },
+        },
+    };
 
-    // Initialize and render the chart
-    return new Chart(chartHolder, {
-        type: "line",
-        data: {
-            labels: data.map((d) => new Date(d.date)),
-            datasets: [
-                {
-                    label: "Investment",
-                    data: data.map((d) => parseFloat(d.holding)),
-                    borderColor: "#007bff",
-                    backgroundColor: "#007bff",
-                    borderWidth: 2,
-                    fill: false,
-                    tension: 1,
-                },
-                {
-                    label: "Market Value",
-                    data: data.map((d) => parseFloat(d.close)),
-                    borderColor: "#28a745",
-                    backgroundColor: "#28a745",
-                    borderWidth: 2,
-                    fill: {
-                        target: "origin",
-                        above: "#28a74570",
-                    },
-                    tension: 1,
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            elements: {
-                point: {
-                    pointStyle: true,
-                    pointRadius: 0,
-                    pointHoverRadius: 5,
-                },
-            },
-            scales: {
-                x: {
-                    type: "time",
-                    time: {
-                        unit: "quarter",
-                        tooltipFormat: "yyyy-MM-dd",
-                    },
-                    title: {
-                        display: true,
-                        text: "Date (Quarterly)",
-                    },
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: "Price (INR)",
-                    },
-                    beginAtZero: false,
-                },
-            },
-        },
-    });
+    const chart = new ApexCharts(
+        document.getElementById("holdingsTrandsChart"),
+        options
+    );
+
+    chart.render();
+
+    return chart;
 }
 
 // Function to find records with the maximum date
@@ -150,27 +163,34 @@ async function loadHoldingsDataTable(data) {
 
         const closePrice = parseFloat(record.close_price);
         const avgPrice = parseFloat(record.avg_price);
-        const ltpClasses =
-            closePrice < avgPrice ? ["text-danger"] : ["text-success"];
         row.appendChild(
-            createCell(priceConvert(record.close_price), ltpClasses)
+            createCell(
+                priceConvert(record.close_price),
+                closePrice < avgPrice ? ["text-danger"] : ["text-success"]
+            )
         );
 
         const currentAmount = priceConvert(record.close_amount);
-        const currentAmountClass =
-            parseFloat(record.close_amount) < 0
-                ? ["text-danger"]
-                : ["text-success"];
-        row.appendChild(createCell(currentAmount, currentAmountClass));
+
+        row.appendChild(
+            createCell(
+                currentAmount,
+                parseFloat(record.close_amount) < 0
+                    ? ["text-danger"]
+                    : ["text-success"]
+            )
+        );
 
         const investedAmount = parseFloat(record.holding_amount);
         const pnl = parseFloat(record.close_amount) - investedAmount;
-        const pnlClasses = pnl < 0 ? ["text-danger"] : ["text-success"];
-        const pnlText =
-            pnl < 0
-                ? `<b>${priceConvert(pnl)}</b>`
-                : `<b>+${priceConvert(pnl)}</b>`;
-        row.appendChild(createCell(pnlText, pnlClasses));
+        const returnPercentage = parseNum((pnl * 100) / record.holding_amount);
+        const pnlText = `${priceConvert(pnl)} (${
+            pnl < 0 ? "+" : ""
+        }${returnPercentage}%)`;
+
+        row.appendChild(
+            createCell(pnlText, pnl < 0 ? ["text-danger"] : ["text-success"])
+        );
 
         // Append the row to the table body
         tableBody.appendChild(row);
