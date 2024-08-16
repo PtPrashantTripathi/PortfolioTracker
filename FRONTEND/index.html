@@ -2,32 +2,121 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chart Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tracker</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        canvas {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 
 <body>
-    <canvas id="myChart"></canvas>
-    <script src="./utils.js"></script>
+    <div class="container">
+        <!-- Jumbotron/Header -->
+        <div class="jumbotron text-center bg-white p-3 shadow-sm mt-3">
+            <h1 class="display-4">Portfolio Tracker</h1>
+            <p class="lead">Your investments at a glance.</p>
+        </div>
+
+        <!-- Investment Summary Cards -->
+        <div class="row">
+            <div class="col-sm-12 col-md-4 mb-3">
+                <div class="bg-light p-4 rounded shadow-sm">
+                    <h2>₹1.73L</h2>
+                    <p class="text-secondary">All your assets worth</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 mb-3">
+                <div class="bg-light p-4 rounded shadow-sm">
+                    <h2>₹53,912</h2>
+                    <p class="text-secondary">Invested amount</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 mb-3">
+                <div class="bg-light p-4 rounded shadow-sm">
+                    <h2>Today's returns: ₹-285 (-0.53%)</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Trend Chart -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Holdings Trands</h5>
+                <canvas id="holdingsTrandsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Current Holdings Section -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Current Holdings</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Stock Name</th>
+                                <th>Quantity</th>
+                                <th>Current Price</th>
+                                <th>Invested Amount</th>
+                                <th>Unrealized PNL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data - replace with your data -->
+                            <tr>
+                                <td>TATAMOTORS</td>
+                                <td>100</td>
+                                <td>₹1,100</td>
+                                <td>₹1.04L</td>
+                                <td class="text-success">₹4,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Holdings (Realized PNL) Section -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Past Holdings - Realized PNL</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Stock Name</th>
+                                <th>Quantity</th>
+                                <th>Sold Price</th>
+                                <th>Invested Amount</th>
+                                <th>Realized PNL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Sample data - replace with your data -->
+                            <tr>
+                                <td>INFY</td>
+                                <td>50</td>
+                                <td>₹1,200</td>
+                                <td>₹55,000</td>
+                                <td class="text-success">₹5,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script src="./script.js"></script>
+    <script>
+        // load the chart via chart js api
+        loadHoldingsTrandsChart(document.getElementById("holdingsTrandsChart").getContext("2d"));
+    </script>
 </body>
 
 </html>

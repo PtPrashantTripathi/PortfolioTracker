@@ -1,61 +1,97 @@
-async function loadHoldingsTrandsChart() {
+// Function to parse CSV data
+function parseCSV(csv) {
+    const lines = csv.trim().split("\n");
+    const headers = lines[0].split(",").map((header) => header.trim()); // Trim all headers
+    const result = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const obj = {};
+        const currentLine = lines[i].split(",");
+
+        headers.forEach((header, index) => {
+            obj[header] = currentLine[index].trim();
+        });
+
+        result.push(obj);
+    }
+
+    return result;
+}
+
+// Function to get data
+async function getData(filePath) {
+    const response = await fetch(filePath);
+    const csvData = await response.text(); // Await the fetched CSV data
+    const parsedData = parseCSV(csvData); // Parse the CSV data
+    return parsedData;
+}
+getData("../DATA/GOLD/HoldingsTrands/HoldingsTrands_data.csv").then(
+    console.log
+);
+async function loadHoldingsTrandsChart(chartHolder) {
     try {
         // Fetch the data using getData
         const filePath = "../DATA/GOLD/HoldingsTrands/HoldingsTrands_data.csv";
-        const rawData = await getData(filePath);
+        const data = await getData(filePath);
 
-        // Map data to the format needed for Chart.js
-        const data = {
-            labels: rawData.map((d) => new Date(d.date)),
-            datasets: [
-                {
-                    label: "Market Value",
-                    data: rawData.map((d) => parseFloat(d.close)),
-                    borderColor: "rgba(75, 192, 192, 1)",
-                    fill: false,
-                    tension: 0.1,
-                    pointRadius: 0,
-                    pointHoverRadius: 0,
-                },
-                {
-                    label: "Investment",
-                    data: rawData.map((d) => parseFloat(d.holding)),
-                    borderColor: "rgba(153, 102, 255, 1)",
-                    fill: false,
-                    tension: 0.1,
-                    pointRadius: 0,
-                    pointHoverRadius: 0,
-                },
-            ],
-        };
-        const options = {
-            responsive: true,
-            scales: {
-                x: {
-                    type: "time",
-                    time: {
-                        unit: "quarter",
-                        tooltipFormat: "yyyy-MM-dd",
+        // Initialize and render the chart
+        return new Chart(chartHolder, {
+            type: "line",
+            data: {
+                labels: data.map((d) => new Date(d.date)),
+                datasets: [
+                    {
+                        label: "Investment",
+                        data: data.map((d) => parseFloat(d.holding)),
+                        borderColor: "rgba(58,45,127)",
+                        backgroundColor: "rgba(58,45,127)",
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 1,
                     },
-                    title: {
-                        display: true,
-                        text: "Date (Quarterly)",
+                    {
+                        label: "Market Value",
+                        data: data.map((d) => parseFloat(d.close)),
+                        borderColor: "rgb(0,208,156)",
+                        backgroundColor: "rgb(0,208,156)",
+                        borderWidth: 2,
+                        fill: {
+                            target: "origin",
+                            above: "rgb(0,208,156,0.5)",
+                        },
+                        tension: 1,
+                    },
+                ],
+            },
+            options: {
+                elements: {
+                    point: {
+                        pointStyle: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
                     },
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: "Value",
+                scales: {
+                    x: {
+                        type: "time",
+                        time: {
+                            unit: "quarter",
+                            tooltipFormat: "yyyy-MM-dd",
+                        },
+                        title: {
+                            display: true,
+                            text: "Date (Quarterly)",
+                        },
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Price (INR)",
+                        },
+                        beginAtZero: false,
                     },
                 },
             },
-        };
-        // Initialize and render the chart
-        const chartHolder = document.getElementById("myChart").getContext("2d");
-        return new Chart(chartHolder, {
-            type: "line",
-            data,
-            options,
         });
     } catch (error) {
         console.error("Error creating chart:", error);
@@ -64,5 +100,3 @@ async function loadHoldingsTrandsChart() {
             "<p>Failed to load chart data. Please try again later.</p>";
     }
 }
-
-loadHoldingsTrandsChart();
