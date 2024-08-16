@@ -1,49 +1,15 @@
-// export default {
-//   title: "Multiple Bounded Areas (Natural Curve)",
-//   legend: {
-//     enabled: false,
-//   },
-//   bounds: {
-//     upperBoundMapsTo: "max",
-//     lowerBoundMapsTo: "min",
-//   },
-//   axes: {
-//     bottom: {
-//       title: "2023 Annual Sales Figures",
-//       mapsTo: "date",
-//       scaleType: "time",
-//     },
-//     left: {
-//       mapsTo: "value",
-//       scaleType: "linear",
-//     },
-//   },
-//   curve: "curveNatural",
-//   height: "400px",
-// };
-
 export default {
-  title: 'Line (time series) - Time interval monthly with French locale',
+  title: "Investment vs Market Value",
   axes: {
     left: {
-      ticks: {
-      },
-      mapsTo: 'value'
+      mapsTo: "value",
+      stacked: true,
     },
     bottom: {
-      scaleType: 'time',
-      ticks: {
-      },
-      mapsTo: 'date'
-    }
+      mapsTo: "date",
+      scaleType: "time",
+    },
   },
-  tooltip: {
-  },
-  legend: {
-    clickable: false
-  },
-  height: '400px',
-  locale: {
-    code: 'fr-FR'
-  }
-}
+  // curve: 'curveMonotoneX',
+  height: "400px",
+};
