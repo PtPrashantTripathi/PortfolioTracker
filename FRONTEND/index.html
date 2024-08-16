@@ -42,7 +42,7 @@
         <!-- Investment Trend Chart -->
         <div class="card mb-4 shadow-sm">
             <div class="card-body">
-                <h5 class="card-title">Holdings Trands</h5>
+                <h5 class="card-title">Portfolio Performance</h5>
                 <canvas id="holdingsTrandsChart"></canvas>
             </div>
         </div>
@@ -55,22 +55,17 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th>Segment</th>
                                 <th>Stock Name</th>
-                                <th>Quantity</th>
-                                <th>Current Price</th>
-                                <th>Invested Amount</th>
+                                <th>Qty.</th>
+                                <th>Avg.</th>
+                                <th>Invested</th>
+                                <th>LTP</th>
+                                <th>Current</th>
                                 <th>Unrealized PNL</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- Sample data - replace with your data -->
-                            <tr>
-                                <td>TATAMOTORS</td>
-                                <td>100</td>
-                                <td>₹1,100</td>
-                                <td>₹1.04L</td>
-                                <td class="text-success">₹4,000</td>
-                            </tr>
+                        <tbody id="CurrentHoldingsTable">
                         </tbody>
                     </table>
                 </div>
@@ -113,10 +108,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="./script.js"></script>
-    <script>
-        // load the chart via chart js api
-        loadHoldingsTrandsChart(document.getElementById("holdingsTrandsChart").getContext("2d"));
-    </script>
+
 </body>
 
 </html>
