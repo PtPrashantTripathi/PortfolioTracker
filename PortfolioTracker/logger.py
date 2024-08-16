@@ -10,4 +10,4 @@ logging.basicConfig(
 )
 
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
