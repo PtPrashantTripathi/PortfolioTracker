@@ -18,6 +18,15 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
 ]
+dependencies = [
+  "matplotlib",
+  "numpy",
+  "openpyxl",
+  "pandas",
+  "pydantic",
+  "pyxlsb",
+  "yfinance"
+]
 
 [project.urls]
 Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
@@ -26,21 +35,6 @@ Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
 Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
-[project.dependencies]
-dependencies = [
-  "black",
-  "dateutils",
-  "isort",
-  "matplotlib",
-  "numpy",
-  "openpyxl",
-  "pandas",
-  "pre-commit",
-  "pydantic",
-  "pyxlsb",
-  "xlrd",
-  "yfinance"
-]
 
 [tool.setuptools]
 packages = ["PortfolioTracker"]
