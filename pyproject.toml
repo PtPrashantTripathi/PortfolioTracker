@@ -27,18 +27,20 @@ Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
 [project.dependencies]
-black = "*"
-dateutils = "*"
-isort = "*"
-matplotlib = "*"
-numpy = "*"
-openpyxl = "*"
-pandas = "*"
-pre-commit = "*"
-pydantic = "*"
-pyxlsb = "*"
-xlrd = "*"
-yfinance = "*"
+dependencies = [
+  "black",
+  "dateutils",
+  "isort",
+  "matplotlib",
+  "numpy",
+  "openpyxl",
+  "pandas",
+  "pre-commit",
+  "pydantic",
+  "pyxlsb",
+  "xlrd",
+  "yfinance"
+]
 
 [tool.setuptools]
 packages = ["PortfolioTracker"]
