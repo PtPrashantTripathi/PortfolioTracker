@@ -25,13 +25,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -e .
-          pip install jupyter
+          pip install -r requirements. txt
 
       # Step 4: Run all Jupyter notebooks in the ./notebook/ folder
       - name: Run Jupyter notebooks
         run: |
           for notebook in $(find ./NOTEBOOKS/ -name "*.ipynb"); do
-            jupyter nbconvert --to notebook --execute "$notebook" --output "$notebook"
+              jupyter nbconvert --to notebook --inplace --execute "$notebook"
           done
 
       # Step 5: Configure Git

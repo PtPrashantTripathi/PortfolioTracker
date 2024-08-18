@@ -18,15 +18,6 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
 ]
-dependencies = [
-  "matplotlib",
-  "numpy",
-  "openpyxl",
-  "pandas",
-  "pydantic",
-  "pyxlsb",
-  "yfinance"
-]
 
 [project.urls]
 Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
