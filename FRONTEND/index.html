@@ -6,112 +6,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Tracker</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Jumbotron/Header -->
-        <div class="jumbotron text-center bg-white p-3 shadow-sm mt-3">
-            <h1 class="display-4 text-success">Portfolio Tracker</h1>
-            <p class="text-secondary">Your investments at a glance.</p>
-        </div>
-
-        <!-- Investment Summary Cards -->
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2 id="assets_worth" class="text-success">₹1.84L</h2>
-                    <p class="text-secondary">All your assets worth</p>
+            <div class="col-12">
+                <div class="jumbotron text-center bg-white p-3 shadow-sm mt-3">
+                    <h1 class="display-4 text-success">Portfolio Tracker</h1>
+                    <p class="text-secondary">Your investments at a glance.</p>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2 id="invested_amount" class="text-primary">₹59.91K</h2>
-                    <p class="text-secondary">Invested amount</p>
+
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Portfolio Performance</h5>
+                        <div id="holdingsTrandsChart"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-4 mb-3">
-                <div class="bg-light p-4 rounded shadow-sm">
-                    <h2 id="overall_return" class="text-success">₹1.25L (+207.86%)</h2>
-                    <p class="text-secondary">Overall Returns</p>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Holdings</h5>
+
+                        <div class="table-responsive dash-social">
+                            <table class="table table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Segment</th>
+                                        <th>Stock Name</th>
+                                        <th>Qty.</th>
+                                        <th>Avg Price</th>
+                                        <th>Invested</th>
+                                        <th>CMP Price</th>
+                                        <th>Current</th>
+                                        <th>Unrealized PNL</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="CurrentHoldingsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+                <!-- <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Past Holdings - Realized PNL</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Stock Name</th>
+                                    <th>Quantity</th>
+                                    <th>Sold Price</th>
+                                    <th>Invested Amount</th>
+                                    <th>Realized PNL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>INFY</td>
+                                    <td>50</td>
+                                    <td>₹1,200</td>
+                                    <td>₹55,000</td>
+                                    <td class="text-success">₹5,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> -->
+                <div class="container mt-4">
+                    <!-- Summary Section -->
+                    <div class="row mb-3">
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <div class="bg-light p-4 rounded shadow-sm">
+                                <h2 id="assets_worth" class="text-success">₹1.84L</h2>
+                                <p class="text-secondary">All your assets worth</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <div class="bg-light p-4 rounded shadow-sm">
+                                <h2 id="invested_amount" class="text-primary">₹59.91K</h2>
+                                <p class="text-secondary">Invested amount</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4 mb-3">
+                            <div class="bg-light p-4 rounded shadow-sm">
+                                <h2 id="overall_return" class="text-success">₹1.25L (+207.86%)</h2>
+                                <p class="text-secondary">Overall Returns</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Holdings Section -->
+                     <div id="holdingsCards"></div>
+                </div>
+
+
             </div>
         </div>
-
-        <!-- Investment Trend Chart -->
-        <div class="card mb-4 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Portfolio Performance</h5>
-
-                <canvas id="holdingsTrandsChart"></canvas>
-            </div>
-        </div>
-
-
-        <!-- Current Holdings Section -->
-        <div class="card mb-4 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Current Holdings</h5>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Segment</th>
-                                <th>Stock Name</th>
-                                <th>Qty.</th>
-                                <th>Avg.</th>
-                                <th>Invested</th>
-                                <th>LTP</th>
-                                <th>Current</th>
-                                <th>Unrealized PNL</th>
-                            </tr>
-                        </thead>
-                        <tbody id="CurrentHoldingsTable"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <!-- Past Holdings (Realized PNL) Section -->
-        <!-- <div class="card mb-4 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Past Holdings - Realized PNL</h5>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Stock Name</th>
-                                <th>Quantity</th>
-                                <th>Sold Price</th>
-                                <th>Invested Amount</th>
-                                <th>Realized PNL</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>INFY</td>
-                                <td>50</td>
-                                <td>₹1,200</td>
-                                <td>₹55,000</td>
-                                <td class="text-success">₹5,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="./script.js"></script>
-    </script>
 
+
+    <footer class="footer text-center text-sm-start">
+        ©2024 Metrica
+        <span class="text-muted d-none d-sm-inline-block float-end">
+            Crafted with <i class="mdi mdi-heart text-danger"></i>
+            by Pt. ptprashanttripathi
+        </span>
+    </footer>
 
 </body>
+<script>const holdingsData = [
+        {
+            segment: "EQ",
+            stockName: "IRCTC",
+            qty: 3,
+            avgPrice: "₹896.20",
+            invested: "₹2,688.60",
+            cmpPrice: "₹924.75",
+            current: "₹2,774.25",
+            pnl: "₹85.65 (3.19%)"
+        },
+        {
+            segment: "EQ",
+            stockName: "KPITTECH",
+            qty: 2,
+            avgPrice: "₹1,500.00",
+            invested: "₹3,000.00",
+            cmpPrice: "₹1,816.35",
+            current: "₹3,632.70",
+            pnl: "₹632.70 (21.09%)"
+        },
+        {
+            segment: "EQ",
+            stockName: "TATAMOTORS",
+            qty: 100,
+            avgPrice: "₹261.00",
+            invested: "₹26,100.40",
+            cmpPrice: "₹1,098.80",
+            current: "₹1,09,880.00",
+            pnl: "₹83,779.60 (320.99%)"
+        },
+        {
+            segment: "EQ",
+            stockName: "TATAPOWER",
+            qty: 150,
+            avgPrice: "₹147.49",
+            invested: "₹22,124.00",
+            cmpPrice: "₹413.50",
+            current: "₹62,025.00",
+            pnl: "₹39,901.00 (180.35%)"
+        }
+    ];
+
+    function loadHoldingsCards(data) {
+        const container = document.getElementById("holdingsCards");
+        container.innerHTML = ""; // Clear existing content
+
+        data.forEach((holding) => {
+            const card = `
+<div class="card mb-3 p-3">
+    <div class="row" >
+        <div class="col-12 mb-3">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <strong>${holding.stockName} (${holding.segment})</strong><br>
+                    <small class="text-muted">Invested: ${holding.invested} | Qty: ${holding.qty}</small>
+                </div>
+                <small class="${parseFloat(holding.pnl) >= 0 ? 'text-success' : 'text-danger'}">${holding.pnl}</small>
+            </div>
+            <div class="d-flex justify-content-between">
+                <small>Avg: ${holding.avgPrice}</small>
+                <small>LTP: ${holding.cmpPrice}</small>
+            </div>
+        </div>
+    </div>
+</div>`;
+            container.innerHTML += card;
+        });
+    }
+
+    // Load the cards on page load
+    loadHoldingsCards(holdingsData);
+</script>
 
 </html>
