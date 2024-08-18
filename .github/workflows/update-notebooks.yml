@@ -30,7 +30,7 @@ jobs:
       # Step 4: Run all Jupyter notebooks in the ./notebook/ folder
       - name: Run Jupyter notebooks
         run: |
-          for notebook in $(find ./notebook/ -name "*.ipynb"); do
+          for notebook in $(find ./NOTEBOOKS/ -name "*.ipynb"); do
             jupyter nbconvert --to notebook --execute "$notebook" --output "$notebook"
           done
 
