@@ -1,6 +1,11 @@
+black
+dateutils
+isort
 matplotlib
+numpy
 openpyxl
 pandas
+pre-commit
 pydantic
 pyxlsb
 xlrd
