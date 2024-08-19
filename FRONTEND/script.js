@@ -227,10 +227,30 @@ function updateLatestData(data) {
     overallReturnElem.className = statusClass;
 }
 
+function find_base_path() {
+    if (window.location.hostname === "ptprashanttripathi.github.io") {
+        return "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/";
+    } else if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+    ) {
+        return "/";
+    } else {
+        // If the domain doesn't match the expected ones, replace the HTML with an error message
+        document.body.innerHTML = `
+            <div style="text-align: center; padding: 50px;">
+                <h1>Error: Unsupported Domain</h1>
+                <p>The application is not supported on this domain.</p>
+            </div>`;
+        return null; // Optionally return null or undefined since there's no valid base path
+    }
+}
+
 async function main() {
+    const base_path = find_base_path();
+
     // Fetch the data using getData
-    const holdingsTrandsFilePath =
-        "../DATA/GOLD/Holdings/HoldingsTrands_data.csv";
+    const holdingsTrandsFilePath = `${base_path}DATA/GOLD/Holdings/HoldingsTrands_data.csv`;
     const holdingsTrands_data = await getData(holdingsTrandsFilePath);
     loadHoldingsTrandsChart(holdingsTrands_data);
 
@@ -238,7 +258,7 @@ async function main() {
     updateLatestData(latestData);
 
     // Fetch the data using getData
-    const holdingsDataFilePath = "../DATA/GOLD/Holdings/Holdings_data.csv";
+    const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/Holdings_data.csv`;
     const holdingsData = await getData(holdingsDataFilePath);
     const filterdData = findMaxDateRecords(holdingsData);
     loadHoldingsDataTable(filterdData);
