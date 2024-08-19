@@ -1,5 +1,4 @@
 # Importing necessary files and packages
-import os
 from pathlib import Path
 
 
@@ -28,17 +27,21 @@ class GlobalPath:
         Raises:
             FileNotFoundError: If the project directory is not found in the path hierarchy.
         """
-        self.base_path = Path(os.getcwd())
+        self.base_path = Path()
 
         # Traverse upwards until the project directory is found or the root is reached
         while (
-            self.base_path.name.lower() != self.project_directory.lower()
-            and self.base_path.parent != self.base_path
+            self.base_path.resolve().name.lower()
+            != self.project_directory.lower()
+            and self.base_path.resolve().parent != self.base_path.resolve()
         ):
-            self.base_path = self.base_path.parent
+            self.base_path = self.base_path.joinpath("..")
 
         # Check if the loop ended because the root was reached
-        if self.base_path.name.lower() != self.project_directory.lower():
+        if (
+            self.base_path.resolve().name.lower()
+            != self.project_directory.lower()
+        ):
             raise FileNotFoundError(
                 f"The project directory '{self.project_directory}' was not found in the path hierarchy."
             )
@@ -55,8 +58,8 @@ class GlobalPath:
         Returns:
             Path: The full resolved path.
         """
-        data_path = self.base_path.joinpath(source_path).resolve()
-        if data_path.suffix in [".csv", ".xlsx", ".xlsb", ".xls", ".json"]:
+        data_path = self.base_path.joinpath(source_path)
+        if "." in data_path.suffix:
             data_path.parent.mkdir(parents=True, exist_ok=True)
         else:
             data_path.mkdir(parents=True, exist_ok=True)

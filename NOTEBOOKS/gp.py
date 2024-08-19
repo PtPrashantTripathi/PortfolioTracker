@@ -1,4 +1,4 @@
-from PortfolioTracker.globalpath import GlobalPath
+from PortfolioTracker.GlobalPath import GlobalPath
 
 # Instantiate GlobalPath
 project_directory = "PortfolioTracker"

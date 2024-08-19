@@ -35,11 +35,11 @@ jobs:
       - name: Run pre-commit hooks
         run: pre-commit run --all-files
 
-      # Step 6: Configure Git
-      - name: Set up Git
-        run: |
-          git config user.name "ptprashanttripathi"
-          git config user.email "ptprashanttripathi@outlook.com"
+      # # Step 6: Configure Git
+      # - name: Set up Git
+      #   run: |
+      #     git config user.name "ptprashanttripathi"
+      #     git config user.email "ptprashanttripathi@outlook.com"
 
       # # Step 6: Commit changes to a new branch
       # - name: Commit changes
@@ -55,17 +55,17 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Data update for $(date +'%Y-%m-%d')"
+          commit-message: Data update as on ${{ date +'%Y-%m-%d' }}
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
           base: main
           branch: data-update
           delete-branch: true
-          title: "[DATA UPDATE] $(date +'%B %Y')"
+          title: [DATA UPDATE] ${{ date +'%Y-%m-%d' }}
           body: |
             This PR contains the data updates.
-            - Updated with *$(date +'%B %Y')*
+            - Updated with *${{ date +'%Y-%m-%d' }}*
           labels: |
             report
             automated pr
@@ -74,7 +74,6 @@ jobs:
           team-reviewers: |
             developers
             qa-team
-          milestone: 1
           draft: false
 
       # Final Step : OUTPUT
