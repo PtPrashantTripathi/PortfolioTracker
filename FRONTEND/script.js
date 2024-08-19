@@ -18,12 +18,37 @@ function parseCSV(csv) {
     return result;
 }
 
-// Function to get data
+// Function to get data based on file type (CSV or JSON)
 async function getData(filePath) {
-    const response = await fetch(filePath);
-    const csvData = await response.text(); // Await the fetched CSV data
-    const parsedData = parseCSV(csvData); // Parse the CSV data
-    return parsedData;
+    try {
+        const response = await fetch(filePath);
+
+        // Check if the file exists and was fetched successfully
+        if (!response.ok) {
+            throw new Error(`Failed to fetch the file: ${response.statusText}`);
+        }
+
+        // Handle CSV file
+        if (filePath.endsWith(".csv")) {
+            const csvData = await response.text();
+            const parsedData = parseCSV(csvData); // Parse the CSV data
+            return parsedData;
+
+            // Handle JSON file
+        } else if (filePath.endsWith(".json")) {
+            const jsonData = await response.json();
+            return jsonData;
+
+            // Handle unknown file type
+        } else {
+            throw new Error(
+                "Unknown data type. Please provide a valid CSV or JSON file."
+            );
+        }
+    } catch (error) {
+        console.error("Error fetching or processing the data:", error);
+        throw error;
+    }
 }
 
 async function loadHoldingsTrandsChart(data) {
@@ -150,40 +175,20 @@ function createCell(text, classes = []) {
 async function loadProfitLossDataTable(data) {
     const tableBody = document.getElementById("ProfitLossTable");
     tableBody.innerHTML = ""; // Clear existing table rows
-
     data.forEach((record) => {
         const row = document.createElement("tr");
-
-        const pnl =
-            parseFloat(record.close_amount) - parseFloat(record.holding_amount);
-
+        const pnl_flag = parseFloat(record.pnl) < 0;
         // Create and append cells
-        row.appendChild(createCell(record.segment));
-        row.appendChild(createCell(record.symbol));
-        row.appendChild(createCell(parseNum(record.holding_quantity)));
-        row.appendChild(createCell(priceConvert(record.avg_price)));
-        row.appendChild(createCell(priceConvert(record.holding_amount)));
-
+        row.appendChild(createCell(`${record.symbol} (${record.segment})`));
+        row.appendChild(createCell(parseNum(record.quantity)));
+        row.appendChild(createCell(priceConvert(record.invested)));
+        row.appendChild(createCell(priceConvert(record.sold)));
         row.appendChild(
             createCell(
-                priceConvert(record.close_price),
-                pnl < 0 ? ["text-danger"] : ["text-success"]
-            )
-        );
-
-        row.appendChild(
-            createCell(
-                priceConvert(record.close_amount),
-                pnl < 0 ? ["text-danger"] : ["text-success"]
-            )
-        );
-
-        row.appendChild(
-            createCell(
-                `${priceConvert(pnl)} (${pnl < 0 ? "+" : ""}${parseNum(
-                    (pnl * 100) / record.holding_amount
+                `${priceConvert(record.pnl)} (${pnl_flag ? "+" : ""}${parseNum(
+                    (parseFloat(record.pnl) * 100) / record.invested
                 )}%)`,
-                pnl < 0 ? ["text-danger"] : ["text-success"]
+                pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
         // Append the row to the table body
@@ -197,13 +202,12 @@ async function loadHoldingsDataTable(data) {
 
     data.forEach((record) => {
         const row = document.createElement("tr");
-
         const pnl =
             parseFloat(record.close_amount) - parseFloat(record.holding_amount);
+        const pnl_flag = pnl < 0;
 
         // Create and append cells
-        row.appendChild(createCell(record.segment));
-        row.appendChild(createCell(record.symbol));
+        row.appendChild(createCell(`${record.symbol} (${record.segment})`));
         row.appendChild(createCell(parseNum(record.holding_quantity)));
         row.appendChild(createCell(priceConvert(record.avg_price)));
         row.appendChild(createCell(priceConvert(record.holding_amount)));
@@ -211,23 +215,23 @@ async function loadHoldingsDataTable(data) {
         row.appendChild(
             createCell(
                 priceConvert(record.close_price),
-                pnl < 0 ? ["text-danger"] : ["text-success"]
+                pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
 
         row.appendChild(
             createCell(
                 priceConvert(record.close_amount),
-                pnl < 0 ? ["text-danger"] : ["text-success"]
+                pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
 
         row.appendChild(
             createCell(
-                `${priceConvert(pnl)} (${pnl < 0 ? "+" : ""}${parseNum(
+                `${priceConvert(pnl)} (${pnl_flag ? "+" : ""}${parseNum(
                     (pnl * 100) / record.holding_amount
                 )}%)`,
-                pnl < 0 ? ["text-danger"] : ["text-success"]
+                pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
         // Append the row to the table body
@@ -235,7 +239,7 @@ async function loadHoldingsDataTable(data) {
     });
 }
 
-function updateLatestData(data) {
+function updateFinancialSummary(data) {
     const { close, holding } = data;
     const pnl = close - holding;
 
@@ -292,8 +296,8 @@ async function main() {
     const holdingsTrands_data = await getData(holdingsTrandsFilePath);
     loadHoldingsTrandsChart(holdingsTrands_data);
 
-    const latestData = findMaxDateRecords(holdingsTrands_data)[0];
-    updateLatestData(latestData);
+    const financialSummaryData = findMaxDateRecords(holdingsTrands_data)[0];
+    updateFinancialSummary(financialSummaryData);
 
     // Fetch the data using getData
     const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/Holdings_data.csv`;
@@ -302,10 +306,40 @@ async function main() {
     loadHoldingsDataTable(filterdData);
 
     // Fetch the data using getData
-    const profitLossDataFilePath = `${base_path}DATA/GOLD/ProfitLoss/ProfitLoss_data.csv`;
+    const profitLossDataFilePath = `${base_path}DATA/GOLD/ProfitLoss/ProfitLoss_data.json`;
     const profitLossData = await getData(profitLossDataFilePath);
-    console.log(profitLossData[0]);
-    loadProfitLossDataTable(profitLossData);
+    loadProfitLossDataTable(profitLossData.data);
+    const profitLossSummaryData = profitLossData;
+    updateProfitLossDataSummary(profitLossSummaryData);
 }
 
 main();
+
+function updateProfitLossDataSummary(data) {
+    const { sold, invested, pnl } = data;
+
+    const elem = document.getElementById("PNLSummary");
+    elem.innerHTML = `
+        <!-- All Your Assets Worth -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(sold, true)}</div>
+            <small class="text-secondary">All your assets turnover</small>
+        </div>
+        <!-- Invested Amount -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 text-primary">${priceConvert(invested, true)}</div>
+            <small class="text-secondary">Invested amount</small>
+        </div>
+        <!-- Overall Returns -->
+        <div class="col-sm-12 col-md-4">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(pnl, true)} (${pnl > 0 ? "+" : ""}${parseNum(
+        (pnl * 100) / invested
+    )}%)</div>
+            <small class="text-secondary">Overall Realized PNL</small>
+        </div>
+    `;
+}
