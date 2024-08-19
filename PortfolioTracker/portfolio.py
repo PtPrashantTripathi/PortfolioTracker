@@ -3,8 +3,6 @@ from datetime import time, datetime
 
 from pydantic import BaseModel, field_validator
 
-from .utilities import logger
-
 
 class StockInfo(BaseModel):
     """
@@ -288,7 +286,7 @@ class Stock(StockInfo):
             and self.expiry_date is not None
             and datetime.today() > self.expiry_date
         ):
-            logger.info(f"{self.stock_name} => {self.holding_quantity} expired")
+            print(f"{self.stock_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
                     # INFO
