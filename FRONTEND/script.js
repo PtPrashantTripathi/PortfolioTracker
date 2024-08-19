@@ -147,12 +147,15 @@ function createCell(text, classes = []) {
     return cell;
 }
 
-async function loadHoldingsDataTable(data) {
-    const tableBody = document.getElementById("CurrentHoldingsTable");
+async function loadProfitLossDataTable(data) {
+    const tableBody = document.getElementById("ProfitLossTable");
     tableBody.innerHTML = ""; // Clear existing table rows
 
     data.forEach((record) => {
         const row = document.createElement("tr");
+
+        const pnl =
+            parseFloat(record.close_amount) - parseFloat(record.holding_amount);
 
         // Create and append cells
         row.appendChild(createCell(record.segment));
@@ -161,37 +164,72 @@ async function loadHoldingsDataTable(data) {
         row.appendChild(createCell(priceConvert(record.avg_price)));
         row.appendChild(createCell(priceConvert(record.holding_amount)));
 
-        const closePrice = parseFloat(record.close_price);
-        const avgPrice = parseFloat(record.avg_price);
         row.appendChild(
             createCell(
                 priceConvert(record.close_price),
-                closePrice < avgPrice ? ["text-danger"] : ["text-success"]
+                pnl < 0 ? ["text-danger"] : ["text-success"]
             )
         );
-
-        const currentAmount = priceConvert(record.close_amount);
 
         row.appendChild(
             createCell(
-                currentAmount,
-                parseFloat(record.close_amount) < 0
-                    ? ["text-danger"]
-                    : ["text-success"]
+                priceConvert(record.close_amount),
+                pnl < 0 ? ["text-danger"] : ["text-success"]
             )
         );
 
-        const investedAmount = parseFloat(record.holding_amount);
-        const pnl = parseFloat(record.close_amount) - investedAmount;
-        const returnPercentage = parseNum((pnl * 100) / record.holding_amount);
-        const pnlText = `${priceConvert(pnl)} (${
-            pnl < 0 ? "+" : ""
-        }${returnPercentage}%)`;
+        row.appendChild(
+            createCell(
+                `${priceConvert(pnl)} (${pnl < 0 ? "+" : ""}${parseNum(
+                    (pnl * 100) / record.holding_amount
+                )}%)`,
+                pnl < 0 ? ["text-danger"] : ["text-success"]
+            )
+        );
+        // Append the row to the table body
+        tableBody.appendChild(row);
+    });
+}
+
+async function loadHoldingsDataTable(data) {
+    const tableBody = document.getElementById("CurrentHoldingsTable");
+    tableBody.innerHTML = ""; // Clear existing table rows
+
+    data.forEach((record) => {
+        const row = document.createElement("tr");
+
+        const pnl =
+            parseFloat(record.close_amount) - parseFloat(record.holding_amount);
+
+        // Create and append cells
+        row.appendChild(createCell(record.segment));
+        row.appendChild(createCell(record.symbol));
+        row.appendChild(createCell(parseNum(record.holding_quantity)));
+        row.appendChild(createCell(priceConvert(record.avg_price)));
+        row.appendChild(createCell(priceConvert(record.holding_amount)));
 
         row.appendChild(
-            createCell(pnlText, pnl < 0 ? ["text-danger"] : ["text-success"])
+            createCell(
+                priceConvert(record.close_price),
+                pnl < 0 ? ["text-danger"] : ["text-success"]
+            )
         );
 
+        row.appendChild(
+            createCell(
+                priceConvert(record.close_amount),
+                pnl < 0 ? ["text-danger"] : ["text-success"]
+            )
+        );
+
+        row.appendChild(
+            createCell(
+                `${priceConvert(pnl)} (${pnl < 0 ? "+" : ""}${parseNum(
+                    (pnl * 100) / record.holding_amount
+                )}%)`,
+                pnl < 0 ? ["text-danger"] : ["text-success"]
+            )
+        );
         // Append the row to the table body
         tableBody.appendChild(row);
     });
@@ -200,31 +238,31 @@ async function loadHoldingsDataTable(data) {
 function updateLatestData(data) {
     const { close, holding } = data;
     const pnl = close - holding;
-    const returnPercentage = parseNum((pnl * 100) / holding);
-    const isProfit = pnl >= 0;
 
-    const investedAmountElem = document.getElementById("invested_amount");
-    const assetsWorthElem = document.getElementById("assets_worth");
-    const overallReturnElem = document.getElementById("overall_return");
-
-    // Update the invested amount
-    investedAmountElem.textContent = priceConvert(holding, true);
-
-    // Update the asset worth
-    assetsWorthElem.textContent = priceConvert(close, true);
-
-    // Update the asset overall return
-    const formattedPnl = priceConvert(pnl, true);
-    const formattedReturnPercentage = `${
-        isProfit ? "+" : ""
-    }${returnPercentage}%`;
-    overallReturnElem.textContent = `${formattedPnl} (${formattedReturnPercentage})`;
-
-    // Apply the appropriate status classes
-    const statusClass = isProfit ? "text-success" : "text-danger";
-    investedAmountElem.className = "text-primary";
-    assetsWorthElem.className = statusClass;
-    overallReturnElem.className = statusClass;
+    const elem = document.getElementById("FinancialSummary");
+    elem.innerHTML = `
+        <!-- All Your Assets Worth -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(close, true)}</div>
+            <small class="text-secondary">All your assets worth</small>
+        </div>
+        <!-- Invested Amount -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 text-primary">${priceConvert(holding, true)}</div>
+            <small class="text-secondary">Invested amount</small>
+        </div>
+        <!-- Overall Returns -->
+        <div class="col-sm-12 col-md-4">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(pnl, true)} (${pnl > 0 ? "+" : ""}${parseNum(
+        (pnl * 100) / holding
+    )}%)</div>
+            <small class="text-secondary">Overall Returns</small>
+        </div>
+    `;
 }
 
 function find_base_path() {
@@ -262,6 +300,12 @@ async function main() {
     const holdingsData = await getData(holdingsDataFilePath);
     const filterdData = findMaxDateRecords(holdingsData);
     loadHoldingsDataTable(filterdData);
+
+    // Fetch the data using getData
+    const profitLossDataFilePath = `${base_path}DATA/GOLD/ProfitLoss/ProfitLoss_data.csv`;
+    const profitLossData = await getData(profitLossDataFilePath);
+    console.log(profitLossData[0]);
+    loadProfitLossDataTable(profitLossData);
 }
 
 main();

@@ -1,4 +1,3 @@
-import os
 import pathlib
 
 import nbformat
@@ -38,7 +37,7 @@ def run_notebook(notebook_path: str | pathlib.Path):
 
     # Execute the notebook
     ep.preprocess(
-        notebook, {"metadata": {"path": os.path.dirname(notebook_path)}}
+        notebook, {"metadata": {"path": pathlib.Path(notebook_path).parent}}
     )
 
     # Save the executed notebook
