@@ -55,6 +55,7 @@ jobs:
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
+          base: main
           branch: data-update
           delete-branch: true
           title: "[DATA UPDATE] $(date +'%B %Y')"
