@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,7 @@ name = "PortfolioTracker"
 version = "0.1.0"
 description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
 license = {file = "LICENSE"}
-authors = [{ name = "ptptrashanttripathi", email = "ptprashanttripathi@outlook.com" }]
+authors = [{ name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }]
 readme = {file = "README.txt", content-type = "text/markdown"}
 requires-python = ">=3.7"
 keywords = ["packaging", "setuptools"]
@@ -26,28 +26,12 @@ Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
 Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
-[project.optional-dependencies]
-test = ["pytest-cov"]
 
 [tool.setuptools]
 packages = ["PortfolioTracker"]
 
 [tool.setuptools.package-dir]
 PortfolioTracker = "PortfolioTracker"
-
-[build_sphinx]
-project = "PortfolioTracker"
-version = "0.0.1"
-source-dir = "PortfolioTracker"
-
-[tool.pylint.'MESSAGES CONTROL']
-extension-pkg-whitelist = "pydantic"
-
-[tool.coverage.run]
-source = ["PortfolioTracker"]
-
-[tool.pytest.ini_options]
-addopts = "--cov --cov-report html --cov-report term-missing --cov-fail-under 20"
 
 [tool.black]
 line-length = 80
@@ -57,8 +41,3 @@ profile = "black"
 line_length = 80
 multi_line_output = 3
 include_trailing_comma = true
-virtual_env = "venv"
-
-[tool.flake8]
-exclude = "venv"
-ignore = ["E501", "W503", "E226"]
