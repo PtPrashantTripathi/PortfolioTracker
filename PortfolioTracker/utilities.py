@@ -6,8 +6,6 @@ from typing import List
 from pathlib import Path
 from datetime import datetime
 
-from PortfolioTracker.logger import logger
-
 
 # Check for newly added or modified files
 def check_files_availability(
@@ -40,7 +38,7 @@ def check_files_availability(
     # Log the number of detected files
     num_files = len(file_paths)
     if num_files > 0:
-        logger.info(f"Number of Files Detected: {num_files}")
+        print(f"Number of Files Detected: {num_files}")
         return file_paths
     else:
         raise FileNotFoundError("No processable data available")
@@ -110,16 +108,16 @@ def get_schema_from_data_contract(json_path):
         contract_fields = json.load(f)
 
     # Create a list of formatted strings with field names and types
-    field_info = [
+    field_debug = [
         f'{each["field_name"]} {each["field_type"]}' for each in contract_fields
     ]
     # Join the strings with commas and print the result
-    schema = ", ".join(field_info)
+    schema = ", ".join(field_debug)
 
     return schema
 
 
-# Auxiliary functions to gather info of given pandas dataframe
+# Auxiliary functions to gather debug of given pandas dataframe
 def find_correct_sheetname(df_pandas, sheet_name_regex):
     """
     Finds the first sheet name that matches the given regular expression.
@@ -138,7 +136,7 @@ def find_correct_sheetname(df_pandas, sheet_name_regex):
     for sheet_name in df_pandas.keys():
         # Check if the sheet name matches the regex pattern
         if pattern.search(sheet_name):
-            logger.info(f"Sheet name => {sheet_name}")
+            print(f"Sheet name => {sheet_name}")
             return df_pandas[sheet_name]
 
     # Raise an error if no matching sheet name is found
@@ -215,7 +213,7 @@ def extract_year_month(file_name):
 # Functions to find data with correct header column
 def find_correct_headers(df_pandas, global_header_regex=None):
     """
-    Auxiliary functions to gather info of given pandas dataframe
+    Auxiliary functions to gather debug of given pandas dataframe
     """
 
     pattern = re.compile(global_header_regex, re.IGNORECASE)
@@ -272,7 +270,7 @@ def get_correct_datatype(input_datatype):
     for datatype_name, datatype_values in datatypes_list.items():
         if input_datatype in datatype_values:
             return datatype_name
-    logger.warning(f"undefined data type => {input_datatype}")
+    print(f"undefined data type => {input_datatype}")
     return input_datatype
 
 
