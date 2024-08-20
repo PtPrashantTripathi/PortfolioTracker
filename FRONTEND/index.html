@@ -11,78 +11,76 @@
 </head>
 
 <body>
-    <div class="container mt-4">
-        <div class="container-fluid">
-            <div class="jumbotron text-center bg-white p-3 shadow-sm">
-                <h3 class="display-6 text-success">Portfolio Tracker</h3>
-                <p class="text-secondary">Your investments at a glance.</p>
-            </div>
+    <div class="jumbotron text-center bg-white p-3 shadow-sm">
+        <h3 class="display-6 text-success">Portfolio Tracker</h3>
+        <p class="text-secondary">Your investments at a glance.</p>
+    </div>
 
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">Portfolio Performance</h5>
-                    <div id="holdingsTrandsChart"></div>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">Portfolio Performance</h5>
+            <div id="holdingsTrandsChart"></div>
+        </div>
+    </div>
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title display-6 text-success">Current Holdings</h4>
+            <!-- Merged Financial Summary Card -->
+            <div class="card p-4 mb-4 text-center shadow-sm">
+                <div class="row" id="FinancialSummary">
                 </div>
             </div>
 
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title display-6 text-success">Current Holdings</h4>
-                    <!-- Merged Financial Summary Card -->
-                    <div class="card p-4 mb-4 text-center shadow-sm">
-                        <div class="row" id="FinancialSummary">
-                        </div>
-                    </div>
-
-                    <div class="table-responsive dash-social shadow-sm">
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Stock Name</th>
-                                    <th>Qty.</th>
-                                    <th>Avg Price</th>
-                                    <th>Invested</th>
-                                    <th>CMP Price</th>
-                                    <th>Current</th>
-                                    <th>Unrealized PNL</th>
-                                </tr>
-                            </thead>
-                            <tbody id="CurrentHoldingsTable"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h4 class="card-title display-6 text-success">Profit / Loss (Past Holdings)</h4>
-                    <!-- Merged Financial Summary Card -->
-                    <div class="card p-4 mb-4 text-center shadow-sm">
-                        <div class="row" id="PNLSummary">
-                        </div>
-                    </div>
-
-                    <div class="table-responsive dash-social shadow-sm">
-                        <table class="table table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Stock Name</th>
-                                    <th>Qty.</th>
-                                    <th>Net Buy</th>
-                                    <th>Net Sell</th>
-                                    <th>Realized PNL</th>
-                                </tr>
-                            </thead>
-                            <tbody id="ProfitLossTable"></tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="table-responsive dash-social shadow-sm">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Stock Name</th>
+                            <th>Qty.</th>
+                            <th>Avg Price</th>
+                            <th>Invested</th>
+                            <th>CMP Price</th>
+                            <th>Current</th>
+                            <th>Unrealized PNL</th>
+                            <th>Days</th>
+                        </tr>
+                    </thead>
+                    <tbody id="CurrentHoldingsTable"></tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title display-6 text-success">Profit / Loss (Past Holdings)</h4>
+            <!-- Merged Financial Summary Card -->
+            <div class="card p-4 mb-4 text-center shadow-sm">
+                <div class="row" id="PNLSummary">
+                </div>
+            </div>
+
+            <div class="table-responsive dash-social shadow-sm">
+                <table class="table table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Stock Name</th>
+                            <th>Qty.</th>
+                            <th>Avg. Buy</th>
+                            <th>Avg. Sell</th>
+                            <th>Realized PNL</th>
+                            <th>Days</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ProfitLossTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./script.js"></script>
 
