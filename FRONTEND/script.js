@@ -333,7 +333,7 @@ async function main() {
     loadHoldingsDataTable(filterdData);
 
     // Fetch the data using getData
-    const profitLossDataFilePath = `${base_path}DATA/GOLD/ProfitLoss/ProfitLoss_data.json`;
+    const profitLossDataFilePath = `${base_path}DATA/PRESENTATION/API/ProfitLoss_data.json`;
     const profitLossData = await getData(profitLossDataFilePath);
     loadProfitLossDataTable(profitLossData.data);
     const profitLossSummaryData = profitLossData;
