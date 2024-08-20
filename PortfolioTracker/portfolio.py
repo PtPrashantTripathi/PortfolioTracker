@@ -3,7 +3,7 @@ from typing import Dict, List
 from pydantic import BaseModel
 
 from PortfolioTracker.stock import Stock
-from PortfolioTracker.models.TradeRecord import TradeRecord
+from PortfolioTracker.models.trade_record import TradeRecord
 
 
 class Portfolio(BaseModel):
