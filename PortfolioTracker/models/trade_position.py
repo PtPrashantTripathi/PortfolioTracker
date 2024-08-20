@@ -1,7 +1,7 @@
 from typing import Union, Optional
 from datetime import datetime
 
-from .StockInfo import StockInfo
+from PortfolioTracker.models.stock_info import StockInfo
 
 
 class TradePosition(StockInfo):
