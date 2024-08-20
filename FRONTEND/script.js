@@ -181,16 +181,18 @@ async function loadProfitLossDataTable(data) {
         // Create and append cells
         row.appendChild(createCell(`${record.symbol} (${record.segment})`));
         row.appendChild(createCell(parseNum(record.quantity)));
-        row.appendChild(createCell(priceConvert(record.invested)));
-        row.appendChild(createCell(priceConvert(record.sold)));
+        row.appendChild(createCell(priceConvert(record.avg_price)));
+        row.appendChild(createCell(priceConvert(record.sell_price)));
         row.appendChild(
             createCell(
-                `${priceConvert(record.pnl)} (${pnl_flag ? "+" : ""}${parseNum(
-                    (parseFloat(record.pnl) * 100) / record.invested
+                `${priceConvert(record.pnl)} (${pnl_flag ? "" : "+"}${parseNum(
+                    (parseFloat(record.pnl) * 100) /
+                        (parseNum(record.avg_price) * parseNum(record.quantity))
                 )}%)`,
                 pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
+        row.appendChild(createCell(record.days));
         // Append the row to the table body
         tableBody.appendChild(row);
     });
@@ -234,6 +236,7 @@ async function loadHoldingsDataTable(data) {
                 pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
+        row.appendChild(createCell("TBD"));
         // Append the row to the table body
         tableBody.appendChild(row);
     });
@@ -269,22 +272,46 @@ function updateFinancialSummary(data) {
     `;
 }
 
+function updateProfitLossDataSummary(data) {
+    const { sold, invested, pnl } = data;
+
+    const elem = document.getElementById("PNLSummary");
+    elem.innerHTML = `
+        <!-- All Your Assets Worth -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(sold, true)}</div>
+            <small class="text-secondary">All your assets turnover</small>
+        </div>
+        <!-- Invested Amount -->
+        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
+            <div class="h4 text-primary">${priceConvert(invested, true)}</div>
+            <small class="text-secondary">Invested amount</small>
+        </div>
+        <!-- Overall Returns -->
+        <div class="col-sm-12 col-md-4">
+            <div class="h4 ${
+                pnl > 0 ? "text-success" : "text-danger"
+            }">${priceConvert(pnl, true)} (${pnl > 0 ? "+" : ""}${parseNum(
+        (pnl * 100) / invested
+    )}%)</div>
+            <small class="text-secondary">Overall Realized PNL</small>
+        </div>
+    `;
+}
+
 function find_base_path() {
     if (window.location.hostname === "ptprashanttripathi.github.io") {
         return "https://raw.githubusercontent.com/ptprashanttripathi/PortfolioTracker/main/";
-    } else if (
-        window.location.hostname === "localhost" ||
-        window.location.hostname === "127.0.0.1"
-    ) {
-        return "/";
     } else {
         // If the domain doesn't match the expected ones, replace the HTML with an error message
-        document.body.innerHTML = `
-            <div style="text-align: center; padding: 50px;">
-                <h1>Error: Unsupported Domain</h1>
-                <p>The application is not supported on this domain.</p>
-            </div>`;
-        return null; // Optionally return null or undefined since there's no valid base path
+        return "/";
+        // document.body.innerHTML = `
+        //     <div style="text-align: center; padding: 50px;">
+        //         <h1>Error: Unsupported Domain</h1>
+        //         <p>The application is not supported on this domain.</p>
+        //     </div>`;
     }
 }
 
@@ -314,32 +341,3 @@ async function main() {
 }
 
 main();
-
-function updateProfitLossDataSummary(data) {
-    const { sold, invested, pnl } = data;
-
-    const elem = document.getElementById("PNLSummary");
-    elem.innerHTML = `
-        <!-- All Your Assets Worth -->
-        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
-            <div class="h4 ${
-                pnl > 0 ? "text-success" : "text-danger"
-            }">${priceConvert(sold, true)}</div>
-            <small class="text-secondary">All your assets turnover</small>
-        </div>
-        <!-- Invested Amount -->
-        <div class="col-sm-12 col-md-4 mb-3 mb-md-0">
-            <div class="h4 text-primary">${priceConvert(invested, true)}</div>
-            <small class="text-secondary">Invested amount</small>
-        </div>
-        <!-- Overall Returns -->
-        <div class="col-sm-12 col-md-4">
-            <div class="h4 ${
-                pnl > 0 ? "text-success" : "text-danger"
-            }">${priceConvert(pnl, true)} (${pnl > 0 ? "+" : ""}${parseNum(
-        (pnl * 100) / invested
-    )}%)</div>
-            <small class="text-secondary">Overall Realized PNL</small>
-        </div>
-    `;
-}
