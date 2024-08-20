@@ -2,8 +2,8 @@ from typing import Dict, List
 
 from pydantic import BaseModel
 
-from .Stock import Stock
-from .Models.TradeRecord import TradeRecord
+from PortfolioTracker.stock import Stock
+from PortfolioTracker.models.TradeRecord import TradeRecord
 
 
 class Portfolio(BaseModel):

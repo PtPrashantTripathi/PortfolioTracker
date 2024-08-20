@@ -1,4 +1,4 @@
-from PortfolioTracker.Portfolio import Portfolio
+from PortfolioTracker.portfolio import Portfolio
 
 trade_history = [
     {

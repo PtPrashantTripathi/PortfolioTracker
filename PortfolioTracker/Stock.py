@@ -1,10 +1,10 @@
 from typing import List, Union, Optional
 from datetime import datetime
 
-from .Models.StockInfo import StockInfo
-from .Models.TradeRecord import TradeRecord
-from .Models.HoldingRecord import HoldingRecord
-from .Models.TradePosition import TradePosition
+from PortfolioTracker.models.StockInfo import StockInfo
+from PortfolioTracker.models.TradeRecord import TradeRecord
+from PortfolioTracker.models.HoldingRecord import HoldingRecord
+from PortfolioTracker.models.TradePosition import TradePosition
 
 
 class Stock(StockInfo):

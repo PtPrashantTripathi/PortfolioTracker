@@ -3,7 +3,7 @@ from datetime import time, datetime
 
 from pydantic import field_validator
 
-from .StockInfo import StockInfo
+from PortfolioTracker.models.StockInfo import StockInfo
 
 
 class TradeRecord(StockInfo):
