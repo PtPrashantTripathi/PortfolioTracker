@@ -175,9 +175,9 @@ $.extend( FixedHeader.prototype, {
 	{
 		return this.s.enable;
 	},
-	
+
 	/**
-	 * Set header offset 
+	 * Set header offset
 	 *
 	 * @param  {int} new value for headerOffset
 	 */
@@ -190,7 +190,7 @@ $.extend( FixedHeader.prototype, {
 
 		return this.c.headerOffset;
 	},
-	
+
 	/**
 	 * Set footer offset
 	 *
@@ -206,7 +206,7 @@ $.extend( FixedHeader.prototype, {
 		return this.c.footerOffset;
 	},
 
-	
+
 	/**
 	 * Recalculate the position of the fixed elements and force them into place
 	 */
@@ -235,7 +235,7 @@ $.extend( FixedHeader.prototype, {
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Constructor
 	 */
-	
+
 	/**
 	 * FixedHeader constructor - adding the required event listeners and
 	 * simple initialisation
@@ -310,7 +310,7 @@ $.extend( FixedHeader.prototype, {
 		// Instead the table's height is decreased accordingly - see `_scroll()`
 		if (item === 'footer' && this._scrollEnabled()) {
 			return;
-		}	
+		}
 
 		if ( ! force && itemDom.floating ) {
 			// existing floating element - reuse it
@@ -326,7 +326,7 @@ $.extend( FixedHeader.prototype, {
 				itemDom.floating.remove();
 			}
 
-			var tableNode = $(dt.table().node()); 
+			var tableNode = $(dt.table().node());
 			var scrollBody = $(tableNode.parent());
 			var scrollEnabled = this._scrollEnabled();
 
@@ -389,8 +389,8 @@ $.extend( FixedHeader.prototype, {
 
 	/**
 	 * This method sets the sticky position of the header elements to match fixed columns
-	 * @param {JQuery<HTMLElement>} el 
-	 * @param {string} sign 
+	 * @param {JQuery<HTMLElement>} el
+	 * @param {string} sign
 	 */
 	_stickyPosition(el, sign) {
 		if (this._scrollEnabled()) {
@@ -508,7 +508,7 @@ $.extend( FixedHeader.prototype, {
 	 * * `in` - Floating over the DataTable
 	 * * `below` - (Header only) Fixed to the bottom of the table body
 	 * * `above` - (Footer only) Fixed to the top of the table body
-	 * 
+	 *
 	 * @param  {string}  mode        Mode that the item should be shown in
 	 * @param  {string}  item        'header' or 'footer'
 	 * @param  {boolean} forceChange Force a redraw of the mode, even if already
@@ -528,7 +528,7 @@ $.extend( FixedHeader.prototype, {
 		// Instead the table's height is decreased accordingly - see `_scroll()`
 		if (item === 'footer' && scrollEnabled) {
 			return;
-		}		
+		}
 
 		// It isn't trivial to add a !important css attribute...
 		var importantWidth = function (w) {
@@ -604,7 +604,7 @@ $.extend( FixedHeader.prototype, {
 				// Otherwise must be a header so get the difference from the bottom of the
 				//  desired floating header and the bottom of the table body
 				windowTop + this.c.headerOffset + position.theadHeight - bodyBottom
-				
+
 			// Set the top or bottom based off of the offset and the shuffle value
 			var prop = item === 'header' ? 'top' : 'bottom';
 			var val = this.c[item+'Offset'] - (shuffle > 0 ? shuffle : 0);
@@ -814,20 +814,20 @@ $.extend( FixedHeader.prototype, {
 			else {
 				footerMode = 'above';
 			}
-			
+
 			if ( forceChange || footerMode !== this.s.footerMode ) {
 				this._modeChange( footerMode, 'footer', forceChange );
 			}
 
 			this._horizontal( 'footer', windowLeft );
-			
+
 			var getOffsetHeight = (el) => {
 				return {
 					offset: el.offset(),
 					height: el.outerHeight()
 				}
 			}
-		
+
 			header = this.dom.header.floating ? getOffsetHeight(this.dom.header.floating) : getOffsetHeight(this.dom.thead);
 			footer = this.dom.footer.floating ? getOffsetHeight(this.dom.footer.floating) : getOffsetHeight(this.dom.tfoot);
 
@@ -859,7 +859,7 @@ $.extend( FixedHeader.prototype, {
 				// At the end of the above calculation the space between the header (top of the page if floating)
 				// and the point just above the footer should be the new value for the height of the table.
 				scrollBody.outerHeight(newHeight);
-				
+
 				// Need some rounding here as sometimes very small decimal places are encountered
 				// If the actual height is bigger or equal to the height we just applied then the footer is "Floating"
 				if(Math.round(scrollBody.outerHeight()) >= Math.round(newHeight)) {
