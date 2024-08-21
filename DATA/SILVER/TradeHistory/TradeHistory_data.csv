@@ -1,4 +1,4 @@
-datetime,exchange,segment,isin,symbol,company,side,amount,quantity,price,expiry_date
+datetime,exchange,segment,isin,symbol,stock_name,side,amount,quantity,price,expiry_date
 2020-04-21 14:41:30,NSE,EQ,INE155A01022,TATAMOTORS,TATA MOTORS,BUY,1051.4,14.0,75.1,
 2020-05-04 14:33:45,NSE,EQ,INE155A01022,TATAMOTORS,TATA MOTORS,BUY,419.0,5.0,83.8,
 2020-05-05 11:31:20,NSE,EQ,INE354C01027,BHAGERIA,BHAGERI IND,BUY,1165.5,10.0,116.55,
