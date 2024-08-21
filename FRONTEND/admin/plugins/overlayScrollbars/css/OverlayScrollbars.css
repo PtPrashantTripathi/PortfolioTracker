@@ -93,7 +93,7 @@ body.os-dragging * {
 }
 #os-dummy-scrollbar-size > div {
     width: 200%;
-    height: 200%; 
+    height: 200%;
     margin: 10px 0;
 }
 /* fix restricted measuring */
@@ -505,9 +505,9 @@ html.os-html > .os-host > .os-scrollbar {
     overflow: hidden !important;
 }
 .os-host-overflow-x {
-} 
+}
 .os-host-overflow-y {
-} 
+}
 
 /*
 THEMES:

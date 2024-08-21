@@ -199,4 +199,3 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   cursor: not-allowed; }
   .select2-container--bootstrap4.select2-container--disabled .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
     display: none; }
-

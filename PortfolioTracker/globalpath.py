@@ -1,6 +1,8 @@
+import os
+
 # Importing necessary files and packages
 from pathlib import Path
-import os
+
 
 class GlobalPath:
     """
@@ -31,17 +33,13 @@ class GlobalPath:
 
         # Traverse upwards until the project directory is found or the root is reached
         while (
-            self.base_path.name.lower()
-            != self.project_directory.lower()
+            self.base_path.name.lower() != self.project_directory.lower()
             and self.base_path.parent != self.base_path
         ):
             self.base_path = self.base_path.parent
 
         # Check if the loop ended because the root was reached
-        if (
-            self.base_path.name.lower()
-            != self.project_directory.lower()
-        ):
+        if self.base_path.name.lower() != self.project_directory.lower():
             raise FileNotFoundError(
                 f"The project directory '{self.project_directory}' was not found in the path hierarchy."
             )
