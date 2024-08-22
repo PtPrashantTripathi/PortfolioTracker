@@ -24,12 +24,12 @@ class Portfolio(BaseModel):
             record (Dict): The trade record to be processed.
         """
         trade_record = TradeRecord(**record)
-        stock_name = trade_record.stock_name
+        scrip_name = trade_record.scrip_name
 
         # Initialize stock if not exists
-        if stock_name not in self.stocks:
-            self.stocks[stock_name] = Stock(
-                stock_name=stock_name,
+        if scrip_name not in self.stocks:
+            self.stocks[scrip_name] = Stock(
+                scrip_name=scrip_name,
                 symbol=trade_record.symbol,
                 exchange=trade_record.exchange,
                 segment=trade_record.segment,
@@ -37,7 +37,7 @@ class Portfolio(BaseModel):
             )
 
         # Execute trade
-        self.stocks[stock_name].trade(trade_record)
+        self.stocks[scrip_name].trade(trade_record)
 
     def check_expired_stocks(self):
         """

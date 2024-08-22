@@ -1,4 +1,4 @@
-date,stock_name,event,value
+date,symbol,event,value
 2021-09-16,BPCL,DIVIDENDS,11.5
 2021-11-11,BPCL,DIVIDENDS,2.5
 2022-02-10,BPCL,DIVIDENDS,2.5
