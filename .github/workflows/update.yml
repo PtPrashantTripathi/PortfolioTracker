@@ -2,70 +2,54 @@ name: Update Data
 
 on:
   schedule:
-    # Runs the workflow at 00:00 on the first day of each month
     - cron: '0 0 1 * *'
-  workflow_dispatch: # Allows manually triggering the workflow
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      # Step 3: Install local package and dependencies
       - name: Install dependencies
         run: |
           pip install -e .
           pip install -r requirements.txt
 
-      # Step 4: Run all Jupyter notebooks in the ./notebook/ folder
       - name: Run Jupyter notebooks
         run: python ./NOTEBOOKS/runner.py
 
-      # Step 5: Run Pre commit
       - name: Run pre-commit hooks
         run: pre-commit run --all-files
 
-      # # Step 6: Configure Git
-      # - name: Set up Git
-      #   run: |
-      #     git config user.name "PtPrashantTripathi"
-      #     git config user.email "ptprashanttripathi@outlook.com"
+      # Set the date as an environment variable
+      - name: Set date variable
+        id: date
+        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
-      # # Step 6: Commit changes to a new branch
-      # - name: Commit changes
-      #   run: |
-      #     git checkout -b data-update
-      #     git add .
-      #     git commit -m "Data update for $(date +'%Y-%m-%d')"
-      #     # git push -f
-
-      # Step 7: Push changes and create a PR
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Data update as on ${{ date +'%Y-%m-%d' }}
+          commit-message: Data update as on ${{ env.DATE }}
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
           base: main
           branch: data-update
           delete-branch: true
-          title: "[DATA UPDATE] ${{ date +'%Y-%m-%d' }}"
+          title: "[DATA UPDATE] ${{ env.DATE }}"
           body: |
             This PR contains the data updates.
-            - Updated with *${{ date +'%Y-%m-%d' }}*
+            - Updated with *${{ env.DATE }}*
           labels: |
             report
             automated pr
@@ -76,7 +60,6 @@ jobs:
             qa-team
           draft: false
 
-      # Final Step : OUTPUT
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
