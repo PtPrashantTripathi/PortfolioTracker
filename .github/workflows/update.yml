@@ -62,7 +62,7 @@ jobs:
           base: main
           branch: data-update
           delete-branch: true
-          title: [DATA UPDATE] ${{ date +'%Y-%m-%d' }}
+          title: "[DATA UPDATE] ${{ date +'%Y-%m-%d' }}"
           body: |
             This PR contains the data updates.
             - Updated with *${{ date +'%Y-%m-%d' }}*
