@@ -29,27 +29,19 @@ jobs:
       - name: Run pre-commit hooks
         run: pre-commit run --all-files
 
-      # Set the date as an environment variable
-      - name: Set date variable
-        id: date
-        run: echo "DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Data update as on ${{ env.DATE }}
+          commit-message: "Data update as on $(date +'%Y-%m-%d')"
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
           base: main
           branch: data-update
           delete-branch: true
-          title: "[DATA UPDATE] ${{ env.DATE }}"
-          body: |
-            This PR contains the data updates.
-            - Updated with *${{ env.DATE }}*
+          title: "DATA UPDATE $(date +'%Y-%m-%d')"
           labels: |
             report
             automated pr
