@@ -1,4 +1,4 @@
-date,stock_name,open,high,low,close,volume
+date,symbol,open,high,low,close,volume
 2020-05-04,BHAGERIA,95.58,110.9,91.3,105.12,23729
 2020-05-05,BHAGERIA,106.39,113.58,102.35,105.64,33004
 2020-05-06,BHAGERIA,108.08,116.73,104.13,112.87,35894
