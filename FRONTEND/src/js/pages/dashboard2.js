@@ -128,6 +128,7 @@ $(function () {
       }
     }
   })
+  
 
   // $('#world-map-markers').vectorMap({
   //   map              : 'world_en',
