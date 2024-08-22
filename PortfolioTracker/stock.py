@@ -67,8 +67,8 @@ class Stock(StockInfo):
                 self.closed_positions.append(
                     TradePosition(
                         # INFO
-                        stock_name=self.stock_name,
                         symbol=self.symbol,
+                        scrip_name=self.scrip_name,
                         exchange=self.exchange,
                         segment=self.segment,
                         # STATUS
@@ -111,8 +111,8 @@ class Stock(StockInfo):
             self.open_positions.append(
                 TradePosition(
                     # INFO
-                    stock_name=self.stock_name,
                     symbol=self.symbol,
+                    scrip_name=self.scrip_name,
                     exchange=self.exchange,
                     segment=self.segment,
                     # OPEN INFO
@@ -157,8 +157,8 @@ class Stock(StockInfo):
 
         return HoldingRecord(
             # INFO
-            stock_name=self.stock_name,
             symbol=self.symbol,
+            scrip_name=self.scrip_name,
             exchange=self.exchange,
             segment=self.segment,
             # HOLDING INFO
@@ -177,11 +177,11 @@ class Stock(StockInfo):
             and self.expiry_date is not None
             and datetime.today() > self.expiry_date
         ):
-            print(f"{self.stock_name} => {self.holding_quantity} expired")
+            print(f"{self.scrip_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
                     # INFO
-                    stock_name=self.stock_name,
+                    scrip_name=self.scrip_name,
                     exchange=self.exchange,
                     symbol=self.symbol,
                     segment=self.segment,

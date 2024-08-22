@@ -1,4 +1,4 @@
-exchange,segment,symbol,stock_name,position,quantity,open_datetime,open_side,open_price,open_amount,close_datetime,close_side,close_price,close_amount,pnl_amount,pnl_percentage
+exchange,segment,symbol,scrip_name,position,quantity,open_datetime,open_side,open_price,open_amount,close_datetime,close_side,close_price,close_amount,pnl_amount,pnl_percentage
 NSE,EQ,BHAGERIA,BHAGERI IND,LONG,10.0,2020-05-05 11:31:20,BUY,116.55,1165.5,2020-06-15 10:57:42,SELL,113.0,1130.0,-35.5,-3.05
 NSE,EQ,BHAGERIA,BHAGERI IND,LONG,5.0,2020-05-19 14:44:06,BUY,100.0,500.0,2020-06-15 10:57:42,SELL,113.0,565.0,65.0,13.0
 NSE,EQ,BPCL,BHARAT PETROLEUM CORPORATION L,LONG,43.0,2021-08-06 11:42:14,BUY,457.0,19651.0,2022-08-10 09:26:12,SELL,328.85,14140.55,-5510.45,-28.04
