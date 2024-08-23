@@ -26,9 +26,6 @@ jobs:
       - name: Set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-          echo ${{ github.workspace }}
-          pwd
-          find ${{ github.workspace }}          
 
       # Step 3: Install local package and dependencies
       - name: Install dependencies
