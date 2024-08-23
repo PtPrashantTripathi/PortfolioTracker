@@ -1,8 +1,11 @@
 import pathlib
-import nbformat
 from typing import Union
+
+import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
+
 from PortfolioTracker.globalpath import GlobalPath
+
 
 def run_notebook(notebook_path: Union[str, pathlib.Path]):
     """
@@ -28,6 +31,7 @@ def run_notebook(notebook_path: Union[str, pathlib.Path]):
     # Save the executed notebook
     with open(notebook_path, "w", encoding="utf-8") as file:
         nbformat.write(notebook, file)
+
 
 if __name__ == "__main__":
     # Instantiate GlobalPath
