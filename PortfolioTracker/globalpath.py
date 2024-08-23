@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class GlobalPath:
     """
@@ -8,13 +11,13 @@ class GlobalPath:
     def __init__(self):
         """
         Initializes a new GlobalPath instance and sets up directory paths.
-        Uses GITHUB_WORKSPACE environment variable if defined, else defaults to a local path.
+        Uses PROJECT_DIR environment variable if defined, else defaults to a local path.
         """
-        # Use GITHUB_WORKSPACE if available, otherwise use the default local path
+        # Use PROJECT_DIR if available, otherwise use the default local path
+        
         self.base_path = Path(
             os.getenv(
-                "GITHUB_WORKSPACE",  # Get the GitHub workspace path from the environment variable
-                "C:/Users/prashant.tripathi/Code/PortfolioTracker/"  # Default local path if the environment variable is not set
+                "PROJECT_DIR",  # Get the GitHub workspace path from the environment variable
             )
         ).resolve()  # Resolve to an absolute path
 
