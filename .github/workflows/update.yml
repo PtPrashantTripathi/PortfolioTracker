@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RELEASE_DATE: "2024-08-11"
-
+      PROJECT_DIR: ${{ github.workspace }} # Set the project directory using GITHUB_WORKSPACE
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -39,7 +39,7 @@ jobs:
 
       # Step 5: Run Pre commit
       - name: Run pre-commit hooks
-        run: pre-commit run --all-files          
+        run: pre-commit run --all-files
 
       # # Step 6: Commit changes to a new branch
       # - name: Commit changes
