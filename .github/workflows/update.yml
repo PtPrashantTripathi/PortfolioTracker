@@ -22,6 +22,14 @@ jobs:
         with:
           python-version: "3.x"
 
+      # Step 6: Dynamically set RELEASE_DATE environment variable
+      - name: Set release date
+        run: |
+          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+          echo ${{ github.workspace }}
+          pwd
+          find ${{ github.workspace }}          
+
       # Step 3: Install local package and dependencies
       - name: Install dependencies
         run: |
@@ -34,16 +42,7 @@ jobs:
 
       # Step 5: Run Pre commit
       - name: Run pre-commit hooks
-        run: pre-commit run --all-files
-
-      # Step 6: Dynamically set RELEASE_DATE environment variable
-      - name: Set release date
-        run: |
-          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-          echo ${{ github.workspace }}
-          pwd
-          find ${{ github.workspace }}
-          
+        run: pre-commit run --all-files          
 
       # # Step 6: Commit changes to a new branch
       # - name: Commit changes
