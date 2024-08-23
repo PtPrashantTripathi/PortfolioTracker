@@ -20,7 +20,7 @@
     integrity="sha512-3JRrEUwaCkFUBLK1N8HehwQgu8e23jTH4np5NHOmQOobuC4ROQxFwFgBLTnhcnQRMs84muMh0PnnwXlPq5MGjg=="
     crossorigin="anonymous" />
 
-  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+
 
   <link rel="stylesheet" href="src/css/adminlte.min.css" />
 
@@ -41,9 +41,6 @@
 </head>
 
 <body>
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img src="src/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60" />
-  </div>
 
   <div class="container">
     <div class="content-header">
@@ -172,20 +169,6 @@
 
 
   <script src="script.js"></script>
-  <script>
-    setTimeout(() => {
-      const preloader = document.querySelector(".preloader");
-
-      if (preloader) {
-        preloader.style.height = "0";
-
-        setTimeout(() => {
-          Array.from(preloader.children).forEach((child) => {
-            child.style.display = "none";
-          });
-        }, 200);
-      }
-    }, 400);</script>
 </body>
 
 </html>
