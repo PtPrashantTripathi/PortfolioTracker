@@ -9,7 +9,7 @@ jobs:
   update:
     runs-on: ubuntu-latest
     env:
-      RELEASE_DATE: "2024-08-11"
+      RELEASE_DATE: ""
       PROJECT_DIR: ${{ github.workspace }}
     steps:
       - name: Checkout repository
@@ -44,7 +44,7 @@ jobs:
           base: main
           branch: data-update
           delete-branch: true
-          title: "[PanditBot] Updating Repos Data $(date +%Y-%m-%d)"
+          title: "[PanditBot] Updating Repos Data ${{ env.RELEASE_DATE }}"
           body: |
             This PR contains the data updates.
             - "Updated with *${{ env.RELEASE_DATE }}*"
