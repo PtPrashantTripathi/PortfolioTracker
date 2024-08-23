@@ -14,8 +14,9 @@ def run_notebooks_in_folder(folder_path):
     executes each one, and updates the notebooks in place.
     """
     # Find all .ipynb files in the folder and its subdirectories
-    for notebook_path in shorted([str(a) for a in pathlib.Path(folder_path).glob("*ETL/*.ipynb")]):
-        print(f"Running notebook: {notebook_path}")
+    notebook_paths = pathlib.Path(folder_path).glob("**/*.ipynb")
+    for run_id,notebook_path in enumerate(notebook_paths):
+        print(f"Running notebook: #{run_id} - {notebook_path}")
         run_notebook(notebook_path)
 
 
