@@ -1,51 +1,45 @@
 import pathlib
 import nbformat
+from typing import Union
 from nbconvert.preprocessors import ExecutePreprocessor
+from PortfolioTracker.globalpath import GlobalPath
 
-
-def run_notebooks_in_folder(folder_path):
+def run_notebook(notebook_path: Union[str, pathlib.Path]):
     """
-    Executes all Jupyter notebooks in the specified folder and its subdirectories.
+    Executes a Jupyter notebook and saves the result.
 
     Parameters:
-    folder_path (str): The path to the folder containing Jupyter notebooks.
-
-    This function searches for all `.ipynb` files within the given folder and its subdirectories,
-    executes each one, and updates the notebooks in place.
-    """
-    # Find all .ipynb files in the folder and its subdirectories
-    notebook_paths = pathlib.Path(folder_path).glob("**/*.ipynb")
-    for run_id,notebook_path in enumerate(notebook_paths):
-        print(f"Running notebook: #{run_id} - {notebook_path}")
-        run_notebook(notebook_path)
-
-
-def run_notebook(notebook_path: str | pathlib.Path):
-    """
-    Executes a single Jupyter notebook and saves the result.
-
-    Parameters:
-    notebook_path (str): The path to the Jupyter notebook to be executed.
+    notebook_path (Union[str, pathlib.Path]): The path to the Jupyter notebook to be executed.
 
     This function reads a notebook, runs all cells, and saves the updated notebook in place.
     """
-    with open(notebook_path, "r", encoding="utf-8") as f:
-        notebook = nbformat.read(f, as_version=4)
+    # Open and read the notebook file
+    with open(notebook_path, "r", encoding="utf-8") as file:
+        notebook = nbformat.read(file, as_version=4)
 
-    # Set up the notebook processor with a timeout and the appropriate kernel
-    ep = ExecutePreprocessor(timeout=6000, kernel_name="python3")
+    # Set up the notebook processor with a timeout and kernel
+    processor = ExecutePreprocessor(timeout=6000, kernel_name="python3")
 
     # Execute the notebook
-    ep.preprocess(
+    processor.preprocess(
         notebook, {"metadata": {"path": pathlib.Path(notebook_path).parent}}
     )
 
     # Save the executed notebook
-    with open(notebook_path, "w", encoding="utf-8") as f:
-        nbformat.write(notebook, f)
-
+    with open(notebook_path, "w", encoding="utf-8") as file:
+        nbformat.write(notebook, file)
 
 if __name__ == "__main__":
-    # EXPORT PYDEVD_DISABLE_FILE_VALIDATION=1
-    # Run the notebooks in the specified folder
-    run_notebooks_in_folder("NOTEBOOKS")
+    # Instantiate GlobalPath
+    global_path = GlobalPath()
+
+    # Define the path to the notebooks directory
+    notebooks_dir_path = global_path.joinpath("NOTEBOOKS")
+
+    # Find all .ipynb files in the directory and its subdirectories
+    notebook_paths = notebooks_dir_path.glob("**/*.ipynb")
+
+    # Execute each notebook and print status
+    for run_id, notebook_path in enumerate(notebook_paths):
+        print(f"Running notebook: #{run_id} - {notebook_path}")
+        run_notebook(notebook_path)
