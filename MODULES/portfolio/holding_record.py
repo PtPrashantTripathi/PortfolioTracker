@@ -1,7 +1,7 @@
 from typing import Union
 from datetime import datetime
 
-from PortfolioTracker.models.stock_info import StockInfo
+from .stock_info import StockInfo
 
 
 class HoldingRecord(StockInfo):

@@ -5,7 +5,7 @@ from typing import Union
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
-from PortfolioTracker.globalpath import GlobalPath
+from MyModules.globalpath import GlobalPath
 
 
 def print_notebook_outputs(notebooknode):

@@ -3,7 +3,7 @@ from datetime import time, datetime
 
 from pydantic import field_validator
 
-from PortfolioTracker.models.stock_info import StockInfo
+from .stock_info import StockInfo
 
 
 class TradeRecord(StockInfo):
@@ -46,5 +46,5 @@ class TradeRecord(StockInfo):
             return datetime.combine(
                 datetime.strptime(str(value), "%Y-%m-%d").date(), time(15, 30)
             )
-        except ValueError as e:
+        except Exception as e:
             raise ValueError(f"Invalid expiry date format: {e}")
