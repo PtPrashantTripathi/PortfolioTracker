@@ -10,3 +10,4 @@ black
 dateutils
 jupyter
 pre-commit
+python-dotenv
