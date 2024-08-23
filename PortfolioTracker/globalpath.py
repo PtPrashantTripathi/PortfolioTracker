@@ -1,7 +1,9 @@
 import os
-
-# Importing necessary files and packages
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class GlobalPath:
@@ -9,46 +11,22 @@ class GlobalPath:
     A Global Paths Class for managing global paths for various data layers and files.
     """
 
-    def __init__(self, project_directory: str = "PortfolioTracker") -> None:
+    def __init__(self):
         """
         Initializes a new GlobalPath instance and sets up directory paths.
-
-        Args:
-            project_directory (str): The name of the project directory to find.
+        Uses PROJECT_DIR environment variable if defined, else defaults to a local path.
         """
-        self.project_directory = project_directory
-        self.find_base_path()
+        # Use PROJECT_DIR if available, otherwise use the default local path
 
-    def find_base_path(self) -> Path:
-        """
-        Finds and returns the base path of the project directory.
-
-        Returns:
-            Path: The path to the project directory.
-
-        Raises:
-            FileNotFoundError: If the project directory is not found in the path hierarchy.
-        """
-        self.base_path = Path(os.getcwd()).resolve()
-
-        # Traverse upwards until the project directory is found or the root is reached
-        while (
-            self.base_path.name.lower() != self.project_directory.lower()
-            and self.base_path.parent != self.base_path
-        ):
-            self.base_path = self.base_path.parent
-
-        # Check if the loop ended because the root was reached
-        if self.base_path.name.lower() != self.project_directory.lower():
-            raise FileNotFoundError(
-                f"The project directory '{self.project_directory}' was not found in the path hierarchy."
+        self.base_path = Path(
+            os.getenv(
+                "PROJECT_DIR",  # Get the GitHub workspace path from the environment variable
             )
-
-        return self.base_path
+        ).resolve()  # Resolve to an absolute path
 
     def joinpath(self, source_path: str) -> Path:
         """
-        Generates and creates a directory path.
+        Generates and creates a directory path. If the path is for a file and its directory doesn't exist, it is created.
 
         Args:
             source_path (str): The source path to append to the base path.
@@ -56,9 +34,34 @@ class GlobalPath:
         Returns:
             Path: The full resolved path.
         """
-        data_path = self.base_path.joinpath(source_path)
-        if "." in data_path.suffix:
-            data_path.parent.mkdir(parents=True, exist_ok=True)
+        # Construct the full path by joining the base path with the source path
+        full_path = self.base_path.joinpath(source_path)
+
+        # Check if the path is for a file (contains a dot in the name)
+        if "." in full_path.name:
+            # Ensure the directory for the file exists
+            full_path.parent.mkdir(parents=True, exist_ok=True)
         else:
-            data_path.mkdir(parents=True, exist_ok=True)
-        return data_path
+            # Ensure the directory itself exists
+            full_path.mkdir(parents=True, exist_ok=True)
+
+        return full_path
+
+
+if __name__ == "__main__":
+    # Instantiate GlobalPath
+    global_path = GlobalPath()
+
+    # Create a path for the TradeHistory source layer
+    tradehistory_source_layer_path = global_path.joinpath(
+        "DATA/SOURCE/TradeHistory"
+    )
+
+    # Print the generated path
+    print(f"TradeHistory Source Layer Path: {tradehistory_source_layer_path}")
+
+    # Check if the path exists and print its existence status
+    if tradehistory_source_layer_path.exists():
+        print(f"Path exists: {tradehistory_source_layer_path}")
+    else:
+        print(f"Path does not exist: {tradehistory_source_layer_path}")

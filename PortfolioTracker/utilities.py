@@ -41,7 +41,9 @@ def check_files_availability(
         print(f"Number of Files Detected: {num_files}")
         return file_paths
     else:
-        raise FileNotFoundError("No processable data available")
+        raise FileNotFoundError(
+            f"No processable data available in : {file_paths}"
+        )
 
 
 # Removing punctuations from the columns

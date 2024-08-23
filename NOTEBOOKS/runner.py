@@ -1,50 +1,85 @@
+import os
 import pathlib
+from typing import Union
+
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
 
+from PortfolioTracker.globalpath import GlobalPath
 
-def run_notebooks_in_folder(folder_path):
+
+def print_notebook_outputs(notebooknode):
     """
-    Executes all Jupyter notebooks in the specified folder and its subdirectories.
+    Prints formatted outputs from a Jupyter notebook.
 
     Parameters:
-    folder_path (str): The path to the folder containing Jupyter notebooks.
-
-    This function searches for all `.ipynb` files within the given folder and its subdirectories,
-    executes each one, and updates the notebooks in place.
+    notebooknode : The notebook content as a dictionary.
     """
-    # Find all .ipynb files in the folder and its subdirectories
-    for notebook_path in shorted([str(a) for a in pathlib.Path(folder_path).glob("*ETL/*.ipynb")]):
-        print(f"Running notebook: {notebook_path}")
-        run_notebook(notebook_path)
+
+    for cell in notebooknode.get("cells", []):
+        for output in cell.get("outputs", []):
+            if output.output_type == "stream":
+                print("Stream Output:\n" + "".join(output.get("text", [])))
+            elif output.output_type == "execute_result":
+                print(
+                    "Execute Result:\n"
+                    + output.data.get("text/plain", "No output")
+                )
+            elif output.output_type == "display_data":
+                print(
+                    "Display Data:\n"
+                    + output.data.get("text/plain", "No display data")
+                )
+            elif output.output_type == "error":
+                print("Error Output:")
+                print("".join(output.get("traceback", [])))
+        print("\n")
 
 
-def run_notebook(notebook_path: str | pathlib.Path):
+def run_notebook(notebook_path: Union[str, pathlib.Path]):
     """
-    Executes a single Jupyter notebook and saves the result.
+    Executes a Jupyter notebook, saves the result, and logs the outputs using NotebookExporter.
 
     Parameters:
-    notebook_path (str): The path to the Jupyter notebook to be executed.
+    notebook_path (Union[str, pathlib.Path]): The path to the Jupyter notebook to be executed.
 
     This function reads a notebook, runs all cells, and saves the updated notebook in place.
+    It also prints the cell outputs using NotebookExporter.
     """
-    with open(notebook_path, "r", encoding="utf-8") as f:
-        notebook = nbformat.read(f, as_version=4)
+    notebook_path = pathlib.Path(notebook_path)
+    # Open and read the notebook file
+    with open(notebook_path, "r", encoding="utf-8") as file:
+        notebook = nbformat.read(file, as_version=4)
 
-    # Set up the notebook processor with a timeout and the appropriate kernel
-    ep = ExecutePreprocessor(timeout=6000, kernel_name="python3")
+    # Set up the notebook processor with a timeout and kernel
+    processor = ExecutePreprocessor(timeout=6000, kernel_name="python3")
 
     # Execute the notebook
-    ep.preprocess(
-        notebook, {"metadata": {"path": pathlib.Path(notebook_path).parent}}
-    )
+    processor.preprocess(notebook, {"metadata": {"path": notebook_path.parent}})
+
+    # Process Notebook outputs
+    print_notebook_outputs(notebook)
 
     # Save the executed notebook
-    with open(notebook_path, "w", encoding="utf-8") as f:
-        nbformat.write(notebook, f)
+    with open(notebook_path, "w", encoding="utf-8") as file:
+        nbformat.write(notebook, file)
 
 
 if __name__ == "__main__":
-    # EXPORT PYDEVD_DISABLE_FILE_VALIDATION=1
-    # Run the notebooks in the specified folder
-    run_notebooks_in_folder("NOTEBOOKS")
+    os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = str(1)
+    # Instantiate GlobalPath
+    global_path = GlobalPath()
+
+    # Define the path to the notebooks directory
+    notebooks_dir_path = global_path.joinpath("NOTEBOOKS")
+
+    # Find all .ipynb files in the directory and its subdirectories
+    notebook_paths = notebooks_dir_path.glob("**/*.ipynb")
+
+    # Execute each notebook and print status
+    for run_id, file_path in enumerate(notebook_paths):
+        try:
+            print(f"Running notebook: #{run_id} - {file_path}")
+            run_notebook(file_path)
+        except Exception as e:  # [broad-exception-caught]
+            print(f"Error while running {file_path}: {e}")
