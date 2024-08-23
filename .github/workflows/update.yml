@@ -53,9 +53,6 @@ jobs:
             automated pr
           assignees: ptprashanttripathi
           reviewers: ptprashanttripathi
-          team-reviewers: |
-            developers
-            qa-team
           draft: false
 
       - name: Check outputs
