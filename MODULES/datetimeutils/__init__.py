@@ -63,6 +63,16 @@ class DateTimeUtil(datetime):
         """
         delta = from_date - self
         return delta.days
+    
+    def to_pydatetime(self) -> datetime:
+        """
+        Returns the instance as a standard datetime object.
+
+        Returns:
+            datetime: The instance represented as a standard datetime object.
+        """
+        return datetime(self.year, self.month, self.day, self.hour, self.minute, self.second, self.microsecond)
+
 
 
 if __name__ == "__main__":
@@ -71,5 +81,5 @@ if __name__ == "__main__":
     print(date_util)
     print(date_util.start_date)
     print(date_util.end_date)
-    print(date_util.month_difference(datetime(2000, 1, 1)))
-    print(date_util.day_difference(datetime(2000, 1, 1)))
+    print(date_util.month_difference(DateTimeUtil(2000, 1, 1)))
+    print(date_util.day_difference(DateTimeUtil(2000, 1, 1)))
