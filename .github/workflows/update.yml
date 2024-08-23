@@ -40,6 +40,10 @@ jobs:
       - name: Set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+          echo ${{ github.workspace }}
+          pwd
+          find ${{ github.workspace }}
+          
 
       # # Step 6: Commit changes to a new branch
       # - name: Commit changes
