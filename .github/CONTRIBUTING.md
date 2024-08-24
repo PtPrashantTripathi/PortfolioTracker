@@ -9,12 +9,3 @@ If you're reading this, you're awesome! Thank you for helping us make this proje
 * Use the **imperative** mood ("Move cursor to..." not "Moves cursor to...")
 * Limit the first line to 72 characters or fewer
 * Reference issues and pull requests liberally
-
-## Try your changes
-
-When modifying any of the files located in the `/src` folder, you will need to recompile the assets. You can do this by running:
-
-```
-npm install
-npm run build
-```
