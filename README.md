@@ -1,5 +1,10 @@
 # Upstox ETL with Medallion Architecture https://ptprashanttripathi.github.io/PortfolioTracker
 
+[![pages-build-deployment](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/pages-build-deployment.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/pages-build-deployment.yml)
+
+[![Update Data](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/update.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/update.yml)
+
+
 **Description:**
 
 I've just completed an exciting ETL journey, leveraging the power of Medallion architecture! 🚀 This Python notebook seamlessly extracts, transforms, and loads data from my Upstox trading account into a multi-tiered storage system: BRONZE, SILVER, and GOLD layers. It's a powerful way to enhance data management, analytics, and decision-making in my trading activities.
