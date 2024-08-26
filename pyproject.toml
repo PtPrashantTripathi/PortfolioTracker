@@ -24,7 +24,7 @@ Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
 Repository = "https://github.com/ptprashanttripathi/PortfolioTracker"
 Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
 Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
-Changelog = "https://github.com/ptprashanttripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
+Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
 
 [tool.setuptools]

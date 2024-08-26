@@ -354,7 +354,7 @@ function updateProfitLossDataSummary(data) {
 
 function find_base_path() {
   if (window.location.hostname === "ptprashanttripathi.github.io") {
-    return "https://raw.githubusercontent.com/ptprashanttripathi/PortfolioTracker/main/";
+    return "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/";
   } else {
     return "/";
   }
