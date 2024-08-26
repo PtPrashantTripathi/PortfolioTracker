@@ -2,48 +2,7 @@
 import os
 import re
 import json
-from typing import List
-from pathlib import Path
 from datetime import datetime
-
-
-# Check for newly added or modified files
-def check_files_availability(
-    directory: str,
-    file_pattern: str = "*",
-    timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
-) -> List[str]:
-    """
-    Checks for newly added or modified files in a directory after a specific timestamp.
-
-    Args:
-        directory (str): The directory to check for files.
-        file_pattern (str) :
-        timestamp (datetime): The timestamp to compare file modification times against.
-
-    Returns:
-        list: A list of paths to files that were added or modified after the given timestamp.
-    """
-    # List to store paths of matched files
-    file_paths = []
-
-    # Iterate over all files in the directory and subdirectories
-    for path in Path(directory).rglob(file_pattern):
-        if path.is_file():
-            file_modified_time = datetime.fromtimestamp(os.path.getmtime(path))
-            # Check if file was modified after the given timestamp
-            if file_modified_time > timestamp:
-                file_paths.append(path)
-
-    # Log the number of detected files
-    num_files = len(file_paths)
-    if num_files > 0:
-        print(f"Number of Files Detected: {num_files}")
-        return file_paths
-    else:
-        raise FileNotFoundError(
-            f"No processable data available in : {file_paths}"
-        )
 
 
 # Removing punctuations from the columns

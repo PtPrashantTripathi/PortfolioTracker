@@ -1,5 +1,7 @@
 import os
+from typing import List
 from pathlib import Path, PosixPath, WindowsPath
+from datetime import datetime
 
 from dotenv import load_dotenv
 
@@ -129,10 +131,49 @@ class GlobalPath(Path):
         else:  # If the path is a directory
             full_path.mkdir(parents=True, exist_ok=True)
 
+    def check_files_availability(
+        self,
+        file_pattern: str = "*",
+        timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
+    ) -> List:
+        """
+        Checks for newly added or modified files in a directory after a specific timestamp.
+
+        Args:
+            directory (str): The directory to check for files.
+            file_pattern (str) :
+            timestamp (datetime): The timestamp to compare file modification times against.
+
+        Returns:
+            list: A list of paths to files that were added or modified after the given timestamp.
+        """
+        # List to store paths of matched files
+        file_paths = []
+
+        # Iterate over all files in the directory and subdirectories
+        for path in self.rglob(file_pattern):
+            if path.is_file():
+                file_modified_time = datetime.fromtimestamp(
+                    os.path.getmtime(path)
+                )
+                # Check if file was modified after the given timestamp
+                if file_modified_time > timestamp:
+                    file_paths.append(self.joinpath(path))
+
+        # Log the number of detected files
+        num_files = len(file_paths)
+        if num_files > 0:
+            print(f"Number of Files Detected: {num_files}")
+            return file_paths
+        else:
+            raise FileNotFoundError(
+                f"No processable data available in : {file_paths}"
+            )
+
 
 if __name__ == "__main__":
     # Instantiate GlobalPath
-    tradehistory_source_layer_path = GlobalPath("sample")
+    tradehistory_source_layer_path = GlobalPath("DATA/BRONZE/TradeHistory")
 
     # Print the generated path
     print(
@@ -148,3 +189,5 @@ if __name__ == "__main__":
         print(
             f"Path does not exist: {tradehistory_source_layer_path.relative_path()}"
         )
+    for each in tradehistory_source_layer_path.check_files_availability():
+        print(each.relative_path())

@@ -1,9 +1,7 @@
 import os
-import pathlib
-from typing import Union
+from pathlib import Path
 
 import nbformat
-from MyModules.globalpath import GlobalPath
 from nbconvert.preprocessors import ExecutePreprocessor
 
 
@@ -35,17 +33,16 @@ def print_notebook_outputs(notebooknode):
         print("\n")
 
 
-def run_notebook(notebook_path: Union[str, pathlib.Path]):
+def run_notebook(notebook_path: Path):
     """
     Executes a Jupyter notebook, saves the result, and logs the outputs using NotebookExporter.
 
     Parameters:
-    notebook_path (Union[str, pathlib.Path]): The path to the Jupyter notebook to be executed.
+    notebook_path (Path): The path to the Jupyter notebook to be executed.
 
     This function reads a notebook, runs all cells, and saves the updated notebook in place.
     It also prints the cell outputs using NotebookExporter.
     """
-    notebook_path = pathlib.Path(notebook_path)
     # Open and read the notebook file
     with open(notebook_path, "r", encoding="utf-8") as file:
         notebook = nbformat.read(file, as_version=4)
@@ -66,11 +63,8 @@ def run_notebook(notebook_path: Union[str, pathlib.Path]):
 
 if __name__ == "__main__":
     os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = str(1)
-    # Instantiate GlobalPath to the notebooks directory
-    notebooks_dir_path = GlobalPath("NOTEBOOKS")
-
     # Find all .ipynb files in the directory and its subdirectories
-    notebook_paths = notebooks_dir_path.glob("**/*.ipynb")
+    notebook_paths = Path("NOTEBOOKS").glob("**/*.ipynb")
 
     # Execute each notebook and print status
     for run_id, file_path in enumerate(notebook_paths):
