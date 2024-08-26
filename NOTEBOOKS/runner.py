@@ -3,9 +3,8 @@ import pathlib
 from typing import Union
 
 import nbformat
-from nbconvert.preprocessors import ExecutePreprocessor
-
 from MyModules.globalpath import GlobalPath
+from nbconvert.preprocessors import ExecutePreprocessor
 
 
 def print_notebook_outputs(notebooknode):
@@ -67,11 +66,8 @@ def run_notebook(notebook_path: Union[str, pathlib.Path]):
 
 if __name__ == "__main__":
     os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = str(1)
-    # Instantiate GlobalPath
-    global_path = GlobalPath()
-
-    # Define the path to the notebooks directory
-    notebooks_dir_path = global_path.joinpath("NOTEBOOKS")
+    # Instantiate GlobalPath to the notebooks directory
+    notebooks_dir_path = GlobalPath("NOTEBOOKS")
 
     # Find all .ipynb files in the directory and its subdirectories
     notebook_paths = notebooks_dir_path.glob("**/*.ipynb")

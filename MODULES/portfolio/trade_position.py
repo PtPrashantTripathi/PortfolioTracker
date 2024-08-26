@@ -1,5 +1,6 @@
 from typing import Union, Optional
 from datetime import datetime
+
 from .stock_info import StockInfo
 
 

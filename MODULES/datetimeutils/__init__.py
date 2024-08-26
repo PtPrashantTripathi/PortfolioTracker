@@ -63,7 +63,7 @@ class DateTimeUtil(datetime):
         """
         delta = from_date - self
         return delta.days
-    
+
     def to_pydatetime(self) -> datetime:
         """
         Returns the instance as a standard datetime object.
@@ -71,8 +71,15 @@ class DateTimeUtil(datetime):
         Returns:
             datetime: The instance represented as a standard datetime object.
         """
-        return datetime(self.year, self.month, self.day, self.hour, self.minute, self.second, self.microsecond)
-
+        return datetime(
+            self.year,
+            self.month,
+            self.day,
+            self.hour,
+            self.minute,
+            self.second,
+            self.microsecond,
+        )
 
 
 if __name__ == "__main__":
