@@ -372,7 +372,7 @@ async function main() {
   updateFinancialSummary(financialSummaryData);
 
   // Fetch the data using getData
-  const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/Holdings_data.csv`;
+  const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/HoldingsHistory_data.csv`;
   const holdingsData = await getData(holdingsDataFilePath);
   const filterdData = findMaxDateRecords(holdingsData);
   console.log(filterdData);

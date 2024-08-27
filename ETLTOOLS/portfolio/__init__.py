@@ -1,12 +1,9 @@
 from typing import Dict, List
-
-from pydantic import BaseModel
-
 from .stock import Stock
 from .trade_record import TradeRecord
 
 
-class Portfolio(BaseModel):
+class Portfolio:
     """
     Represents a portfolio of stocks.
 
@@ -14,7 +11,11 @@ class Portfolio(BaseModel):
         stocks (Dict[str, Stock]): A dictionary mapping stock names to Stock objects.
     """
 
-    stocks: Dict[str, Stock] = {}
+    def __init__(self):
+        """
+        Portfolio Constructor.
+        """
+        self.stocks: Dict[str, Stock] = {}
 
     def trade(self, record: Dict):
         """
