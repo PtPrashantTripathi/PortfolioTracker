@@ -1,4 +1,4 @@
-from MyModules.portfolio import Portfolio
+from ETLTools.portfolio import Portfolio
 
 if __name__ == "__main__":
     trade_history = [
