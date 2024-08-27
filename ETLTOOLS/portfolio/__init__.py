@@ -47,7 +47,7 @@ class Portfolio:
         for stock in self.stocks.values():
             stock.check_expired()
 
-    def get_holdings(self) -> List[Dict]:
+    def get_holdings_history(self) -> List[Dict]:
         """
         Retrieves a list of holding records for all stocks in the portfolio.
 
@@ -59,6 +59,19 @@ class Portfolio:
             for stock in self.stocks.values()
             for holding in stock.holding_records
         ]
+        
+    def get_current_holdings(self) -> List[Dict]:
+        """
+        Retrieves a list of closed positions and their PnL details.
+
+        Returns:
+            List[Dict]: A list of dictionaries representing closed positions and PnL.
+        """
+        return [
+            position.model_dump()
+            for stock in self.stocks.values()
+            for position in stock.open_positions
+        ]    
 
     def get_pnl(self) -> List[Dict]:
         """
