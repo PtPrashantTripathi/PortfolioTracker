@@ -1,4 +1,6 @@
+import asyncio
 import os
+import sys
 from pathlib import Path
 
 import nbformat
@@ -62,6 +64,10 @@ def run_notebook(notebook_path: Path):
 
 
 if __name__ == "__main__":
+    # Only preform check if your code will run on non-windows environments.
+    if sys.platform == "win32":
+        # Set the policy to prevent "Event loop is closed" error on Windows - https://github.com/encode/httpx/issues/914
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     os.environ["PYDEVD_DISABLE_FILE_VALIDATION"] = str(1)
     # Find all .ipynb files in the directory and its subdirectories
     notebook_paths = Path("NOTEBOOKS").glob("**/*.ipynb")

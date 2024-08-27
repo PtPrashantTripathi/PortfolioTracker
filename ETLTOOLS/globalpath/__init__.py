@@ -1,12 +1,14 @@
 import os
 from typing import List
-from pathlib import Path, PosixPath, WindowsPath
+from pathlib import Path, _PosixFlavour, _WindowsFlavour
 from datetime import datetime
 
 from dotenv import load_dotenv
 
 # Load environment variables from a .env file
 load_dotenv()
+
+__all__ = ["GlobalPath"]
 
 
 class GlobalPath(Path):
@@ -34,7 +36,7 @@ class GlobalPath(Path):
     """
 
     # Ensure compatibility with both Windows and POSIX systems
-    _flavour = WindowsPath._flavour if os.name == "nt" else PosixPath._flavour
+    _flavour = _WindowsFlavour() if os.name == "nt" else _PosixFlavour()
 
     def __new__(cls, *source_path):
         """

@@ -4,6 +4,20 @@ import json
 from datetime import datetime
 
 __doc__ = """necessary functions"""
+__all__ = [
+    "replace_punctuation_from_string",
+    "replace_punctuation_from_columns",
+    "fix_duplicate_column_names",
+    "get_schema_from_data_contract",
+    "find_correct_sheetname",
+    "extract_year_month",
+    "find_correct_headers",
+    "get_first_date_of_week",
+    "extract_year_week",
+    "get_correct_datatype",
+    "create_data_contract",
+]
+
 
 # Removing punctuations from the columns
 def replace_punctuation_from_string(input_str):
