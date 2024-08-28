@@ -63,41 +63,6 @@
     <div class="row" id="FinancialSummary"></div>
 
     <div class="row">
-      <div class="col-12 col-sm-4">
-        <div class="info-box">
-          <span class="info-box-icon bg-info elevation-1"><i class="fas fa-solid fa-coins"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">TOTAL ASSETS WORTH</span>
-            <span class="info-box-number"> ₹1.85L </span>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-4">
-        <div class="info-box mb-3">
-          <span class="info-box-icon bg-success elevation-1">
-            <i class="fas fa-piggy-bank"></i>
-          </span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">TOTAL INVESTED</span>
-            <span class="info-box-number">₹59.91K</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-sm-4">
-        <div class="info-box mb-3">
-          <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-percent"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">TOTAL PROFIT</span>
-            <span class="info-box-number">₹1.25L (+208.31%)</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
       <div class="col">
         <div class="card">
           <div class="card-header">
@@ -147,6 +112,27 @@
           <div class="card-body p-0">
             <div class="table-responsive">
               <table id="CurrentHoldingsTable" class="table m-0 table-bordered table-striped"></table>
+            </div>
+          </div>
+          <div class="card-footer clearfix">
+            <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Profit and Loss</h3>
+          </div>
+          <div class="card-body p-0">
+
+            <div class="row m-0" id="PNLSummary">
+            </div>
+            <div class="table-responsive">
+              <table id="ProfitLossTable" class="table m-0 table-bordered table-striped"></table>
             </div>
           </div>
           <div class="card-footer clearfix">
