@@ -30,7 +30,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Jupyter notebooks
-        run: python ./NOTEBOOKS/runner.py
+        run: python ./NOTEBOOKS/all_runner.py
 
       - name: Create Pull Request
         id: cpr

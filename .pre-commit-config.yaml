@@ -10,8 +10,6 @@ repos:
       - id: check-json
       - id: check-yaml
       - id: check-toml
-      - id: debug-statements
-      - id: check-merge-conflict
   - repo: https://github.com/psf/black
     rev: 24.4.2
     hooks:
