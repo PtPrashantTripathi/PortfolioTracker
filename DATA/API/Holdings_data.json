@@ -56,102 +56,6 @@
             ]
         },
         {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "total_quantity": 58.41,
-            "total_amount": 3000.36,
-            "min_datetime": "2024-05-24 00:00:00",
-            "avg_price": 51.37,
-            "close_price": 54.49,
-            "close_amount": 3182.76,
-            "pnl_amount": 182.4,
-            "history": [
-                {
-                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-05-24 00:00:00",
-                    "side": "BUY",
-                    "quantity": 20.51,
-                    "price": 48.77,
-                    "amount": 1000.27
-                },
-                {
-                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-07-02 00:00:00",
-                    "side": "BUY",
-                    "quantity": 19.29,
-                    "price": 51.84,
-                    "amount": 999.99
-                },
-                {
-                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-08-02 00:00:00",
-                    "side": "BUY",
-                    "quantity": 18.61,
-                    "price": 53.74,
-                    "amount": 1000.1
-                }
-            ]
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "total_quantity": 6.64,
-            "total_amount": 3001.37,
-            "min_datetime": "2024-05-24 00:00:00",
-            "avg_price": 452.01,
-            "close_price": 477.6,
-            "close_amount": 3171.26,
-            "pnl_amount": 169.89,
-            "history": [
-                {
-                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-05-24 00:00:00",
-                    "side": "BUY",
-                    "quantity": 2.33,
-                    "price": 428.89,
-                    "amount": 999.31
-                },
-                {
-                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-07-02 00:00:00",
-                    "side": "BUY",
-                    "quantity": 2.2,
-                    "price": 455.11,
-                    "amount": 1001.24
-                },
-                {
-                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-                    "exchange": "BMF",
-                    "segment": "MF",
-                    "datetime": "2024-08-02 00:00:00",
-                    "side": "BUY",
-                    "quantity": 2.11,
-                    "price": 474.32,
-                    "amount": 1000.82
-                }
-            ]
-        },
-        {
             "scrip_name": "TATA MOTORS",
             "symbol": "TATAMOTORS",
             "exchange": "NSE",
@@ -266,6 +170,102 @@
                     "quantity": 64.0,
                     "price": 224.75,
                     "amount": 14384.0
+                }
+            ]
+        },
+        {
+            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+            "exchange": "BMF",
+            "segment": "MF",
+            "total_quantity": 58.41,
+            "total_amount": 3000.36,
+            "min_datetime": "2024-05-24 00:00:00",
+            "avg_price": 51.37,
+            "close_price": 54.49,
+            "close_amount": 3182.76,
+            "pnl_amount": 182.4,
+            "history": [
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-05-24 00:00:00",
+                    "side": "BUY",
+                    "quantity": 20.51,
+                    "price": 48.77,
+                    "amount": 1000.27
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-07-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 19.29,
+                    "price": 51.84,
+                    "amount": 999.99
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-08-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 18.61,
+                    "price": 53.74,
+                    "amount": 1000.1
+                }
+            ]
+        },
+        {
+            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+            "exchange": "BMF",
+            "segment": "MF",
+            "total_quantity": 6.64,
+            "total_amount": 3001.37,
+            "min_datetime": "2024-05-24 00:00:00",
+            "avg_price": 452.01,
+            "close_price": 477.6,
+            "close_amount": 3171.26,
+            "pnl_amount": 169.89,
+            "history": [
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-05-24 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.33,
+                    "price": 428.89,
+                    "amount": 999.31
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-07-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.2,
+                    "price": 455.11,
+                    "amount": 1001.24
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-08-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.11,
+                    "price": 474.32,
+                    "amount": 1000.82
                 }
             ]
         }
