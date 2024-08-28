@@ -415,7 +415,6 @@ async function main() {
     const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/HoldingsHistory_data.csv`;
     const holdingsData = await getData(holdingsDataFilePath);
     const filterdData = findMaxDateRecords(holdingsData);
-    console.log(filterdData);
     loadHoldingsDataTable(filterdData);
 
     // Fetch the data using getData
