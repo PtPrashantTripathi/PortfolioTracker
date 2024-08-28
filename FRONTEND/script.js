@@ -58,14 +58,14 @@ async function loadHoldingsTrandsChart(data) {
                 name: "Investment",
                 data: data.map((d) => ({
                     x: new Date(d.date),
-                    y: parseFloat(d.holding),
+                    y: d.holding,
                 })),
             },
             {
                 name: "Market Value",
                 data: data.map((d) => ({
                     x: new Date(d.date),
-                    y: parseFloat(d.close),
+                    y: d.close,
                 })),
             },
         ],
@@ -99,7 +99,7 @@ async function loadHoldingsTrandsChart(data) {
             // tickAmount: 4,
             //   floating: false,
             labels: {
-                formatter: (a) => priceConvert(a, true),
+                formatter: (a) => priceFormat(a, true),
                 style: {
                     colors: "#8e8da4",
                 },
@@ -120,7 +120,7 @@ async function loadHoldingsTrandsChart(data) {
                 format: "yyyy-MM-dd",
             },
             y: {
-                formatter: (a) => priceConvert(a),
+                formatter: (a) => priceFormat(a),
             },
         },
         legend: {
@@ -153,7 +153,7 @@ function findMaxDateRecords(data) {
     );
 }
 
-function priceConvert(value, short = false) {
+function priceFormat(value, short = false) {
     const amount = parseFloat(value);
 
     if (short) {
@@ -175,6 +175,24 @@ function parseNum(value) {
         : parseFloat(parseFloat(value).toFixed(2));
 }
 
+function calcDays(date1, date2 = null) {
+    // Parse the first date string into a Date object
+    const firstDate = new Date(date1);
+
+    // If the second date is provided, use it; otherwise, use the current date
+    const secondDate = date2 ? new Date(date2) : new Date();
+
+    // Calculate the difference in milliseconds
+    const differenceInMilliseconds = secondDate - firstDate;
+
+    // Convert the difference from milliseconds to days and use Math.abs() to ensure positive days
+    const differenceInDays = Math.abs(
+        Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24))
+    );
+
+    return differenceInDays;
+}
+
 async function loadProfitLossDataTable(data) {
     const table = document.getElementById("ProfitLossTable");
     // Create and append the table header
@@ -186,6 +204,7 @@ async function loadProfitLossDataTable(data) {
         <th>Buy Price</th>
         <th>Sell Price</th>
         <th>PNL</th>
+        <th>Percentage</th>
         <th>Days</th>
       </tr>
     </thead>
@@ -195,18 +214,24 @@ async function loadProfitLossDataTable(data) {
 
     data.forEach((record) => {
         const row = document.createElement("tr");
-        const pnl_flag = parseFloat(record.pnl) < 0;
+        const pnl_flag = record.pnl < 0;
         // Create and append cells
         row.appendChild(createCell(`${record.symbol} (${record.segment})`));
         row.appendChild(createCell(parseNum(record.quantity)));
-        row.appendChild(createCell(priceConvert(record.avg_price)));
-        row.appendChild(createCell(priceConvert(record.sell_price)));
+        row.appendChild(createCell(priceFormat(record.avg_price)));
+        row.appendChild(createCell(priceFormat(record.sell_price)));
         row.appendChild(
             createCell(
-                `${priceConvert(record.pnl)} (${pnl_flag ? "" : "+"}${parseNum(
-                    (parseFloat(record.pnl) * 100) /
-                        (parseNum(record.avg_price) * parseNum(record.quantity))
-                )}%)`,
+                priceFormat(record.pnl),
+                pnl_flag ? ["text-danger"] : ["text-success"]
+            )
+        );
+
+        row.appendChild(
+            createCell(
+                `${pnl_flag ? "" : "+"}${parseNum(
+                    (record.pnl * 100) / (record.avg_price * record.quantity)
+                )}%`,
                 pnl_flag ? ["text-danger"] : ["text-success"]
             )
         );
@@ -219,7 +244,7 @@ async function loadProfitLossDataTable(data) {
     table.appendChild(tableBody);
 }
 
-async function loadHoldingsDataTable(data) {
+async function loadCurrentHoldingsDataTable(data) {
     const table = document.getElementById("CurrentHoldingsTable"); // <table class="table m-0" id="CurrentHoldingsTable"></table>
 
     // Create and append the table header
@@ -229,35 +254,40 @@ async function loadHoldingsDataTable(data) {
         <th>Stock Name</th>
         <th>Qty.</th>
         <th>Avg Price</th>
-        <th>Invested</th>
+        <th>Invested Value</th>
         <th>CMP Price</th>
-        <th>Current</th>
+        <th>Current Value</th>
         <th>Unrealized PNL</th>
+        <th>PNL Percantage</th>
         <th>Days</th>
       </tr>
     </thead>
   `;
 
     const tableBody = document.createElement("tbody");
-
     data.forEach((record) => {
         const row = document.createElement("tr");
-        const pnl =
-            parseFloat(record.close_amount) - parseFloat(record.holding_amount);
-        const pnlClass = pnl < 0 ? "text-danger" : "text-success";
-        const pnlPercentage = `${priceConvert(pnl)} (${
-            pnl >= 0 ? "+" : ""
-        }${parseNum((pnl * 100) / record.holding_amount)}%)`;
+        const pnlClass = record.pnl_amount < 0 ? "text-danger" : "text-success";
 
         const cells = [
-            createCell(`${record.scrip_name} (${record.segment})`),
-            createCell(parseNum(record.holding_quantity)),
-            createCell(priceConvert(record.avg_price)),
-            createCell(priceConvert(record.holding_amount)),
-            createCell(priceConvert(record.close_price), [pnlClass]),
-            createCell(priceConvert(record.close_amount), [pnlClass]),
-            createCell(pnlPercentage, [pnlClass]),
-            createCell("TBD"),
+            createCell(
+                `${
+                    record.segment == "EQ" ? record.symbol : record.scrip_name
+                } (${record.segment})`
+            ),
+            createCell(parseNum(record.total_quantity)),
+            createCell(priceFormat(record.avg_price)),
+            createCell(priceFormat(record.total_amount)),
+            createCell(priceFormat(record.close_price), [pnlClass]),
+            createCell(priceFormat(record.close_amount), [pnlClass]),
+            createCell(priceFormat(record.pnl_amount), [pnlClass]),
+            createCell(
+                `${record.pnl_amount >= 0 ? "+" : ""}${parseNum(
+                    (record.pnl_amount * 100) / record.total_amount
+                )}%`,
+                [pnlClass]
+            ),
+            createCell(calcDays(record.min_datetime)),
         ];
 
         // Append all cells to the row
@@ -280,36 +310,36 @@ function createCell(text, classes = []) {
 }
 
 function updateFinancialSummary(data) {
-    const { close, holding } = data;
-    const pnl = close - holding;
-    const pnlClass = pnl > 0 ? "bg-success" : "bg-danger";
-    const pnlIcon = pnl > 0 ? "▲" : "▼";
-    const pnlPercentage = parseNum((pnl * 100) / holding);
+    const { current_value, invested_value, overall_pnl } = data;
+    const pnlClass = overall_pnl > 0 ? "bg-success" : "bg-danger";
+    const pnlIcon = overall_pnl > 0 ? "▲" : "▼";
 
     const summaryItems = [
         {
-            value: priceConvert(close),
+            value: priceFormat(current_value),
             label: "Total Assets Worth",
             colorClass: "bg-info",
             iconClass: "fas fa-coins",
             link: "#",
         },
         {
-            value: priceConvert(holding),
+            value: priceFormat(invested_value),
             label: "Total Investment",
             colorClass: "bg-warning",
             iconClass: "fas fa-cart-shopping",
             link: "#",
         },
         {
-            value: priceConvert(pnl),
+            value: priceFormat(overall_pnl),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
             link: "#",
         },
         {
-            value: `${pnlIcon}${pnlPercentage}%`,
+            value: `${pnlIcon}${parseNum(
+                (overall_pnl * 100) / invested_value
+            )}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-line",
@@ -321,21 +351,21 @@ function updateFinancialSummary(data) {
     elem.innerHTML = summaryItems
         .map(
             (item) => `
-<div class="col-lg-3 col-6">
-  <div class="small-box ${item.colorClass}">
-    <div class="inner">
-      <h4>${item.value}</h4>
-      <h6>${item.label}</h6>
-    </div>
-    <div class="icon">
-      <i class="${item.iconClass}"></i>
-    </div>
-    <a href="${item.link}" class="small-box-footer">
-      More info <i class="fas fa-arrow-circle-right"></i>
-    </a>
-  </div>
-</div>
-`
+            <div class="col-lg-3 col-6">
+            <div class="small-box ${item.colorClass}">
+                <div class="inner">
+                <h4>${item.value}</h4>
+                <h6>${item.label}</h6>
+                </div>
+                <div class="icon">
+                <i class="${item.iconClass}"></i>
+                </div>
+                <a href="${item.link}" class="small-box-footer">
+                More info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+            </div>
+            `
         )
         .join("");
 }
@@ -343,11 +373,11 @@ function updateFinancialSummary(data) {
 function updateProfitLossDataSummary(data) {
     const { sold, invested, pnl } = data;
 
-    const pnlPercentage = parseNum((pnl * 100) / invested);
+    const pnlPercentage = (pnl * 100) / invested;
 
     const summaryItems = [
         {
-            value: priceConvert(sold, false),
+            value: priceFormat(sold),
             label: "TOTAL ASSETS TURNOVER",
             iconColorClass: "bg-info",
             numberClass: pnl > 0 ? "text-success" : "text-danger",
@@ -355,7 +385,7 @@ function updateProfitLossDataSummary(data) {
             link: "#",
         },
         {
-            value: priceConvert(invested, false),
+            value: priceFormat(invested),
             label: "TOTAL INVESTED",
             iconColorClass: "bg-warning",
             numberClass: "text-info",
@@ -363,9 +393,9 @@ function updateProfitLossDataSummary(data) {
             link: "#",
         },
         {
-            value: `${priceConvert(pnl, true)} (${
-                pnl > 0 ? "+" : ""
-            }${pnlPercentage}%)`,
+            value: `${priceFormat(pnl)} (${pnl > 0 ? "+" : ""}${parseNum(
+                pnlPercentage
+            )}%)`,
             label: "OVERALL REALIZED PNL",
             iconColorClass: pnl > 0 ? "bg-success" : "bg-danger",
             numberClass: pnl > 0 ? "text-success" : "text-danger",
@@ -378,25 +408,25 @@ function updateProfitLossDataSummary(data) {
     elem.innerHTML = summaryItems
         .map(
             (item) => `
-<div class="col-lg-4 col-12 p-0">
-<div class="info-box m-0">
-  <span class="info-box-icon ${item.iconColorClass} elevation-1"><i class="${item.iconClass}"></i></span>
-  <div class="info-box-content">
-    <span class="info-box-text">${item.label}</span>
-    <span class="info-box-number ${item.numberClass}">${item.value}</span>
-  </div>
-</div>
-</div>
-`
+            <div class="col-lg-4 col-12 p-0">
+            <div class="info-box m-0">
+            <span class="info-box-icon ${item.iconColorClass} elevation-1"><i class="${item.iconClass}"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">${item.label}</span>
+                <span class="info-box-number ${item.numberClass}">${item.value}</span>
+            </div>
+            </div>
+            </div>
+            `
         )
         .join("");
 }
 
 function find_base_path() {
     if (window.location.hostname === "ptprashanttripathi.github.io") {
-        return "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/";
+        return "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main";
     } else {
-        return "/";
+        return "..";
     }
 }
 
@@ -404,25 +434,21 @@ async function main() {
     const base_path = find_base_path();
 
     // Fetch the data using getData
-    const holdingsTrandsFilePath = `${base_path}DATA/API/HoldingsTrands_data.json`;
+    const holdingsTrandsFilePath = `${base_path}/DATA/API/HoldingsTrands_data.json`;
     const holdingsTrands_data = await getData(holdingsTrandsFilePath);
     loadHoldingsTrandsChart(holdingsTrands_data);
 
-    const financialSummaryData = findMaxDateRecords(holdingsTrands_data)[0];
-    updateFinancialSummary(financialSummaryData);
+    // Fetch the data using getData
+    const currentHoldingsDataFilePath = `${base_path}/DATA/API/CurrentHoldings_data.json`;
+    const currentHoldingsData = await getData(currentHoldingsDataFilePath);
+    loadCurrentHoldingsDataTable(currentHoldingsData.data);
+    updateFinancialSummary(currentHoldingsData);
 
     // Fetch the data using getData
-    const holdingsDataFilePath = `${base_path}DATA/GOLD/Holdings/HoldingsHistory_data.csv`;
-    const holdingsData = await getData(holdingsDataFilePath);
-    const filterdData = findMaxDateRecords(holdingsData);
-    loadHoldingsDataTable(filterdData);
-
-    // Fetch the data using getData
-    const profitLossDataFilePath = `${base_path}DATA/API/ProfitLoss_data.json`;
+    const profitLossDataFilePath = `${base_path}/DATA/API/ProfitLoss_data.json`;
     const profitLossData = await getData(profitLossDataFilePath);
     loadProfitLossDataTable(profitLossData.data);
-    const profitLossSummaryData = profitLossData;
-    updateProfitLossDataSummary(profitLossSummaryData);
+    updateProfitLossDataSummary(profitLossData);
 }
 
 main();
