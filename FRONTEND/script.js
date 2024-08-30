@@ -1,172 +1,13 @@
-// Function to parse CSV data
-function parseCSV(csv) {
-    const lines = csv.trim().split("\n");
-    const headers = lines[0].split(",").map((header) => header.trim());
-    // Trim all headers
-    const result = [];
-
-    for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        const currentLine = lines[i].split(",");
-
-        headers.forEach((header, index) => {
-            obj[header] = currentLine[index].trim();
-        });
-
-        result.push(obj);
-    }
-
-    return result;
-}
-
-// Function to get data based on file type (CSV or JSON)
-async function getData(filePath) {
-    try {
-        const response = await fetch(filePath);
-
-        // Check if the file exists and was fetched successfully
-        if (!response.ok) {
-            throw new Error(`Failed to fetch the file: ${response.statusText}`);
-        }
-
-        // Handle CSV file
-        if (filePath.endsWith(".csv")) {
-            const csvData = await response.text();
-            const parsedData = parseCSV(csvData);
-            // Parse the CSV data
-            return parsedData;
-
-            // Handle JSON file
-        } else if (filePath.endsWith(".json")) {
-            const jsonData = await response.json();
-            return jsonData;
-
-            // Handle unknown file type
-        } else {
-            throw new Error(
-                "Unknown data type. Please provide a valid CSV or JSON file."
-            );
-        }
-    } catch (error) {
-        console.error("Error fetching or processing the data:", error);
-        throw error;
-    }
-}
-
-async function loadHoldingsTrandsChart(data) {
-    const options = {
-        series: [
-            {
-                name: "Investment",
-                data: data.map((d) => ({
-                    x: new Date(d.date),
-                    y: d.holding,
-                })),
-            },
-            {
-                name: "Market Value",
-                data: data.map((d) => ({
-                    x: new Date(d.date),
-                    y: d.close,
-                })),
-            },
-        ],
-        // responsive: true,
-        chart: {
-            type: "area",
-            height: "100%",
-            // allows flexibility for responsive designs
-            width: "100%",
-
-            toolbar: {
-                show: false,
-            },
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        stroke: {
-            curve: "smooth",
-            width: 2,
-        },
-        xaxis: {
-            type: "datetime",
-            axisBorder: {
-                show: false,
-            },
-            axisTicks: {
-                show: false,
-            },
-        },
-        yaxis: {
-            // tickAmount: 4,
-            //   floating: false,
-            labels: {
-                formatter: (a) => priceFormat(a, true),
-                style: {
-                    colors: "#8e8da4",
-                },
-            },
-            axisBorder: {
-                show: true,
-            },
-            axisTicks: {
-                show: true,
-            },
-        },
-        fill: {
-            opacity: 0.25,
-        },
-        colors: ["#007bff", "#28a745"],
-        tooltip: {
-            x: {
-                format: "yyyy-MM-dd",
-            },
-            y: {
-                formatter: (a) => priceFormat(a),
-            },
-        },
-        legend: {
-            show: false,
-            // Hide legend
-        },
-        grid: {
-            show: false,
-            // Hides both x and y axis grid lines
-        },
-    };
-
-    const chart = new ApexCharts(
-        document.getElementById("holdingsTrandsChart"),
-        options
-    );
-
-    chart.render();
-
-    return chart;
-}
-
-// Function to find records with the maximum date
-function findMaxDateRecords(data) {
-    const maxDate = data.reduce((max, item) => {
-        const currentDate = new Date(item.date);
-        return currentDate > max ? currentDate : max;
-    }, new Date(data[0].date));
-
-    return data.filter(
-        (item) => new Date(item.date).getTime() === maxDate.getTime()
-    );
-}
-
+// Utility function for number formatting
 function priceFormat(value, short = false) {
+    const sign = value >= 0 ? "" : "-";
     const amount = parseFloat(value);
-
     if (short) {
-        if (amount >= 1e7) return `₹${(amount / 1e7).toFixed(2)}Cr`;
-        if (amount >= 1e5) return `₹${(amount / 1e5).toFixed(2)}L`;
-        if (amount >= 1e3) return `₹${(amount / 1e3).toFixed(2)}K`;
+        amount = Math.abs(amount);
+        if (amount >= 1e7) return `${sign}₹${(amount / 1e7).toFixed(2)}Cr`;
+        if (amount >= 1e5) return `${sign}₹${(amount / 1e5).toFixed(2)}L`;
+        if (amount >= 1e3) return `${sign}₹${(amount / 1e3).toFixed(2)}K`;
     }
-
     return amount.toLocaleString("en-IN", {
         maximumFractionDigits: 2,
         style: "currency",
@@ -174,111 +15,70 @@ function priceFormat(value, short = false) {
     });
 }
 
+// Utility function for parsing numbers
 function parseNum(value) {
     return parseFloat(value) === parseInt(value)
         ? parseInt(value)
         : parseFloat(parseFloat(value).toFixed(2));
 }
 
-function calcDays(date1, date2 = null) {
-    // Parse the first date string into a Date object
+// Utility function to calculate days between dates
+function calcDays(date1, date2 = new Date()) {
     const firstDate = new Date(date1);
-
-    // If the second date is provided, use it; otherwise, use the current date
-    const secondDate = date2 ? new Date(date2) : new Date();
-
-    // Calculate the difference in milliseconds
-    const differenceInMilliseconds = secondDate - firstDate;
-
-    // Convert the difference from milliseconds to days and use Math.abs() to ensure positive days
+    const secondDate = new Date(date2);
     const differenceInDays = Math.abs(
-        Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24))
+        Math.floor((secondDate - firstDate) / (1000 * 60 * 60 * 24))
     );
-
     return differenceInDays;
 }
 
-async function loadProfitLossDataTable(data) {
-    const table = document.getElementById("ProfitLossTable");
-    // Create and append the table header
-    table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Stock Name</th>
-        <th>Qty.</th>
-        <th>Buy Price</th>
-        <th>Sell Price</th>
-        <th>PNL</th>
-        <th>Percentage</th>
-        <th>Days</th>
-      </tr>
-    </thead>
-  `;
+// Creates a table cell with optional classes
+function createCell(content, classes = []) {
+    const cell = document.createElement("td");
+    cell.innerHTML = content;
+    classes.forEach((cls) => cell.classList.add(cls));
+    return cell;
+}
+
+// Function to load data into a table
+function loadDataTable(tableId, headers, cellData) {
+    const table = document.getElementById(tableId);
+    const tableHead = document.createElement("thead");
+
+    const row = document.createElement("tr");
+    headers.forEach((cell) => row.appendChild(createCell(cell)));
+    tableHead.appendChild(row);
+    table.appendChild(tableHead);
 
     const tableBody = document.createElement("tbody");
-
-    data.forEach((record) => {
+    cellData.forEach((record) => {
         const row = document.createElement("tr");
-        const pnl_flag = record.pnl < 0;
-        // Create and append cells
-        row.appendChild(createCell(`${record.symbol} (${record.segment})`));
-        row.appendChild(createCell(parseNum(record.quantity)));
-        row.appendChild(createCell(priceFormat(record.avg_price)));
-        row.appendChild(createCell(priceFormat(record.sell_price)));
-        row.appendChild(
-            createCell(
-                priceFormat(record.pnl),
-                pnl_flag ? ["text-danger"] : ["text-success"]
-            )
-        );
-
-        row.appendChild(
-            createCell(
-                `${pnl_flag ? "" : "+"}${parseNum(
-                    (record.pnl * 100) / (record.avg_price * record.quantity)
-                )}%`,
-                pnl_flag ? ["text-danger"] : ["text-success"]
-            )
-        );
-        row.appendChild(createCell(record.days));
-        // Append the row to the table body
+        record.forEach((cell) => row.appendChild(cell));
         tableBody.appendChild(row);
     });
-
-    // Append the table body to the table
     table.appendChild(tableBody);
 }
 
-async function loadCurrentHoldingsDataTable(data) {
-    const table = document.getElementById("CurrentHoldingsTable");
-    // <table class="table m-0" id="CurrentHoldingsTable"></table>
+// Load current holdings table
+function loadCurrentHoldingsDataTable(data) {
+    const headers = [
+        "Stock Name",
+        "Qty.",
+        "Avg Price",
+        "Invested Value",
+        "CMP Price",
+        "Current Value",
+        "Unrealized PNL",
+        "PNL Percentage",
+        "Holding Days",
+    ];
 
-    // Create and append the table header
-    table.innerHTML = `
-    <thead>
-      <tr>
-        <th>Stock Name</th>
-        <th>Qty.</th>
-        <th>Avg Price</th>
-        <th>Invested Value</th>
-        <th>CMP Price</th>
-        <th>Current Value</th>
-        <th>Unrealized PNL</th>
-        <th>PNL Percantage</th>
-        <th>Days</th>
-      </tr>
-    </thead>
-  `;
-
-    const tableBody = document.createElement("tbody");
-    data.forEach((record) => {
-        const row = document.createElement("tr");
+    const cellData = data.map((record) => {
         const pnlClass = record.pnl_amount < 0 ? "text-danger" : "text-success";
-
-        const cells = [
+        return [
             createCell(
                 `${
-                    record.segment == "EQ" ? record.symbol : record.scrip_name
+                    record.segment === "EQ" ? record.symbol : record.scrip_name
                 } (${record.segment})`
             ),
             createCell(parseNum(record.total_quantity)),
@@ -295,86 +95,105 @@ async function loadCurrentHoldingsDataTable(data) {
             ),
             createCell(calcDays(record.min_datetime)),
         ];
-
-        // Append all cells to the row
-        cells.forEach((cell) => row.appendChild(cell));
-
-        // Append the row to the table body
-        tableBody.appendChild(row);
     });
-
-    // Append the table body to the table
-    table.appendChild(tableBody);
+    loadDataTable("CurrentHoldingsTable", headers, cellData);
 }
 
-// Helper function to create a cell with text content and optional classes
-function createCell(text, classes = []) {
-    const cell = document.createElement("td");
-    cell.innerHTML = text;
-    classes.forEach((cls) => cell.classList.add(cls));
-    return cell;
-}
-
-function updateFinancialSummary(current_value, invested_value, overall_pnl) {
-    const pnlClass = overall_pnl > 0 ? "bg-success" : "bg-danger";
-    const pnlIcon = overall_pnl > 0 ? "▲" : "▼";
-
-    const summaryItems = [
-        {
-            value: priceFormat(current_value),
-            label: "Total Assets Worth",
-            colorClass: "bg-info",
-            iconClass: "fas fa-coins",
-            link: "#",
-        },
-        {
-            value: priceFormat(invested_value),
-            label: "Total Investment",
-            colorClass: "bg-warning",
-            iconClass: "fas fa-cart-shopping",
-            link: "#",
-        },
-        {
-            value: priceFormat(overall_pnl),
-            label: "Total P&L",
-            colorClass: pnlClass,
-            iconClass: "fas fa-chart-pie",
-            link: "#",
-        },
-        {
-            value: `${pnlIcon} ${parseNum(
-                (overall_pnl * 100) / invested_value
-            )}%`,
-            label: "Overall Return",
-            colorClass: pnlClass,
-            iconClass: "fas fa-chart-line",
-            link: "#",
-        },
+// Load profit/loss table
+function loadProfitLossDataTable(data) {
+    const headers = [
+        "Stock Name",
+        "Qty.",
+        "Avg Price",
+        "Sell Price",
+        "Realized PNL",
+        "PNL Percentage",
+        "Holding Days",
     ];
+    const cellData = data.map((record) => {
+        const pnlFlag = record.pnl < 0;
+        return [
+            createCell(`${record.symbol} (${record.segment})`),
+            createCell(parseNum(record.quantity)),
+            createCell(priceFormat(record.avg_price)),
+            createCell(priceFormat(record.sell_price)),
+            createCell(
+                priceFormat(record.pnl),
+                pnlFlag ? ["text-danger"] : ["text-success"]
+            ),
+            createCell(
+                `${pnlFlag ? "" : "+"}${parseNum(
+                    (record.pnl * 100) / (record.avg_price * record.quantity)
+                )}%`,
+                pnlFlag ? ["text-danger"] : ["text-success"]
+            ),
+            createCell(record.days),
+        ];
+    });
+    loadDataTable("ProfitLossTable", headers, cellData);
+}
 
-    const elem = document.getElementById("FinancialSummary");
+// Render summary sections
+function renderSummary(elementId, summaryItems) {
+    const elem = document.getElementById(elementId);
     elem.innerHTML = summaryItems
         .map(
             (item) => `
             <div class="col-lg-3 col-6">
-            <div class="small-box ${item.colorClass}">
-                <div class="inner">
-                <h4>${item.value}</h4>
-                <h6>${item.label}</h6>
+                <div class="small-box ${item.colorClass}">
+                    <div class="inner">
+                        <h4>${item.value}</h4>
+                        <h6>${item.label}</h6>
+                    </div>
+                    <div class="icon">
+                        <i class="${item.iconClass}"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
                 </div>
-                <div class="icon">
-                <i class="${item.iconClass}"></i>
-                </div>
-                <a href="${item.link}" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
-                </a>
             </div>
-            </div>
-            `
+        `
         )
         .join("");
 }
 
+// Update the financial summary section
+function updateFinancialSummary(currentValue, investedValue, overallPnl) {
+    const pnlClass = overallPnl > 0 ? "bg-success" : "bg-danger";
+    const pnlIcon = overallPnl > 0 ? "▲" : "▼";
+    const summaryItems = [
+        {
+            value: priceFormat(currentValue),
+            label: "Total Assets Worth",
+            colorClass: "bg-info",
+            iconClass: "fas fa-coins",
+        },
+        {
+            value: priceFormat(investedValue),
+            label: "Total Investment",
+            colorClass: "bg-warning",
+            iconClass: "fas fa-cart-shopping",
+        },
+        {
+            value: priceFormat(overallPnl),
+            label: "Total P&L",
+            colorClass: pnlClass,
+            iconClass: "fas fa-chart-pie",
+        },
+        {
+            value: `${pnlIcon} ${parseNum(
+                (overallPnl * 100) / investedValue
+            )}%`,
+            label: "Overall Return",
+            colorClass: pnlClass,
+            iconClass: "fas fa-chart-line",
+        },
+    ];
+    renderSummary("FinancialSummary", summaryItems);
+}
+
+// Update the P&L data summary section
 function updateProfitLossDataSummary(sold, invested, pnl) {
     const pnlClass = pnl > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnl > 0 ? "▲" : "▼";
@@ -383,88 +202,112 @@ function updateProfitLossDataSummary(sold, invested, pnl) {
             value: priceFormat(sold),
             label: "Total Turnover",
             colorClass: "bg-info",
-
             iconClass: "fas fa-solid fa-coins",
-            link: "#",
         },
         {
             value: priceFormat(invested),
             label: "Total Invested",
             colorClass: "bg-warning",
-
             iconClass: "fas fa-piggy-bank",
-            link: "#",
         },
         {
             value: priceFormat(pnl),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
-            link: "#",
         },
         {
             value: `${pnlIcon} ${parseNum((pnl * 100) / invested)}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-percent",
-            link: "#",
         },
     ];
-
-    const elem = document.getElementById("PNLSummary");
-    elem.innerHTML = summaryItems
-        .map(
-            (item) => `
-            <div class="col-lg-3 col-6">
-            <div class="small-box ${item.colorClass}">
-                <div class="inner">
-                <h4>${item.value}</h4>
-                <h6>${item.label}</h6>
-                </div>
-                <div class="icon">
-                <i class="${item.iconClass}"></i>
-                </div>
-                <a href="${item.link}" class="small-box-footer">
-                More info <i class="fas fa-arrow-circle-right"></i>
-                </a>
-            </div>
-            </div>
-            `
-        )
-        .join("");
+    renderSummary("PNLSummary", summaryItems);
 }
 
-function find_base_path() {
-    if (window.location.hostname === "ptprashanttripathi.github.io") {
-        return "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main";
-    } else {
-        return "..";
-    }
-}
-
-async function main() {
-    const base_path = find_base_path();
-
-    // Fetch the data using getData
-    const holdingsDataFilePath = `${base_path}/DATA/API/Holdings_data.json`;
-    const holdings_data = await getData(holdingsDataFilePath);
-
-    updateFinancialSummary(
-        holdings_data.current_value,
-        holdings_data.invested_value,
-        holdings_data.overall_pnl
+// Load ApexCharts chart
+function loadHoldingsTrandsChart(data) {
+    const options = {
+        series: [
+            {
+                name: "Investment",
+                data: data.map((d) => ({ x: new Date(d.date), y: d.holding })),
+            },
+            {
+                name: "Market Value",
+                data: data.map((d) => ({ x: new Date(d.date), y: d.close })),
+            },
+        ],
+        chart: {
+            type: "area",
+            height: "100%",
+            width: "100%",
+            toolbar: { show: false },
+        },
+        dataLabels: { enabled: false },
+        stroke: { curve: "smooth", width: 2 },
+        xaxis: {
+            type: "datetime",
+            axisBorder: { show: false },
+            axisTicks: { show: false },
+        },
+        yaxis: {
+            labels: {
+                formatter: (a) => priceFormat(a, true),
+                style: { colors: "#8e8da4" },
+            },
+            axisBorder: { show: true },
+            axisTicks: { show: true },
+        },
+        fill: { opacity: 0.25 },
+        colors: ["#007bff", "#28a745"],
+        tooltip: {
+            x: { format: "yyyy-MM-dd" },
+            y: { formatter: (a) => priceFormat(a) },
+        },
+        legend: { show: false },
+        grid: { show: false },
+    };
+    const chart = new ApexCharts(
+        document.getElementById("holdingsTrandsChart"),
+        options
     );
-    loadCurrentHoldingsDataTable(holdings_data.current_holding);
-    loadHoldingsTrandsChart(holdings_data.holdings_trands);
+    chart.render();
+    return chart;
+}
 
-    // Fetch the data using getData
-    const profitLossDataFilePath = `${base_path}/DATA/API/ProfitLoss_data.json`;
-    const profitLossData = await getData(profitLossDataFilePath);
-    loadProfitLossDataTable(profitLossData.data);
+// Find the base path for fetching data
+function globalPath(path) {
+    const basePath =
+        window.location.hostname === "ptprashanttripathi.github.io"
+            ? "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/"
+            : "../";
+    return basePath + path;
+}
+
+// Main function to fetch and Update latest data and UI
+async function main() {
+    const holdings_data = await fetch(
+        globalPath("DATA/API/Holdings_data.json")
+    );
+    const profitloss_data = await fetch(
+        globalPath("DATA/API/ProfitLoss_data.json")
+    );
+    const latestHoldingData = await holdings_data.json();
+    const latestProfitLossData = await profitloss_data.json();
+    loadCurrentHoldingsDataTable(latestHoldingData.current_holding);
+    loadProfitLossDataTable(latestProfitLossData.data);
+    loadHoldingsTrandsChart(latestHoldingData.holdings_trands);
+    updateFinancialSummary(
+        latestHoldingData.current_value,
+        latestHoldingData.invested_value,
+        latestHoldingData.overall_pnl
+    );
     updateProfitLossDataSummary(
-        profitLossData.sold,
-        profitLossData.invested,
-        profitLossData.pnl
+        latestProfitLossData.sold,
+        latestProfitLossData.invested,
+        latestProfitLossData.pnl
     );
 }
 
