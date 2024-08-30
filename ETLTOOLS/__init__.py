@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 from . import version
-from .datetimeutils import *
-from .globalpath import *
-from .portfolio import *
 from .utils import *
+from .portfolio import *
+from .globalpath import *
+from .datetimeutils import *
 
 __doc__ = f"""PortfolioTracker - ETL TOOL KIT
 https://ptprashanttripathi.github.io/PortfolioTracker
