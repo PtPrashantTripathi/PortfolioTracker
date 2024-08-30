@@ -1,8 +1,17 @@
 from typing import Dict, List, Union, Optional
 from datetime import time, datetime
+
 from pydantic import BaseModel, field_validator
 
-__all__ = ['Portfolio', 'StockInfo', 'Stock', 'HoldingRecord', 'TradeRecord', 'TradePosition']
+__all__ = [
+    "Portfolio",
+    "StockInfo",
+    "Stock",
+    "HoldingRecord",
+    "TradeRecord",
+    "TradePosition",
+]
+
 
 class StockInfo(BaseModel):
     """
