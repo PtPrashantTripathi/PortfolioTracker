@@ -1,7 +1,7 @@
 // Utility function for number formatting
 function priceFormat(value, short = false) {
     const sign = value >= 0 ? "" : "-";
-    const amount = parseFloat(value);
+    let amount = parseFloat(value);
     if (short) {
         amount = Math.abs(amount);
         if (amount >= 1e7) return `${sign}₹${(amount / 1e7).toFixed(2)}Cr`;
