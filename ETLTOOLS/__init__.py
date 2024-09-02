@@ -6,10 +6,10 @@ from .portfolio import *
 from .globalpath import *
 from .datetimeutils import *
 
-__doc__ = f"""PortfolioTracker - ETL TOOL KIT
+__doc__ = f"""PortfolioTracker v{version.VERSION}- ETL TOOL KIT
 https://ptprashanttripathi.github.io/PortfolioTracker
 Copyright 2023-{DateTimeUtil.today().year} Pt. Prashant Tripathi"""
-__version__ = version.version
+__version__ = version.VERSION
 __author__ = [
     {"name": "ptprashanttripathi", "email": "ptprashanttripathi@outlook.com"}
 ]

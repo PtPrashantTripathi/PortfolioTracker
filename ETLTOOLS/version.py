@@ -1,1 +1,5 @@
-version = "0.2.25"
+"""
+version details
+"""
+__all__ = ["VERSION"]
+VERSION = "0.3.1"

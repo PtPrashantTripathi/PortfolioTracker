@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ETLTools"
-version = "0.1.0"
+version = "0.3.1"
 description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
 license = {file = "LICENSE"}
 authors = [{ name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }]
