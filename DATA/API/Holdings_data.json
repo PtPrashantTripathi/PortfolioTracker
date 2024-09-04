@@ -1,7 +1,7 @@
 {
-    "invested_value": 59914.73,
-    "current_value": 188920.69,
-    "overall_pnl": 129005.96,
+    "invested_value": 61915.35,
+    "current_value": 185863.39,
+    "overall_pnl": 123948.04,
     "current_holding": [
         {
             "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -12,9 +12,9 @@
             "total_amount": 2688.6,
             "min_datetime": "2024-06-04 12:19:21",
             "avg_price": 896.2,
-            "close_price": 932.45,
-            "close_amount": 2797.35,
-            "pnl_amount": 108.75,
+            "close_price": 939.2,
+            "close_amount": 2817.6,
+            "pnl_amount": 129.0,
             "history": [
                 {
                     "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -38,9 +38,9 @@
             "total_amount": 3000.0,
             "min_datetime": "2024-06-13 13:58:03",
             "avg_price": 1500.0,
-            "close_price": 1814.7,
-            "close_amount": 3629.4,
-            "pnl_amount": 629.4,
+            "close_price": 1749.9,
+            "close_amount": 3499.8,
+            "pnl_amount": 499.8,
             "history": [
                 {
                     "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -64,9 +64,9 @@
             "total_amount": 26100.4,
             "min_datetime": "2020-04-21 14:41:30",
             "avg_price": 261.0,
-            "close_price": 1109.4,
-            "close_amount": 110940.0,
-            "pnl_amount": 84839.6,
+            "close_price": 1080.3,
+            "close_amount": 108030.0,
+            "pnl_amount": 81929.6,
             "history": [
                 {
                     "scrip_name": "TATA MOTORS",
@@ -134,9 +134,9 @@
             "total_amount": 22124.0,
             "min_datetime": "2021-02-08 11:39:33",
             "avg_price": 147.49,
-            "close_price": 434.55,
-            "close_amount": 65182.5,
-            "pnl_amount": 43058.5,
+            "close_price": 420.65,
+            "close_amount": 63097.5,
+            "pnl_amount": 40973.5,
             "history": [
                 {
                     "scrip_name": "TATA POWER",
@@ -178,13 +178,13 @@
             "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
             "exchange": "BMF",
             "segment": "MF",
-            "total_quantity": 58.41,
-            "total_amount": 3000.36,
+            "total_quantity": 76.61,
+            "total_amount": 4000.27,
             "min_datetime": "2024-05-24 00:00:00",
-            "avg_price": 51.37,
-            "close_price": 54.67,
-            "close_amount": 3193.27,
-            "pnl_amount": 192.91,
+            "avg_price": 52.22,
+            "close_price": 55.1,
+            "close_amount": 4221.21,
+            "pnl_amount": 220.94,
             "history": [
                 {
                     "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -218,6 +218,17 @@
                     "quantity": 18.61,
                     "price": 53.74,
                     "amount": 1000.1
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-09-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 18.2,
+                    "price": 54.94,
+                    "amount": 999.91
                 }
             ]
         },
@@ -226,13 +237,13 @@
             "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
             "exchange": "BMF",
             "segment": "MF",
-            "total_quantity": 6.64,
-            "total_amount": 3001.37,
+            "total_quantity": 8.72,
+            "total_amount": 4002.08,
             "min_datetime": "2024-05-24 00:00:00",
-            "avg_price": 452.01,
-            "close_price": 478.64,
-            "close_amount": 3178.17,
-            "pnl_amount": 176.8,
+            "avg_price": 458.95,
+            "close_price": 481.34,
+            "close_amount": 4197.28,
+            "pnl_amount": 195.2,
             "history": [
                 {
                     "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -266,6 +277,17 @@
                     "quantity": 2.11,
                     "price": 474.32,
                     "amount": 1000.82
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-09-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.08,
+                    "price": 481.11,
+                    "amount": 1000.71
                 }
             ]
         }
@@ -6289,34 +6311,34 @@
         },
         {
             "date": "2022-05-13",
-            "open": 107741.41,
-            "high": 111734.56,
-            "low": 106218.5,
-            "close": 108417.73,
+            "open": 107523.01,
+            "high": 111550.46,
+            "low": 106095.8,
+            "close": 108288.13,
             "holding": 102405.4
         },
         {
             "date": "2022-05-14",
-            "open": 107741.41,
-            "high": 111734.56,
-            "low": 106218.5,
-            "close": 108417.73,
+            "open": 107523.01,
+            "high": 111550.46,
+            "low": 106095.8,
+            "close": 108288.13,
             "holding": 102405.4
         },
         {
             "date": "2022-05-15",
-            "open": 107741.41,
-            "high": 111734.56,
-            "low": 106218.5,
-            "close": 108417.73,
+            "open": 107523.01,
+            "high": 111550.46,
+            "low": 106095.8,
+            "close": 108288.13,
             "holding": 102405.4
         },
         {
             "date": "2022-05-16",
-            "open": 109814.43,
-            "high": 110479.8,
-            "low": 106962.92,
-            "close": 109253.68,
+            "open": 109596.03,
+            "high": 110295.7,
+            "low": 106840.22,
+            "close": 109124.08,
             "holding": 102405.4
         },
         {
@@ -13033,11 +13055,27 @@
         },
         {
             "date": "2024-09-02",
-            "open": 189096.09,
-            "high": 189845.54,
-            "low": 187232.39,
-            "close": 188920.69,
-            "holding": 59914.74
+            "open": 190513.48,
+            "high": 190851.98,
+            "low": 187899.43,
+            "close": 188956.03,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-03",
+            "open": 189815.84,
+            "high": 190032.09,
+            "low": 187684.79,
+            "close": 188411.94,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-04",
+            "open": 186904.84,
+            "high": 187727.49,
+            "low": 184902.79,
+            "close": 185863.39,
+            "holding": 61915.36
         }
     ]
 }
