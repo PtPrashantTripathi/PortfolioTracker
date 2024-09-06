@@ -269,15 +269,15 @@ def create_data_contract(df):
 
 
 def check_files_availability(
-    path: Union[str, os.PathLike],
+    dir_path: Union[str, Path],
     file_pattern: str = "*",
     timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
-) -> List[os.PathLike]:
+) -> List[Path]:
     """
     Checks for newly added or modified files in a directory after a specific timestamp.
 
     Args:
-        path (Union[str, os.PathLike]): The directory to check for files.
+        dir_path (Union[str, Path]): The directory to check for files.
         file_pattern (str): The pattern to filter files.
         timestamp (datetime): The timestamp to compare file modification times against.
 
@@ -288,12 +288,14 @@ def check_files_availability(
     file_paths = []
 
     # Iterate over all files in the directory and subdirectories
-    for path in Path(path).rglob(file_pattern):
-        if path.is_file():
-            file_modified_time = datetime.fromtimestamp(os.path.getmtime(path))
+    for file_path in Path(dir_path).rglob(file_pattern):
+        if file_path.is_file():
+            file_modified_time = datetime.fromtimestamp(
+                os.path.getmtime(file_path)
+            )
             # Check if file was modified after the given timestamp
             if file_modified_time > timestamp:
-                file_paths.append(path)
+                file_paths.append(file_path)
 
     # Log the number of detected files
     num_files = len(file_paths)
@@ -302,7 +304,7 @@ def check_files_availability(
         return file_paths
     else:
         raise FileNotFoundError(
-            f"No processable data available in the directory: {path}"
+            f"No processable data available in the directory: {file_path}"
         )
 
 
@@ -353,7 +355,7 @@ def read_data(
         pd.DataFrame: Concatenated DataFrame of all files aligned with the schema.
     """
     print(f"Reading data from : {file_path}")
-    
+
     # Initialize an empty list to store DataFrames
     dataframes = []
 
