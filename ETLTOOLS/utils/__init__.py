@@ -1,7 +1,12 @@
 # Importing necessary files and packages
+import os
 import re
 import json
 from datetime import datetime
+from pathlib import Path
+import pandas as pd
+from typing import List, Union, Optional, Dict, Any
+
 
 __doc__ = """necessary functions"""
 __all__ = [
@@ -16,6 +21,9 @@ __all__ = [
     "extract_year_week",
     "get_correct_datatype",
     "create_data_contract",
+    "check_files_availability",
+    "align_with_schema",
+    "read_data",
 ]
 
 
@@ -258,3 +266,142 @@ def create_data_contract(df):
         }
         for field in df.schema
     ]
+
+
+def check_files_availability(
+    path: Union[str, os.PathLike],
+    file_pattern: str = "*",
+    timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
+) -> List[os.PathLike]:
+    """
+    Checks for newly added or modified files in a directory after a specific timestamp.
+
+    Args:
+        path (Union[str, os.PathLike]): The directory to check for files.
+        file_pattern (str): The pattern to filter files.
+        timestamp (datetime): The timestamp to compare file modification times against.
+
+    Returns:
+        list: A list of paths to files that were added or modified after the given timestamp.
+    """
+    # List to store paths of matched files
+    file_paths = []
+
+    # Iterate over all files in the directory and subdirectories
+    for path in Path(path).rglob(file_pattern):
+        if path.is_file():
+            file_modified_time = datetime.fromtimestamp(os.path.getmtime(path))
+            # Check if file was modified after the given timestamp
+            if file_modified_time > timestamp:
+                file_paths.append(path)
+
+    # Log the number of detected files
+    num_files = len(file_paths)
+    if num_files > 0:
+        print(f"Number of Files Detected: {num_files}")
+        return file_paths
+    else:
+        raise FileNotFoundError(
+            f"No processable data available in the directory: {path}"
+        )
+
+
+def align_with_schema(df: pd.DataFrame, schema: Dict[str, Any]) -> pd.DataFrame:
+    """
+    Aligns the DataFrame with the given schema. Casts columns to specified data types.
+    If a column is missing, it creates that column with the specified data type and fills with NaN.
+
+    Args:
+        df (pd.DataFrame): The DataFrame to align.
+        schema (Dict[str, Any]): A dictionary with column names as keys and data types as values.
+
+    Returns:
+        pd.DataFrame: The DataFrame aligned with the provided schema.
+    """
+    for col, dtype in schema.items():
+        if col in df.columns:
+            # Convert column to the specified data type
+            df[col] = df[col].astype(dtype)
+        else:
+            # Create column with the specified data type and fill with NaN (null)
+            df[col] = pd.Series([None] * len(df), dtype=dtype)
+    return df
+
+
+def read_data(
+    file_path: Union[str, Path],
+    file_pattern: str = "*.csv",
+    schema: Optional[Dict[str, Any]] = None,
+    timestamp: datetime = datetime.strptime("2000-01-01", "%Y-%m-%d"),
+    sheet_name: Union[str, int] = 0,
+    header: Union[int, str] = 0,
+) -> pd.DataFrame:
+    """
+    Reads all files in a given directory (if `file_path` is a directory) or reads a single file.
+    Concatenates all pandas DataFrames into a single DataFrame.
+    If a schema is provided, aligns the DataFrame with the schema.
+
+    Args:
+        file_path (Union[str, Path]): Path to a file or a directory.
+        file_pattern (str): Pattern to match files in the directory (if applicable).
+        schema (Optional[Dict[str, Any]]): A dictionary with column names as keys and data types as values.
+        timestamp (datetime): Timestamp to filter files that were modified after this time.
+        sheet_name (Union[str, int]): Sheet name or index to read from Excel files.
+        header (Union[int, str]): Row number to use as column names, or string to indicate header handling.
+
+    Returns:
+        pd.DataFrame: Concatenated DataFrame of all files aligned with the schema.
+    """
+    print(f"Reading data from : {file_path}")
+    
+    # Initialize an empty list to store DataFrames
+    dataframes = []
+
+    # If the provided path is a directory, check for files matching the pattern and modified after the timestamp
+    if os.path.isdir(file_path):
+        files_to_read = check_files_availability(
+            file_path, file_pattern, timestamp
+        )
+    else:
+        # Otherwise, treat the provided path as a single file
+        files_to_read = [file_path]
+
+    # Iterate over each file path and read the data
+    for file in files_to_read:
+        try:
+            # Define the engine for Excel file types
+            engine = {"xlsx": "openpyxl", "xls": "xlrd", "xlsb": "pyxlsb"}
+            extension = str(file).lower().split(".")[-1]
+
+            # Read data based on file extension
+            if extension in engine:
+                df = pd.read_excel(
+                    file,
+                    sheet_name=sheet_name,
+                    header=header,
+                    engine=engine[extension],
+                )
+            elif extension == "json":
+                df = pd.read_json(file)
+            elif extension == "csv":
+                df = pd.read_csv(file, header=header)
+            else:
+                raise ValueError(f"Unsupported file extension: {extension}")
+
+            # Align DataFrame with the provided schema, if schema is specified
+            if schema:
+                df = align_with_schema(df, schema)
+
+            dataframes.append(df)
+
+        except Exception as e:
+            print(f"Error reading {file}: {e}")
+
+    # Concatenate all DataFrames into one
+    if dataframes:
+        combined_df = pd.concat(dataframes, ignore_index=True)
+        return combined_df
+    else:
+        raise ValueError(
+            "No DataFrames were created; check file paths and formats."
+        )

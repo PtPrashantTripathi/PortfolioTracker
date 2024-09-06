@@ -58,124 +58,6 @@
             ]
         },
         {
-            "scrip_name": "TATA MOTORS",
-            "symbol": "TATAMOTORS",
-            "exchange": "NSE",
-            "segment": "EQ",
-            "total_quantity": 100.0,
-            "total_amount": 26100.4,
-            "min_datetime": "2020-04-21 14:41:30",
-            "avg_price": 261.0,
-            "close_price": 1068.65,
-            "close_amount": 106865.0,
-            "pnl_amount": 80764.6,
-            "history": [
-                {
-                    "scrip_name": "TATA MOTORS",
-                    "symbol": "TATAMOTORS",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2020-04-21 14:41:30",
-                    "side": "BUY",
-                    "quantity": 14.0,
-                    "price": 75.1,
-                    "amount": 1051.4
-                },
-                {
-                    "scrip_name": "TATA MOTORS",
-                    "symbol": "TATAMOTORS",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2020-05-04 14:33:45",
-                    "side": "BUY",
-                    "quantity": 5.0,
-                    "price": 83.8,
-                    "amount": 419.0
-                },
-                {
-                    "scrip_name": "TATA MOTORS",
-                    "symbol": "TATAMOTORS",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2020-07-03 13:31:19",
-                    "side": "BUY",
-                    "quantity": 15.0,
-                    "price": 104.0,
-                    "amount": 1560.0
-                },
-                {
-                    "scrip_name": "TATA MOTORS",
-                    "symbol": "TATAMOTORS",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2021-04-12 10:44:33",
-                    "side": "BUY",
-                    "quantity": 26.0,
-                    "price": 295.0,
-                    "amount": 7670.0
-                },
-                {
-                    "scrip_name": "TATA MOTORS",
-                    "symbol": "TATAMOTORS",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2022-05-11 11:50:35",
-                    "side": "BUY",
-                    "quantity": 40.0,
-                    "price": 385.0,
-                    "amount": 15400.0
-                }
-            ]
-        },
-        {
-            "scrip_name": "TATA POWER",
-            "symbol": "TATAPOWER",
-            "exchange": "NSE",
-            "segment": "EQ",
-            "total_quantity": 150.0,
-            "total_amount": 22124.0,
-            "min_datetime": "2021-02-08 11:39:33",
-            "avg_price": 147.49,
-            "close_price": 420.45,
-            "close_amount": 63067.5,
-            "pnl_amount": 40943.5,
-            "history": [
-                {
-                    "scrip_name": "TATA POWER",
-                    "symbol": "TATAPOWER",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2021-02-08 11:39:33",
-                    "side": "BUY",
-                    "quantity": 53.0,
-                    "price": 90.0,
-                    "amount": 4770.0
-                },
-                {
-                    "scrip_name": "TATA POWER",
-                    "symbol": "TATAPOWER",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2021-02-22 11:44:35",
-                    "side": "BUY",
-                    "quantity": 33.0,
-                    "price": 90.0,
-                    "amount": 2970.0
-                },
-                {
-                    "scrip_name": "TATA POWER",
-                    "symbol": "TATAPOWER",
-                    "exchange": "NSE",
-                    "segment": "EQ",
-                    "datetime": "2022-05-11 11:58:14",
-                    "side": "BUY",
-                    "quantity": 64.0,
-                    "price": 224.75,
-                    "amount": 14384.0
-                }
-            ]
-        },
-        {
             "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
             "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
             "exchange": "BMF",
@@ -290,6 +172,124 @@
                     "quantity": 2.08,
                     "price": 481.11,
                     "amount": 1000.71
+                }
+            ]
+        },
+        {
+            "scrip_name": "TATA MOTORS",
+            "symbol": "TATAMOTORS",
+            "exchange": "NSE",
+            "segment": "EQ",
+            "total_quantity": 100.0,
+            "total_amount": 26100.4,
+            "min_datetime": "2020-04-21 14:41:30",
+            "avg_price": 261.0,
+            "close_price": 1068.65,
+            "close_amount": 106865.0,
+            "pnl_amount": 80764.6,
+            "history": [
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2020-04-21 14:41:30",
+                    "side": "BUY",
+                    "quantity": 14.0,
+                    "price": 75.1,
+                    "amount": 1051.4
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2020-05-04 14:33:45",
+                    "side": "BUY",
+                    "quantity": 5.0,
+                    "price": 83.8,
+                    "amount": 419.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2020-07-03 13:31:19",
+                    "side": "BUY",
+                    "quantity": 15.0,
+                    "price": 104.0,
+                    "amount": 1560.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2021-04-12 10:44:33",
+                    "side": "BUY",
+                    "quantity": 26.0,
+                    "price": 295.0,
+                    "amount": 7670.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2022-05-11 11:50:35",
+                    "side": "BUY",
+                    "quantity": 40.0,
+                    "price": 385.0,
+                    "amount": 15400.0
+                }
+            ]
+        },
+        {
+            "scrip_name": "TATA POWER",
+            "symbol": "TATAPOWER",
+            "exchange": "NSE",
+            "segment": "EQ",
+            "total_quantity": 150.0,
+            "total_amount": 22124.0,
+            "min_datetime": "2021-02-08 11:39:33",
+            "avg_price": 147.49,
+            "close_price": 420.45,
+            "close_amount": 63067.5,
+            "pnl_amount": 40943.5,
+            "history": [
+                {
+                    "scrip_name": "TATA POWER",
+                    "symbol": "TATAPOWER",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2021-02-08 11:39:33",
+                    "side": "BUY",
+                    "quantity": 53.0,
+                    "price": 90.0,
+                    "amount": 4770.0
+                },
+                {
+                    "scrip_name": "TATA POWER",
+                    "symbol": "TATAPOWER",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2021-02-22 11:44:35",
+                    "side": "BUY",
+                    "quantity": 33.0,
+                    "price": 90.0,
+                    "amount": 2970.0
+                },
+                {
+                    "scrip_name": "TATA POWER",
+                    "symbol": "TATAPOWER",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2022-05-11 11:58:14",
+                    "side": "BUY",
+                    "quantity": 64.0,
+                    "price": 224.75,
+                    "amount": 14384.0
                 }
             ]
         }
