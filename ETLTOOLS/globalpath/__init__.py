@@ -11,7 +11,7 @@ load_dotenv()
 __all__ = ["GlobalPath"]
 
 
-class GlobalPath():
+class GlobalPath:
     """
     A custom path class that automatically prefixes paths with the PROJECT_DIR environment variable.
     This class extends the built-in pathlib.Path and adds custom methods for path manipulation.
@@ -119,6 +119,9 @@ class GlobalPath():
             raise FileNotFoundError(
                 f"No processable data available in : {file_paths}"
             )
+
+    def __str__(self) -> str:
+        return str(self.path.resolve())
 
 
 if __name__ == "__main__":
