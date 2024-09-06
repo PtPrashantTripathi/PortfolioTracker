@@ -1,7 +1,7 @@
 {
     "invested_value": 61915.35,
-    "current_value": 182780.27,
-    "overall_pnl": 120864.92,
+    "current_value": 184620.82,
+    "overall_pnl": 122705.47,
     "current_holding": [
         {
             "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -12,9 +12,9 @@
             "total_amount": 2688.6,
             "min_datetime": "2024-06-04 12:19:21",
             "avg_price": 896.2,
-            "close_price": 935.15,
-            "close_amount": 2805.45,
-            "pnl_amount": 116.85,
+            "close_price": 945.1,
+            "close_amount": 2835.3,
+            "pnl_amount": 146.7,
             "history": [
                 {
                     "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -38,9 +38,9 @@
             "total_amount": 3000.0,
             "min_datetime": "2024-06-13 13:58:03",
             "avg_price": 1500.0,
-            "close_price": 1730.35,
-            "close_amount": 3460.7,
-            "pnl_amount": 460.7,
+            "close_price": 1721.95,
+            "close_amount": 3443.9,
+            "pnl_amount": 443.9,
             "history": [
                 {
                     "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -64,9 +64,9 @@
             "total_amount": 26100.4,
             "min_datetime": "2020-04-21 14:41:30",
             "avg_price": 261.0,
-            "close_price": 1053.15,
-            "close_amount": 105315.0,
-            "pnl_amount": 79214.6,
+            "close_price": 1068.65,
+            "close_amount": 106865.0,
+            "pnl_amount": 80764.6,
             "history": [
                 {
                     "scrip_name": "TATA MOTORS",
@@ -134,9 +134,9 @@
             "total_amount": 22124.0,
             "min_datetime": "2021-02-08 11:39:33",
             "avg_price": 147.49,
-            "close_price": 418.6,
-            "close_amount": 62790.0,
-            "pnl_amount": 40666.0,
+            "close_price": 420.45,
+            "close_amount": 63067.5,
+            "pnl_amount": 40943.5,
             "history": [
                 {
                     "scrip_name": "TATA POWER",
