@@ -15507,42 +15507,202 @@
             {
                 "segment": "EQ",
                 "symbol": "BPCL",
-                "dividend_amount": 709.5
+                "dividend_amount": 709.5,
+                "data": [
+                    {
+                        "year": 2021,
+                        "dividend_amount": 602.0,
+                        "data": [
+                            {
+                                "date": "2021-09-16",
+                                "dividend_amount": 494.5
+                            },
+                            {
+                                "date": "2021-11-11",
+                                "dividend_amount": 107.5
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2022,
+                        "dividend_amount": 107.5,
+                        "data": [
+                            {
+                                "date": "2022-02-10",
+                                "dividend_amount": 107.5
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "IRCTC",
-                "dividend_amount": 12.0
+                "dividend_amount": 12.0,
+                "data": [
+                    {
+                        "year": 2024,
+                        "dividend_amount": 12.0,
+                        "data": [
+                            {
+                                "date": "2024-08-23",
+                                "dividend_amount": 12.0
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "KPITTECH",
-                "dividend_amount": 9.2
+                "dividend_amount": 9.2,
+                "data": [
+                    {
+                        "year": 2024,
+                        "dividend_amount": 9.2,
+                        "data": [
+                            {
+                                "date": "2024-08-09",
+                                "dividend_amount": 9.2
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "SBIN",
-                "dividend_amount": 56.0
+                "dividend_amount": 56.0,
+                "data": [
+                    {
+                        "year": 2021,
+                        "dividend_amount": 56.0,
+                        "data": [
+                            {
+                                "date": "2021-06-03",
+                                "dividend_amount": 56.0
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "TATACHEM",
-                "dividend_amount": 250.0
+                "dividend_amount": 250.0,
+                "data": [
+                    {
+                        "year": 2022,
+                        "dividend_amount": 250.0,
+                        "data": [
+                            {
+                                "date": "2022-06-15",
+                                "dividend_amount": 250.0
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "TATAMOTORS",
-                "dividend_amount": 800.0
+                "dividend_amount": 800.0,
+                "data": [
+                    {
+                        "year": 2023,
+                        "dividend_amount": 200.0,
+                        "data": [
+                            {
+                                "date": "2023-07-28",
+                                "dividend_amount": 200.0
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2024,
+                        "dividend_amount": 600.0,
+                        "data": [
+                            {
+                                "date": "2024-06-11",
+                                "dividend_amount": 600.0
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "TATAPOWER",
-                "dividend_amount": 1058.5
+                "dividend_amount": 1058.5,
+                "data": [
+                    {
+                        "year": 2021,
+                        "dividend_amount": 162.75,
+                        "data": [
+                            {
+                                "date": "2021-06-17",
+                                "dividend_amount": 162.75
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2022,
+                        "dividend_amount": 295.75,
+                        "data": [
+                            {
+                                "date": "2022-06-15",
+                                "dividend_amount": 295.75
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2023,
+                        "dividend_amount": 300.0,
+                        "data": [
+                            {
+                                "date": "2023-06-07",
+                                "dividend_amount": 300.0
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2024,
+                        "dividend_amount": 300.0,
+                        "data": [
+                            {
+                                "date": "2024-07-04",
+                                "dividend_amount": 300.0
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 "segment": "EQ",
                 "symbol": "VOLTAS",
-                "dividend_amount": 42.0
+                "dividend_amount": 42.0,
+                "data": [
+                    {
+                        "year": 2021,
+                        "dividend_amount": 20.0,
+                        "data": [
+                            {
+                                "date": "2021-08-11",
+                                "dividend_amount": 20.0
+                            }
+                        ]
+                    },
+                    {
+                        "year": 2022,
+                        "dividend_amount": 22.0,
+                        "data": [
+                            {
+                                "date": "2022-06-09",
+                                "dividend_amount": 22.0
+                            }
+                        ]
+                    }
+                ]
             }
         ],
         "year_wise": [

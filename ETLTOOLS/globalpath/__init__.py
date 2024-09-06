@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Load environment variables from a .env file
@@ -83,9 +84,7 @@ class GlobalPath:
 if __name__ == "__main__":
     # Instantiate GlobalPath
     bronze_layer_path = GlobalPath("DATA/BRONZE")
-    tradehistory_source_layer_path = bronze_layer_path.joinpath(
-        "TradeHistory"
-    )
+    tradehistory_source_layer_path = bronze_layer_path.joinpath("TradeHistory")
     # Print the generated path
     print(f"Root Path: {GlobalPath.root_path()}")
     print(f"Source Path: {tradehistory_source_layer_path}")

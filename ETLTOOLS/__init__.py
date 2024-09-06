@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 
-from . import version
-from . import utils
-from . import portfolio
-from . import globalpath
-from . import datetimeutils
+from . import utils, version, portfolio, globalpath, datetimeutils
 from .utils import *
 from .portfolio import *
 from .globalpath import *
