@@ -32,10 +32,14 @@ class NotebookRunner:
                 notebook = nbformat.read(file, as_version=4)
 
             # Set up the notebook processor
-            processor = ExecutePreprocessor(timeout=self.timeout, kernel_name=self.kernel_name)
+            processor = ExecutePreprocessor(
+                timeout=self.timeout, kernel_name=self.kernel_name
+            )
 
             # Execute the notebook
-            processor.preprocess(notebook, {"metadata": {"path": notebook_path.parent}})
+            processor.preprocess(
+                notebook, {"metadata": {"path": notebook_path.parent}}
+            )
 
             # Process Notebook outputs
             self.print_notebook_outputs(notebook)
@@ -59,20 +63,29 @@ class NotebookRunner:
         notebooknode : The notebook content as a dictionary.
         """
         for cell in notebooknode.get("cells", []):
-            for output in cell.get("outputs", []):
-                if output.output_type == "stream":
-                    print("Stream Output:\n" + "".join(output.get("text", [])))
-                elif output.output_type == "execute_result":
-                    print(
-                        "Execute Result:\n" + output.data.get("text/plain", "No output")
-                    )
-                elif output.output_type == "display_data":
-                    print(
-                        "Display Data:\n" + output.data.get("text/plain", "No display data")
-                    )
-                elif output.output_type == "error":
-                    print("Error Output:")
-                    print("".join(output.get("traceback", [])))
+            if cell.get("cell_type", "") == "markdown":
+                print("Markdown Output:\n" + "".join(cell.get("source", [])))
+            elif cell.get("cell_type", "") == "code":
+                for output in cell.get("outputs", []):
+                    if output.output_type == "stream":
+                        print(
+                            "Stream Output:\n" + "".join(output.get("text", []))
+                        )
+                    elif output.output_type == "execute_result":
+                        print(
+                            "Execute Result:\n"
+                            + output.data.get("text/plain", "No output")
+                        )
+                    elif output.output_type == "display_data":
+                        print(
+                            "Display Data:\n"
+                            + output.data.get("text/plain", "No display data")
+                        )
+                    elif output.output_type == "error":
+                        print("Error Output:")
+                        print("".join(output.get("traceback", [])))
+            else:
+                pass
             print("\n")
 
 
@@ -87,6 +100,7 @@ def run_notebooks():
     runner = NotebookRunner()
     for notebook_path in notebook_paths:
         runner.run_notebook(notebook_path)
+
 
 if __name__ == "__main__":
     # Handle Windows event loop policy
