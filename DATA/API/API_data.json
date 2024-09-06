@@ -15621,5 +15621,67 @@
                 }
             ]
         }
-    ]
+    ],
+    "dividend_data": {
+        "stock_wise": [
+            {
+                "segment": "EQ",
+                "symbol": "BPCL",
+                "dividend_amount": 709.5
+            },
+            {
+                "segment": "EQ",
+                "symbol": "IRCTC",
+                "dividend_amount": 12.0
+            },
+            {
+                "segment": "EQ",
+                "symbol": "KPITTECH",
+                "dividend_amount": 9.2
+            },
+            {
+                "segment": "EQ",
+                "symbol": "SBIN",
+                "dividend_amount": 56.0
+            },
+            {
+                "segment": "EQ",
+                "symbol": "TATACHEM",
+                "dividend_amount": 250.0
+            },
+            {
+                "segment": "EQ",
+                "symbol": "TATAMOTORS",
+                "dividend_amount": 800.0
+            },
+            {
+                "segment": "EQ",
+                "symbol": "TATAPOWER",
+                "dividend_amount": 1058.5
+            },
+            {
+                "segment": "EQ",
+                "symbol": "VOLTAS",
+                "dividend_amount": 42.0
+            }
+        ],
+        "year_wise": [
+            {
+                "year": 2021,
+                "dividend_amount": 840.75
+            },
+            {
+                "year": 2022,
+                "dividend_amount": 675.25
+            },
+            {
+                "year": 2023,
+                "dividend_amount": 500.0
+            },
+            {
+                "year": 2024,
+                "dividend_amount": 921.2
+            }
+        ]
+    }
 }
