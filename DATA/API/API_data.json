@@ -15510,8 +15510,8 @@
                 "dividend_amount": 709.5,
                 "data": [
                     {
-                        "year": 2021,
-                        "dividend_amount": 602.0,
+                        "year": "2021-22",
+                        "dividend_amount": 709.5,
                         "data": [
                             {
                                 "date": "2021-09-16",
@@ -15520,13 +15520,7 @@
                             {
                                 "date": "2021-11-11",
                                 "dividend_amount": 107.5
-                            }
-                        ]
-                    },
-                    {
-                        "year": 2022,
-                        "dividend_amount": 107.5,
-                        "data": [
+                            },
                             {
                                 "date": "2022-02-10",
                                 "dividend_amount": 107.5
@@ -15541,7 +15535,7 @@
                 "dividend_amount": 12.0,
                 "data": [
                     {
-                        "year": 2024,
+                        "year": "2024-25",
                         "dividend_amount": 12.0,
                         "data": [
                             {
@@ -15558,7 +15552,7 @@
                 "dividend_amount": 9.2,
                 "data": [
                     {
-                        "year": 2024,
+                        "year": "2024-25",
                         "dividend_amount": 9.2,
                         "data": [
                             {
@@ -15575,7 +15569,7 @@
                 "dividend_amount": 56.0,
                 "data": [
                     {
-                        "year": 2021,
+                        "year": "2021-22",
                         "dividend_amount": 56.0,
                         "data": [
                             {
@@ -15592,7 +15586,7 @@
                 "dividend_amount": 250.0,
                 "data": [
                     {
-                        "year": 2022,
+                        "year": "2022-23",
                         "dividend_amount": 250.0,
                         "data": [
                             {
@@ -15609,7 +15603,7 @@
                 "dividend_amount": 800.0,
                 "data": [
                     {
-                        "year": 2023,
+                        "year": "2023-24",
                         "dividend_amount": 200.0,
                         "data": [
                             {
@@ -15619,7 +15613,7 @@
                         ]
                     },
                     {
-                        "year": 2024,
+                        "year": "2024-25",
                         "dividend_amount": 600.0,
                         "data": [
                             {
@@ -15636,7 +15630,7 @@
                 "dividend_amount": 1058.5,
                 "data": [
                     {
-                        "year": 2021,
+                        "year": "2021-22",
                         "dividend_amount": 162.75,
                         "data": [
                             {
@@ -15646,7 +15640,7 @@
                         ]
                     },
                     {
-                        "year": 2022,
+                        "year": "2022-23",
                         "dividend_amount": 295.75,
                         "data": [
                             {
@@ -15656,7 +15650,7 @@
                         ]
                     },
                     {
-                        "year": 2023,
+                        "year": "2023-24",
                         "dividend_amount": 300.0,
                         "data": [
                             {
@@ -15666,7 +15660,7 @@
                         ]
                     },
                     {
-                        "year": 2024,
+                        "year": "2024-25",
                         "dividend_amount": 300.0,
                         "data": [
                             {
@@ -15683,7 +15677,7 @@
                 "dividend_amount": 42.0,
                 "data": [
                     {
-                        "year": 2021,
+                        "year": "2021-22",
                         "dividend_amount": 20.0,
                         "data": [
                             {
@@ -15693,7 +15687,7 @@
                         ]
                     },
                     {
-                        "year": 2022,
+                        "year": "2022-23",
                         "dividend_amount": 22.0,
                         "data": [
                             {
@@ -15707,19 +15701,19 @@
         ],
         "year_wise": [
             {
-                "year": 2021,
-                "dividend_amount": 840.75
+                "year": "2021-22",
+                "dividend_amount": 948.25
             },
             {
-                "year": 2022,
-                "dividend_amount": 675.25
+                "year": "2022-23",
+                "dividend_amount": 567.75
             },
             {
-                "year": 2023,
+                "year": "2023-24",
                 "dividend_amount": 500.0
             },
             {
-                "year": 2024,
+                "year": "2024-25",
                 "dividend_amount": 921.2
             }
         ]
