@@ -77,8 +77,7 @@ function loadCurrentHoldingsDataTable(data) {
         const pnlClass = record.pnl_amount < 0 ? "text-danger" : "text-success";
         return [
             createCell(
-                `${
-                    record.segment === "EQ" ? record.symbol : record.scrip_name
+                `${record.segment === "EQ" ? record.symbol : record.scrip_name
                 } (${record.segment})`
             ),
             createCell(parseNum(record.total_quantity)),
@@ -159,9 +158,10 @@ function renderSummary(elementId, summaryItems) {
 }
 
 // Update the financial summary section
-function updateFinancialSummary(currentValue, investedValue, overallPnl) {
-    const pnlClass = overallPnl > 0 ? "bg-success" : "bg-danger";
-    const pnlIcon = overallPnl > 0 ? "▲" : "▼";
+function updateFinancialSummary(investedValue, currentValue, pnlValue) {
+    console.log({ "investedValue": investedValue, "currentValue": currentValue, "pnlValue": pnlValue });
+    const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
+    const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
         {
             value: priceFormat(currentValue),
@@ -176,14 +176,14 @@ function updateFinancialSummary(currentValue, investedValue, overallPnl) {
             iconClass: "fas fa-cart-shopping",
         },
         {
-            value: priceFormat(overallPnl),
+            value: priceFormat(pnlValue),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
         },
         {
             value: `${pnlIcon} ${parseNum(
-                (overallPnl * 100) / investedValue
+                (pnlValue * 100) / investedValue
             )}%`,
             label: "Overall Return",
             colorClass: pnlClass,
@@ -194,30 +194,32 @@ function updateFinancialSummary(currentValue, investedValue, overallPnl) {
 }
 
 // Update the P&L data summary section
-function updateProfitLossDataSummary(sold, invested, pnl) {
-    const pnlClass = pnl > 0 ? "bg-success" : "bg-danger";
-    const pnlIcon = pnl > 0 ? "▲" : "▼";
+function updateProfitLossDataSummary(investedValue, soldValue, pnlValue) {
+    console.log({ "investedValue": investedValue, "soldValue": soldValue, "pnlValue": pnlValue });
+
+    const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
+    const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
         {
-            value: priceFormat(sold),
+            value: priceFormat(soldValue),
             label: "Total Turnover",
             colorClass: "bg-info",
             iconClass: "fas fa-solid fa-coins",
         },
         {
-            value: priceFormat(invested),
+            value: priceFormat(investedValue),
             label: "Total Invested",
             colorClass: "bg-warning",
             iconClass: "fas fa-piggy-bank",
         },
         {
-            value: priceFormat(pnl),
+            value: priceFormat(pnlValue),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
         },
         {
-            value: `${pnlIcon} ${parseNum((pnl * 100) / invested)}%`,
+            value: `${pnlIcon} ${parseNum((pnlValue * 100) / investedValue)}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-percent",
@@ -277,37 +279,28 @@ function loadHoldingsTrandsChart(data) {
     return chart;
 }
 
-// Find the base path for fetching data
-function globalPath(path) {
-    const basePath =
-        window.location.hostname === "ptprashanttripathi.github.io"
-            ? "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/"
-            : "../";
-    return basePath + path;
-}
 
 // Main function to fetch and Update latest data and UI
 async function main() {
-    const holdings_data = await fetch(
-        globalPath("DATA/API/Holdings_data.json")
-    );
-    const profitloss_data = await fetch(
-        globalPath("DATA/API/ProfitLoss_data.json")
-    );
-    const latestHoldingData = await holdings_data.json();
-    const latestProfitLossData = await profitloss_data.json();
-    loadCurrentHoldingsDataTable(latestHoldingData.current_holding);
-    loadProfitLossDataTable(latestProfitLossData.data);
-    loadHoldingsTrandsChart(latestHoldingData.holdings_trands);
+    const apiPath = window.location.hostname === "ptprashanttripathi.github.io"
+        ? "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/DATA/API/API_data.json"
+        : "../DATA/API/API_data.json";
+
+    const apiResponse = await fetch(apiPath);
+    const apiData = await apiResponse.json();
+
+    loadCurrentHoldingsDataTable(apiData.current_holding_data);
+    loadProfitLossDataTable(apiData.profit_loss_data);
+    loadHoldingsTrandsChart(apiData.holdings_trands_data);
     updateFinancialSummary(
-        latestHoldingData.current_value,
-        latestHoldingData.invested_value,
-        latestHoldingData.overall_pnl
+        apiData.financial_summary.invested_value,
+        apiData.financial_summary.current_value,
+        apiData.financial_summary.pnl_value
     );
     updateProfitLossDataSummary(
-        latestProfitLossData.sold,
-        latestProfitLossData.invested,
-        latestProfitLossData.pnl
+        apiData.profitloss_summary.invested_value,
+        apiData.profitloss_summary.sold_value,
+        apiData.profitloss_summary.pnl_value
     );
 }
 
