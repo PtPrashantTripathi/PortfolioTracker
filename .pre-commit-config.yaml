@@ -4,9 +4,6 @@ repos:
     rev: v4.6.0
     hooks:
       - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-docstring-first
-      - id: check-executables-have-shebangs
       - id: check-json
       - id: check-yaml
       - id: check-toml
@@ -33,7 +30,6 @@ repos:
     rev: 1.8.7
     hooks:
       - id: nbqa-black
-        # additional_dependencies: [jupytext]  # optional, only if you're using Jupytext
       - id: nbqa-pyupgrade
         args: ["--py37-plus"]
       - id: nbqa-isort

@@ -4,7 +4,7 @@ import re
 import json
 from typing import Any, Dict, List, Union, Optional
 from pathlib import Path
-from datetime import datetime
+from datetime import date, datetime
 
 import pandas as pd
 
@@ -24,6 +24,7 @@ __all__ = [
     "check_files_availability",
     "align_with_schema",
     "read_data",
+    "get_financial_year",
 ]
 
 
@@ -407,3 +408,25 @@ def read_data(
         raise ValueError(
             "No DataFrames were created; check file paths and formats."
         )
+
+
+def get_financial_year(date: Union[datetime, date]) -> str:
+    """
+    Calculate the financial year for a given date.
+
+    If the month of the provided date is before April (i.e., January, February, or March),
+    the date is considered to be part of the previous financial year. Otherwise, it belongs
+    to the current financial year.
+
+    Args:
+    - date (Union[datetime, date]): The date for which to calculate the financial year.
+
+    Returns:
+    - str: The financial year in the format 'FYYYYY-YY'.
+    """
+    # Determine the start and end years of the financial year
+    start_year = date.year - 1 if date.month < 4 else date.year
+    end_year = start_year + 1
+
+    # Format the financial year as 'FYYYYY-YY'
+    return f"FY{start_year}-{str(end_year)[-2:]}"
