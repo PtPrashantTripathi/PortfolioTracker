@@ -1,8 +1,8 @@
 {
     "financial_summary": {
         "invested_value": 61915.35,
-        "current_value": 180390.18,
-        "pnl_value": 118474.83
+        "current_value": 181006.43,
+        "pnl_value": 119091.08
     },
     "current_holding_data": [
         {
@@ -14,9 +14,9 @@
             "total_amount": 2688.6,
             "min_datetime": "2024-06-04 12:19:21",
             "avg_price": 896.2,
-            "close_price": 923.7,
-            "close_amount": 2771.1,
-            "pnl_amount": 82.5,
+            "close_price": 931.35,
+            "close_amount": 2794.05,
+            "pnl_amount": 105.45,
             "history": [
                 {
                     "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -27,9 +27,9 @@
                     "total_amount": 2688.6,
                     "min_datetime": "2024-06-04 12:19:21",
                     "avg_price": 896.2,
-                    "close_price": 923.7,
-                    "close_amount": 2771.1,
-                    "pnl_amount": 82.5
+                    "close_price": 931.35,
+                    "close_amount": 2794.05,
+                    "pnl_amount": 105.45
                 }
             ]
         },
@@ -42,9 +42,9 @@
             "total_amount": 3000.0,
             "min_datetime": "2024-06-13 13:58:03",
             "avg_price": 1500.0,
-            "close_price": 1719.9,
-            "close_amount": 3439.8,
-            "pnl_amount": 439.8,
+            "close_price": 1827.95,
+            "close_amount": 3655.9,
+            "pnl_amount": 655.9,
             "history": [
                 {
                     "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -55,9 +55,9 @@
                     "total_amount": 3000.0,
                     "min_datetime": "2024-06-13 13:58:03",
                     "avg_price": 1500.0,
-                    "close_price": 1719.9,
-                    "close_amount": 3439.8,
-                    "pnl_amount": 439.8
+                    "close_price": 1827.95,
+                    "close_amount": 3655.9,
+                    "pnl_amount": 655.9
                 }
             ]
         },
@@ -70,9 +70,9 @@
             "total_amount": 4000.27,
             "min_datetime": "2024-05-24 00:00:00",
             "avg_price": 52.22,
-            "close_price": 55.12,
-            "close_amount": 4222.74,
-            "pnl_amount": 222.47,
+            "close_price": 54.5,
+            "close_amount": 4175.24,
+            "pnl_amount": 174.97,
             "history": [
                 {
                     "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -83,9 +83,9 @@
                     "total_amount": 4000.27,
                     "min_datetime": "2024-05-24 00:00:00",
                     "avg_price": 52.22,
-                    "close_price": 55.12,
-                    "close_amount": 4222.74,
-                    "pnl_amount": 222.47
+                    "close_price": 54.5,
+                    "close_amount": 4175.24,
+                    "pnl_amount": 174.97
                 }
             ]
         },
@@ -98,9 +98,9 @@
             "total_amount": 4002.08,
             "min_datetime": "2024-05-24 00:00:00",
             "avg_price": 458.95,
-            "close_price": 474.66,
-            "close_amount": 4139.04,
-            "pnl_amount": 136.96,
+            "close_price": 475.2,
+            "close_amount": 4143.74,
+            "pnl_amount": 141.66,
             "history": [
                 {
                     "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -111,9 +111,9 @@
                     "total_amount": 4002.08,
                     "min_datetime": "2024-05-24 00:00:00",
                     "avg_price": 458.95,
-                    "close_price": 474.66,
-                    "close_amount": 4139.04,
-                    "pnl_amount": 136.96
+                    "close_price": 475.2,
+                    "close_amount": 4143.74,
+                    "pnl_amount": 141.66
                 }
             ]
         },
@@ -126,9 +126,9 @@
             "total_amount": 26100.4,
             "min_datetime": "2020-04-21 14:41:30",
             "avg_price": 261.0,
-            "close_price": 1035.0,
-            "close_amount": 103500.0,
-            "pnl_amount": 77399.6,
+            "close_price": 996.15,
+            "close_amount": 99615.0,
+            "pnl_amount": 73514.6,
             "history": [
                 {
                     "scrip_name": "TATA MOTORS",
@@ -139,9 +139,9 @@
                     "total_amount": 26100.4,
                     "min_datetime": "2020-04-21 14:41:30",
                     "avg_price": 261.0,
-                    "close_price": 1035.0,
-                    "close_amount": 103500.0,
-                    "pnl_amount": 77399.6
+                    "close_price": 996.15,
+                    "close_amount": 99615.0,
+                    "pnl_amount": 73514.6
                 }
             ]
         },
@@ -154,9 +154,9 @@
             "total_amount": 22124.0,
             "min_datetime": "2021-02-08 11:39:33",
             "avg_price": 147.49,
-            "close_price": 415.45,
-            "close_amount": 62317.5,
-            "pnl_amount": 40193.5,
+            "close_price": 444.15,
+            "close_amount": 66622.5,
+            "pnl_amount": 44498.5,
             "history": [
                 {
                     "scrip_name": "TATA POWER",
@@ -167,9 +167,9 @@
                     "total_amount": 22124.0,
                     "min_datetime": "2021-02-08 11:39:33",
                     "avg_price": 147.49,
-                    "close_price": 415.45,
-                    "close_amount": 62317.5,
-                    "pnl_amount": 40193.5
+                    "close_price": 444.15,
+                    "close_amount": 66622.5,
+                    "pnl_amount": 44498.5
                 }
             ]
         }
@@ -6193,34 +6193,34 @@
         },
         {
             "date": "2022-05-13",
-            "open": 107431.41,
-            "high": 111460.16,
-            "low": 106015.9,
-            "close": 108228.13,
+            "open": 107698.71,
+            "high": 111715.96,
+            "low": 106257.6,
+            "close": 108444.23,
             "holding": 102405.4
         },
         {
             "date": "2022-05-14",
-            "open": 107431.41,
-            "high": 111460.16,
-            "low": 106015.9,
-            "close": 108228.13,
+            "open": 107698.71,
+            "high": 111715.96,
+            "low": 106257.6,
+            "close": 108444.23,
             "holding": 102405.4
         },
         {
             "date": "2022-05-15",
-            "open": 107431.41,
-            "high": 111460.16,
-            "low": 106015.9,
-            "close": 108228.13,
+            "open": 107698.71,
+            "high": 111715.96,
+            "low": 106257.6,
+            "close": 108444.23,
             "holding": 102405.4
         },
         {
             "date": "2022-05-16",
-            "open": 109504.43,
-            "high": 110205.4,
-            "low": 106760.32,
-            "close": 109064.08,
+            "open": 109771.73,
+            "high": 110461.2,
+            "low": 107002.02,
+            "close": 109280.18,
             "holding": 102405.4
         },
         {
@@ -12937,73 +12937,105 @@
         },
         {
             "date": "2024-09-02",
-            "open": 190516.18,
-            "high": 190854.68,
-            "low": 187899.13,
+            "open": 190513.48,
+            "high": 190851.98,
+            "low": 187899.43,
             "close": 188956.03,
             "holding": 61915.36
         },
         {
             "date": "2024-09-03",
-            "open": 189817.49,
+            "open": 189815.84,
             "high": 190032.09,
-            "low": 187683.89,
-            "close": 188414.94,
+            "low": 187684.79,
+            "close": 188411.94,
             "holding": 61915.36
         },
         {
             "date": "2024-09-04",
-            "open": 186883.25,
+            "open": 186880.55,
             "high": 187703.2,
-            "low": 184878.2,
-            "close": 185838.8,
+            "low": 184878.5,
+            "close": 185839.1,
             "holding": 61915.36
         },
         {
             "date": "2024-09-05",
-            "open": 186099.77,
-            "high": 186952.42,
-            "low": 184255.17,
-            "close": 184620.82,
+            "open": 186104.12,
+            "high": 186952.27,
+            "low": 184256.52,
+            "close": 184621.27,
             "holding": 61915.36
         },
         {
             "date": "2024-09-06",
-            "open": 184725.68,
-            "high": 185187.68,
-            "low": 180864.88,
-            "close": 182039.38,
+            "open": 184674.32,
+            "high": 185135.12,
+            "low": 180810.37,
+            "close": 181986.82,
             "holding": 61915.36
         },
         {
             "date": "2024-09-07",
-            "open": 184725.68,
-            "high": 185187.68,
-            "low": 180864.88,
-            "close": 182039.38,
+            "open": 184674.32,
+            "high": 185135.12,
+            "low": 180810.37,
+            "close": 181986.82,
             "holding": 61915.36
         },
         {
             "date": "2024-09-08",
-            "open": 184725.68,
-            "high": 185187.68,
-            "low": 180864.88,
-            "close": 182039.38,
+            "open": 184674.32,
+            "high": 185135.12,
+            "low": 180810.37,
+            "close": 181986.82,
             "holding": 61915.36
         },
         {
             "date": "2024-09-09",
-            "open": 182079.08,
-            "high": 182318.83,
-            "low": 179366.28,
-            "close": 180390.18,
+            "open": 182014.33,
+            "high": 182438.08,
+            "low": 178792.23,
+            "close": 181121.58,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-10",
+            "open": 182986.12,
+            "high": 186748.42,
+            "low": 180845.22,
+            "close": 184997.22,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-11",
+            "open": 181304.98,
+            "high": 183249.98,
+            "low": 176712.98,
+            "close": 177636.03,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-12",
+            "open": 178072.48,
+            "high": 180071.68,
+            "low": 175881.38,
+            "close": 179364.93,
+            "holding": 61915.36
+        },
+        {
+            "date": "2024-09-13",
+            "open": 181400.68,
+            "high": 182849.18,
+            "low": 180020.98,
+            "close": 181006.43,
             "holding": 61915.36
         }
     ],
     "profitloss_summary": {
-        "invested_value": 546037.21,
-        "sold_value": 554589.66,
-        "pnl_value": 8642.45
+        "invested_value": 604210.96,
+        "sold_value": 618419.66,
+        "pnl_value": 14298.7
     },
     "profit_loss_data": [
         {
@@ -13459,11 +13491,11 @@
             "exchange": "FON",
             "symbol": "NIFTY",
             "stock_name": "NIFTY",
-            "days": 84,
-            "quantity": 7800.0,
-            "avg_price": 58.41,
-            "sell_price": 58.89,
-            "pnl": 3842.5,
+            "days": 91,
+            "quantity": 8450.0,
+            "avg_price": 60.8,
+            "sell_price": 61.91,
+            "pnl": 9498.75,
             "history": [
                 {
                     "scrip_name": "NIFTY-CE-23350-13JUN2024",
@@ -13636,20 +13668,6 @@
                 {
                     "scrip_name": "NIFTY-CE-23650-20JUN2024",
                     "position": "LONG",
-                    "quantity": 75.0,
-                    "days": 0,
-                    "open_datetime": "2024-06-20 10:28:21",
-                    "open_price": 14.75,
-                    "open_amount": 1106.25,
-                    "close_datetime": "2024-06-20 12:28:31",
-                    "close_price": 6.0,
-                    "close_amount": 450.0,
-                    "pnl_amount": -656.25,
-                    "pnl_percentage": -59.32
-                },
-                {
-                    "scrip_name": "NIFTY-CE-23650-20JUN2024",
-                    "position": "LONG",
                     "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-06-20 10:28:21",
@@ -13662,18 +13680,18 @@
                     "pnl_percentage": -59.32
                 },
                 {
-                    "scrip_name": "NIFTY-CE-23800-27JUN2024",
+                    "scrip_name": "NIFTY-CE-23650-20JUN2024",
                     "position": "LONG",
-                    "quantity": 25.0,
+                    "quantity": 75.0,
                     "days": 0,
-                    "open_datetime": "2024-06-26 13:32:12",
-                    "open_price": 109.1,
-                    "open_amount": 2727.5,
-                    "close_datetime": "2024-06-26 13:58:40",
-                    "close_price": 121.0,
-                    "close_amount": 3025.0,
-                    "pnl_amount": 297.5,
-                    "pnl_percentage": 10.91
+                    "open_datetime": "2024-06-20 10:28:21",
+                    "open_price": 14.75,
+                    "open_amount": 1106.25,
+                    "close_datetime": "2024-06-20 12:28:31",
+                    "close_price": 6.0,
+                    "close_amount": 450.0,
+                    "pnl_amount": -656.25,
+                    "pnl_percentage": -59.32
                 },
                 {
                     "scrip_name": "NIFTY-CE-23800-27JUN2024",
@@ -13701,6 +13719,20 @@
                     "close_price": 121.0,
                     "close_amount": 6050.0,
                     "pnl_amount": 595.0,
+                    "pnl_percentage": 10.91
+                },
+                {
+                    "scrip_name": "NIFTY-CE-23800-27JUN2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-06-26 13:32:12",
+                    "open_price": 109.1,
+                    "open_amount": 2727.5,
+                    "close_datetime": "2024-06-26 13:58:40",
+                    "close_price": 121.0,
+                    "close_amount": 3025.0,
+                    "pnl_amount": 297.5,
                     "pnl_percentage": 10.91
                 },
                 {
@@ -14056,15 +14088,15 @@
                 {
                     "scrip_name": "NIFTY-CE-24350-11JUL2024",
                     "position": "LONG",
-                    "quantity": 50.0,
+                    "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-07-11 09:16:44",
                     "open_price": 59.75,
-                    "open_amount": 2987.5,
+                    "open_amount": 1493.75,
                     "close_datetime": "2024-07-11 10:13:20",
                     "close_price": 21.35,
-                    "close_amount": 1067.5,
-                    "pnl_amount": -1920.0,
+                    "close_amount": 533.75,
+                    "pnl_amount": -960.0,
                     "pnl_percentage": -64.27
                 },
                 {
@@ -14072,41 +14104,41 @@
                     "position": "LONG",
                     "quantity": 25.0,
                     "days": 0,
-                    "open_datetime": "2024-07-11 09:26:06",
-                    "open_price": 40.0,
-                    "open_amount": 1000.0,
+                    "open_datetime": "2024-07-11 09:16:44",
+                    "open_price": 59.75,
+                    "open_amount": 1493.75,
                     "close_datetime": "2024-07-11 10:13:20",
                     "close_price": 21.35,
                     "close_amount": 533.75,
-                    "pnl_amount": -466.25,
-                    "pnl_percentage": -46.62
+                    "pnl_amount": -960.0,
+                    "pnl_percentage": -64.27
                 },
                 {
                     "scrip_name": "NIFTY-CE-24350-11JUL2024",
                     "position": "LONG",
-                    "quantity": 75.0,
+                    "quantity": 100.0,
                     "days": 0,
                     "open_datetime": "2024-07-11 09:26:06",
                     "open_price": 40.0,
-                    "open_amount": 3000.0,
+                    "open_amount": 4000.0,
                     "close_datetime": "2024-07-11 10:13:20",
                     "close_price": 21.35,
-                    "close_amount": 1601.25,
-                    "pnl_amount": -1398.75,
+                    "close_amount": 2135.0,
+                    "pnl_amount": -1865.0,
                     "pnl_percentage": -46.62
                 },
                 {
                     "scrip_name": "NIFTY-CE-24400-11JUL2024",
                     "position": "LONG",
-                    "quantity": 25.0,
+                    "quantity": 50.0,
                     "days": 0,
                     "open_datetime": "2024-07-09 12:44:04",
                     "open_price": 89.0,
-                    "open_amount": 2225.0,
+                    "open_amount": 4450.0,
                     "close_datetime": "2024-07-09 13:17:26",
                     "close_price": 117.1,
-                    "close_amount": 2927.5,
-                    "pnl_amount": 702.5,
+                    "close_amount": 5855.0,
+                    "pnl_amount": 1405.0,
                     "pnl_percentage": 31.57
                 },
                 {
@@ -14126,15 +14158,15 @@
                 {
                     "scrip_name": "NIFTY-CE-24400-11JUL2024",
                     "position": "LONG",
-                    "quantity": 50.0,
+                    "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-07-09 12:44:04",
                     "open_price": 89.0,
-                    "open_amount": 4450.0,
+                    "open_amount": 2225.0,
                     "close_datetime": "2024-07-09 13:17:26",
                     "close_price": 117.1,
-                    "close_amount": 5855.0,
-                    "pnl_amount": 1405.0,
+                    "close_amount": 2927.5,
+                    "pnl_amount": 702.5,
                     "pnl_percentage": 31.57
                 },
                 {
@@ -14168,16 +14200,16 @@
                 {
                     "scrip_name": "NIFTY-CE-24500-25JUL2024",
                     "position": "LONG",
-                    "quantity": 25.0,
+                    "quantity": 50.0,
                     "days": 0,
                     "open_datetime": "2024-07-23 11:27:49",
-                    "open_price": 205.3,
-                    "open_amount": 5132.5,
+                    "open_price": 205.35,
+                    "open_amount": 10267.5,
                     "close_datetime": "2024-07-23 12:22:03",
-                    "close_price": 108.95,
-                    "close_amount": 2723.75,
-                    "pnl_amount": -2408.75,
-                    "pnl_percentage": -46.93
+                    "close_price": 108.9,
+                    "close_amount": 5445.0,
+                    "pnl_amount": -4822.5,
+                    "pnl_percentage": -46.97
                 },
                 {
                     "scrip_name": "NIFTY-CE-24500-25JUL2024",
@@ -14196,16 +14228,16 @@
                 {
                     "scrip_name": "NIFTY-CE-24500-25JUL2024",
                     "position": "LONG",
-                    "quantity": 50.0,
+                    "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-07-23 11:27:49",
-                    "open_price": 205.35,
-                    "open_amount": 10267.5,
+                    "open_price": 205.3,
+                    "open_amount": 5132.5,
                     "close_datetime": "2024-07-23 12:22:03",
-                    "close_price": 108.9,
-                    "close_amount": 5445.0,
-                    "pnl_amount": -4822.5,
-                    "pnl_percentage": -46.97
+                    "close_price": 108.95,
+                    "close_amount": 2723.75,
+                    "pnl_amount": -2408.75,
+                    "pnl_percentage": -46.93
                 },
                 {
                     "scrip_name": "NIFTY-CE-24600-01AUG2024",
@@ -14390,6 +14422,34 @@
                     "pnl_percentage": -53.74
                 },
                 {
+                    "scrip_name": "NIFTY-CE-24850-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-09 12:41:07",
+                    "open_price": 120.0,
+                    "open_amount": 6000.0,
+                    "close_datetime": "2024-09-09 12:56:32",
+                    "close_price": 125.0,
+                    "close_amount": 6250.0,
+                    "pnl_amount": 250.0,
+                    "pnl_percentage": 4.17
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24850-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-10 10:54:59",
+                    "open_price": 140.6,
+                    "open_amount": 7030.0,
+                    "close_datetime": "2024-09-10 11:24:39",
+                    "close_price": 158.55,
+                    "close_amount": 7927.5,
+                    "pnl_amount": 897.5,
+                    "pnl_percentage": 12.77
+                },
+                {
                     "scrip_name": "NIFTY-CE-24850-22AUG2024",
                     "position": "LONG",
                     "quantity": 25.0,
@@ -14446,6 +14506,90 @@
                     "pnl_percentage": -19.05
                 },
                 {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 100.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 10:48:21",
+                    "open_price": 75.0,
+                    "open_amount": 7500.0,
+                    "close_datetime": "2024-09-12 11:23:24",
+                    "close_price": 89.1,
+                    "close_amount": 8910.0,
+                    "pnl_amount": 1410.0,
+                    "pnl_percentage": 18.8
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 100.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 11:25:22",
+                    "open_price": 79.15,
+                    "open_amount": 7915.0,
+                    "close_datetime": "2024-09-12 12:04:41",
+                    "close_price": 79.75,
+                    "close_amount": 7975.0,
+                    "pnl_amount": 60.0,
+                    "pnl_percentage": 0.76
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 12:06:43",
+                    "open_price": 74.85,
+                    "open_amount": 1871.25,
+                    "close_datetime": "2024-09-12 13:05:45",
+                    "close_price": 90.5,
+                    "close_amount": 2262.5,
+                    "pnl_amount": 391.25,
+                    "pnl_percentage": 20.91
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 12:06:44",
+                    "open_price": 74.85,
+                    "open_amount": 1871.25,
+                    "close_datetime": "2024-09-12 13:05:45",
+                    "close_price": 90.5,
+                    "close_amount": 2262.5,
+                    "pnl_amount": 391.25,
+                    "pnl_percentage": 20.91
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 12:06:44",
+                    "open_price": 74.85,
+                    "open_amount": 1871.25,
+                    "close_datetime": "2024-09-12 13:05:45",
+                    "close_price": 90.4,
+                    "close_amount": 2260.0,
+                    "pnl_amount": 388.75,
+                    "pnl_percentage": 20.77
+                },
+                {
+                    "scrip_name": "NIFTY-CE-24950-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-12 12:06:44",
+                    "open_price": 74.85,
+                    "open_amount": 1871.25,
+                    "close_datetime": "2024-09-12 13:05:45",
+                    "close_price": 90.4,
+                    "close_amount": 2260.0,
+                    "pnl_amount": 388.75,
+                    "pnl_percentage": 20.77
+                },
+                {
                     "scrip_name": "NIFTY-CE-25000-01AUG2024",
                     "position": "LONG",
                     "quantity": 75.0,
@@ -14462,6 +14606,34 @@
                 {
                     "scrip_name": "NIFTY-CE-25000-01AUG2024",
                     "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-01 14:35:26",
+                    "open_price": 7.0,
+                    "open_amount": 175.0,
+                    "close_datetime": "2024-08-01 15:20:10",
+                    "close_price": 12.8,
+                    "close_amount": 320.0,
+                    "pnl_amount": 145.0,
+                    "pnl_percentage": 82.86
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-01AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-01 14:35:26",
+                    "open_price": 7.0,
+                    "open_amount": 175.0,
+                    "close_datetime": "2024-08-01 15:20:10",
+                    "close_price": 12.8,
+                    "close_amount": 320.0,
+                    "pnl_amount": 145.0,
+                    "pnl_percentage": 82.86
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-01AUG2024",
+                    "position": "LONG",
                     "quantity": 75.0,
                     "days": 0,
                     "open_datetime": "2024-08-01 14:35:26",
@@ -14471,34 +14643,6 @@
                     "close_price": 12.8,
                     "close_amount": 960.0,
                     "pnl_amount": 435.0,
-                    "pnl_percentage": 82.86
-                },
-                {
-                    "scrip_name": "NIFTY-CE-25000-01AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-01 14:35:26",
-                    "open_price": 7.0,
-                    "open_amount": 175.0,
-                    "close_datetime": "2024-08-01 15:20:10",
-                    "close_price": 12.8,
-                    "close_amount": 320.0,
-                    "pnl_amount": 145.0,
-                    "pnl_percentage": 82.86
-                },
-                {
-                    "scrip_name": "NIFTY-CE-25000-01AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-01 14:35:26",
-                    "open_price": 7.0,
-                    "open_amount": 175.0,
-                    "close_datetime": "2024-08-01 15:20:10",
-                    "close_price": 12.8,
-                    "close_amount": 320.0,
-                    "pnl_amount": 145.0,
                     "pnl_percentage": 82.86
                 },
                 {
@@ -14514,6 +14658,62 @@
                     "close_amount": 0.0,
                     "pnl_amount": -47.5,
                     "pnl_percentage": -100.0
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 09:39:17",
+                    "open_price": 80.0,
+                    "open_amount": 4000.0,
+                    "close_datetime": "2024-09-11 10:47:20",
+                    "close_price": 95.2,
+                    "close_amount": 4760.0,
+                    "pnl_amount": 760.0,
+                    "pnl_percentage": 19.0
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 13:57:32",
+                    "open_price": 75.0,
+                    "open_amount": 1875.0,
+                    "close_datetime": "2024-09-12 09:31:24",
+                    "close_price": 80.75,
+                    "close_amount": 2018.75,
+                    "pnl_amount": 143.75,
+                    "pnl_percentage": 7.67
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 13:57:32",
+                    "open_price": 75.0,
+                    "open_amount": 3750.0,
+                    "close_datetime": "2024-09-12 09:31:24",
+                    "close_price": 80.8,
+                    "close_amount": 4040.0,
+                    "pnl_amount": 290.0,
+                    "pnl_percentage": 7.73
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25000-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 13:57:32",
+                    "open_price": 75.0,
+                    "open_amount": 1875.0,
+                    "close_datetime": "2024-09-12 09:31:24",
+                    "close_price": 80.8,
+                    "close_amount": 2020.0,
+                    "pnl_amount": 145.0,
+                    "pnl_percentage": 7.73
                 },
                 {
                     "scrip_name": "NIFTY-CE-25000-14AUG2024",
@@ -14588,34 +14788,6 @@
                 {
                     "scrip_name": "NIFTY-CE-25150-05SEP2024",
                     "position": "LONG",
-                    "quantity": 925.0,
-                    "days": 0,
-                    "open_datetime": "2024-09-05 15:20:06",
-                    "open_price": 0.35,
-                    "open_amount": 323.75,
-                    "close_datetime": "2024-09-05 15:29:52",
-                    "close_price": 0.05,
-                    "close_amount": 46.25,
-                    "pnl_amount": -277.5,
-                    "pnl_percentage": -85.71
-                },
-                {
-                    "scrip_name": "NIFTY-CE-25150-05SEP2024",
-                    "position": "LONG",
-                    "quantity": 375.0,
-                    "days": 0,
-                    "open_datetime": "2024-09-05 15:20:06",
-                    "open_price": 0.35,
-                    "open_amount": 131.25,
-                    "close_datetime": "2024-09-05 15:29:52",
-                    "close_price": 0.05,
-                    "close_amount": 18.75,
-                    "pnl_amount": -112.5,
-                    "pnl_percentage": -85.71
-                },
-                {
-                    "scrip_name": "NIFTY-CE-25150-05SEP2024",
-                    "position": "LONG",
                     "quantity": 150.0,
                     "days": 0,
                     "open_datetime": "2024-09-05 15:20:06",
@@ -14625,6 +14797,34 @@
                     "close_price": 0.05,
                     "close_amount": 7.5,
                     "pnl_amount": -45.0,
+                    "pnl_percentage": -85.71
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25150-05SEP2024",
+                    "position": "LONG",
+                    "quantity": 325.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-05 15:20:06",
+                    "open_price": 0.35,
+                    "open_amount": 113.75,
+                    "close_datetime": "2024-09-05 15:29:52",
+                    "close_price": 0.05,
+                    "close_amount": 16.25,
+                    "pnl_amount": -97.5,
+                    "pnl_percentage": -85.71
+                },
+                {
+                    "scrip_name": "NIFTY-CE-25150-05SEP2024",
+                    "position": "LONG",
+                    "quantity": 975.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-05 15:20:06",
+                    "open_price": 0.35,
+                    "open_amount": 341.25,
+                    "close_datetime": "2024-09-05 15:29:52",
+                    "close_price": 0.05,
+                    "close_amount": 48.75,
+                    "pnl_amount": -292.5,
                     "pnl_percentage": -85.71
                 },
                 {
@@ -14745,20 +14945,6 @@
                     "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-06-24 11:39:16",
-                    "open_price": 137.7,
-                    "open_amount": 3442.5,
-                    "close_datetime": "2024-06-24 11:46:51",
-                    "close_price": 140.95,
-                    "close_amount": 3523.75,
-                    "pnl_amount": 81.25,
-                    "pnl_percentage": 2.36
-                },
-                {
-                    "scrip_name": "NIFTY-PE-23550-27JUN2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-06-24 11:39:16",
                     "open_price": 137.6,
                     "open_amount": 3440.0,
                     "close_datetime": "2024-06-24 11:46:51",
@@ -14766,6 +14952,20 @@
                     "close_amount": 3523.75,
                     "pnl_amount": 83.75,
                     "pnl_percentage": 2.43
+                },
+                {
+                    "scrip_name": "NIFTY-PE-23550-27JUN2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-06-24 11:39:16",
+                    "open_price": 137.7,
+                    "open_amount": 3442.5,
+                    "close_datetime": "2024-06-24 11:46:51",
+                    "close_price": 140.95,
+                    "close_amount": 3523.75,
+                    "pnl_amount": 81.25,
+                    "pnl_percentage": 2.36
                 },
                 {
                     "scrip_name": "NIFTY-PE-23550-27JUN2024",
@@ -14994,15 +15194,29 @@
                 {
                     "scrip_name": "NIFTY-PE-24300-11JUL2024",
                     "position": "LONG",
-                    "quantity": 50.0,
+                    "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-07-05 11:50:06",
                     "open_price": 120.0,
-                    "open_amount": 6000.0,
+                    "open_amount": 3000.0,
                     "close_datetime": "2024-07-05 11:58:36",
                     "close_price": 121.15,
-                    "close_amount": 6057.5,
-                    "pnl_amount": 57.5,
+                    "close_amount": 3028.75,
+                    "pnl_amount": 28.75,
+                    "pnl_percentage": 0.96
+                },
+                {
+                    "scrip_name": "NIFTY-PE-24300-11JUL2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-07-05 11:50:06",
+                    "open_price": 120.0,
+                    "open_amount": 3000.0,
+                    "close_datetime": "2024-07-05 11:58:36",
+                    "close_price": 121.15,
+                    "close_amount": 3028.75,
+                    "pnl_amount": 28.75,
                     "pnl_percentage": 0.96
                 },
                 {
@@ -15036,20 +15250,6 @@
                 {
                     "scrip_name": "NIFTY-PE-24350-11JUL2024",
                     "position": "LONG",
-                    "quantity": 75.0,
-                    "days": 0,
-                    "open_datetime": "2024-07-09 10:23:03",
-                    "open_price": 80.3,
-                    "open_amount": 6022.5,
-                    "close_datetime": "2024-07-09 10:23:04",
-                    "close_price": 80.55,
-                    "close_amount": 6041.25,
-                    "pnl_amount": 18.75,
-                    "pnl_percentage": 0.31
-                },
-                {
-                    "scrip_name": "NIFTY-PE-24350-11JUL2024",
-                    "position": "LONG",
                     "quantity": 25.0,
                     "days": 0,
                     "open_datetime": "2024-07-09 10:23:03",
@@ -15059,6 +15259,20 @@
                     "close_price": 80.55,
                     "close_amount": 2013.75,
                     "pnl_amount": 6.25,
+                    "pnl_percentage": 0.31
+                },
+                {
+                    "scrip_name": "NIFTY-PE-24350-11JUL2024",
+                    "position": "LONG",
+                    "quantity": 75.0,
+                    "days": 0,
+                    "open_datetime": "2024-07-09 10:23:03",
+                    "open_price": 80.3,
+                    "open_amount": 6022.5,
+                    "close_datetime": "2024-07-09 10:23:04",
+                    "close_price": 80.55,
+                    "close_amount": 6041.25,
+                    "pnl_amount": 18.75,
                     "pnl_percentage": 0.31
                 },
                 {
@@ -15078,20 +15292,6 @@
                 {
                     "scrip_name": "NIFTY-PE-24450-01AUG2024",
                     "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-07-29 11:00:02",
-                    "open_price": 12.0,
-                    "open_amount": 300.0,
-                    "close_datetime": "2024-07-29 11:42:42",
-                    "close_price": 10.45,
-                    "close_amount": 261.25,
-                    "pnl_amount": -38.75,
-                    "pnl_percentage": -12.92
-                },
-                {
-                    "scrip_name": "NIFTY-PE-24450-01AUG2024",
-                    "position": "LONG",
                     "quantity": 50.0,
                     "days": 0,
                     "open_datetime": "2024-07-29 11:00:02",
@@ -15101,6 +15301,20 @@
                     "close_price": 10.45,
                     "close_amount": 522.5,
                     "pnl_amount": -77.5,
+                    "pnl_percentage": -12.92
+                },
+                {
+                    "scrip_name": "NIFTY-PE-24450-01AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-07-29 11:00:02",
+                    "open_price": 12.0,
+                    "open_amount": 300.0,
+                    "close_datetime": "2024-07-29 11:42:42",
+                    "close_price": 10.45,
+                    "close_amount": 261.25,
+                    "pnl_amount": -38.75,
                     "pnl_percentage": -12.92
                 },
                 {
@@ -15246,6 +15460,20 @@
                 {
                     "scrip_name": "NIFTY-PE-24900-01AUG2024",
                     "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-07-29 10:38:24",
+                    "open_price": 125.0,
+                    "open_amount": 3125.0,
+                    "close_datetime": "2024-07-29 11:23:25",
+                    "close_price": 83.9,
+                    "close_amount": 2097.5,
+                    "pnl_amount": -1027.5,
+                    "pnl_percentage": -32.88
+                },
+                {
+                    "scrip_name": "NIFTY-PE-24900-01AUG2024",
+                    "position": "LONG",
                     "quantity": 50.0,
                     "days": 0,
                     "open_datetime": "2024-07-29 10:38:24",
@@ -15262,20 +15490,6 @@
                     "position": "LONG",
                     "quantity": 25.0,
                     "days": 0,
-                    "open_datetime": "2024-07-29 10:38:24",
-                    "open_price": 125.0,
-                    "open_amount": 3125.0,
-                    "close_datetime": "2024-07-29 11:23:25",
-                    "close_price": 83.9,
-                    "close_amount": 2097.5,
-                    "pnl_amount": -1027.5,
-                    "pnl_percentage": -32.88
-                },
-                {
-                    "scrip_name": "NIFTY-PE-24900-01AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
                     "open_datetime": "2024-07-30 15:09:20",
                     "open_price": 101.95,
                     "open_amount": 2548.75,
@@ -15298,6 +15512,20 @@
                     "close_amount": 2568.75,
                     "pnl_amount": 20.0,
                     "pnl_percentage": 0.78
+                },
+                {
+                    "scrip_name": "NIFTY-PE-24900-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-09 13:17:59",
+                    "open_price": 129.75,
+                    "open_amount": 3243.75,
+                    "close_datetime": "2024-09-09 14:07:00",
+                    "close_price": 122.75,
+                    "close_amount": 3068.75,
+                    "pnl_amount": -175.0,
+                    "pnl_percentage": -5.39
                 },
                 {
                     "scrip_name": "NIFTY-PE-24950-01AUG2024",
@@ -15342,6 +15570,34 @@
                     "pnl_percentage": 7.29
                 },
                 {
+                    "scrip_name": "NIFTY-PE-25100-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 11:45:23",
+                    "open_price": 100.0,
+                    "open_amount": 5000.0,
+                    "close_datetime": "2024-09-11 13:02:05",
+                    "close_price": 104.2,
+                    "close_amount": 5210.0,
+                    "pnl_amount": 210.0,
+                    "pnl_percentage": 4.2
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25100-12SEP2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-09-11 11:45:23",
+                    "open_price": 100.0,
+                    "open_amount": 2500.0,
+                    "close_datetime": "2024-09-11 13:02:05",
+                    "close_price": 104.2,
+                    "close_amount": 2605.0,
+                    "pnl_amount": 105.0,
+                    "pnl_percentage": 4.2
+                },
+                {
                     "scrip_name": "NIFTY-PE-25150-29AUG2024",
                     "position": "LONG",
                     "quantity": 75.0,
@@ -15358,6 +15614,118 @@
                 {
                     "scrip_name": "NIFTY-PE-25150-29AUG2024",
                     "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 78.75,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 217.5,
+                    "pnl_amount": 138.75,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 200.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 630.0,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.65,
+                    "close_amount": 1730.0,
+                    "pnl_amount": 1100.0,
+                    "pnl_percentage": 174.6
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 100.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 315.0,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.65,
+                    "close_amount": 865.0,
+                    "pnl_amount": 550.0,
+                    "pnl_percentage": 174.6
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 78.75,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 217.5,
+                    "pnl_amount": 138.75,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 78.75,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 217.5,
+                    "pnl_amount": 138.75,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 157.5,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 435.0,
+                    "pnl_amount": 277.5,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 78.75,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 217.5,
+                    "pnl_amount": 138.75,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 50.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 157.5,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 435.0,
+                    "pnl_amount": 277.5,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
                     "quantity": 100.0,
                     "days": 0,
                     "open_datetime": "2024-08-29 15:18:38",
@@ -15367,6 +15735,48 @@
                     "close_price": 8.7,
                     "close_amount": 870.0,
                     "pnl_amount": 555.0,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 25.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 78.75,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 217.5,
+                    "pnl_amount": 138.75,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 100.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 315.0,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 870.0,
+                    "pnl_amount": 555.0,
+                    "pnl_percentage": 176.19
+                },
+                {
+                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
+                    "position": "LONG",
+                    "quantity": 75.0,
+                    "days": 0,
+                    "open_datetime": "2024-08-29 15:18:38",
+                    "open_price": 3.15,
+                    "open_amount": 236.25,
+                    "close_datetime": "2024-08-29 15:19:47",
+                    "close_price": 8.7,
+                    "close_amount": 652.5,
+                    "pnl_amount": 416.25,
                     "pnl_percentage": 176.19
                 },
                 {
@@ -15396,146 +15806,6 @@
                     "close_amount": 432.5,
                     "pnl_amount": 275.0,
                     "pnl_percentage": 174.6
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 78.75,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 217.5,
-                    "pnl_amount": 138.75,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 75.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 236.25,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 652.5,
-                    "pnl_amount": 416.25,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 100.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 315.0,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 870.0,
-                    "pnl_amount": 555.0,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 78.75,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 217.5,
-                    "pnl_amount": 138.75,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 78.75,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 217.5,
-                    "pnl_amount": 138.75,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 25.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 78.75,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 217.5,
-                    "pnl_amount": 138.75,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 75.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 236.25,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 652.5,
-                    "pnl_amount": 416.25,
-                    "pnl_percentage": 176.19
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 100.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 315.0,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.65,
-                    "close_amount": 865.0,
-                    "pnl_amount": 550.0,
-                    "pnl_percentage": 174.6
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 200.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 630.0,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.65,
-                    "close_amount": 1730.0,
-                    "pnl_amount": 1100.0,
-                    "pnl_percentage": 174.6
-                },
-                {
-                    "scrip_name": "NIFTY-PE-25150-29AUG2024",
-                    "position": "LONG",
-                    "quantity": 50.0,
-                    "days": 0,
-                    "open_datetime": "2024-08-29 15:18:38",
-                    "open_price": 3.15,
-                    "open_amount": 157.5,
-                    "close_datetime": "2024-08-29 15:19:47",
-                    "close_price": 8.7,
-                    "close_amount": 435.0,
-                    "pnl_amount": 277.5,
-                    "pnl_percentage": 176.19
                 },
                 {
                     "scrip_name": "NIFTY-PE-25150-29AUG2024",

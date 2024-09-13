@@ -24,7 +24,7 @@ __all__ = [
     "check_files_availability",
     "align_with_schema",
     "read_data",
-    "get_financial_year"
+    "get_financial_year",
 ]
 
 
@@ -409,10 +409,11 @@ def read_data(
             "No DataFrames were created; check file paths and formats."
         )
 
+
 def get_financial_year(date: Union[datetime, date]) -> str:
     """
     Calculate the financial year for a given date.
-    
+
     If the month of the provided date is before April (i.e., January, February, or March),
     the date is considered to be part of the previous financial year. Otherwise, it belongs
     to the current financial year.
