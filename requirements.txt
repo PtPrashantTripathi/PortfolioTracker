@@ -1,13 +1,9 @@
-numpy
 pandas
-xlrd
-pyxlsb
 openpyxl
 yfinance
 matplotlib
-pydantic
+pydantic==1.10.12
 black
-dateutils
 jupyter
 pre-commit
 python-dotenv
