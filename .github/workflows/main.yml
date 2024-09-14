@@ -1,8 +1,6 @@
 name: Update Data
 
-on:
-  schedule:
-    - cron: "0 0 1 * *" # every 1st day of the month 
+on: # every 1st day of the month 
   workflow_dispatch:
 
 jobs:
