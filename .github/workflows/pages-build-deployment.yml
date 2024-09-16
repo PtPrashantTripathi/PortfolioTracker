@@ -1,43 +1,55 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Workflow for deploying static content to GitHub Pages
+
 name: pages-build-deployment
 
 on:
-  # Runs on pushes targeting the default branch
+  # Trigger this workflow on pushes to the 'main' branch, but only when changes are made in the 'FRONTEND' folder
   push:
     branches: ["main"]
+    paths:
+      - 'FRONTEND/**'
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allow this workflow to be triggered manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Set permissions for the GITHUB_TOKEN to enable reading repository content and deploying to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read  # Read access to the repository content
+  pages: write    # Write access to GitHub Pages for deployment
+  id-token: write # Generate an ID token required for deploying to GitHub Pages
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Configure concurrency to ensure only one deployment runs at a time; do not cancel in-progress deployments
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "pages"  # Use the "pages" group for deployments to GitHub Pages
+  cancel-in-progress: false  # Allow ongoing deployments to finish without interruption
 
 jobs:
-  # Single deploy job since we're just deploying
+  # Define a single deployment job for deploying the site to GitHub Pages
   deploy:
+    # Set environment details for the deployment
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages  # The environment name to deploy to
+      url: ${{ steps.deployment.outputs.page_url }}  # URL of the deployed GitHub Pages site
+
+    # Use the latest Ubuntu runner for the deployment
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Checkout the repository to access the files for deployment
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Step 2: Setup GitHub Pages configuration for the deployment
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # Step 3: Upload the content of the 'FRONTEND' folder as an artifact for deployment
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './FRONTEND/'
+          path: './FRONTEND/'  # Path to the folder containing static content to deploy
+
+      # Step 4: Deploy the uploaded artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
