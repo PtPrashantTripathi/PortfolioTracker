@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from . import utils, version, portfolio, globalpath, datetimeutils
-from .utils import *
+from . import version, portfolio, globalpath, datetimeutils
+
 from .portfolio import *
 from .globalpath import *
 from .datetimeutils import *
@@ -13,9 +13,4 @@ __version__ = version.VERSION
 __author__ = [
     {"name": "ptprashanttripathi", "email": "ptprashanttripathi@outlook.com"}
 ]
-__all__ = (
-    utils.__all__
-    + portfolio.__all__
-    + globalpath.__all__
-    + datetimeutils.__all__
-)
+__all__ = portfolio.__all__ + globalpath.__all__ + datetimeutils.__all__
