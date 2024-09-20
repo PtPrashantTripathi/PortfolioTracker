@@ -6,9 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "ETLTools"
 version = "0.3.1"
 description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
-license = {file = "LICENSE"}
-authors = [{ name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }]
-readme = {file = "README.txt", content-type = "text/markdown"}
+license = { file = "LICENSE" }
+authors = [
+  { name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }
+]
+readme = { file = "README.txt", content-type = "text/markdown" }
 requires-python = ">=3.7"
 keywords = ["packaging", "setuptools"]
 classifiers = [
@@ -26,7 +28,6 @@ Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
 Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
-
 [tool.setuptools]
 packages = ["ETLTools"]
 
@@ -41,3 +42,4 @@ profile = "black"
 line_length = 80
 multi_line_output = 3
 include_trailing_comma = true
+treat_comments_as_code = ["# %%"]

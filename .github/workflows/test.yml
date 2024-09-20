@@ -1,0 +1,8 @@
+name: Report Coverage
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report Coverage
+        uses: codecov/codecov-action@v1

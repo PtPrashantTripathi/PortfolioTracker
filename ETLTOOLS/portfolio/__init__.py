@@ -1,5 +1,5 @@
-from typing import Dict, List, Union, Optional
 from datetime import datetime, time
+from typing import Dict, List, Optional, Union
 
 __all__ = [
     "Portfolio",
@@ -508,7 +508,7 @@ class Portfolio:
                 "close_side": position.close_side,
                 "close_price": position.close_price,
                 "close_amount": position.close_amount,
-                "position":position.position,
+                "position": position.position,
                 "pnl_amount": position.pnl_amount,
                 "pnl_percentage": position.pnl_percentage,
             }
