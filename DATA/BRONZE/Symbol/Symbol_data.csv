@@ -1,4 +1,8 @@
 instrument_type,isin,symbol,scrip_name,scrip_code,isin_reinvestment
+FNO,NIFTY,NIFTY,Nifty 50,INNIFTY,
+FNO,SENSEX,SENSEX,Sensex 30,INSENSEX,
+FNO,BANKNIFTY,BANKNIFTY,Nifty Bank,INBANKNIFTY,
+FNO,NIFTY,FINNIFTY,Finance Nifty 50,INNIFTY,
 Mutual Fund,INF209KA12Z1,,Aditya Birla Sun Life Banking & PSU Debt Fund- DIRECT - IDCW,,INF209KA13Z9
 Mutual Fund,INF209K01YM2,,Aditya Birla Sun Life Banking & PSU Debt Fund- DIRECT - MONTHLY IDCW,,nan
 Mutual Fund,INF209K01YO8,,Aditya Birla Sun Life Banking & PSU Debt Fund- Direct - Quarterly IDCW,,nan
@@ -16908,8 +16912,4 @@ Equity,IN9185C01015,SAPPLPP,Shree Ajit Pulp And Paper Ltd,890195,
 Equity,IN9564C01011,YARNPP,Yarn Syndicate Ltd,890197,
 Equity,IN9079L01011,IYKOTPP,Iykot Hitech Toolroom Ltd,890200,
 Equity,IN9304E01018,SAVFIPP,Savani Financials Ltd,890201,
-FNO,NIFTY,NIFTY,Nifty 50,INNIFTY,
-FNO,SENSEX,SENSEX,Sensex 30,INSENSEX,
-FNO,BANKNIFTY,BANKNIFTY,Nifty Bank,INBANKNIFTY,
-FNO,NIFTY,FINNIFTY,Finance Nifty 50,INNIFTY,
 Equity,INE377Y01014,BAJAJHFL,Bajaj Housing Finance Limited,544252,
