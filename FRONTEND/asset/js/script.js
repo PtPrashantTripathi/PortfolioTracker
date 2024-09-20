@@ -477,5 +477,3 @@ async function main() {
     loadDividendChart(apiData.dividend_data.year_wise);
     updateDividendSummary(apiData.dividend_data.year_wise);
 }
-
-main();
