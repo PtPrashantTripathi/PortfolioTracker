@@ -1,36 +1,30 @@
-exclude: .idea/
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
-    hooks:
-      - id: trailing-whitespace
-      - id: check-json
-      - id: check-yaml
-      - id: check-toml
-  - repo: https://github.com/psf/black
-    rev: 24.4.2
-    hooks:
-      - id: black
-        language_version: python3
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        args:
-          [
-            "--order-by-type",
-            "--length-sort",
-            "--filter-files",
-            "--float-to-top",
-            "black",
-          ]
-        name: isort (python)
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.6.0
+      hooks:
+          - id: trailing-whitespace
+          - id: check-json
+          - id: check-yaml
+          - id: check-toml
+    - repo: https://github.com/psf/black
+      rev: 24.4.2
+      hooks:
+          - id: black
+            language_version: python3
+    - repo: https://github.com/pycqa/isort
+      rev: 5.13.2
+      hooks:
+          - id: isort
+            args:
+                ["--order-by-type", "--length-sort", "black"]
+            name: isort (python)
 
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.8.7
-    hooks:
-      - id: nbqa-black
-      - id: nbqa-pyupgrade
-        args: ["--py37-plus"]
-      - id: nbqa-isort
-        args: ["--float-to-top"]
+    - repo: https://github.com/nbQA-dev/nbQA
+      rev: 1.8.7
+      hooks:
+          - id: nbqa-black
+          - id: nbqa-pyupgrade
+            args: ["--py37-plus"]
+          - id: nbqa-isort
+            args:
+                ["--order-by-type", "--length-sort", "black"]
