@@ -1,8 +1,8 @@
 {
     "financial_summary": {
         "invested_value": 76895.35,
-        "current_value": 178130.95,
-        "pnl_value": 116215.6
+        "current_value": 213440.95,
+        "pnl_value": 136545.6
     },
     "current_holding_data": [
         {
@@ -14,9 +14,9 @@
             "total_amount": 14980.0,
             "min_datetime": "2024-09-13 00:00:00",
             "avg_price": 70.0,
-            "close_price": 0,
-            "close_amount": 0,
-            "pnl_amount": 0,
+            "close_price": 165.0,
+            "close_amount": 35310.0,
+            "pnl_amount": 20330.0,
             "history": [
                 {
                     "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
@@ -27,9 +27,9 @@
                     "total_amount": 14980.0,
                     "min_datetime": "2024-09-13 00:00:00",
                     "avg_price": 70.0,
-                    "close_price": 0,
-                    "close_amount": 0,
-                    "pnl_amount": 0
+                    "close_price": 165.0,
+                    "close_amount": 35310.0,
+                    "pnl_amount": 20330.0
                 }
             ]
         },
@@ -13077,42 +13077,42 @@
         },
         {
             "date": "2024-09-16",
-            "open": 181168.32,
-            "high": 182731.67,
-            "low": 179271.02,
-            "close": 180132.27,
+            "open": 213268.32,
+            "high": 218041.67,
+            "low": 210515.02,
+            "close": 215442.27,
             "holding": 76895.36
         },
         {
             "date": "2024-09-17",
-            "open": 180814.69,
-            "high": 181968.09,
-            "low": 176657.64,
-            "close": 179019.14,
+            "open": 212914.69,
+            "high": 217278.09,
+            "low": 207901.64,
+            "close": 214329.14,
             "holding": 76895.36
         },
         {
             "date": "2024-09-18",
-            "open": 179363.98,
-            "high": 180201.48,
-            "low": 175992.23,
-            "close": 176915.13,
+            "open": 211463.98,
+            "high": 215511.48,
+            "low": 207236.23,
+            "close": 212225.13,
             "holding": 76895.36
         },
         {
             "date": "2024-09-19",
-            "open": 178065.7,
-            "high": 180146.45,
-            "low": 174602.05,
-            "close": 177060.55,
+            "open": 210165.7,
+            "high": 215456.45,
+            "low": 205846.05,
+            "close": 212370.55,
             "holding": 76895.36
         },
         {
             "date": "2024-09-20",
-            "open": 177414.0,
-            "high": 179224.5,
-            "low": 175136.5,
-            "close": 178130.95,
+            "open": 209514.0,
+            "high": 214534.5,
+            "low": 206380.5,
+            "close": 213440.95,
             "holding": 76895.36
         }
     ],
@@ -19427,7 +19427,7 @@
             {
                 "segment": "EQ",
                 "symbol": "TATAMOTORS",
-                "dividend_amount": 500.0,
+                "dividend_amount": 800.0,
                 "data": [
                     {
                         "financial_year": "FY2023-24",
@@ -19441,11 +19441,11 @@
                     },
                     {
                         "financial_year": "FY2024-25",
-                        "dividend_amount": 300.0,
+                        "dividend_amount": 600.0,
                         "data": [
                             {
                                 "date": "2024-06-11",
-                                "dividend_amount": 300.0
+                                "dividend_amount": 600.0
                             }
                         ]
                     }
@@ -19541,7 +19541,7 @@
             },
             {
                 "financial_year": "FY2024-25",
-                "dividend_amount": 621.2
+                "dividend_amount": 921.2
             }
         ]
     }
