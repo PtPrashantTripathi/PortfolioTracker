@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-from . import datetimeutils, globalpath, portfolio, version
-from .datetimeutils import *
-from .globalpath import *
+from . import version, portfolio, globalpath, datetimeutils
 from .portfolio import *
+from .globalpath import *
+from .datetimeutils import *
 
 __doc__ = f"""PortfolioTracker v{version.VERSION}- ETL TOOL KIT
 https://ptprashanttripathi.github.io/PortfolioTracker

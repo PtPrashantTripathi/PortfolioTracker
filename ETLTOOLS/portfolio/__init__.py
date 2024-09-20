@@ -1,5 +1,5 @@
-from datetime import datetime, time
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Union, Optional
+from datetime import time, datetime
 
 __all__ = [
     "Portfolio",
