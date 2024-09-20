@@ -14,9 +14,9 @@
             "total_amount": 14980.0,
             "min_datetime": "2024-09-13 00:00:00",
             "avg_price": 70.0,
-            "close_price": NaN,
-            "close_amount": NaN,
-            "pnl_amount": NaN,
+            "close_price": 0,
+            "close_amount": 0,
+            "pnl_amount": 0,
             "history": [
                 {
                     "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
@@ -27,9 +27,9 @@
                     "total_amount": 14980.0,
                     "min_datetime": "2024-09-13 00:00:00",
                     "avg_price": 70.0,
-                    "close_price": NaN,
-                    "close_amount": NaN,
-                    "pnl_amount": NaN
+                    "close_price": 0,
+                    "close_amount": 0,
+                    "pnl_amount": 0
                 }
             ]
         },
