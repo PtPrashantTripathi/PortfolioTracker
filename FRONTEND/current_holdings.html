@@ -74,6 +74,11 @@
                                     Profit and Loss</a
                                 >
                             </li>
+                            <li class="nav-item">
+                                <a href="dividend.html" class="nav-link">
+                                    Dividend</a
+                                >
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -143,22 +148,6 @@
                 </div>
             </footer>
         </div>
-        <script src="adminlte/plugins/jquery/jquery.min.js"></script>
-        <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="adminlte/dist/js/adminlte.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <script src="asset/js/script.js"></script>
-        <script>
-            async function main() {
-                const apiData = await fetchApiData();
-                loadCurrentHoldingsDataTable(apiData.current_holding_data);
-                updateFinancialSummary(
-                    apiData.financial_summary.invested_value,
-                    apiData.financial_summary.current_value,
-                    apiData.financial_summary.pnl_value
-                );
-            }
-            window.onload = main();
-        </script>
+        <script type="module" src="./asset/js/current_holdings.js"></script>
     </body>
 </html>
