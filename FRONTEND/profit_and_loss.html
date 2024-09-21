@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Portfolio Tracker | Current Holdings</title>
+        <title>Portfolio Tracker</title>
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -83,7 +83,7 @@
                     <div class="container">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Current Holdings</h1>
+                                <h1 class="m-0">Profit and Loss</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -91,7 +91,7 @@
                                         <a href="#">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                        Current Holdings
+                                        Profit and Loss
                                     </li>
                                 </ol>
                             </div>
@@ -100,28 +100,28 @@
                 </div>
                 <div class="content">
                     <div class="container">
-                        <div class="row" id="FinancialSummary"></div>
+                        <div class="row" id="PNLSummary"></div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">
-                                            Current Holdings Table
+                                            Profit and Loss
                                         </h3>
                                     </div>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table
-                                                id="CurrentHoldingsTable"
+                                                id="ProfitLossTable"
                                                 class="table m-0 table-bordered table-striped"
                                             ></table>
                                         </div>
                                     </div>
                                     <div class="card-footer clearfix">
                                         <a
-                                            href="#FinancialSummary"
+                                            href="javascript:void(0)"
                                             class="btn btn-sm btn-secondary float-right"
-                                            >View Summary</a
+                                            >View All Orders</a
                                         >
                                     </div>
                                 </div>
@@ -151,11 +151,11 @@
         <script>
             async function main() {
                 const apiData = await fetchApiData();
-                loadCurrentHoldingsDataTable(apiData.current_holding_data);
-                updateFinancialSummary(
-                    apiData.financial_summary.invested_value,
-                    apiData.financial_summary.current_value,
-                    apiData.financial_summary.pnl_value
+                loadProfitLossDataTable(apiData.profit_loss_data);
+                updateProfitLossDataSummary(
+                    apiData.profitloss_summary.invested_value,
+                    apiData.profitloss_summary.sold_value,
+                    apiData.profitloss_summary.pnl_value
                 );
             }
             window.onload = main();
