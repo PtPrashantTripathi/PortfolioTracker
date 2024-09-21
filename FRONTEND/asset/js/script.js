@@ -452,10 +452,26 @@ function loadDividendChart(yearWiseData) {
 
 // Main function to fetch and Update latest data and UI
 async function main() {
-    const apiPath =
-        window.location.hostname === "ptprashanttripathi.github.io"
-            ? "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/DATA/API/API_data.json"
-            : "../DATA/API/API_data.json";
+    const apiPath = (() => {
+    const href = window.location.href;
+
+    // Regular expression to match GitHub username and repository name
+    const regex = /https:\/\/([a-zA-Z0-9]+)\.github\.io\/([a-zA-Z0-9_-]+)\//;
+    const match = href.match(regex);
+
+    if (match) {
+        const username = match[1]; // Extracted GitHub username
+        const repoName = match[2]; // Extracted GitHub repository name
+
+        // Construct the dynamic GitHub raw URL
+        return `https://raw.githubusercontent.com/${username}/${repoName}/main/DATA/API/API_data.json`;
+    } else {
+        // Use the local relative path in non-GitHub environments
+        return "../DATA/API/API_data.json";
+    }
+})();
+
+console.log(apiPath);
 
     const apiResponse = await fetch(apiPath);
     const apiData = await apiResponse.json();
