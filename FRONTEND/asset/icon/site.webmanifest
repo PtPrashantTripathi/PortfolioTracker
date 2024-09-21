@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Portfolio Tracker",
+    "short_name": "Portfolio Tracker",
     "icons": [
         {
             "src": "asset/icon/android-chrome-192x192.png",

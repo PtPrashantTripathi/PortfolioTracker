@@ -191,7 +191,7 @@ function renderSummary(elementId, summaryItems) {
                     <div class="icon">
                         <i class="${item.iconClass}"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="${item.href}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -203,11 +203,6 @@ function renderSummary(elementId, summaryItems) {
 
 // Update the financial summary section
 function updateFinancialSummary(investedValue, currentValue, pnlValue) {
-    console.log({
-        investedValue: investedValue,
-        currentValue: currentValue,
-        pnlValue: pnlValue,
-    });
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
@@ -216,24 +211,28 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
             label: "Total Assets Worth",
             colorClass: "bg-info",
             iconClass: "fas fa-coins",
+            href: "#CurrentHoldingsTable",
         },
         {
             value: priceFormat(investedValue),
             label: "Total Investment",
             colorClass: "bg-warning",
             iconClass: "fas fa-cart-shopping",
+            href: "#CurrentHoldingsTable",
         },
         {
             value: priceFormat(pnlValue),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
+            href: "#CurrentHoldingsTable",
         },
         {
             value: `${pnlIcon} ${parseNum((pnlValue * 100) / investedValue)}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-line",
+            href: "#CurrentHoldingsTable",
         },
     ];
     renderSummary("FinancialSummary", summaryItems);
@@ -241,12 +240,6 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 
 // Update the P&L data summary section
 function updateProfitLossDataSummary(investedValue, soldValue, pnlValue) {
-    console.log({
-        investedValue: investedValue,
-        soldValue: soldValue,
-        pnlValue: pnlValue,
-    });
-
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
@@ -450,46 +443,38 @@ function loadDividendChart(yearWiseData) {
     return chart;
 }
 
-// Main function to fetch and Update latest data and UI
-async function main() {
-    const apiPath = (() => {
-    const href = window.location.href;
+async function fetchApiData() {
+    let apiPath = `${window.location.origin}/DATA/API/API_data.json`;
 
     // Regular expression to match GitHub username and repository name
     const regex = /https:\/\/([a-zA-Z0-9]+)\.github\.io\/([a-zA-Z0-9_-]+)\//;
-    const match = href.match(regex);
+    const match = window.location.href.match(regex);
 
     if (match) {
         const username = match[1]; // Extracted GitHub username
         const repoName = match[2]; // Extracted GitHub repository name
-
-        // Construct the dynamic GitHub raw URL
-        return `https://raw.githubusercontent.com/${username}/${repoName}/main/DATA/API/API_data.json`;
-    } else {
-        // Use the local relative path in non-GitHub environments
-        return "../DATA/API/API_data.json";
+        apiPath = `https://raw.githubusercontent.com/${username}/${repoName}/master/DATA/API/API_data.json`;
     }
-})();
 
-console.log(apiPath);
+    try {
+        const apiResponse = await fetch(apiPath, {
+            method: "GET", // Use correct HTTP method
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        });
 
-    const apiResponse = await fetch(apiPath);
-    const apiData = await apiResponse.json();
+        // Validate HTTP response status
+        if (!apiResponse.ok) {
+            throw new Error(`HTTP error! status: ${apiResponse.status}`);
+        }
 
-    loadCurrentHoldingsDataTable(apiData.current_holding_data);
-    loadProfitLossDataTable(apiData.profit_loss_data);
-    loadHoldingsTrandsChart(apiData.holdings_trands_data);
-    updateFinancialSummary(
-        apiData.financial_summary.invested_value,
-        apiData.financial_summary.current_value,
-        apiData.financial_summary.pnl_value
-    );
-    updateProfitLossDataSummary(
-        apiData.profitloss_summary.invested_value,
-        apiData.profitloss_summary.sold_value,
-        apiData.profitloss_summary.pnl_value
-    );
-    loadDividendDataTable(apiData.dividend_data.stock_wise);
-    loadDividendChart(apiData.dividend_data.year_wise);
-    updateDividendSummary(apiData.dividend_data.year_wise);
+        // Parse and return the JSON data
+        const apiData = await apiResponse.json();
+        return apiData;
+    } catch (error) {
+        console.error("Error fetching API data:");
+        throw error; // Re-throw the error for further handling
+    }
 }
