@@ -125,26 +125,9 @@ export function renderSummary(elementId, summaryItems) {
 }
 
 export async function fetchApiData() {
-    let apiPath = `${window.location.origin}/DATA/API/API_data.json`;
-
-    // Regular expression to match GitHub username and repository name
-    const regex = /https:\/\/([a-zA-Z0-9]+)\.github\.io\/([a-zA-Z0-9_-]+)\//;
-    const match = window.location.href.match(regex);
-
-    if (match) {
-        const username = match[1]; // Extracted GitHub username
-        const repoName = match[2]; // Extracted GitHub repository name
-        apiPath = `https://raw.githubusercontent.com/${username}/${repoName}/master/DATA/API/API_data.json`;
-    }
-
     try {
-        const apiResponse = await fetch(apiPath, {
-            method: "GET", // Use correct HTTP method
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        });
+        const apiPath = "../DATA/API/API_data.json";
+        const apiResponse = await fetch(apiPath);
 
         // Validate HTTP response status
         if (!apiResponse.ok) {
