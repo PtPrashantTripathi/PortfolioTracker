@@ -1,6 +1,6 @@
 # Workflow for deploying static content to GitHub Pages
 
-name: pages-build-deployment
+name: continuous-delivery
 
 on:
   # Trigger this workflow on pushes to the 'main' branch, but only when changes are made in the 'FRONTEND' folder
@@ -43,6 +43,15 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Step 2.5: Replace apiPath in render.js
+      - name: Replace apiPath in render.js
+        run: |
+          # Dynamically construct the API URL using the GitHub username and repo name
+          API_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json"
+          echo $API_URL
+          # Replace the local URL in render.js with the dynamic API URL
+          sed -i 's|../DATA/API/API_data.json|$API_URL|' ./FRONTEND/asset/js/render.js
+   
       # Step 3: Upload the content of the 'FRONTEND' folder as an artifact for deployment
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
