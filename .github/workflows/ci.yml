@@ -1,62 +1,83 @@
-name: continuous-integration
+# Continuous Integration workflow for automated monthly data updates
+name: CI
 
 on:
+  # Schedule to run on the 1st day of every month at midnight UTC
   schedule:
-    - cron: "0 0 1 * *" # every 1st day of the month
+    - cron: "0 0 1 * *"
+  
+  # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
 jobs:
   update:
+    # Use the latest Ubuntu runner
     runs-on: ubuntu-latest
+
+    # Define environment variables
     env:
-      RELEASE_DATE: ""
-      PROJECT_DIR: ${{ github.workspace }}
+      RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
+      PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
+
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # Fetch only the latest commit for efficiency
 
+      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.x"  # Use the latest stable Python 3.x version
 
+      # Step 3: Set the release date for the update
       - name: Set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
 
+      # Step 4: Install dependencies from the requirements file and locally (if applicable)
       - name: Install dependencies
         run: |
-          pip install -e .
-          pip install -r requirements.txt
+          echo "Installing Python dependencies..."
+          pip install -e .  # Install local package
+          pip install -r requirements.txt  # Install required dependencies
 
+      # Step 5: Execute Jupyter notebooks via a custom script
       - name: Run Jupyter notebooks
-        run: bash all_runner.sh
+        run: |
+          echo "Running all Jupyter notebooks..."
+          bash all_runner.sh
 
+      # Step 6: Create a pull request with the data updates
       - name: Create Pull Request
-        id: cpr
+        id: cpr  # Set an ID to reference outputs
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Data update as on ${{ env.RELEASE_DATE }}"
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the repo's GitHub token for authentication
+          commit-message: "Data update as of ${{ env.RELEASE_DATE }}"
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          base: main
-          branch: data-update
-          delete-branch: true
-          title: "[PanditBot] Updating Repos Data ${{ env.RELEASE_DATE }}"
+          base: main  # Create the PR against the main branch
+          branch: data-update  # Create a new branch for the updates
+          delete-branch: true  # Delete the branch after the PR is merged
+          title: "[PanditBot] Updating Repo Data ${{ env.RELEASE_DATE }}"
           body: |
-            This PR contains the data updates.
-            - "Updated with *${{ env.RELEASE_DATE }}*"
+            This PR contains the automated data updates.
+            - Updated as of *${{ env.RELEASE_DATE }}*.
           labels: |
             report
-            automated pr
-          assignees: ptprashanttripathi
-          reviewers: ptprashanttripathi
-          draft: false
+            automated-pr
+          assignees: ptprashanttripathi  # Assign the PR to yourself
+          reviewers: ptprashanttripathi  # Set yourself as the reviewer
+          draft: false  # Mark the PR as ready for review
 
-      - name: Check outputs
+      # Step 7: Log outputs for visibility (PR number and URL)
+      - name: Log PR Details
         if: ${{ steps.cpr.outputs.pull-request-number }}
         run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "Pull Request Number: ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL: ${{ steps.cpr.outputs.pull-request-url }}"
+
