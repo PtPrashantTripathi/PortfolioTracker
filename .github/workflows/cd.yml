@@ -1,64 +1,71 @@
 # Workflow for deploying static content to GitHub Pages
-
-name: continuous-delivery
+name: CD
 
 on:
-  # Trigger this workflow on pushes to the 'main' branch, but only when changes are made in the 'FRONTEND' folder
+  # Trigger workflow on pushes to the 'main' branch, limited to changes in 'FRONTEND' or workflow files
   push:
-    branches: ["main"]
+    branches:
+      - main
     paths:
       - 'FRONTEND/**'
+      - '.github/workflows/**'
 
-  # Allow this workflow to be triggered manually from the Actions tab
+  # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
-# Set permissions for the GITHUB_TOKEN to enable reading repository content and deploying to GitHub Pages
+# Set permissions for the GITHUB_TOKEN to read content and deploy to GitHub Pages
 permissions:
-  contents: read  # Read access to the repository content
-  pages: write    # Write access to GitHub Pages for deployment
-  id-token: write # Generate an ID token required for deploying to GitHub Pages
+  contents: read  # Read access to repository content
+  pages: write    # Write access to GitHub Pages
+  id-token: write # ID token for secure Pages deployment
 
-# Configure concurrency to ensure only one deployment runs at a time; do not cancel in-progress deployments
+# Ensure only one deployment runs at a time and do not cancel in-progress jobs
 concurrency:
-  group: "pages"  # Use the "pages" group for deployments to GitHub Pages
-  cancel-in-progress: false  # Allow ongoing deployments to finish without interruption
+  group: pages-deployments
+  cancel-in-progress: false
 
 jobs:
-  # Define a single deployment job for deploying the site to GitHub Pages
   deploy:
-    # Set environment details for the deployment
+    # Environment configuration for GitHub Pages deployment
     environment:
-      name: github-pages  # The environment name to deploy to
-      url: ${{ steps.deployment.outputs.page_url }}  # URL of the deployed GitHub Pages site
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-    # Use the latest Ubuntu runner for the deployment
+    # Use the latest stable Ubuntu runner
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository to access the files for deployment
-      - name: Checkout
+      # Step 1: Checkout the repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # Limit fetch to improve job speed
 
-      # Step 2: Setup GitHub Pages configuration for the deployment
-      - name: Setup Pages
+      # Step 2: Setup Pages for deployment
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # Step 2.5: Replace apiPath in render.js
-      - name: Replace apiPath in render.js
+      # Step 2.5: Replace local API path with the live API URL in 'render.js'
+      - name: Update API Path in render.js
         run: |
-          # Dynamically construct the API URL using the GitHub username and repo name
-          API_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json"
-          echo $API_URL
-          # Replace the local URL in render.js with the dynamic API URL
-          sed -i 's|../DATA/API/API_data.json|$API_URL|' ./FRONTEND/asset/js/render.js
-   
-      # Step 3: Upload the content of the 'FRONTEND' folder as an artifact for deployment
-      - name: Upload artifact
+          echo "Replacing local API path with live URL..."
+          sed -i 's|../DATA/API/API_data.json|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json|' ./FRONTEND/asset/js/render.js
+
+      # Step 3: Upload static site content from 'FRONTEND' directory as an artifact
+      - name: Upload static site content
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './FRONTEND/'  # Path to the folder containing static content to deploy
+          path: './FRONTEND/'  # Path to frontend static files
+          retention-days: 5    # Retain artifacts for 5 days
 
       # Step 4: Deploy the uploaded artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Step 5: Verify successful deployment (Optional)
+      - name: Verify deployment
+        run: |
+          DEPLOY_URL="${{ steps.deployment.outputs.page_url }}"
+          echo "Deployed site URL: $DEPLOY_URL"
+          curl -I $DEPLOY_URL | grep "200 OK" || echo "Warning: Deployment may have failed."
