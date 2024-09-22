@@ -1,5 +1,4 @@
 # Workflow for deploying static content to GitHub Pages
-
 name: continuous-delivery
 
 on:
@@ -8,6 +7,7 @@ on:
     branches: ["main"]
     paths:
       - 'FRONTEND/**'
+      - '.github/workflows/**'
 
   # Allow this workflow to be triggered manually from the Actions tab
   workflow_dispatch:
@@ -47,10 +47,8 @@ jobs:
       - name: Replace apiPath in render.js
         run: |
           # Dynamically construct the API URL using the GitHub username and repo name
-          API_URL="https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json"
-          echo $API_URL
           # Replace the local URL in render.js with the dynamic API URL
-          sed -i 's|../DATA/API/API_data.json|$API_URL|' ./FRONTEND/asset/js/render.js
+          sed -i 's|../DATA/API/API_data.json|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json|' ./FRONTEND/asset/js/render.js
    
       # Step 3: Upload the content of the 'FRONTEND' folder as an artifact for deployment
       - name: Upload artifact
