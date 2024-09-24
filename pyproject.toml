@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ETLTools"
+name = "PortfolioTracker"
 version = "0.3.1"
 description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
 license = { file = "LICENSE" }
@@ -29,10 +29,10 @@ Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["ETLTools"]
+packages = ["PortfolioTracker"]
 
 [tool.setuptools.package-dir]
-ETLTools = "ETLTOOLS"
+PortfolioTracker = "PortfolioTracker"
 
 [tool.black]
 line-length = 80
