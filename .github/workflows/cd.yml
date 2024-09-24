@@ -45,27 +45,20 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # Step 2.5: Replace local API path with the live API URL in 'render.js'
+      # Step 3: Replace local API path with the live API URL in 'render.js'
       - name: Update API Path in render.js
         run: |
           echo "Replacing local API path with live URL..."
           sed -i 's|../DATA/API/API_data.json|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json|' ./FRONTEND/asset/js/render.js
 
-      # Step 3: Upload static site content from 'FRONTEND' directory as an artifact
+      # Step 4: Upload static site content from 'FRONTEND' directory as an artifact
       - name: Upload static site content
         uses: actions/upload-pages-artifact@v3
         with:
           path: './FRONTEND/'  # Path to frontend static files
           retention-days: 5    # Retain artifacts for 5 days
 
-      # Step 4: Deploy the uploaded artifact to GitHub Pages
+      # Step 5: Deploy the uploaded artifact to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      # Step 5: Verify successful deployment (Optional)
-      - name: Verify deployment
-        run: |
-          DEPLOY_URL="${{ steps.deployment.outputs.page_url }}"
-          echo "Deployed site URL: $DEPLOY_URL"
-          curl -I $DEPLOY_URL | grep "200 OK" || echo "Warning: Deployment may have failed."
