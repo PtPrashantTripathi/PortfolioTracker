@@ -25,7 +25,7 @@ jobs:
     # Environment configuration for GitHub Pages deployment
     environment:
       name: python
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: https://pypi.org/p/PortfolioTracker
 
     # Use the latest stable Ubuntu runner
     runs-on: ubuntu-latest
