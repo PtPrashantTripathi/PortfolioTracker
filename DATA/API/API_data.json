@@ -10558,7 +10558,7 @@
                     "close_price": 0.82,
                     "close_amount": 164.0,
                     "pnl_amount": 164.0,
-                    "pnl_percentage": NaN
+                    "pnl_percentage": ""
                 },
                 {
                     "scrip_name": "SWORD-EDGE COMMERCIALS LIMITED",
@@ -10572,7 +10572,7 @@
                     "close_price": 0.77,
                     "close_amount": 154.0,
                     "pnl_amount": 154.0,
-                    "pnl_percentage": NaN
+                    "pnl_percentage": ""
                 }
             ]
         },
