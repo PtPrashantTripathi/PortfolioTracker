@@ -173,8 +173,10 @@ class Stock(StockInfo):
                     * min_qt
                 )
                 pnl_percentage = (
-                    pnl_amount / (open_position.open_price * min_qt)
-                ) * 100
+                    (pnl_amount / (open_position.open_price * min_qt)) * 100
+                    if open_position.open_price != 0
+                    else 0
+                )
 
                 # Update open position quantity and amount
                 open_position.quantity -= min_qt

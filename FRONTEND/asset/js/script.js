@@ -453,8 +453,8 @@ function loadDividendChart(yearWiseData) {
 // Main function to fetch and Update latest data and UI
 async function main() {
     const apiPath =
-        window.location.hostname === "ptprashanttripathi.github.io"
-            ? "https://raw.githubusercontent.com/PtPrashantTripathi/PortfolioTracker/main/DATA/API/API_data.json"
+        window.location.hostname === "harshalk2022.github.io"
+            ? "https://raw.githubusercontent.com/harshalk2022/PortfolioTracker/main/DATA/API/API_data.json"
             : "../DATA/API/API_data.json";
 
     const apiResponse = await fetch(apiPath);
