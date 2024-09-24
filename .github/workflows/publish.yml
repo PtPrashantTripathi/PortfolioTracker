@@ -9,8 +9,13 @@
 name: Upload Python Package
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+    paths:
+      - 'PortfolioTracker/**'
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
