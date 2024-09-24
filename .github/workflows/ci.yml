@@ -17,6 +17,7 @@ jobs:
 
     # Define environment variables
     env:
+      name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
       url: ${{ steps.cpr.outputs.pull-request-url }}
