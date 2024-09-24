@@ -1,5 +1,4 @@
 {
   "css.validate": false,
-  "prettier.printWidth": 80,
-  "liveServer.settings.port": 5501
+  "prettier.printWidth": 80
 }
