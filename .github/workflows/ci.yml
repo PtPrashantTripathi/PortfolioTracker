@@ -10,15 +10,17 @@ on:
   workflow_dispatch:
 
 jobs:
+
   update:
     # Use the latest Ubuntu runner
     runs-on: ubuntu-latest
 
     # Define environment variables
     env:
+      name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
-
+      url: ${{ steps.cpr.outputs.pull-request-url }}
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -60,7 +62,7 @@ jobs:
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          base: main  # Create the PR against the main branch
+          base: ${{ github.ref_name }}  # Create the PR against the main branch
           branch: data-update  # Create a new branch for the updates
           delete-branch: true  # Delete the branch after the PR is merged
           title: "[PanditBot] Updating Repo Data ${{ env.RELEASE_DATE }}"

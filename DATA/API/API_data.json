@@ -1,8 +1,8 @@
 {
     "financial_summary": {
         "invested_value": 76895.35,
-        "current_value": 213440.95,
-        "pnl_value": 136545.6
+        "current_value": 216615.93,
+        "pnl_value": 139720.58
     },
     "current_holding_data": [
         {
@@ -14,9 +14,9 @@
             "total_amount": 14980.0,
             "min_datetime": "2024-09-13 00:00:00",
             "avg_price": 70.0,
-            "close_price": 165.0,
-            "close_amount": 35310.0,
-            "pnl_amount": 20330.0,
+            "close_price": 158.68,
+            "close_amount": 33957.52,
+            "pnl_amount": 18977.52,
             "history": [
                 {
                     "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
@@ -27,9 +27,9 @@
                     "total_amount": 14980.0,
                     "min_datetime": "2024-09-13 00:00:00",
                     "avg_price": 70.0,
-                    "close_price": 165.0,
-                    "close_amount": 35310.0,
-                    "pnl_amount": 20330.0
+                    "close_price": 158.68,
+                    "close_amount": 33957.52,
+                    "pnl_amount": 18977.52
                 }
             ]
         },
@@ -42,9 +42,9 @@
             "total_amount": 2688.6,
             "min_datetime": "2024-06-04 12:19:21",
             "avg_price": 896.2,
-            "close_price": 894.25,
-            "close_amount": 2682.75,
-            "pnl_amount": -5.85,
+            "close_price": 911.7,
+            "close_amount": 2735.1,
+            "pnl_amount": 46.5,
             "history": [
                 {
                     "scrip_name": "INDIAN RAILWAY CATERING AND TO",
@@ -55,9 +55,9 @@
                     "total_amount": 2688.6,
                     "min_datetime": "2024-06-04 12:19:21",
                     "avg_price": 896.2,
-                    "close_price": 894.25,
-                    "close_amount": 2682.75,
-                    "pnl_amount": -5.85
+                    "close_price": 911.7,
+                    "close_amount": 2735.1,
+                    "pnl_amount": 46.5
                 }
             ]
         },
@@ -70,9 +70,9 @@
             "total_amount": 3000.0,
             "min_datetime": "2024-06-13 13:58:03",
             "avg_price": 1500.0,
-            "close_price": 1662.0,
-            "close_amount": 3324.0,
-            "pnl_amount": 324.0,
+            "close_price": 1660.9,
+            "close_amount": 3321.8,
+            "pnl_amount": 321.8,
             "history": [
                 {
                     "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -83,9 +83,9 @@
                     "total_amount": 3000.0,
                     "min_datetime": "2024-06-13 13:58:03",
                     "avg_price": 1500.0,
-                    "close_price": 1662.0,
-                    "close_amount": 3324.0,
-                    "pnl_amount": 324.0
+                    "close_price": 1660.9,
+                    "close_amount": 3321.8,
+                    "pnl_amount": 321.8
                 }
             ]
         },
@@ -98,9 +98,9 @@
             "total_amount": 4000.27,
             "min_datetime": "2024-05-24 00:00:00",
             "avg_price": 52.22,
-            "close_price": 55.13,
-            "close_amount": 4223.51,
-            "pnl_amount": 223.24,
+            "close_price": 56.06,
+            "close_amount": 4294.76,
+            "pnl_amount": 294.49,
             "history": [
                 {
                     "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -111,9 +111,9 @@
                     "total_amount": 4000.27,
                     "min_datetime": "2024-05-24 00:00:00",
                     "avg_price": 52.22,
-                    "close_price": 55.13,
-                    "close_amount": 4223.51,
-                    "pnl_amount": 223.24
+                    "close_price": 56.06,
+                    "close_amount": 4294.76,
+                    "pnl_amount": 294.49
                 }
             ]
         },
@@ -126,9 +126,9 @@
             "total_amount": 4002.08,
             "min_datetime": "2024-05-24 00:00:00",
             "avg_price": 458.95,
-            "close_price": 480.87,
-            "close_amount": 4193.19,
-            "pnl_amount": 191.11,
+            "close_price": 489.02,
+            "close_amount": 4264.25,
+            "pnl_amount": 262.17,
             "history": [
                 {
                     "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -139,9 +139,9 @@
                     "total_amount": 4002.08,
                     "min_datetime": "2024-05-24 00:00:00",
                     "avg_price": 458.95,
-                    "close_price": 480.87,
-                    "close_amount": 4193.19,
-                    "pnl_amount": 191.11
+                    "close_price": 489.02,
+                    "close_amount": 4264.25,
+                    "pnl_amount": 262.17
                 }
             ]
         },
@@ -154,9 +154,9 @@
             "total_amount": 26100.4,
             "min_datetime": "2020-04-21 14:41:30",
             "avg_price": 261.0,
-            "close_price": 970.85,
-            "close_amount": 97085.0,
-            "pnl_amount": 70984.6,
+            "close_price": 977.3,
+            "close_amount": 97730.0,
+            "pnl_amount": 71629.6,
             "history": [
                 {
                     "scrip_name": "TATA MOTORS",
@@ -167,9 +167,9 @@
                     "total_amount": 26100.4,
                     "min_datetime": "2020-04-21 14:41:30",
                     "avg_price": 261.0,
-                    "close_price": 970.85,
-                    "close_amount": 97085.0,
-                    "pnl_amount": 70984.6
+                    "close_price": 977.3,
+                    "close_amount": 97730.0,
+                    "pnl_amount": 71629.6
                 }
             ]
         },
@@ -182,9 +182,9 @@
             "total_amount": 22124.0,
             "min_datetime": "2021-02-08 11:39:33",
             "avg_price": 147.49,
-            "close_price": 444.15,
-            "close_amount": 66622.5,
-            "pnl_amount": 44498.5,
+            "close_price": 468.75,
+            "close_amount": 70312.5,
+            "pnl_amount": 48188.5,
             "history": [
                 {
                     "scrip_name": "TATA POWER",
@@ -195,9 +195,9 @@
                     "total_amount": 22124.0,
                     "min_datetime": "2021-02-08 11:39:33",
                     "avg_price": 147.49,
-                    "close_price": 444.15,
-                    "close_amount": 66622.5,
-                    "pnl_amount": 44498.5
+                    "close_price": 468.75,
+                    "close_amount": 70312.5,
+                    "pnl_amount": 48188.5
                 }
             ]
         }
@@ -6221,34 +6221,34 @@
         },
         {
             "date": "2022-05-13",
-            "open": 107518.47,
-            "high": 111761.51,
-            "low": 105938.16,
-            "close": 108103.28,
+            "open": 107551.47,
+            "high": 111773.51,
+            "low": 105945.96,
+            "close": 108101.08,
             "holding": 102405.4
         },
         {
             "date": "2022-05-14",
-            "open": 107518.47,
-            "high": 111761.51,
-            "low": 105938.16,
-            "close": 108103.28,
+            "open": 107551.47,
+            "high": 111773.51,
+            "low": 105945.96,
+            "close": 108101.08,
             "holding": 102405.4
         },
         {
             "date": "2022-05-15",
-            "open": 107518.47,
-            "high": 111761.51,
-            "low": 105938.16,
-            "close": 108103.28,
+            "open": 107551.47,
+            "high": 111773.51,
+            "low": 105945.96,
+            "close": 108101.08,
             "holding": 102405.4
         },
         {
             "date": "2022-05-16",
-            "open": 109404.31,
-            "high": 110143.5,
-            "low": 106615.97,
-            "close": 108944.43,
+            "open": 109437.31,
+            "high": 110155.5,
+            "low": 106623.77,
+            "close": 108942.23,
             "holding": 102405.4
         },
         {
@@ -13085,42 +13085,66 @@
         },
         {
             "date": "2024-09-17",
-            "open": 212914.69,
-            "high": 217278.09,
-            "low": 207901.64,
-            "close": 214329.14,
+            "open": 218371.69,
+            "high": 220809.09,
+            "low": 213915.04,
+            "close": 217860.14,
             "holding": 76895.36
         },
         {
             "date": "2024-09-18",
-            "open": 211463.98,
-            "high": 215511.48,
-            "low": 207236.23,
-            "close": 212225.13,
+            "open": 218097.98,
+            "high": 220540.48,
+            "low": 212607.63,
+            "close": 214078.37,
             "holding": 76895.36
         },
         {
             "date": "2024-09-19",
-            "open": 210165.7,
-            "high": 215456.45,
-            "low": 205846.05,
-            "close": 212370.55,
+            "open": 215083.42,
+            "high": 217756.95,
+            "low": 208048.11,
+            "close": 211326.23,
             "holding": 76895.36
         },
         {
             "date": "2024-09-20",
-            "open": 209514.0,
-            "high": 214534.5,
-            "low": 206380.5,
-            "close": 213440.95,
+            "open": 212168.15,
+            "high": 215303.31,
+            "low": 209770.81,
+            "close": 213253.18,
             "holding": 76895.36
         },
         {
             "date": "2024-09-21",
-            "open": 209514.0,
-            "high": 214534.5,
-            "low": 206380.5,
-            "close": 213440.95,
+            "open": 212168.15,
+            "high": 215303.31,
+            "low": 209770.81,
+            "close": 213253.18,
+            "holding": 76895.36
+        },
+        {
+            "date": "2024-09-22",
+            "open": 212168.15,
+            "high": 215303.31,
+            "low": 209770.81,
+            "close": 213253.18,
+            "holding": 76895.36
+        },
+        {
+            "date": "2024-09-23",
+            "open": 214176.76,
+            "high": 217294.76,
+            "low": 212145.76,
+            "close": 214611.73,
+            "holding": 76895.36
+        },
+        {
+            "date": "2024-09-24",
+            "open": 215027.31,
+            "high": 219112.41,
+            "low": 213634.21,
+            "close": 216615.93,
             "holding": 76895.36
         }
     ],

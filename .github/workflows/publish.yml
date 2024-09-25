@@ -22,7 +22,12 @@ permissions:
 
 jobs:
   deploy:
+    # Environment configuration for GitHub Pages deployment
+    environment:
+      name: python
+      url: https://pypi.org/p/PortfolioTracker
 
+    # Use the latest stable Ubuntu runner
     runs-on: ubuntu-latest
 
     steps:
@@ -37,8 +42,8 @@ jobs:
         pip install build
     - name: Build package
       run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
       with:
         user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        password: ${{ secrets.PYPI_API_TOKEN}}
