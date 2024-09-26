@@ -257,8 +257,7 @@ class Stock:
                 pnl_amount = (
                     (trade_record.price - open_position.open_price) * min_qt
                     if open_position.open_side == "BUY"
-                    else (open_position.open_price - trade_record.price)
-                    * min_qt
+                    else (open_position.open_price - trade_record.price) * min_qt
                 )
                 pnl_percentage = (
                     (pnl_amount / (open_position.open_price * min_qt)) * 100
@@ -304,9 +303,7 @@ class Stock:
 
         # Remove fully closed positions
         self.open_positions = [
-            position
-            for position in self.open_positions
-            if position.quantity > 0
+            position for position in self.open_positions if position.quantity > 0
         ]
 
         # Add new position if trade is not fully matched
@@ -370,9 +367,7 @@ class Stock:
             and self.expiry_date is not None
             and datetime.today() > self.expiry_date
         ):
-            print(
-                f"{self.stock_info.scrip_name} => {self.holding_quantity} expired"
-            )
+            print(f"{self.stock_info.scrip_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
                     stock_info=self.stock_info,
@@ -515,3 +510,43 @@ class Portfolio:
             for stock in self.stocks.values()
             for position in stock.closed_positions
         ]
+
+
+if __name__ == "__main__":
+    trade_history = [
+        {
+            "datetime": "2020-04-21 14:41:30",
+            "exchange": "NSE",
+            "segment": "EQ",
+            "symbol": "TATAMOTORS",
+            "scrip_name": "TATAMOTORS",
+            "side": "BUY",
+            "amount": 0,
+            "quantity": 14,
+            "price": 0,
+            "expiry_date": "nan",
+        },
+        {
+            "datetime": "2020-05-04 14:33:45",
+            "exchange": "NSE",
+            "segment": "EQ",
+            "symbol": "TATAMOTORS",
+            "scrip_name": "TATAMOTORS",
+            "side": "SELL",
+            "amount": 419,
+            "quantity": 5,
+            "price": 83.8,
+            "expiry_date": "nan",
+        },
+    ]
+
+    portfolio = Portfolio()
+    for record in trade_history:
+        portfolio.trade(record)
+
+    portfolio.check_expired_stocks()
+    import pandas as pd
+
+    print("Holding history\n", pd.DataFrame(portfolio.get_holdings_history()))
+    print("Current Holdings\n", pd.DataFrame(portfolio.get_current_holdings()))
+    print("PNL history\n", pd.DataFrame(portfolio.get_pnl()))

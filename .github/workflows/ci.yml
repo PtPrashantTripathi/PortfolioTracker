@@ -5,7 +5,7 @@ on:
   # Schedule to run on the 1st day of every month at midnight UTC
   schedule:
     - cron: "0 0 1 * *"
-  
+
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
@@ -50,7 +50,7 @@ jobs:
       - name: Run Jupyter notebooks
         run: |
           echo "Running all Jupyter notebooks..."
-          bash all_runner.sh
+          bash ./PIPELINE/all_runner.sh
 
       # Step 6: Create a pull request with the data updates
       - name: Create Pull Request
@@ -82,4 +82,3 @@ jobs:
         run: |
           echo "Pull Request Number: ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL: ${{ steps.cpr.outputs.pull-request-url }}"
-

@@ -3,9 +3,9 @@
 
 # DATA CLEAN UP
 # rm -rf DATA/BRONZE
-rm -rf DATA/SILVER
-rm -rf DATA/GOLD
-rm -rf DATA/API
+# rm -rf DATA/SILVER
+# rm -rf DATA/GOLD
+# rm -rf DATA/API
 
 # Disable Debugging
 export PYDEVD_DISABLE_FILE_VALIDATION=1
@@ -16,7 +16,7 @@ execute_notebook() {
     layer=$1    # arguments : Layer names
     notebook=$2 # arguments : notebook names
     echo "Executing ${layer}/${notebook}.ipynb ..."
-    # python -m 
+    # python -m
     jupyter nbconvert --execute --to notebook --inplace "NOTEBOOKS/${layer}/${notebook}.ipynb"
     echo "---------------------------------------------"
 }
