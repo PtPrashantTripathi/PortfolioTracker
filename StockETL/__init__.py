@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from . import version, portfolio, globalpath, datetimeutils
-from .portfolio import *
-from .globalpath import *
-from .datetimeutils import *
+from StockETL import version, portfolio, globalpath, datetimeutils
+from StockETL.portfolio import *
+from StockETL.globalpath import *
+from StockETL.datetimeutils import *
 
-__doc__ = f"""PortfolioTracker v{version.VERSION}- ETL TOOL KIT
+__doc__ = f"""StockETL v{version.VERSION}
 https://ptprashanttripathi.github.io/PortfolioTracker
 Copyright 2023-{DateTimeUtil.today().year} Pt. Prashant Tripathi"""
 __version__ = version.VERSION

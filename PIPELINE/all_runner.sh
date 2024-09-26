@@ -3,9 +3,9 @@
 
 # DATA CLEAN UP
 # rm -rf DATA/BRONZE
-rm -rf DATA/SILVER
-rm -rf DATA/GOLD
-rm -rf DATA/API
+# rm -rf DATA/SILVER
+# rm -rf DATA/GOLD
+# rm -rf DATA/API
 
 # Disable Debugging
 export PYDEVD_DISABLE_FILE_VALIDATION=1

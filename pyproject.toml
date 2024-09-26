@@ -4,13 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "StockETL"
-version = "0.3.1"
+version = "0.3.4"
 description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
 license = { file = "LICENSE" }
 authors = [
   { name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }
 ]
-readme = { file = "README.txt", content-type = "text/markdown" }
 requires-python = ">=3.7"
 keywords = ["packaging", "setuptools"]
 classifiers = [
@@ -20,13 +19,35 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
 ]
+dependencies = [
+  'pandas>=2.2.2',
+  'python-dotenv>=1.0.1',
+  'pyrate_limiter>=2.10.0',
+  'requests>=2.32.3',
+  'requests_cache>=1.2.1',
+  'requests_ratelimiter>=0.7.0'
+]
+
+[project.optional-dependencies]
+dev = [
+  'openpyxl>=3.1.2',
+  'matplotlib>=3.7.2',
+  'jupyter>=1.1.1',
+  'black>=23.7.0',
+  'yfinance>=0.2.43',
+  'pre-commit>=3.8.0',
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
 
 [project.urls]
-Homepage = "https://ptprashanttripathi.github.io/StockETL"
-Repository = "https://github.com/ptprashanttripathi/StockETL"
-Documentation = "https://ptprashanttripathi.github.io/StockETL"
-Issues = "https://github.com/ptprashanttripathi/StockETL/issues"
-Changelog = "https://github.com/PtPrashantTripathi/StockETL/blob/main/.github/CHANGELOG.md"
+Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
+Repository = "https://github.com/PtPrashantTripathi/PortfolioTracker"
+Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
+Issues = "https://github.com/PtPrashantTripathi/PortfolioTracker/issues"
+Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["StockETL"]
