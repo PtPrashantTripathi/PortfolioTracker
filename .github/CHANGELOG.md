@@ -2,10 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [3.4.0] 2024-08-07
+## [0.3.1] 2024-08-07
 
-- TBD
+- *ADDED Many Functionalities*
 
-## [1.0.0] 2023-03-21
+## [0.0.1] 2023-03-21
 
 - Initial release

@@ -1,0 +1,63 @@
+# Workflow for deploying static content to GitHub Pages
+name: CD
+
+on:
+  # Trigger workflow on pushes to the 'main' branch, limited to changes in 'FRONTEND' or workflow files
+  push:
+    branches:
+      - main
+    paths:
+      - 'FRONTEND/**'
+
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+# Set permissions for the GITHUB_TOKEN to read content and deploy to GitHub Pages
+permissions:
+  contents: read  # Read access to repository content
+  pages: write    # Write access to GitHub Pages
+  id-token: write # ID token for secure Pages deployment
+
+# Ensure only one deployment runs at a time and do not cancel in-progress jobs
+concurrency:
+  group: pages-deployments
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Environment configuration for GitHub Pages deployment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Use the latest stable Ubuntu runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1  # Limit fetch to improve job speed
+
+      # Step 2: Setup Pages for deployment
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # Step 3: Replace local API path with the live API URL in 'render.js'
+      - name: Update API Path in render.js
+        run: |
+          echo "Replacing local API path with live URL..."
+          sed -i 's|../DATA/API/API_data.json|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json|' ./FRONTEND/asset/js/render.js
+
+      # Step 4: Upload static site content from 'FRONTEND' directory as an artifact
+      - name: Upload static site content
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './FRONTEND/'  # Path to frontend static files
+          retention-days: 5    # Retain artifacts for 5 days
+
+      # Step 5: Deploy the uploaded artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

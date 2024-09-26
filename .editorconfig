@@ -10,5 +10,11 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.md]
-trim_trailing_whitespace = false
+
+[*.py]
+max_line_length = 100
+known_first_party = ptprashanttripathi
+balanced_wrapping = true
+
+[*.yml]
+indent_size = 2

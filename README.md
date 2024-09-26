@@ -1,8 +1,8 @@
 # Upstox ETL with Medallion Architecture https://ptprashanttripathi.github.io/PortfolioTracker
 
-[![pages-build-deployment](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/pages-build-deployment.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/pages-build-deployment.yml)
+[![ci](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/ci.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/ci.yml)
 
-[![Update Data](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/update.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/update.yml)
+[![cd](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/cd.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/cd.yml)
 
 
 **Description:**
