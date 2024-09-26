@@ -257,8 +257,7 @@ class Stock:
                 pnl_amount = (
                     (trade_record.price - open_position.open_price) * min_qt
                     if open_position.open_side == "BUY"
-                    else (open_position.open_price - trade_record.price)
-                    * min_qt
+                    else (open_position.open_price - trade_record.price) * min_qt
                 )
                 pnl_percentage = (
                     (pnl_amount / (open_position.open_price * min_qt)) * 100
@@ -304,9 +303,7 @@ class Stock:
 
         # Remove fully closed positions
         self.open_positions = [
-            position
-            for position in self.open_positions
-            if position.quantity > 0
+            position for position in self.open_positions if position.quantity > 0
         ]
 
         # Add new position if trade is not fully matched
@@ -370,9 +367,7 @@ class Stock:
             and self.expiry_date is not None
             and datetime.today() > self.expiry_date
         ):
-            print(
-                f"{self.stock_info.scrip_name} => {self.holding_quantity} expired"
-            )
+            print(f"{self.stock_info.scrip_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
                     stock_info=self.stock_info,

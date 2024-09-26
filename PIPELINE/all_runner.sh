@@ -16,7 +16,7 @@ execute_notebook() {
     layer=$1    # arguments : Layer names
     notebook=$2 # arguments : notebook names
     echo "Executing ${layer}/${notebook}.ipynb ..."
-    # python -m 
+    # python -m
     jupyter nbconvert --execute --to notebook --inplace "NOTEBOOKS/${layer}/${notebook}.ipynb"
     echo "---------------------------------------------"
 }
