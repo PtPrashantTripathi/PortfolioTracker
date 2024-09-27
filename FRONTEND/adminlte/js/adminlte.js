@@ -2374,7 +2374,7 @@
       var plugin = new SidebarSearch($__default["default"](this), _options);
       $__default["default"](this).data(DATA_KEY$4, typeof config === 'object' ? config : data);
 
-      if (typeof config === 'string' && /init|toggle|close|open|search/.test(config)) {
+      if (typeof config === 'string' && /init|toggle|close|open|.test(config)) {
         plugin[config]();
       } else {
         plugin.init();

@@ -3,22 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Tabbed IFrames</title>
+  <title>AdminLTE 3 | UI Sliders</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="js/fontawesome-free/css/all.css">
+  <!-- Ion Slider -->
+  <link rel="stylesheet" href="js/ion-rangeslider/css/ion.rangeSlider.css">
+  <!-- bootstrap slider -->
+  <link rel="stylesheet" href="js/bootstrap-slider/css/bootstrap-slider.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="js/overlayScrollbars/css/OverlayScrollbars.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed dark-mode" data-panel-auto-height-mode="height">
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -165,7 +166,7 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+      <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -202,19 +203,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v2</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v3</p>
                 </a>
@@ -229,6 +230,66 @@
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Layout Options
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Top Navigation</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="top-nav-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Top Navigation + Sidebar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="boxed.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Boxed</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="fixed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Sidebar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="fixed-sidebar-custom.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="fixed-topnav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Navbar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="fixed-footer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fixed Footer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="collapsed-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Collapsed Sidebar</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -257,10 +318,16 @@
                   <p>Inline</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="uplot.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>uPlot</p>
+                </a>
+              </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 UI Elements
@@ -287,7 +354,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="sliders.html" class="nav-link">
+                <a href="sliders.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sliders</p>
                 </a>
@@ -397,6 +464,14 @@
               <i class="nav-icon far fa-image"></i>
               <p>
                 Gallery
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="kanban.html" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Kanban Board
               </p>
             </a>
           </li>
@@ -654,6 +729,12 @@
           </li>
           <li class="nav-header">MISCELLANEOUS</li>
           <li class="nav-item">
+            <a href="iframe.html" class="nav-link">
+              <i class="nav-icon fas fa-ellipsis-h"></i>
+              <p>Tabbed IFrame Plugin</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="https://adminlte.io/docs/3.1/" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>Documentation</p>
@@ -751,33 +832,172 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper iframe-mode bg-dark" data-widget="iframe" data-auto-dark-mode="true" data-loading-screen="750">
-    <div class="nav navbar navbar-expand-lg navbar-dark border-bottom border-dark p-0">
-      <a class="nav-link bg-danger" href="#" data-widget="iframe-close">Close</a>
-      <a class="nav-link bg-dark" href="#" data-widget="iframe-scrollleft"><i class="fas fa-angle-double-left"></i></a>
-      <ul class="navbar-nav" role="tablist">
-      </ul>
-      <a class="nav-link bg-dark" href="#" data-widget="iframe-scrollright"><i class="fas fa-angle-double-right"></i></a>
-      <a class="nav-link bg-dark" href="#" data-widget="iframe-fullscreen"><i class="fas fa-expand"></i></a>
-    </div>
-    <div class="tab-content">
-      <div class="tab-empty">
-        <h2 class="display-4">No tab selected!</h2>
-      </div>
-      <div class="tab-loading">
-        <div>
-          <h2 class="display-4">Tab is loading <i class="fa fa-sync fa-spin"></i></h2>
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Sliders</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Sliders</li>
+            </ol>
+          </div>
         </div>
-      </div>
-    </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ion Slider</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row margin">
+                  <div class="col-sm-6">
+                    <input id="range_1" type="text" name="range_1" value="">
+                  </div>
+
+                  <div class="col-sm-6">
+                    <input id="range_2" type="text" name="range_2" value="1000;100000" data-type="double"
+                           data-step="500" data-postfix=" &euro;" data-from="30000" data-to="90000" data-hasgrid="true">
+                  </div>
+                </div>
+                <div class="row margin">
+                  <div class="col-sm-6">
+                    <input id="range_5" type="text" name="range_5" value="">
+                  </div>
+                  <div class="col-sm-6">
+                    <input id="range_6" type="text" name="range_6" value="">
+                  </div>
+                </div>
+                <div class="row margin">
+                  <div class="col-sm-12">
+                    <input id="range_4" type="text" name="range_4" value="10000;100000">
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Bootstrap Slider</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row margin">
+                  <div class="col-sm-6">
+                    <div class="slider-red">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-red input.slider</p>
+                    <div class="slider-blue">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-blue input.slider</p>
+                    <div class="slider-green">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-green input.slider</p>
+                    <div class="slider-yellow">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-yellow input.slider</p>
+                    <div class="slider-teal">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-teal input.slider</p>
+                    <div class="slider-purple">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="horizontal"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+
+                    <p>.slider-purple input.slider</p>
+                  </div>
+                  <div class="col-sm-6 d-flex justify-content-center">
+                    <div class="slider-red mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                    <div class="slider-blue mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                    <div class="slider-green mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                    <div class="slider-yellow mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                    <div class="slider-teal mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                    <div class="slider-purple mx-3">
+                      <input type="text" value="" class="slider form-control" data-slider-min="-200" data-slider-max="200"
+                           data-slider-step="5" data-slider-value="[-100,100]" data-slider-orientation="vertical"
+                           data-slider-selection="before" data-slider-tooltip="show">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
-    <!-- /.content-wrapper -->
-  <footer class="main-footer dark-mode">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">https://github.com/PtPrashantTripathi/PortfolioTracker</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0
     </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">https://github.com/PtPrashantTripathi/PortfolioTracker</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -790,19 +1010,82 @@
 
 <!-- jQuery -->
 <script src="js/jquery/jquery.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="js/jquery-jquery-ui.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- Bootstrap 4 -->
 <script src="js/bootstrap/js/bootstrap.bundle.js"></script>
-<!-- overlayScrollbars -->
-<script src="js/overlayScrollbars/js/jquery.overlayScrollbars.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.js"></script>
+<!-- Ion Slider -->
+<script src="js/ion-rangeslider/js/ion.rangeSlider.js"></script>
+<!-- Bootstrap slider -->
+<script src="js/bootstrap-slider/bootstrap-slider.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    /* BOOTSTRAP SLIDER */
+    $('.slider').bootstrapSlider()
+
+    /* ION SLIDER */
+    $('#range_1').ionRangeSlider({
+      min     : 0,
+      max     : 5000,
+      from    : 1000,
+      to      : 4000,
+      type    : 'double',
+      step    : 1,
+      prefix  : '$',
+      prettify: false,
+      hasGrid : true
+    })
+    $('#range_2').ionRangeSlider()
+
+    $('#range_5').ionRangeSlider({
+      min     : 0,
+      max     : 10,
+      type    : 'single',
+      step    : 0.1,
+      postfix : ' mm',
+      prettify: false,
+      hasGrid : true
+    })
+    $('#range_6').ionRangeSlider({
+      min     : -50,
+      max     : 50,
+      from    : 0,
+      type    : 'single',
+      step    : 1,
+      postfix : '°',
+      prettify: false,
+      hasGrid : true
+    })
+
+    $('#range_4').ionRangeSlider({
+      type      : 'single',
+      step      : 100,
+      postfix   : ' light years',
+      from      : 55000,
+      hideMinMax: true,
+      hideFromTo: false
+    })
+    $('#range_3').ionRangeSlider({
+      type    : 'double',
+      postfix : ' miles',
+      step    : 10000,
+      from    : 25000000,
+      to      : 35000000,
+      onChange: function (obj) {
+        var t = ''
+        for (var prop in obj) {
+          t += prop + ': ' + obj[prop] + '\r\n'
+        }
+        $('#result').html(t)
+      },
+      onLoad  : function (obj) {
+        //
+      }
+    })
+  })
+</script>
 </body>
 </html>

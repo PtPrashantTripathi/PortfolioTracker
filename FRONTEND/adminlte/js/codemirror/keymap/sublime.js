@@ -2,13 +2,13 @@
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
 // A rough approximation of Sublime Text's keybindings
-// Depends on addon/search/searchcursor.js and optionally addon/dialog/dialogs.js
+// Depends on addon/searchcursor.js and optionally addon/dialog/dialogs.js
 
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("../lib/codemirror"), require("../addon/search/searchcursor"), require("../addon/edit/matchbrackets"));
+    mod(require("../lib/codemirror"), require("../addon/searchcursor"), require("../addon/edit/matchbrackets"));
   else if (typeof define == "function" && define.amd) // AMD
-    define(["../lib/codemirror", "../addon/search/searchcursor", "../addon/edit/matchbrackets"], mod);
+    define(["../lib/codemirror", "../addon/searchcursor", "../addon/edit/matchbrackets"], mod);
   else // Plain browser env
     mod(CodeMirror);
 })(function(CodeMirror) {
