@@ -61,9 +61,9 @@ content-type = "text/markdown"
 
 # Links to project-related resources
 [project.urls]
-Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
+Homepage = "https://github.com/PtPrashantTripathi/PortfolioTracker"
 Repository = "https://github.com/PtPrashantTripathi/PortfolioTracker"
-Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
+Documentation = "https://github.com/PtPrashantTripathi/PortfolioTracker"
 Issues = "https://github.com/PtPrashantTripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
