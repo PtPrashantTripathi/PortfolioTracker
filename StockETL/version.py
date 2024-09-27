@@ -3,4 +3,4 @@ version details
 """
 
 __all__ = ["VERSION"]
-VERSION = "0.3.4"
+VERSION = "0.4.2"
