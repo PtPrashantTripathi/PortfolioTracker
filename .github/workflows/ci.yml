@@ -10,7 +10,6 @@ on:
   workflow_dispatch:
 
 jobs:
-
   update:
     # Use the latest Ubuntu runner
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
-      url: ${{ steps.cpr.outputs.pull-request-url }}
+
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -38,14 +37,12 @@ jobs:
       - name: Set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-
       # Step 4: Install dependencies from the requirements file and locally (if applicable)
       - name: Install dependencies
         run: |
           echo "Installing Python dependencies..."
           pip install -e .  # Install local package
           pip install -r requirements.txt  # Install required dependencies
-
       # Step 5: Execute Jupyter notebooks via a custom script
       - name: Run Jupyter notebooks
         run: |

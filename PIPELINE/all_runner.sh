@@ -1,5 +1,6 @@
 #!/bin/bash
 # Shell script for Linux/macOS
+# Location : ./PIPELINE/all_runner.sh
 
 # DATA CLEAN UP
 # rm -rf DATA/BRONZE
@@ -21,7 +22,7 @@ execute_notebook() {
 
 # 01_BRONZE_LAYER_ETL
 execute_notebook ./NOTEBOOKS/01_BRONZE_LAYER_ETL/01_TradeHistory.ipynb
-# execute_notebook ./NOTEBOOKS/01_BRONZE_LAYER_ETL/02_StockData.ipynb
+execute_notebook ./NOTEBOOKS/01_BRONZE_LAYER_ETL/02_StockData.ipynb
 execute_notebook ./NOTEBOOKS/01_BRONZE_LAYER_ETL/03_Symbol.ipynb
 
 # 02_SILVER_LAYER_ETL
@@ -40,4 +41,3 @@ execute_notebook ./NOTEBOOKS/04_API_LAYER_ETL/01_API.ipynb
 
 # 05_PRESENTATION_LAYER (commented out, uncomment if needed)
 # execute_notebook ./NOTEBOOKS/05_PRESENTATION_LAYER/01_Trands.ipynb
-
