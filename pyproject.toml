@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "StockETL"
-version = "0.3.4"
+version = "0.4.2"
 description = "A complete ETL for stock exchanges with PNL calculation and financial analysis tools."
 license = { file = "LICENSE" }
 
@@ -38,22 +38,14 @@ classifiers = [
 # Core dependencies for your project
 dependencies = [
   'pandas>=2.2.2',
-  'python-dotenv>=1.0.1',
-  'pyrate_limiter>=2.10.0',
-  'requests>=2.32.3',
-  'requests_cache>=1.2.1',
-  'requests_ratelimiter>=0.7.0'
+  'python-dotenv>=1.0.1'
 ]
 
 # Optional dependencies for development and additional features
 [project.optional-dependencies]
 dev = [
-  "openpyxl>=3.1.2",  # For Excel support in Pandas
-  "matplotlib>=3.7.2",  # For visualization
   "jupyter>=1.1.1",  # For notebook development
   "black>=23.7.0",  # Code formatter for consistent style
-  "yfinance>=0.2.43",  # Yahoo Finance API wrapper for stock data
-  "pre-commit>=3.8.0",  # Pre-commit hooks for code quality checks
 ]
 
 # Additional optional dependencies for testing and security

@@ -1,0 +1,28 @@
+{
+    "data_schema": [
+        {
+            "col_name": "instrument_type",
+            "data_type": "object"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "object"
+        },
+        {
+            "col_name": "scrip_name",
+            "data_type": "object"
+        },
+        {
+            "col_name": "scrip_code",
+            "data_type": "object"
+        },
+        {
+            "col_name": "isin",
+            "data_type": "object"
+        },
+        {
+            "col_name": "isin_reinvestment",
+            "data_type": "object"
+        }
+    ]
+}
