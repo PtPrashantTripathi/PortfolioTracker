@@ -1,0 +1,40 @@
+{
+    "data_schema": [
+        {
+            "col_name": "date",
+            "data_type": "datetime64[ns, asia/kolkata]"
+        },
+        {
+            "col_name": "open",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "high",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "low",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "close",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "volume",
+            "data_type": "int64"
+        },
+        {
+            "col_name": "dividends",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "stock_splits",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "capital_gains",
+            "data_type": "float64"
+        }
+    ]
+}
