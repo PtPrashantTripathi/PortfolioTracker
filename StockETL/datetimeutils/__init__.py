@@ -33,9 +33,7 @@ class DateTimeUtil(datetime):
         if self.month == 12:
             end_date = DateTimeUtil(self.year + 1, 1, 1) - timedelta(days=1)
         else:
-            end_date = DateTimeUtil(self.year, self.month + 1, 1) - timedelta(
-                days=1
-            )
+            end_date = DateTimeUtil(self.year, self.month + 1, 1) - timedelta(days=1)
         return DateTimeUtil(end_date.year, end_date.month, end_date.day)
 
     def month_difference(self, from_date: datetime) -> int:
