@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Portfolio Tracker | Current Holdings</title>
+        <title>Portfolio Tracker | Current Holding</title>
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -28,9 +28,9 @@
         />
         <link
             rel="stylesheet"
-            href="adminlte/plugins/fontawesome-free/css/all.min.css"
+            href="adminlte/js/fontawesome-free/css/all.css"
         />
-        <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css" />
+        <link rel="stylesheet" href="adminlte/css/adminlte.css" />
     </head>
 
     <body class="hold-transition layout-top-nav">
@@ -63,10 +63,10 @@
                             </li>
                             <li class="nav-item">
                                 <a
-                                    href="current_holdings.html"
+                                    href="current_holding.html"
                                     class="nav-link"
                                 >
-                                    Current Holdings</a
+                                    Current Holding</a
                                 >
                             </li>
                             <li class="nav-item">
@@ -79,6 +79,9 @@
                                     Dividend</a
                                 >
                             </li>
+                            <li class="nav-item">
+                                <a href="about.html" class="nav-link">About</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -88,7 +91,7 @@
                     <div class="container">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Current Holdings</h1>
+                                <h1 class="m-0">Current Holding</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -96,7 +99,7 @@
                                         <a href="#">Home</a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                        Current Holdings
+                                        Current Holding
                                     </li>
                                 </ol>
                             </div>
@@ -111,13 +114,13 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">
-                                            Current Holdings Table
+                                            Current Holding Table
                                         </h3>
                                     </div>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table
-                                                id="CurrentHoldingsTable"
+                                                id="CurrentHoldingTable"
                                                 class="table m-0 table-bordered table-striped"
                                             ></table>
                                         </div>
@@ -148,6 +151,6 @@
                 </div>
             </footer>
         </div>
-        <script type="module" src="./asset/js/current_holdings.js"></script>
+        <script type="module" src="./asset/js/current_holding.js"></script>
     </body>
 </html>

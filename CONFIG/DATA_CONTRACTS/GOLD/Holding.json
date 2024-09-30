@@ -1,0 +1,40 @@
+{
+    "data_schema": [
+        {
+            "col_name": "scrip_name",
+            "data_type": "object"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "object"
+        },
+        {
+            "col_name": "exchange",
+            "data_type": "object"
+        },
+        {
+            "col_name": "segment",
+            "data_type": "object"
+        },
+        {
+            "col_name": "date",
+            "data_type": "object"
+        },
+        {
+            "col_name": "side",
+            "data_type": "object"
+        },
+        {
+            "col_name": "quantity",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "amount",
+            "data_type": "float64"
+        }
+    ]
+}
