@@ -1,0 +1,20 @@
+{
+    "data_schema": [
+        {
+            "col_name": "date",
+            "data_type": "datetime64[ns]"
+        },
+        {
+            "col_name": "segment",
+            "data_type": "object"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "object"
+        },
+        {
+            "col_name": "dividend_amount",
+            "data_type": "float64"
+        }
+    ]
+}
