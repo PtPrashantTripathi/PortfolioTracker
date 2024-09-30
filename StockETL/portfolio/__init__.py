@@ -37,7 +37,7 @@ class StockInfo:
 
 class HoldingRecord:
     """
-    Represents a record of stock holdings.
+    Represents a record of stock holding.
 
     Attributes:
         stock_info (StockInfo): The Information of the stock.
@@ -326,7 +326,7 @@ class Stock:
 
     def calc_holding(self) -> HoldingRecord:
         """
-        Calculates the current holdings and updates holding metrics.
+        Calculates the current holding and updates holding metrics.
 
         Returns:
             HoldingRecord: The updated holding record.
@@ -436,7 +436,7 @@ class Portfolio:
         for stock in self.stocks.values():
             stock.check_expired()
 
-    def get_holdings_history(self) -> List[Dict]:
+    def get_holding_history(self) -> List[Dict]:
         """
         Retrieves a list of holding records for all stocks in the portfolio.
 
@@ -458,7 +458,7 @@ class Portfolio:
             for holding in stock.holding_records
         ]
 
-    def get_current_holdings(self) -> List[Dict]:
+    def get_current_holding(self) -> List[Dict]:
         """
         Retrieves a list of open positions and their PnL details.
 
@@ -547,6 +547,6 @@ if __name__ == "__main__":
     portfolio.check_expired_stocks()
     import pandas as pd
 
-    print("Holding history\n", pd.DataFrame(portfolio.get_holdings_history()))
-    print("Current Holdings\n", pd.DataFrame(portfolio.get_current_holdings()))
+    print("Holding history\n", pd.DataFrame(portfolio.get_holding_history()))
+    print("Current Holding\n", pd.DataFrame(portfolio.get_current_holding()))
     print("PNL history\n", pd.DataFrame(portfolio.get_pnl()))

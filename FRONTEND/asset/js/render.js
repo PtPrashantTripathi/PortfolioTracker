@@ -59,8 +59,8 @@ export function loadDataTable(tableId, headers, cellData) {
     table.appendChild(tableBody);
 }
 
-// Load current holdings table
-export function loadCurrentHoldingsDataTable(data) {
+// Load current holding table
+export function loadCurrentHoldingDataTable(data) {
     const headers = [
         "Stock Name",
         "Qty.",
@@ -96,7 +96,7 @@ export function loadCurrentHoldingsDataTable(data) {
             createCell(calcDays(record.min_datetime)),
         ];
     });
-    loadDataTable("CurrentHoldingsTable", headers, cellData);
+    loadDataTable("CurrentHoldingTable", headers, cellData);
 }
 
 // Render summary sections

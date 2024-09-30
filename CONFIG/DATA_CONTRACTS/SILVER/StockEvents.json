@@ -1,0 +1,20 @@
+{
+    "data_schema": [
+        {
+            "col_name": "date",
+            "data_type": "object"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "object"
+        },
+        {
+            "col_name": "event",
+            "data_type": "object"
+        },
+        {
+            "col_name": "value",
+            "data_type": "float64"
+        }
+    ]
+}

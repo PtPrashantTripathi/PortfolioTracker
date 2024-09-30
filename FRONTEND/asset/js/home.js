@@ -12,7 +12,7 @@ import {
 } from "./render.js";
 
 // Load ApexCharts chart
-function loadHoldingsTrandsChart(data) {
+function loadHoldingTrandsChart(data) {
     const options = {
         series: [
             {
@@ -91,7 +91,7 @@ function loadHoldingsTrandsChart(data) {
         },
     };
     const chart = new ApexCharts(
-        document.getElementById("holdingsTrandsChart"),
+        document.getElementById("holdingTrandsChart"),
         options
     );
     chart.render();
@@ -108,28 +108,28 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
             label: "Total Assets Worth",
             colorClass: "bg-info",
             iconClass: "fas fa-coins",
-            href: "current_holdings.html#CurrentHoldingsTable",
+            href: "current_holding.html#CurrentHoldingTable",
         },
         {
             value: priceFormat(investedValue),
             label: "Total Investment",
             colorClass: "bg-warning",
             iconClass: "fas fa-cart-shopping",
-            href: "current_holdings.html#CurrentHoldingsTable",
+            href: "current_holding.html#CurrentHoldingTable",
         },
         {
             value: priceFormat(pnlValue),
             label: "Total P&L",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-pie",
-            href: "current_holdings.html#CurrentHoldingsTable",
+            href: "current_holding.html#CurrentHoldingTable",
         },
         {
             value: `${pnlIcon} ${parseNum((pnlValue * 100) / investedValue)}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-line",
-            href: "current_holdings.html#CurrentHoldingsTable",
+            href: "current_holding.html#CurrentHoldingTable",
         },
     ];
     renderSummary("FinancialSummary", summaryItems);
@@ -138,7 +138,7 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 async function main() {
     const apiData = await fetchApiData();
 
-    loadHoldingsTrandsChart(apiData.holdings_trands_data);
+    loadHoldingTrandsChart(apiData.holding_trands_data);
     updateFinancialSummary(
         apiData.financial_summary.invested_value,
         apiData.financial_summary.current_value,

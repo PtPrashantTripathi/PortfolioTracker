@@ -1,0 +1,68 @@
+{
+    "data_schema": [
+        {
+            "col_name": "date",
+            "data_type": "datetime64[ns]"
+        },
+        {
+            "col_name": "segment",
+            "data_type": "object"
+        },
+        {
+            "col_name": "exchange",
+            "data_type": "object"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "object"
+        },
+        {
+            "col_name": "scrip_name",
+            "data_type": "object"
+        },
+        {
+            "col_name": "holding_quantity",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "avg_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "holding_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "open_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "open_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "high_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "high_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "low_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "low_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "close_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "close_amount",
+            "data_type": "float64"
+        }
+    ]
+}
