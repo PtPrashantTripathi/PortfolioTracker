@@ -547,6 +547,6 @@ if __name__ == "__main__":
     portfolio.check_expired_stocks()
     import pandas as pd
 
-    print("Holding history\n", pd.DataFrame(portfolio.get_holding_history()))
-    print("Current Holding\n", pd.DataFrame(portfolio.get_current_holding()))
+    print("Holding history\n", pd.DataFrame(portfolio.get_holdings_history()))
+    print("Current Holdings\n", pd.DataFrame(portfolio.get_current_holdings()))
     print("PNL history\n", pd.DataFrame(portfolio.get_pnl()))
