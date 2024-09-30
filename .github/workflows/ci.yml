@@ -5,7 +5,7 @@ on:
   # Schedule to run on the 1st day of every month at midnight UTC
   schedule:
     - cron: "0 0 1 * *"
-  
+
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
@@ -16,6 +16,7 @@ jobs:
 
     # Define environment variables
     env:
+      name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
 
@@ -36,19 +37,16 @@ jobs:
       - name: Set release date
         run: |
           echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-
-      # Step 4: Install dependencies from the requirements file and locally (if applicable)
+      # Step 4: Install dependencies from the requirements file
       - name: Install dependencies
         run: |
           echo "Installing Python dependencies..."
-          pip install -e .  # Install local package
           pip install -r requirements.txt  # Install required dependencies
-
       # Step 5: Execute Jupyter notebooks via a custom script
       - name: Run Jupyter notebooks
         run: |
           echo "Running all Jupyter notebooks..."
-          bash all_runner.sh
+          bash ./PIPELINE/all_runner.sh
 
       # Step 6: Create a pull request with the data updates
       - name: Create Pull Request
@@ -60,7 +58,7 @@ jobs:
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          base: main  # Create the PR against the main branch
+          base: ${{ github.ref_name }}  # Create the PR against the main branch
           branch: data-update  # Create a new branch for the updates
           delete-branch: true  # Delete the branch after the PR is merged
           title: "[PanditBot] Updating Repo Data ${{ env.RELEASE_DATE }}"
@@ -80,4 +78,3 @@ jobs:
         run: |
           echo "Pull Request Number: ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL: ${{ steps.cpr.outputs.pull-request-url }}"
-

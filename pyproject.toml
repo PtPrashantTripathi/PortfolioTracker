@@ -1,45 +1,93 @@
 [build-system]
-requires = ["setuptools"]
+# Setuptools is used as the build system, ensure it's a modern version.
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ETLTools"
-version = "0.3.1"
-description = "Completed ETL from stock exchanges and calculate PNL AMOUNT and other stuff"
+name = "StockETL"
+version = "0.4.2"
+description = "A complete ETL for stock exchanges with PNL calculation and financial analysis tools."
 license = { file = "LICENSE" }
+
+# Primary author details
 authors = [
   { name = "ptprashanttripathi", email = "ptprashanttripathi@outlook.com" }
 ]
-readme = { file = "README.txt", content-type = "text/markdown" }
+
+# Python version compatibility
 requires-python = ">=3.7"
-keywords = ["packaging", "setuptools"]
+
+# Keywords to help discover the package
+keywords = ["ETL", "finance", "stock-market", "setuptools"]
+
+# Classifiers to give PyPI information about your project
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
+  "Intended Audience :: Financial and Insurance Industry",
   "Operating System :: OS Independent",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
+# Core dependencies for your project
+dependencies = [
+  'pandas>=2.2.2',
+  'python-dotenv>=1.0.1'
+]
+
+# Optional dependencies for development and additional features
+[project.optional-dependencies]
+dev = [
+  "jupyter>=1.1.1",  # For notebook development
+  "black>=23.7.0",  # Code formatter for consistent style
+]
+
+# Additional optional dependencies for testing and security
+testing = [
+  "pytest>=7.4,<8.0",  # For running unit tests
+  "pytest-cov>=4.1,<5.0",  # For measuring test coverage
+]
+
+# Include README as the main project documentation
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+# Links to project-related resources
 [project.urls]
-Homepage = "https://ptprashanttripathi.github.io/PortfolioTracker"
-Repository = "https://github.com/ptprashanttripathi/PortfolioTracker"
-Documentation = "https://ptprashanttripathi.github.io/PortfolioTracker"
-Issues = "https://github.com/ptprashanttripathi/PortfolioTracker/issues"
+Homepage = "https://github.com/PtPrashantTripathi/PortfolioTracker"
+Repository = "https://github.com/PtPrashantTripathi/PortfolioTracker"
+Documentation = "https://github.com/PtPrashantTripathi/PortfolioTracker"
+Issues = "https://github.com/PtPrashantTripathi/PortfolioTracker/issues"
 Changelog = "https://github.com/PtPrashantTripathi/PortfolioTracker/blob/main/.github/CHANGELOG.md"
 
+# Setuptools package discovery
 [tool.setuptools]
-packages = ["ETLTools"]
+packages = ["StockETL",
+            "StockETL.portfolio",
+            "StockETL.globalpath",
+            "StockETL.datetimeutils"]
 
-[tool.setuptools.package-dir]
-ETLTools = "ETLTOOLS"
-
+# Use Black for consistent code formatting
 [tool.black]
-line-length = 80
+line-length = 88
 
+# Use isort to sort imports in a manner compatible with Black
 [tool.isort]
 profile = "black"
-line_length = 80
+line_length = 88
 multi_line_output = 3
 include_trailing_comma = true
+known_third_party = ["pandas", "requests", "dotenv"]
 treat_comments_as_code = ["# %%"]
+
+[tool.codespell]
+skip = 'FRONTEND/adminlte/**/*.*,DATA/**/*.csv'
+count = true
+quiet-level = 3
