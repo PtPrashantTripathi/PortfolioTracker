@@ -26,15 +26,15 @@
         },
         {
             "col_name": "amount",
-            "data_type": "Float64"
+            "data_type": "float64"
         },
         {
             "col_name": "quantity",
-            "data_type": "Float64"
+            "data_type": "float64"
         },
         {
             "col_name": "price",
-            "data_type": "Float64"
+            "data_type": "float64"
         },
         {
             "col_name": "expiry_date",

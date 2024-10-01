@@ -59,46 +59,6 @@ export function loadDataTable(tableId, headers, cellData) {
     table.appendChild(tableBody);
 }
 
-// Load current holding table
-export function loadCurrentHoldingDataTable(data) {
-    const headers = [
-        "Stock Name",
-        "Qty.",
-        "Avg Price",
-        "Invested Value",
-        "CMP Price",
-        "Current Value",
-        "Unrealized PNL",
-        "PNL Percentage",
-        "Holding Days",
-    ];
-
-    const cellData = data.map((record) => {
-        const pnlClass = record.pnl_amount < 0 ? "text-danger" : "text-success";
-        return [
-            createCell(
-                `${
-                    record.segment === "EQ" ? record.symbol : record.scrip_name
-                } (${record.segment})`
-            ),
-            createCell(parseNum(record.total_quantity)),
-            createCell(priceFormat(record.avg_price)),
-            createCell(priceFormat(record.total_amount)),
-            createCell(priceFormat(record.close_price), [pnlClass]),
-            createCell(priceFormat(record.close_amount), [pnlClass]),
-            createCell(priceFormat(record.pnl_amount), [pnlClass]),
-            createCell(
-                `${record.pnl_amount >= 0 ? "+" : ""}${parseNum(
-                    (record.pnl_amount * 100) / record.total_amount
-                )}%`,
-                [pnlClass]
-            ),
-            createCell(calcDays(record.min_datetime)),
-        ];
-    });
-    loadDataTable("CurrentHoldingTable", headers, cellData);
-}
-
 // Render summary sections
 export function renderSummary(elementId, summaryItems) {
     const elem = document.getElementById(elementId);

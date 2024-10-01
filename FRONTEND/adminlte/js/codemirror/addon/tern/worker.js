@@ -17,7 +17,11 @@ this.onmessage = function(e) {
   case "getFile":
     var c = pending[data.id];
     delete pending[data.id];
-    return c(data.err, data.text);
+    if (typeof c === 'function') {
+      return c(data.err, data.text);
+    } else {
+      throw new Error("Pending callback is not a function");
+    }
   default: throw new Error("Unknown message type: " + data.type);
   }
 };
