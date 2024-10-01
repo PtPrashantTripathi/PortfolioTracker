@@ -2,23 +2,23 @@
     "data_schema": [
         {
             "col_name": "exchange",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "segment",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "symbol",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "scrip_name",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "position",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "quantity",
@@ -30,7 +30,7 @@
         },
         {
             "col_name": "open_side",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "open_price",
@@ -46,7 +46,7 @@
         },
         {
             "col_name": "close_side",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "close_price",

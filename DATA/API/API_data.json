@@ -1,9 +1,9 @@
 {
-    "load_timestamp": "2024-10-01 01:12:22.432276",
+    "load_timestamp": "2024-10-01 10:44:20.092860",
     "financial_summary": {
         "invested_value": 76895.35,
-        "current_value": 220498.16,
-        "pnl_value": 143602.81
+        "current_value": 220420.86,
+        "pnl_value": 143525.51
     },
     "current_holding_data": [
         {
@@ -71,9 +71,9 @@
             "total_amount": 3000.0,
             "min_datetime": "2024-06-13 13:58:03",
             "avg_price": 1500.0,
-            "close_price": 1671.0,
-            "close_amount": 3342.0,
-            "pnl_amount": 342.0,
+            "close_price": 1632.35,
+            "close_amount": 3264.7,
+            "pnl_amount": 264.7,
             "history": [
                 {
                     "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -84,9 +84,9 @@
                     "total_amount": 3000.0,
                     "min_datetime": "2024-06-13 13:58:03",
                     "avg_price": 1500.0,
-                    "close_price": 1671.0,
-                    "close_amount": 3342.0,
-                    "pnl_amount": 342.0
+                    "close_price": 1632.35,
+                    "close_amount": 3264.7,
+                    "pnl_amount": 264.7
                 }
             ]
         },
@@ -6222,34 +6222,34 @@
         },
         {
             "date": "2022-05-13",
-            "open": 107555.47,
-            "high": 111797.11,
-            "low": 106007.96,
-            "close": 108121.28,
+            "open": 107438.47,
+            "high": 111678.91,
+            "low": 105944.96,
+            "close": 108043.98,
             "holding": 102405.4
         },
         {
             "date": "2022-05-14",
-            "open": 107555.47,
-            "high": 111797.11,
-            "low": 106007.96,
-            "close": 108121.28,
+            "open": 107438.47,
+            "high": 111678.91,
+            "low": 105944.96,
+            "close": 108043.98,
             "holding": 102405.4
         },
         {
             "date": "2022-05-15",
-            "open": 107555.47,
-            "high": 111797.11,
-            "low": 106007.96,
-            "close": 108121.28,
+            "open": 107438.47,
+            "high": 111678.91,
+            "low": 105944.96,
+            "close": 108043.98,
             "holding": 102405.4
         },
         {
             "date": "2022-05-16",
-            "open": 109441.31,
-            "high": 110179.1,
-            "low": 106685.77,
-            "close": 108962.43,
+            "open": 109324.31,
+            "high": 110060.9,
+            "low": 106622.77,
+            "close": 108885.13,
             "holding": 102405.4
         },
         {
@@ -13194,6 +13194,14 @@
             "high": 223430.86,
             "low": 218696.21,
             "close": 220498.16,
+            "holding": 76895.36
+        },
+        {
+            "date": "2024-10-01",
+            "open": 220402.51,
+            "high": 223312.66,
+            "low": 218633.21,
+            "close": 220420.86,
             "holding": 76895.36
         }
     ],

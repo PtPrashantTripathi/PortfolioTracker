@@ -2,7 +2,7 @@
     "data_schema": [
         {
             "col_name": "date",
-            "data_type": "datetime64[ns, asia/kolkata]"
+            "data_type": "datetime64[ns, Asia/Kolkata]"
         },
         {
             "col_name": "open",
