@@ -2,19 +2,19 @@
     "data_schema": [
         {
             "col_name": "scrip_name",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "symbol",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "exchange",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "segment",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "datetime",
@@ -22,7 +22,7 @@
         },
         {
             "col_name": "side",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "quantity",

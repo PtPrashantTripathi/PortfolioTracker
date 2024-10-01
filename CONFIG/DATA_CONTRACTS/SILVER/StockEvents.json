@@ -2,15 +2,15 @@
     "data_schema": [
         {
             "col_name": "date",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "symbol",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "event",
-            "data_type": "object"
+            "data_type": "string"
         },
         {
             "col_name": "value",
