@@ -21,20 +21,21 @@ repos:
           - id: trailing-whitespace
 
     - repo: https://github.com/python-jsonschema/check-jsonschema
-      rev: 0.27.4
+      rev: 0.29.3
       hooks:
           - id: check-github-workflows
 
     - repo: https://github.com/codespell-project/codespell
-      rev: "v2.2.6"
+      rev: "v2.3.0"
       hooks:
           - id: codespell
 
     - repo: https://github.com/psf/black
-      rev: 24.4.2
+      rev: 24.8.0
       hooks:
           - id: black
             language_version: python3
+          - id: black-jupyter
 
     - repo: https://github.com/pycqa/isort
       rev: 5.13.2
@@ -44,10 +45,14 @@ repos:
             name: isort (python)
 
     - repo: https://github.com/nbQA-dev/nbQA
-      rev: 1.9.0
+      rev: 1.8.7
       hooks:
-        - id: nbqa-black
-        - id: nbqa-pyupgrade
-          args: ["--py37-plus"]
-        - id: nbqa-isort
-          args: ["--order-by-type", "--length-sort", "black"]
+          - id: nbqa-pyupgrade
+            args: ["--py37-plus"]
+          - id: nbqa-isort
+            args: ["--order-by-type", "--length-sort", "black"]
+
+    - repo: https://github.com/asottile/pyupgrade
+      rev: v3.17.0
+      hooks:
+          - id: pyupgrade
