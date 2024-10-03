@@ -1,7 +1,3 @@
-import "../../adminlte/js/jquery/jquery.js";
-import "../../adminlte/js/bootstrap/js/bootstrap.bundle.js";
-import "../../adminlte/js/adminlte.js";
-
 import {
     fetchApiData,
     priceFormat,
