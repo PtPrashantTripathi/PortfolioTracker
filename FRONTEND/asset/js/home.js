@@ -94,7 +94,18 @@ function loadHoldingTrandsChart(data) {
 }
 
 // Update the financial summary section
-function updateFinancialSummary(investedValue, currentValue, pnlValue) {
+function updateFinancialSummary(data) {
+    // Function to calculate profit/loss summary
+    const investedValue = data.reduce(
+        (sum, record) => sum + record.total_amount,
+        0
+    );
+    const currentValue = data.reduce(
+        (sum, record) => sum + record.close_amount,
+        0
+    );
+    const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
+
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
@@ -136,13 +147,7 @@ async function main() {
     );
     loadHoldingTrandsChart(holding_trands_data);
 
-    const { data: financial_summary } = await fetchApiData(
-        "financial_summary.json"
-    );
-    updateFinancialSummary(
-        financial_summary.invested_value,
-        financial_summary.current_value,
-        financial_summary.pnl_value
-    );
+    const { data } = await fetchApiData("current_holding_data.json");
+    updateFinancialSummary(data);
 }
 window.onload = main();
