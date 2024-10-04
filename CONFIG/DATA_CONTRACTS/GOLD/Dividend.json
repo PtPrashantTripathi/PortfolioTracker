@@ -1,6 +1,10 @@
 {
     "data_schema": [
         {
+            "col_name": "financial_year",
+            "data_type": "string"
+        },
+        {
             "col_name": "date",
             "data_type": "datetime64[ns]"
         },

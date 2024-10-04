@@ -1,5 +1,5 @@
 {
-    "load_timestamp": "2024-10-04 09:56:33.484468",
+    "load_timestamp": "2024-10-04 11:30:06.114242",
     "data": [
         {
             "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
@@ -19,13 +19,11 @@
                     "symbol": "BAJAJHFL",
                     "exchange": "NSE",
                     "segment": "EQ",
-                    "total_quantity": 214.0,
-                    "total_amount": 14980.0,
-                    "min_datetime": "2024-09-13 00:00:00",
-                    "avg_price": 70.0,
-                    "close_price": 150.6,
-                    "close_amount": 32228.4,
-                    "pnl_amount": 17248.4
+                    "datetime": "2024-09-13 00:00:00",
+                    "side": "BUY",
+                    "quantity": 214.0,
+                    "price": 70.0,
+                    "amount": 14980.0
                 }
             ]
         },
@@ -47,13 +45,11 @@
                     "symbol": "IRCTC",
                     "exchange": "NSE",
                     "segment": "EQ",
-                    "total_quantity": 3.0,
-                    "total_amount": 2688.6,
-                    "min_datetime": "2024-06-04 12:19:21",
-                    "avg_price": 896.2,
-                    "close_price": 886.4,
-                    "close_amount": 2659.2,
-                    "pnl_amount": -29.4
+                    "datetime": "2024-06-04 12:19:21",
+                    "side": "BUY",
+                    "quantity": 3.0,
+                    "price": 896.2,
+                    "amount": 2688.6
                 }
             ]
         },
@@ -75,13 +71,11 @@
                     "symbol": "KPITTECH",
                     "exchange": "NSE",
                     "segment": "EQ",
-                    "total_quantity": 2.0,
-                    "total_amount": 3000.0,
-                    "min_datetime": "2024-06-13 13:58:03",
-                    "avg_price": 1500.0,
-                    "close_price": 1676.05,
-                    "close_amount": 3352.1,
-                    "pnl_amount": 352.1
+                    "datetime": "2024-06-13 13:58:03",
+                    "side": "BUY",
+                    "quantity": 2.0,
+                    "price": 1500.0,
+                    "amount": 3000.0
                 }
             ]
         },
@@ -103,13 +97,44 @@
                     "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
                     "exchange": "BMF",
                     "segment": "MF",
-                    "total_quantity": 76.61,
-                    "total_amount": 4000.27,
-                    "min_datetime": "2024-05-24 00:00:00",
-                    "avg_price": 52.22,
-                    "close_price": 56.0,
-                    "close_amount": 4290.16,
-                    "pnl_amount": 289.89
+                    "datetime": "2024-05-24 00:00:00",
+                    "side": "BUY",
+                    "quantity": 20.51,
+                    "price": 48.77,
+                    "amount": 1000.27
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-07-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 19.29,
+                    "price": 51.84,
+                    "amount": 999.99
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-08-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 18.61,
+                    "price": 53.74,
+                    "amount": 1000.1
+                },
+                {
+                    "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+                    "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-09-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 18.2,
+                    "price": 54.94,
+                    "amount": 999.91
                 }
             ]
         },
@@ -131,13 +156,44 @@
                     "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
                     "exchange": "BMF",
                     "segment": "MF",
-                    "total_quantity": 8.72,
-                    "total_amount": 4002.08,
-                    "min_datetime": "2024-05-24 00:00:00",
-                    "avg_price": 458.95,
-                    "close_price": 490.08,
-                    "close_amount": 4273.5,
-                    "pnl_amount": 271.42
+                    "datetime": "2024-05-24 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.33,
+                    "price": 428.89,
+                    "amount": 999.31
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-07-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.2,
+                    "price": 455.11,
+                    "amount": 1001.24
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-08-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.11,
+                    "price": 474.32,
+                    "amount": 1000.82
+                },
+                {
+                    "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+                    "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+                    "exchange": "BMF",
+                    "segment": "MF",
+                    "datetime": "2024-09-02 00:00:00",
+                    "side": "BUY",
+                    "quantity": 2.08,
+                    "price": 481.11,
+                    "amount": 1000.71
                 }
             ]
         },
@@ -159,13 +215,55 @@
                     "symbol": "TATAMOTORS",
                     "exchange": "NSE",
                     "segment": "EQ",
-                    "total_quantity": 100.0,
-                    "total_amount": 26100.4,
-                    "min_datetime": "2020-04-21 14:41:30",
-                    "avg_price": 261.0,
-                    "close_price": 925.7,
-                    "close_amount": 92570.0,
-                    "pnl_amount": 66469.6
+                    "datetime": "2020-04-21 14:41:30",
+                    "side": "BUY",
+                    "quantity": 14.0,
+                    "price": 75.1,
+                    "amount": 1051.4
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2020-05-04 14:33:45",
+                    "side": "BUY",
+                    "quantity": 5.0,
+                    "price": 83.8,
+                    "amount": 419.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2020-07-03 13:31:19",
+                    "side": "BUY",
+                    "quantity": 15.0,
+                    "price": 104.0,
+                    "amount": 1560.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2021-04-12 10:44:33",
+                    "side": "BUY",
+                    "quantity": 26.0,
+                    "price": 295.0,
+                    "amount": 7670.0
+                },
+                {
+                    "scrip_name": "TATA MOTORS",
+                    "symbol": "TATAMOTORS",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2022-05-11 11:50:35",
+                    "side": "BUY",
+                    "quantity": 40.0,
+                    "price": 385.0,
+                    "amount": 15400.0
                 }
             ]
         },
@@ -187,13 +285,33 @@
                     "symbol": "TATAPOWER",
                     "exchange": "NSE",
                     "segment": "EQ",
-                    "total_quantity": 150.0,
-                    "total_amount": 22124.0,
-                    "min_datetime": "2021-02-08 11:39:33",
-                    "avg_price": 147.49,
-                    "close_price": 471.8,
-                    "close_amount": 70770.0,
-                    "pnl_amount": 48646.0
+                    "datetime": "2021-02-08 11:39:33",
+                    "side": "BUY",
+                    "quantity": 53.0,
+                    "price": 90.0,
+                    "amount": 4770.0
+                },
+                {
+                    "scrip_name": "TATA POWER",
+                    "symbol": "TATAPOWER",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2021-02-22 11:44:35",
+                    "side": "BUY",
+                    "quantity": 33.0,
+                    "price": 90.0,
+                    "amount": 2970.0
+                },
+                {
+                    "scrip_name": "TATA POWER",
+                    "symbol": "TATAPOWER",
+                    "exchange": "NSE",
+                    "segment": "EQ",
+                    "datetime": "2022-05-11 11:58:14",
+                    "side": "BUY",
+                    "quantity": 64.0,
+                    "price": 224.75,
+                    "amount": 14384.0
                 }
             ]
         }

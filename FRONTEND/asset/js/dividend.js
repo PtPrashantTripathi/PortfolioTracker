@@ -7,26 +7,31 @@ import {
 } from "./render.js";
 
 // Load ApexCharts chart
-function loadDividendChart(yearWiseData) {
-    const financial_year = yearWiseData.map((item) => item.financial_year);
-    const dividendAmounts = yearWiseData.map((item) => item.dividend_amount);
+function loadDividendChart(data) {
+    const yearWiseData = Object.groupBy(data, (item) => item.financial_year);
+    const financialYears = Object.keys(yearWiseData).sort((a, b) =>
+        a.localeCompare(b)
+    );
+    const dividendAmounts = financialYears.map((financial_year) =>
+        yearWiseData[financial_year].reduce(
+            (sum, item) => sum + item.dividend_amount,
+            0
+        )
+    );
 
     const options = {
         chart: {
             type: "bar",
-
             height: 350,
         },
         series: [
             {
                 name: "Dividend Amount",
-
                 data: dividendAmounts,
             },
         ],
         xaxis: {
-            categories: financial_year,
-
+            categories: financialYears,
             title: {
                 text: "Financial Year",
             },
@@ -81,21 +86,39 @@ function loadDividendChart(yearWiseData) {
     return chart;
 }
 
-function loadDividendDataTable(stockWiseData) {
+function loadDividendDataTable(data) {
     // Extract unique fy and sort them in ascending order
     const uniqueFY = Array.from(
-        new Set(
-            stockWiseData.flatMap((item) =>
-                item.data.map((subItem) => subItem.financial_year)
-            )
-        )
+        new Set(data.map((item) => item.financial_year))
     ).sort((a, b) => a.localeCompare(b));
 
     const headers = ["Stock Name", ...uniqueFY, "Total"];
 
+    // Group data by 'symbol' and 'segment'
+    const stockWiseData = Object.entries(
+        Object.groupBy(data, (item) => `${item.symbol} (${item.segment})`)
+    ).map(([symbol, symbolGroup]) => ({
+        symbol,
+        dividend_amount: symbolGroup.reduce(
+            (sum, item) => sum + item.dividend_amount,
+            0
+        ),
+        data: Object.entries(
+            Object.groupBy(symbolGroup, (item) => item.financial_year)
+        ).map(([financial_year, fyGroup]) => ({
+            financial_year,
+            dividend_amount: fyGroup.reduce(
+                (sum, item) => sum + item.dividend_amount,
+                0
+            ),
+        })),
+    }));
+
+    stockWiseData.sort((a, b) => a.symbol.localeCompare(b.symbol));
+
     // Constructing objects with symbols and dividend amounts for each year
     const cellData = stockWiseData.map((record) => {
-        const result = [createCell(`${record.symbol} (${record.segment})`)];
+        const result = [createCell(record.symbol)];
 
         // Add dividend amounts for each unique year
         uniqueFY.forEach((fy) => {
@@ -123,21 +146,22 @@ function loadDividendDataTable(stockWiseData) {
     // Load the data into the DataTable
     loadDataTable("DividendTable", headers, cellData);
 }
-function updateDividendSummary(yearWiseData) {
+
+function updateDividendSummary(data) {
     // Calculate the sum of dividend_amount
-    const totalDividendAmount = yearWiseData.reduce(
+    const totalDividendAmount = data.reduce(
         (sum, item) => sum + item.dividend_amount,
         0
     );
     document.getElementById("totalDividend").textContent =
         priceFormat(totalDividendAmount);
 }
+
 async function main() {
-    const { data: dividend_data, load_timestamp } = await fetchApiData(
-        "dividend_data.json"
-    );
-    loadDividendDataTable(dividend_data.stock_wise);
-    loadDividendChart(dividend_data.year_wise);
-    updateDividendSummary(dividend_data.year_wise);
+    const { data, load_timestamp } = await fetchApiData("dividend_data.json");
+    loadDividendDataTable(data);
+    loadDividendChart(data);
+    updateDividendSummary(data);
 }
-window.onload = main();
+
+window.onload = main;
