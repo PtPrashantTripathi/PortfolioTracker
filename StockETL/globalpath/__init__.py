@@ -1,4 +1,5 @@
 import os
+import shutil
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -79,6 +80,22 @@ class GlobalPath:
             full_path.parent.mkdir(parents=True, exist_ok=True)
         else:  # If the path is a directory
             full_path.mkdir(parents=True, exist_ok=True)
+
+    @staticmethod
+    def del_dir(directory_path):
+        """
+        Deletes the specified directory and all its contents, including files and subdirectories.
+
+        Args:
+            directory (Path): A Path object representing the directory to delete.
+
+        Returns:
+            None
+        """
+        # Check if the directory exists and is a directory
+        if directory_path.exists() and directory_path.is_dir():
+            # Recursively delete the entire directory and its contents
+            shutil.rmtree(directory_path)
 
 
 if __name__ == "__main__":

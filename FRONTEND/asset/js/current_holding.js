@@ -1,11 +1,12 @@
-import "../../adminlte/js/jquery/jquery.js";
-import "../../adminlte/js/bootstrap/js/bootstrap.bundle.js";
-import "../../adminlte/js/adminlte.js";
 import {
     fetchApiData,
     priceFormat,
     parseNum,
     renderSummary,
+    createCell,
+    calcDays,
+    loadDataTable,
+    updated_header_footer,
 } from "./render.js";
 
 // Load current holding table
@@ -22,7 +23,42 @@ function loadCurrentHoldingDataTable(data) {
         "Holding Days",
     ];
 
-    const cellData = data.map((record) => {
+    const currentHoldingData = Object.entries(
+        Object.groupBy(
+            data,
+            (item) => `${item.segment}-${item.exchange}-${item.symbol}`
+        )
+    ).map(([key, group]) => {
+        const total_quantity = group.reduce(
+            (sum, item) => sum + item.quantity,
+            0
+        );
+        const total_amount = group.reduce((sum, item) => sum + item.amount, 0);
+        const close_price = group[0].close_price;
+        const close_amount = close_price * total_quantity;
+
+        return {
+            key,
+            scrip_name: group[0].scrip_name,
+            symbol: group[0].symbol,
+            exchange: group[0].exchange,
+            segment: group[0].segment,
+            total_quantity,
+            total_amount, // Ensure total_amount is included
+            avg_price: total_quantity ? total_amount / total_quantity : 0, // Avoid division by zero
+            close_price,
+            close_amount,
+            pnl_amount: close_amount - total_amount,
+            min_datetime: new Date(
+                Math.min(...group.map((item) => new Date(item.datetime)))
+            ),
+            history: group,
+        };
+    });
+
+    currentHoldingData.sort((a, b) => a.key.localeCompare(b.key));
+
+    const cellData = currentHoldingData.map((record) => {
         const pnlClass = record.pnl_amount < 0 ? "text-danger" : "text-success";
         return [
             createCell(
@@ -49,7 +85,15 @@ function loadCurrentHoldingDataTable(data) {
 }
 
 // Update the financial summary section
-function updateFinancialSummary(investedValue, currentValue, pnlValue) {
+function updateFinancialSummary(data) {
+    // Function to calculate profit/loss summary
+    const investedValue = data.reduce((sum, record) => sum + record.amount, 0);
+    const currentValue = data.reduce(
+        (sum, record) => sum + record.close_amount,
+        0
+    );
+    const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
+
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
@@ -86,12 +130,11 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 }
 
 async function main() {
-    const apiData = await fetchApiData();
-    loadCurrentHoldingDataTable(apiData.current_holding_data);
-    updateFinancialSummary(
-        apiData.financial_summary.invested_value,
-        apiData.financial_summary.current_value,
-        apiData.financial_summary.pnl_value
+    const { data, load_timestamp } = await fetchApiData(
+        "current_holding_data.json"
     );
+    loadCurrentHoldingDataTable(data);
+    updateFinancialSummary(data);
+    updated_header_footer(load_timestamp);
 }
 window.onload = main();

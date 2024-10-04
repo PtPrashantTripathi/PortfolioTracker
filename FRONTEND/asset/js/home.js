@@ -1,14 +1,10 @@
-import "../../adminlte/js/jquery/jquery.js";
-import "../../adminlte/js/bootstrap/js/bootstrap.bundle.js";
-import "../../adminlte/js/adminlte.js";
-
-// import ApexCharts from 'https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.esm.js';
-import ApexCharts from 'https://cdn.jsdelivr.net/npm/apexcharts/+esm';
+import ApexCharts from "https://cdn.jsdelivr.net/npm/apexcharts/+esm";
 import {
     fetchApiData,
     priceFormat,
     parseNum,
     renderSummary,
+    updated_header_footer,
 } from "./render.js";
 
 // Load ApexCharts chart
@@ -99,19 +95,27 @@ function loadHoldingTrandsChart(data) {
 }
 
 // Update the financial summary section
-function updateFinancialSummary(investedValue, currentValue, pnlValue) {
+function updateFinancialSummary(data) {
+    const latest_data = data.reduce((max, item) => {
+        return new Date(item.date) > new Date(max.date) ? item : max;
+    });
+
+    const pnlValue = latest_data.close - latest_data.holding;
+
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
         {
-            value: priceFormat(currentValue),
+            // currentValue
+            value: priceFormat(latest_data.close),
             label: "Total Assets Worth",
             colorClass: "bg-info",
             iconClass: "fas fa-coins",
             href: "current_holding.html#CurrentHoldingTable",
         },
         {
-            value: priceFormat(investedValue),
+            //investedValue
+            value: priceFormat(latest_data.holding),
             label: "Total Investment",
             colorClass: "bg-warning",
             iconClass: "fas fa-cart-shopping",
@@ -125,7 +129,9 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
             href: "current_holding.html#CurrentHoldingTable",
         },
         {
-            value: `${pnlIcon} ${parseNum((pnlValue * 100) / investedValue)}%`,
+            value: `${pnlIcon} ${parseNum(
+                (pnlValue * 100) / latest_data.holding
+            )}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-line",
@@ -136,13 +142,11 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 }
 
 async function main() {
-    const apiData = await fetchApiData();
-
-    loadHoldingTrandsChart(apiData.holding_trands_data);
-    updateFinancialSummary(
-        apiData.financial_summary.invested_value,
-        apiData.financial_summary.current_value,
-        apiData.financial_summary.pnl_value
+    const { data, load_timestamp } = await fetchApiData(
+        "holding_trands_data.json"
     );
+    loadHoldingTrandsChart(data);
+    updateFinancialSummary(data);
+    updated_header_footer(load_timestamp);
 }
 window.onload = main();

@@ -1,7 +1,3 @@
-import "../../adminlte/js/jquery/jquery.js";
-import "../../adminlte/js/bootstrap/js/bootstrap.bundle.js";
-import "../../adminlte/js/adminlte.js";
-
 import {
     fetchApiData,
     priceFormat,
@@ -9,10 +5,23 @@ import {
     renderSummary,
     createCell,
     loadDataTable,
+    calcDays,
+    updated_header_footer,
 } from "./render.js";
 
 // Update the P&L data summary section
-function updateProfitLossDataSummary(investedValue, soldValue, pnlValue) {
+function updateProfitLossDataSummary(data) {
+    // Function to calculate profit/loss summary
+    const investedValue = data.reduce(
+        (sum, record) => sum + record.open_amount,
+        0
+    );
+    const soldValue = data.reduce(
+        (sum, record) => sum + record.close_amount,
+        0
+    );
+    const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
+
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
@@ -43,8 +52,76 @@ function updateProfitLossDataSummary(investedValue, soldValue, pnlValue) {
     ];
     renderSummary("PNLSummary", summaryItems);
 }
-// Load profit/loss table
+
+// Process the raw data received from the Python DataFrame
+function processProfitLossData(data) {
+    // Parse dates and calculate days for each record
+    data.forEach((record) => {
+        record.open_datetime = new Date(record.open_datetime);
+        record.close_datetime = new Date(record.close_datetime);
+        record.days = Math.floor(
+            (record.close_datetime - record.open_datetime) /
+                (1000 * 60 * 60 * 24)
+        );
+
+        if (record.segment === "FO") {
+            record.close_price = record.pnl_amount / record.quantity;
+            record.close_amount = record.pnl_amount;
+            record.open_price = 0;
+            record.open_amount = 0;
+        }
+    });
+
+    // Group the data by segment, exchange, and symbol
+    const groupedData = Object.groupBy(
+        data,
+        (item) => `${item.segment}-${item.exchange}-${item.symbol}`
+    );
+
+    // Transform the grouped data into the desired format
+    const profitLossData = Object.keys(groupedData).map((key) => {
+        const group = groupedData[key];
+        const totalQuantity = group.reduce(
+            (sum, item) => sum + item.quantity,
+            0
+        );
+        const totalOpenAmount = group.reduce(
+            (sum, item) => sum + item.open_amount,
+            0
+        );
+        const totalCloseAmount = group.reduce(
+            (sum, item) => sum + item.close_amount,
+            0
+        );
+
+        return {
+            segment: group[0].segment,
+            exchange: group[0].exchange,
+            symbol: group[0].symbol,
+
+            min_datetime: new Date(
+                Math.min(...group.map((item) => new Date(item.open_datetime)))
+            ),
+            max_datetime: new Date(
+                Math.max(...group.map((item) => new Date(item.close_datetime)))
+            ),
+            quantity: totalQuantity,
+            open_amount: totalOpenAmount,
+            close_amount: totalCloseAmount,
+            avg_price: totalOpenAmount / totalQuantity,
+            sell_price: totalCloseAmount / totalQuantity,
+            pnl: group.reduce((sum, item) => sum + item.pnl_amount, 0),
+            history: group,
+        };
+    });
+
+    return profitLossData;
+}
+
+// Call this function to load the table once you have processed data
 function loadProfitLossDataTable(data) {
+    const processedData = processProfitLossData(data);
+
     const headers = [
         "Stock Name",
         "Qty.",
@@ -54,7 +131,8 @@ function loadProfitLossDataTable(data) {
         "PNL Percentage",
         "Holding Days",
     ];
-    const cellData = data.map((record) => {
+
+    const cellData = processedData.map((record) => {
         const pnlFlag = record.pnl < 0;
         return [
             createCell(`${record.symbol} (${record.segment})`),
@@ -71,18 +149,18 @@ function loadProfitLossDataTable(data) {
                 )}%`,
                 pnlFlag ? ["text-danger"] : ["text-success"]
             ),
-            createCell(record.days),
+            createCell(calcDays(record.min_datetime, record.max_datetime)),
         ];
     });
     loadDataTable("ProfitLossTable", headers, cellData);
 }
+
 async function main() {
-    const apiData = await fetchApiData();
-    loadProfitLossDataTable(apiData.profit_loss_data);
-    updateProfitLossDataSummary(
-        apiData.profitloss_summary.invested_value,
-        apiData.profitloss_summary.sold_value,
-        apiData.profitloss_summary.pnl_value
+    const { data: profit_loss_data, load_timestamp } = await fetchApiData(
+        "profit_loss_data.json"
     );
+    loadProfitLossDataTable(profit_loss_data);
+    updateProfitLossDataSummary(profit_loss_data);
+    updated_header_footer(load_timestamp);
 }
 window.onload = main();
