@@ -2,7 +2,7 @@
 
 ### Stock ETL with Medallion Architecture https://github.com/PtPrashantTripathi/PortfolioTracker
 
-[![ci](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/ci.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/ci.yml) [![cd](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/cd.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/cd.yml)
+[![data_update](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/data_update.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/data_update.yml) [![deploy_github_pages](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/deploy_github_pages.yml/badge.svg)](https://github.com/PtPrashantTripathi/PortfolioTracker/actions/workflows/deploy_github_pages.yml)
 
 **Description:**
 

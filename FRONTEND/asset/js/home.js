@@ -1,4 +1,4 @@
-import ApexCharts from 'https://cdn.jsdelivr.net/npm/apexcharts/+esm';
+import ApexCharts from "https://cdn.jsdelivr.net/npm/apexcharts/+esm";
 import {
     fetchApiData,
     priceFormat,
@@ -131,13 +131,18 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 }
 
 async function main() {
-    const apiData = await fetchApiData();
+    const { data: holding_trands_data, load_timestamp } = await fetchApiData(
+        "holding_trands_data.json"
+    );
+    loadHoldingTrandsChart(holding_trands_data);
 
-    loadHoldingTrandsChart(apiData.holding_trands_data);
+    const { data: financial_summary } = await fetchApiData(
+        "financial_summary.json"
+    );
     updateFinancialSummary(
-        apiData.financial_summary.invested_value,
-        apiData.financial_summary.current_value,
-        apiData.financial_summary.pnl_value
+        financial_summary.invested_value,
+        financial_summary.current_value,
+        financial_summary.pnl_value
     );
 }
 window.onload = main();

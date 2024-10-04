@@ -1,5 +1,5 @@
 # Workflow for deploying static content to GitHub Pages
-name: CD
+name: Deploy Github Pages
 
 on:
   # Trigger workflow on pushes to the 'main' branch, limited to changes in 'FRONTEND' or workflow files
@@ -48,7 +48,7 @@ jobs:
       - name: Update API Path in render.js
         run: |
           echo "Replacing local API path with live URL..."
-          sed -i 's|../DATA/API/API_data.json|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/API_data.json|' ./FRONTEND/asset/js/render.js
+          sed -i 's|../DATA/API|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API|' ./FRONTEND/asset/js/render.js
 
       # Step 4: Upload static site content from 'FRONTEND' directory as an artifact
       - name: Upload static site content

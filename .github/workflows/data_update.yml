@@ -1,5 +1,5 @@
 # Continuous Integration workflow for automated monthly data updates
-name: CI
+name: Data Update
 
 on:
   # Schedule to run on the 1st day of every month at midnight UTC

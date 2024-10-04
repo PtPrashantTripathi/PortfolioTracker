@@ -133,9 +133,11 @@ function updateDividendSummary(yearWiseData) {
         priceFormat(totalDividendAmount);
 }
 async function main() {
-    const apiData = await fetchApiData();
-    loadDividendDataTable(apiData.dividend_data.stock_wise);
-    loadDividendChart(apiData.dividend_data.year_wise);
-    updateDividendSummary(apiData.dividend_data.year_wise);
+    const { data: dividend_data, load_timestamp } = await fetchApiData(
+        "dividend_data.json"
+    );
+    loadDividendDataTable(dividend_data.stock_wise);
+    loadDividendChart(dividend_data.year_wise);
+    updateDividendSummary(dividend_data.year_wise);
 }
 window.onload = main();

@@ -84,14 +84,21 @@ export function renderSummary(elementId, summaryItems) {
         .join("");
 }
 
-export async function fetchApiData() {
+export async function fetchApiData(name) {
     try {
-        const apiPath = "../DATA/API/API_data.json";
+        if (name === undefined) {
+            throw new Error("Parameter 'name' is required");
+        }
+        // IMPORTANT: Do not modify this variable `apiPath`. It will be automatically updated during production deployment
+        // via the GitHub Actions workflow defined in ./.github/workflows/deploy_github_pages.yml
+        const apiPath = `../DATA/API/${name}`;
         const apiResponse = await fetch(apiPath);
 
         // Validate HTTP response status
         if (!apiResponse.ok) {
-            throw new Error(`HTTP error! status: ${apiResponse.status}`);
+            throw new Error(
+                `HTTP error!\napi_path: ${apiPath}\nstatus: ${apiResponse.status}`
+            );
         }
 
         // Parse and return the JSON data

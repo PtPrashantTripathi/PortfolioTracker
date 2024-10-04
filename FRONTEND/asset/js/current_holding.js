@@ -5,7 +5,7 @@ import {
     renderSummary,
     createCell,
     calcDays,
-    loadDataTable
+    loadDataTable,
 } from "./render.js";
 
 // Load current holding table
@@ -86,12 +86,18 @@ function updateFinancialSummary(investedValue, currentValue, pnlValue) {
 }
 
 async function main() {
-    const apiData = await fetchApiData();
-    loadCurrentHoldingDataTable(apiData.current_holding_data);
+    const { data: current_holding_data, load_timestamp } = await fetchApiData(
+        "current_holding_data.json"
+    );
+    loadCurrentHoldingDataTable(current_holding_data);
+
+    const { data: financial_summary } = await fetchApiData(
+        "financial_summary.json"
+    );
     updateFinancialSummary(
-        apiData.financial_summary.invested_value,
-        apiData.financial_summary.current_value,
-        apiData.financial_summary.pnl_value
+        financial_summary.invested_value,
+        financial_summary.current_value,
+        financial_summary.pnl_value
     );
 }
 window.onload = main();
