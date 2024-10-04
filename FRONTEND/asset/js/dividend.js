@@ -4,6 +4,7 @@ import {
     priceFormat,
     loadDataTable,
     createCell,
+    updated_header_footer,
 } from "./render.js";
 
 // Load ApexCharts chart
@@ -162,6 +163,7 @@ async function main() {
     loadDividendDataTable(data);
     loadDividendChart(data);
     updateDividendSummary(data);
+    updated_header_footer(load_timestamp);
 }
 
 window.onload = main;

@@ -4,6 +4,7 @@ import {
     priceFormat,
     parseNum,
     renderSummary,
+    updated_header_footer,
 } from "./render.js";
 
 // Load ApexCharts chart
@@ -95,29 +96,26 @@ function loadHoldingTrandsChart(data) {
 
 // Update the financial summary section
 function updateFinancialSummary(data) {
-    // Function to calculate profit/loss summary
-    const investedValue = data.reduce(
-        (sum, record) => sum + record.total_amount,
-        0
-    );
-    const currentValue = data.reduce(
-        (sum, record) => sum + record.close_amount,
-        0
-    );
-    const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
+    const latest_data = data.reduce((max, item) => {
+        return new Date(item.date) > new Date(max.date) ? item : max;
+    });
+
+    const pnlValue = latest_data.close - latest_data.holding;
 
     const pnlClass = pnlValue > 0 ? "bg-success" : "bg-danger";
     const pnlIcon = pnlValue > 0 ? "▲" : "▼";
     const summaryItems = [
         {
-            value: priceFormat(currentValue),
+            // currentValue
+            value: priceFormat(latest_data.close),
             label: "Total Assets Worth",
             colorClass: "bg-info",
             iconClass: "fas fa-coins",
             href: "current_holding.html#CurrentHoldingTable",
         },
         {
-            value: priceFormat(investedValue),
+            //investedValue
+            value: priceFormat(latest_data.holding),
             label: "Total Investment",
             colorClass: "bg-warning",
             iconClass: "fas fa-cart-shopping",
@@ -131,7 +129,9 @@ function updateFinancialSummary(data) {
             href: "current_holding.html#CurrentHoldingTable",
         },
         {
-            value: `${pnlIcon} ${parseNum((pnlValue * 100) / investedValue)}%`,
+            value: `${pnlIcon} ${parseNum(
+                (pnlValue * 100) / latest_data.holding
+            )}%`,
             label: "Overall Return",
             colorClass: pnlClass,
             iconClass: "fas fa-chart-line",
@@ -142,12 +142,11 @@ function updateFinancialSummary(data) {
 }
 
 async function main() {
-    const { data: holding_trands_data, load_timestamp } = await fetchApiData(
+    const { data, load_timestamp } = await fetchApiData(
         "holding_trands_data.json"
     );
-    loadHoldingTrandsChart(holding_trands_data);
-
-    const { data } = await fetchApiData("current_holding_data.json");
+    loadHoldingTrandsChart(data);
     updateFinancialSummary(data);
+    updated_header_footer(load_timestamp);
 }
 window.onload = main();

@@ -109,3 +109,69 @@ export async function fetchApiData(name) {
         throw error; // Re-throw the error for further handling
     }
 }
+
+export function updated_header_footer(last_updated_on) {
+    // Create a Date object from the date string
+    last_updated_on = new Date(last_updated_on);
+
+    // Create and append the last-modified meta tag
+    document
+        .querySelector("meta[http-equiv='last-modified']")
+        .setAttribute("content", last_updated_on.toUTCString());
+
+    // Create and append Open Graph updated time
+    document
+        .querySelector("meta[property='og:updated_time']")
+        .setAttribute("content", last_updated_on.toUTCString());
+
+    // Create and append Twitter updated time
+    document
+        .querySelector("meta[name='twitter:updated_time']")
+        .setAttribute("content", last_updated_on.toUTCString());
+
+    // Create and append Dublin Core date
+    document
+        .querySelector("meta[name='DC.date']")
+        .setAttribute("content", last_updated_on.toUTCString());
+
+    // Set structured data for last modified date
+    const jsonLdScript = document.querySelector(
+        "script[type='application/ld+json']"
+    );
+    jsonLdScript.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        url: window.location.href,
+        dateModified: last_updated_on.toISOString(),
+    });
+
+    // Display the last updated date in the body
+    const lastUpdatedElement = document.querySelector(".main-footer");
+    lastUpdatedElement.innerHTML = `
+    <div class="row">
+        <div class="col">
+            <b>Copyright</b> © 2023-${new Date().getFullYear()}
+            <a
+                href="https://github.com/ptprashanttripathi/PortfolioTracker"
+                >@PtPrashantTripathi</a
+            >
+            <br />All rights reserved.
+        </div>
+        <div class="col text-right">
+            <strong>Last updated On :</strong> ${last_updated_on.toLocaleString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                    timeZone: "Asia/Calcutta",
+                    timeZoneName: "short",
+                }
+            )}
+        </div>
+    </div>
+    `;
+}

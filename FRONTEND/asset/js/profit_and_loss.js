@@ -5,6 +5,8 @@ import {
     renderSummary,
     createCell,
     loadDataTable,
+    calcDays,
+    updated_header_footer,
 } from "./render.js";
 
 // Update the P&L data summary section
@@ -73,7 +75,7 @@ function processProfitLossData(data) {
     // Group the data by segment, exchange, and symbol
     const groupedData = Object.groupBy(
         data,
-        ({ segment, exchange, symbol }) => `${segment}-${exchange}-${symbol}`
+        (item) => `${item.segment}-${item.exchange}-${item.symbol}`
     );
 
     // Transform the grouped data into the desired format
@@ -91,35 +93,25 @@ function processProfitLossData(data) {
             (sum, item) => sum + item.close_amount,
             0
         );
-        const totalPnl = group.reduce((sum, item) => sum + item.pnl_amount, 0);
 
         return {
             segment: group[0].segment,
             exchange: group[0].exchange,
             symbol: group[0].symbol,
-            days: Math.floor(
-                (group[group.length - 1].close_datetime -
-                    group[0].open_datetime) /
-                    (1000 * 60 * 60 * 24)
+
+            min_datetime: new Date(
+                Math.min(...group.map((item) => new Date(item.open_datetime)))
+            ),
+            max_datetime: new Date(
+                Math.max(...group.map((item) => new Date(item.close_datetime)))
             ),
             quantity: totalQuantity,
+            open_amount: totalOpenAmount,
+            close_amount: totalCloseAmount,
             avg_price: totalOpenAmount / totalQuantity,
             sell_price: totalCloseAmount / totalQuantity,
-            pnl: totalPnl,
-            history: group.map((item) => ({
-                scrip_name: item.scrip_name,
-                position: item.position,
-                quantity: item.quantity,
-                days: item.days,
-                open_datetime: item.open_datetime,
-                open_price: item.open_price,
-                open_amount: item.open_amount,
-                close_datetime: item.close_datetime,
-                close_price: item.close_price,
-                close_amount: item.close_amount,
-                pnl_amount: item.pnl_amount,
-                pnl_percentage: item.pnl_percentage,
-            })),
+            pnl: group.reduce((sum, item) => sum + item.pnl_amount, 0),
+            history: group,
         };
     });
 
@@ -157,7 +149,7 @@ function loadProfitLossDataTable(data) {
                 )}%`,
                 pnlFlag ? ["text-danger"] : ["text-success"]
             ),
-            createCell(record.days),
+            createCell(calcDays(record.min_datetime, record.max_datetime)),
         ];
     });
     loadDataTable("ProfitLossTable", headers, cellData);
@@ -169,5 +161,6 @@ async function main() {
     );
     loadProfitLossDataTable(profit_loss_data);
     updateProfitLossDataSummary(profit_loss_data);
+    updated_header_footer(load_timestamp);
 }
 window.onload = main();
