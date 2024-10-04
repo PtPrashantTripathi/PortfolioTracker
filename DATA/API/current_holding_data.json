@@ -25,9 +25,9 @@
             "quantity": 3.0,
             "price": 896.2,
             "amount": 2688.6,
-            "close_price": 886.4,
-            "close_amount": 2659.2,
-            "pnl_amount": -29.4
+            "close_price": 872.75,
+            "close_amount": 2618.25,
+            "pnl_amount": -70.35
         },
         {
             "scrip_name": "KPIT TECHNOLOGIES LTD",
@@ -39,9 +39,9 @@
             "quantity": 2.0,
             "price": 1500.0,
             "amount": 3000.0,
-            "close_price": 1676.05,
-            "close_amount": 3352.1,
-            "pnl_amount": 352.1
+            "close_price": 1691.25,
+            "close_amount": 3382.5,
+            "pnl_amount": 382.5
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -53,9 +53,9 @@
             "quantity": 14.0,
             "price": 75.1,
             "amount": 1051.4,
-            "close_price": 925.7,
-            "close_amount": 12959.8,
-            "pnl_amount": 11908.4
+            "close_price": 930.75,
+            "close_amount": 13030.5,
+            "pnl_amount": 11979.1
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -67,9 +67,9 @@
             "quantity": 5.0,
             "price": 83.8,
             "amount": 419.0,
-            "close_price": 925.7,
-            "close_amount": 4628.5,
-            "pnl_amount": 4209.5
+            "close_price": 930.75,
+            "close_amount": 4653.75,
+            "pnl_amount": 4234.75
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -81,9 +81,9 @@
             "quantity": 15.0,
             "price": 104.0,
             "amount": 1560.0,
-            "close_price": 925.7,
-            "close_amount": 13885.5,
-            "pnl_amount": 12325.5
+            "close_price": 930.75,
+            "close_amount": 13961.25,
+            "pnl_amount": 12401.25
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -95,9 +95,9 @@
             "quantity": 26.0,
             "price": 295.0,
             "amount": 7670.0,
-            "close_price": 925.7,
-            "close_amount": 24068.2,
-            "pnl_amount": 16398.2
+            "close_price": 930.75,
+            "close_amount": 24199.5,
+            "pnl_amount": 16529.5
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -109,9 +109,9 @@
             "quantity": 40.0,
             "price": 385.0,
             "amount": 15400.0,
-            "close_price": 925.7,
-            "close_amount": 37028.0,
-            "pnl_amount": 21628.0
+            "close_price": 930.75,
+            "close_amount": 37230.0,
+            "pnl_amount": 21830.0
         },
         {
             "scrip_name": "TATA POWER",
@@ -123,9 +123,9 @@
             "quantity": 53.0,
             "price": 90.0,
             "amount": 4770.0,
-            "close_price": 471.8,
-            "close_amount": 25005.4,
-            "pnl_amount": 20235.4
+            "close_price": 466.65,
+            "close_amount": 24732.45,
+            "pnl_amount": 19962.45
         },
         {
             "scrip_name": "TATA POWER",
@@ -137,9 +137,9 @@
             "quantity": 33.0,
             "price": 90.0,
             "amount": 2970.0,
-            "close_price": 471.8,
-            "close_amount": 15569.4,
-            "pnl_amount": 12599.4
+            "close_price": 466.65,
+            "close_amount": 15399.45,
+            "pnl_amount": 12429.45
         },
         {
             "scrip_name": "TATA POWER",
@@ -151,9 +151,9 @@
             "quantity": 64.0,
             "price": 224.75,
             "amount": 14384.0,
-            "close_price": 471.8,
-            "close_amount": 30195.2,
-            "pnl_amount": 15811.2
+            "close_price": 466.65,
+            "close_amount": 29865.6,
+            "pnl_amount": 15481.6
         },
         {
             "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
