@@ -64,5 +64,13 @@
             "col_name": "pnl_percentage",
             "data_type": "float64"
         }
+    ],
+    "order_by": [
+        "segment",
+        "exchange",
+        "symbol",
+        "scrip_name",
+        "close_datetime",
+        "open_datetime"
     ]
 }

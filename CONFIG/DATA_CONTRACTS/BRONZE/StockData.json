@@ -36,5 +36,7 @@
             "col_name": "capital_gains",
             "data_type": "float64"
         }
-    ]
+    ],
+    "data_source": "BRONZE",
+    "object_name": "StockData"
 }

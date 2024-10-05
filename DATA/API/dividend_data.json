@@ -1,5 +1,4 @@
 {
-    "load_timestamp": "2024-10-04 11:30:06.114242",
     "data": [
         {
             "financial_year": "FY2021-22",
@@ -113,5 +112,6 @@
             "symbol": "IRCTC",
             "dividend_amount": 12.0
         }
-    ]
+    ],
+    "load_timestamp": "2024-10-04 11:30:06.114242"
 }

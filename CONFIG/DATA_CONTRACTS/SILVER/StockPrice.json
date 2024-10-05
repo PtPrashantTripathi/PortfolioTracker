@@ -28,5 +28,9 @@
             "col_name": "volume",
             "data_type": "float64"
         }
+    ],
+    "order_by": [
+        "symbol",
+        "date"
     ]
 }

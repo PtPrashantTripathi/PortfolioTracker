@@ -36,5 +36,12 @@
             "col_name": "amount",
             "data_type": "float64"
         }
+    ],
+    "order_by": [
+        "segment",
+        "exchange",
+        "symbol",
+        "scrip_name",
+        "datetime"
     ]
 }
