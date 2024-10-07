@@ -4,10 +4,9 @@ from pathlib import Path
 import nbformat
 from nbconvert import PythonExporter
 
+
 class Notebook:
-    def convert_notebook_to_python(
-        self, notebook_path: Path, temp_py_file: Path
-    ):
+    def convert_notebook_to_python(self, notebook_path: Path, temp_py_file: Path):
         """
         Converts a Jupyter notebook to a Python script.
 
@@ -17,14 +16,12 @@ class Notebook:
         """
         try:
             # Read the notebook
-            with open(notebook_path, "r", encoding="utf-8") as nb_file:
+            with open(notebook_path, encoding="utf-8") as nb_file:
                 notebook_content = nbformat.read(nb_file, as_version=4)
 
             # Convert the notebook to Python code
             python_exporter = PythonExporter()
-            python_code, _ = python_exporter.from_notebook_node(
-                notebook_content
-            )
+            python_code, _ = python_exporter.from_notebook_node(notebook_content)
 
             # Write the Python code to a temporary file
             with open(temp_py_file, "w", encoding="utf-8") as py_file:
@@ -32,9 +29,7 @@ class Notebook:
 
             print(f"Notebook converted to Python file: {temp_py_file}")
         except Exception as e:
-            print(
-                f"Error while converting notebook {notebook_path} to Python: {e}"
-            )
+            print(f"Error while converting notebook {notebook_path} to Python: {e}")
 
     def run_python_file(self, py_file_path: Path):
         """
@@ -53,9 +48,7 @@ class Notebook:
             # Print the output of the script
             print(result.stdout)
         except subprocess.CalledProcessError as e:
-            print(
-                f"Error occurred while running the script {py_file_path}: {e.stderr}"
-            )
+            print(f"Error occurred while running the script {py_file_path}: {e.stderr}")
 
     def delete_temp_file(self, file_path: Path):
         """
@@ -86,8 +79,7 @@ def run_notebooks():
         notebook_path
         for notebook_path in Path("NOTEBOOKS").rglob("*.ipynb")
         if not any(
-            ignored_folder in notebook_path.parts
-            for ignored_folder in ignored_folders
+            ignored_folder in notebook_path.parts for ignored_folder in ignored_folders
         )  # Exclude notebooks in the ignored folders
     ]
 
