@@ -1,5 +1,4 @@
 {
-    "load_timestamp": "2024-10-04 11:30:06.114242",
     "data": [
         {
             "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
@@ -165,9 +164,9 @@
             "quantity": 20.51,
             "price": 48.77,
             "amount": 1000.27,
-            "close_price": 56.0,
-            "close_amount": 1148.56,
-            "pnl_amount": 148.29
+            "close_price": 54.46,
+            "close_amount": 1116.97,
+            "pnl_amount": 116.7
         },
         {
             "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -179,9 +178,9 @@
             "quantity": 19.29,
             "price": 51.84,
             "amount": 999.99,
-            "close_price": 56.0,
-            "close_amount": 1080.24,
-            "pnl_amount": 80.25
+            "close_price": 54.46,
+            "close_amount": 1050.53,
+            "pnl_amount": 50.54
         },
         {
             "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -193,9 +192,9 @@
             "quantity": 18.61,
             "price": 53.74,
             "amount": 1000.1,
-            "close_price": 56.0,
-            "close_amount": 1042.16,
-            "pnl_amount": 42.06
+            "close_price": 54.46,
+            "close_amount": 1013.5,
+            "pnl_amount": 13.4
         },
         {
             "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
@@ -207,9 +206,23 @@
             "quantity": 18.2,
             "price": 54.94,
             "amount": 999.91,
-            "close_price": 56.0,
-            "close_amount": 1019.2,
-            "pnl_amount": 19.29
+            "close_price": 54.46,
+            "close_amount": 991.17,
+            "pnl_amount": -8.74
+        },
+        {
+            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
+            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
+            "exchange": "BMF",
+            "segment": "MF",
+            "datetime": "2024-10-03 00:00:00",
+            "side": "BUY",
+            "quantity": 18.22,
+            "price": 54.89,
+            "amount": 1000.1,
+            "close_price": 54.46,
+            "close_amount": 992.26,
+            "pnl_amount": -7.84
         },
         {
             "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -221,9 +234,9 @@
             "quantity": 2.33,
             "price": 428.89,
             "amount": 999.31,
-            "close_price": 490.08,
-            "close_amount": 1141.89,
-            "pnl_amount": 142.58
+            "close_price": 478.4,
+            "close_amount": 1114.67,
+            "pnl_amount": 115.36
         },
         {
             "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -235,9 +248,9 @@
             "quantity": 2.2,
             "price": 455.11,
             "amount": 1001.24,
-            "close_price": 490.08,
-            "close_amount": 1078.18,
-            "pnl_amount": 76.94
+            "close_price": 478.4,
+            "close_amount": 1052.48,
+            "pnl_amount": 51.24
         },
         {
             "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -249,9 +262,9 @@
             "quantity": 2.11,
             "price": 474.32,
             "amount": 1000.82,
-            "close_price": 490.08,
-            "close_amount": 1034.07,
-            "pnl_amount": 33.25
+            "close_price": 478.4,
+            "close_amount": 1009.42,
+            "pnl_amount": 8.6
         },
         {
             "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
@@ -263,9 +276,24 @@
             "quantity": 2.08,
             "price": 481.11,
             "amount": 1000.71,
-            "close_price": 490.08,
-            "close_amount": 1019.37,
-            "pnl_amount": 18.66
+            "close_price": 478.4,
+            "close_amount": 995.07,
+            "pnl_amount": -5.64
+        },
+        {
+            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
+            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
+            "exchange": "BMF",
+            "segment": "MF",
+            "datetime": "2024-10-03 00:00:00",
+            "side": "BUY",
+            "quantity": 2.07,
+            "price": 482.09,
+            "amount": 997.93,
+            "close_price": 478.4,
+            "close_amount": 990.29,
+            "pnl_amount": -7.64
         }
-    ]
+    ],
+    "load_timestamp": "2024-10-04 11:30:06.114242"
 }

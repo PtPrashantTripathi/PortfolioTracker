@@ -56,3 +56,11 @@ repos:
       rev: v3.17.0
       hooks:
           - id: pyupgrade
+
+    - repo: local
+      hooks:
+          - id: json-formatter
+            name: JSON Formatter
+            entry: ./bin/format_json
+            language: python
+            files: \.json$

@@ -20,5 +20,11 @@
             "col_name": "dividend_amount",
             "data_type": "float64"
         }
+    ],
+    "order_by": [
+        "financial_year",
+        "date",
+        "segment",
+        "symbol"
     ]
 }

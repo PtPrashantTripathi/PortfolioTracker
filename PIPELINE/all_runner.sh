@@ -40,4 +40,4 @@ execute_notebook ./NOTEBOOKS/03_GOLD_LAYER_ETL/03_Dividend.ipynb
 execute_notebook ./NOTEBOOKS/04_API_LAYER_ETL/01_API.ipynb
 
 # 05_PRESENTATION_LAYER (commented out, uncomment if needed)
-execute_notebook ./NOTEBOOKS/05_PRESENTATION_LAYER/01_Trands.ipynb
+# execute_notebook ./NOTEBOOKS/05_PRESENTATION_LAYER/01_Trands.ipynb

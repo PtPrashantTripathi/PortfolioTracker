@@ -24,5 +24,9 @@
             "col_name": "isin_reinvestment",
             "data_type": "string"
         }
+    ],
+    "order_by": [
+        "instrument_type",
+        "scrip_name"
     ]
 }
