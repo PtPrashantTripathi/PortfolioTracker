@@ -1948,7 +1948,7 @@
             "open_datetime": "2024-09-18 10:48:57",
             "open_side": "BUY",
             "open_price": 80.0,
-            "open_amount": 2000.0,
+            "open_amount": 0.0,
             "close_datetime": "2024-09-19 09:46:38",
             "close_side": "SELL",
             "close_price": 118.95,
