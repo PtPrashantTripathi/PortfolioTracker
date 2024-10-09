@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.19] - 2024-10-09
+
+- **Introduced** a comprehensive brokerage calculation tool for accurate stock market transaction cost analysis.
+
 ## [0.4.22] - 2024-10-04
 
 - **Added** advanced financial analysis tools for in-depth stock performance insights.
