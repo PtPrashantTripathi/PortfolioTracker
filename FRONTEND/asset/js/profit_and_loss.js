@@ -111,6 +111,7 @@ function processProfitLossData(data) {
             avg_price: totalOpenAmount / totalQuantity,
             sell_price: totalCloseAmount / totalQuantity,
             pnl: group.reduce((sum, item) => sum + item.pnl_amount, 0),
+            brokerage: group.reduce((sum, item) => sum + item.brokerage, 0),
             history: group,
         };
     });
@@ -129,6 +130,7 @@ function loadProfitLossDataTable(data) {
         "Sell Price",
         "Realized PNL",
         "PNL Percentage",
+        "<a href='#footnote'>Brokerage<b>*</b></a>",
         "Holding Days",
     ];
 
@@ -149,6 +151,7 @@ function loadProfitLossDataTable(data) {
                 )}%`,
                 pnlFlag ? ["text-danger"] : ["text-success"]
             ),
+            createCell(priceFormat(record.brokerage)),
             createCell(calcDays(record.min_datetime, record.max_datetime)),
         ];
     });

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.19] - 2024-10-09
+
+- **Introduced** a comprehensive brokerage calculation tool for accurate stock market transaction cost analysis.
+
 ## [0.4.22] - 2024-10-04
 
 - **Added** advanced financial analysis tools for in-depth stock performance insights.
@@ -15,9 +19,9 @@ All notable changes to this project will be documented in this file.
 ## [0.3.4] - 2024-09-26
 
 - **Enhanced** error handling during data extraction from stock exchanges.
-- **Added** support for additional stock market indices and customizable ETL pipelines.
+- **Added** support for additional stock market indices and customizable ETL PIPELINES.
 
 ## [0.3.1] - 2024-09-24
 
-- **Completed** ETL pipeline for stock exchanges and introduced PNL amount calculations.
+- **Completed** ETL PIPELINES for stock exchanges and introduced PNL amount calculations.
 - **Added** new financial metrics to support portfolio analysis.

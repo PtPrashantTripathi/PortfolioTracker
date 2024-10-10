@@ -46,7 +46,7 @@ jobs:
       - name: Run Jupyter notebooks
         run: |
           echo "Running all Jupyter notebooks..."
-          bash ./PIPELINE/all_runner.sh
+          bash ./PIPELINES/all_runner.sh
 
       # Step 6: Create a pull request with the data updates
       - name: Create Pull Request

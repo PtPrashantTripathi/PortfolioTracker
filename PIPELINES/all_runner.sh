@@ -1,6 +1,6 @@
 #!/bin/bash
 # Shell script for Linux/macOS
-# Location : ./PIPELINE/all_runner.sh
+# Location : ./PIPELINES/all_runner.sh
 
 # DATA CLEAN UP
 # rm -rf DATA/BRONZE

@@ -63,6 +63,10 @@
         {
             "col_name": "pnl_percentage",
             "data_type": "float64"
+        },
+        {
+            "col_name": "brokerage",
+            "data_type": "float64"
         }
     ],
     "order_by": [
