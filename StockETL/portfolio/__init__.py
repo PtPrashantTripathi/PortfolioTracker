@@ -1,5 +1,5 @@
 import copy
-from typing import Dict, List, Self, Union, Optional
+from typing import Dict, List, Self, Union, Literal, Optional
 from datetime import time, datetime
 
 __all__ = [
@@ -161,9 +161,9 @@ class TradeRecord:
                 if open_position.price != 0
                 else None
             ),
-            brokerage=Brokerage.calc(
+            brokerage=Brokerage.calculate_brokerage(
                 open_position=open_position, close_position=close_position
-            ),
+            ).round(2),
         )
 
     def __repr__(self):
@@ -176,130 +176,195 @@ class TradeRecord:
             f"price={self.price}, "
         )
 
+
 class Brokerage:
     """Brokerage Class"""
-
-    ALL_BROKERAGE_RATES = {
-        "Intraday": {
-            "brokerage": 40,
-            "stt": 0.025,
-            "ctt": 1e-4,
-            "transaction_charges": 0.00345,
-            "sebi_charges": 5e-05,
-            "stamp_duty": 0.003,
-        },
-        "Delivery": {
-            "brokerage": 40,
-            "stt": 0.001,
-            "ctt": 0,
-            "transaction_charges": 0.00345,
-            "sebi_charges": 5e-05,
-            "stamp_duty": 0.015,
-        },
-        "Futures": {
-            "brokerage": 40,
-            "stt": 1e-4,
-            "ctt": 0,
-            "transaction_charges": 0.002,
-            "sebi_charges": 5e-05,
-            "stamp_duty": 0.002,
-        },
-        "Options": {
-            "brokerage": 40,
-            "stt": 5e-4,
-            "ctt": 0,
-            "transaction_charges": 0.053,
-            "sebi_charges": 5e-05,
-            "stamp_duty": 0.003,
-        },
-    }
 
     def __init__(
         self,
         brokerage_charges: Union[float, int] = 0,
         transaction_charges: Union[float, int] = 0,
-        clearing_charges: Union[float, int] = 0,
-        sebi_turnover_charges: Union[float, int] = 0,
+        sebi_charges: Union[float, int] = 0,
         gst_tax: Union[float, int] = 0,
         stt_ctt_tax: Union[float, int] = 0,
         stamp_duty_tax: Union[float, int] = 0,
         total: Union[float, int] = 0,
     ):
-        """init"""
+        """The instance of the Brokerage class."""
         self.brokerage_charges = brokerage_charges
         self.transaction_charges = transaction_charges
-        self.clearing_charges = clearing_charges
-        self.sebi_turnover_charges = sebi_turnover_charges
+        self.sebi_charges = sebi_charges
         self.gst_tax = gst_tax
         self.stt_ctt_tax = stt_ctt_tax
         self.stamp_duty_tax = stamp_duty_tax
         self.total = total
 
     @staticmethod
-    def calc(
-        open_position: TradeRecord,
-        close_position: TradeRecord,
-        brokerage_rates: Optional[Dict] = None,
+    def calculate_brokerage(
+        open_position: TradeRecord, close_position: TradeRecord
     ) -> Self:
         """Calculate brokerage"""
+
         brokerage = Brokerage()
-        if brokerage_rates is None:
-            if (
-                open_position.stock_info.exchange in ["NSE", "BSE"]
-                and open_position.stock_info.segment == "EQ"
-            ):
-                brokerage_rates = Brokerage.ALL_BROKERAGE_RATES["Delivery"]
-            elif (
-                open_position.stock_info.exchange in ["FON"]
-                and open_position.stock_info.segment == "FO"
-            ):
-                brokerage_rates = Brokerage.ALL_BROKERAGE_RATES["Options"]
-            else:
-                brokerage_rates = {}
+        brokerage_rates = brokerage.get_brokerage_rates(close_position.stock_info)
 
-        # Calculate the turnover as the sum of open and close amounts
-        turnover = close_position.amount + open_position.amount
-        avg_price = turnover / (close_position.quantity * 2)
+        # BROKERAGE CHARGES
+        if close_position.stock_info.segment in ["FO"]:
+            brokerage.brokerage_charges = 40
+        else:
+            brokerage.brokerage_charges = min(
+                (brokerage_rates.get("brokerage", 0) * open_position.amount) / 100, 20
+            ) + min(
+                (brokerage_rates.get("brokerage", 0) * close_position.amount) / 100, 20
+            )
 
-        # Assign brokerage and other charges
-        brokerage.brokerage_charges = brokerage_rates.get("brokerage", 0)
-        brokerage.transaction_charges = turnover * brokerage_rates.get(
-            "transaction_charges", 0
-        )
-        brokerage.sebi_turnover_charges = turnover * brokerage_rates.get(
-            "sebi_charges", 0
-        )
+        # STT CTT TAX
         brokerage.stt_ctt_tax = (
-            close_position.quantity
-            * avg_price
-            * (brokerage_rates.get("stt", 0) + brokerage_rates.get("ctt", 0))
-        )
+            brokerage_rates.get("stt", {}).get("buy", 0) * open_position.amount
+            + brokerage_rates.get("stt", {}).get("sell", 0) * close_position.amount
+        ) / 100
+
+        # SEBI CHARGES
+        brokerage.sebi_charges = (
+            (open_position.amount + close_position.amount)
+            * brokerage_rates.get("sebi_charges", 0)
+        ) / 100
+
+        # EXCHANGE CHARGES
+        brokerage.transaction_charges = (
+            (open_position.amount + close_position.amount)
+            * brokerage_rates.get("transaction_charges", {}).get(
+                close_position.stock_info.exchange, 0
+            )
+        ) / 100
+
+        # STAMP DUTY
         brokerage.stamp_duty_tax = (
-            close_position.quantity * avg_price * brokerage_rates.get("stamp_duty", 0)
+            (brokerage_rates.get("stamp_duty", 0))
+            * open_position.quantity
+            * open_position.price
+        ) / 100
+
+        brokerage.gst_tax = (
+            (brokerage.brokerage_charges + brokerage.transaction_charges) * 18 / 100
         )
+
         brokerage.total = (
             brokerage.brokerage_charges
             + brokerage.transaction_charges
-            + brokerage.clearing_charges
-            + brokerage.sebi_turnover_charges
+            + brokerage.sebi_charges
             + brokerage.stt_ctt_tax
             + brokerage.stamp_duty_tax
+            + brokerage.gst_tax
         )
-        brokerage.gst_tax = brokerage.total * 18 / 100
-        brokerage.total += brokerage.gst_tax
         return brokerage
+
+    def get_brokerage_rates(
+        self,
+        stock_info: StockInfo,
+        brokerage_type: Optional[
+            Literal[
+                "eq_intraday",
+                "eq_delivery",
+                "future",
+                "option",
+                "commodity_future",
+                "commodity_option",
+            ]
+        ] = None,
+    ) -> Dict:
+        """
+        Returns the brokerage rates for a specific stock based on the brokerage type.
+        Args:
+            stock_info(StockInfo): "Information about the stock, including details required for calculating brokerage.",
+            brokerage_type(Literal['eq_intraday', 'eq_delivery', 'future', 'option', 'commodity_future', 'commodity_option']) : The type of brokerage to calculate (e.g., equity intraday, future, option, etc.). If not provided, defaults to None.
+        Returns:
+            A dictionary containing the brokerage rates for the specified stock and brokerage type.
+        """
+
+        all_brokerage_rates = {
+            "eq_intraday": {
+                "brokerage": 0.05,
+                "stamp_duty": 0.003,
+                "stt": {"buy": 0, "sell": 0.025},
+                "transaction_charges": {
+                    "nse": 0.00322,
+                    "bse": 0.00297,
+                },
+                "sebi_charges": 0.0001,
+            },
+            "eq_delivery": {
+                "brokerage": 0.05,
+                "stamp_duty": 0.015,
+                "stt": {"buy": 0.1, "sell": 0.1},
+                "transaction_charges": {
+                    "nse": 0.00322,
+                    "bse": 0.00297,
+                },
+                "sebi_charges": 0.0001,
+            },
+            "future": {
+                "brokerage": 20,
+                "stamp_duty": 0.002,
+                "stt": {"buy": 0, "sell": 0.02},
+                "transaction_charges": {
+                    "nse": 0.00188,
+                    "bse": 0,
+                },
+                "sebi_charges": 0.0001,
+            },
+            "option": {
+                "brokerage": 20,
+                "stamp_duty": 0.003,
+                "stt": {"buy": 0, "sell": 0.1},
+                "transaction_charges": {"nse": 0.0495, "bse": 0.0495},
+                "sebi_charges": 0.0001,
+            },
+            "commodity_future": {
+                "brokerage": 20,
+                "stamp_duty": 0.002,
+                "stt": {"buy": 0.01, "sell": 0},
+                "transaction_charges": {"nse": 0.0026, "bse": 0.0026},
+                "sebi_charges": 0.0001,
+            },
+            "commodity_option": {
+                "brokerage": 20,
+                "stamp_duty": 0.003,
+                "stt": {"buy": 0.05, "sell": 0},
+                "transaction_charges": {"nse": 0.05, "bse": 0.05},
+                "sebi_charges": 0.0001,
+            },
+        }
+        if brokerage_type is None:
+            if stock_info.exchange in ["NSE", "BSE"] and stock_info.segment == "EQ":
+                brokerage_type = "eq_delivery"
+            elif stock_info.exchange in ["FON"] and stock_info.segment == "FO":
+                brokerage_type = "option"
+            else:
+                brokerage_type = ""
+        return all_brokerage_rates.get(brokerage_type, {})
+
+    def round(self, decimal_places: int = 2) -> Self:
+        self.brokerage_charges = round(self.brokerage_charges, decimal_places)
+        self.transaction_charges = round(self.transaction_charges, decimal_places)
+        self.sebi_charges = round(self.sebi_charges, decimal_places)
+        self.gst_tax = round(self.gst_tax, decimal_places)
+        self.stt_ctt_tax = round(self.stt_ctt_tax, decimal_places)
+        self.stamp_duty_tax = round(self.stamp_duty_tax, decimal_places)
+        self.total = round(self.total, decimal_places)
+        return self
 
     def __repr__(self):
         return (
             f"Brokerage(brokerage_charges={self.brokerage_charges}, "
             f"transaction_charges={self.transaction_charges}, "
-            f"clearing_charges={self.clearing_charges}, "
-            f"sebi_turnover_charges={self.sebi_turnover_charges}, "
+            f"sebi_charges={self.sebi_charges}, "
             f"gst_tax={self.gst_tax}, "
             f"stt_ctt_tax={self.stt_ctt_tax}, "
             f"stamp_duty_tax={self.stamp_duty_tax}, "
             f"total={self.total})"
         )
+
 
 class TradePosition:
     """

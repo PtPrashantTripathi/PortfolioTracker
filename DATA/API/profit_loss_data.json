@@ -17,7 +17,7 @@
             "close_amount": 1130.0,
             "pnl_amount": -35.5,
             "pnl_percentage": -3.05,
-            "brokerage": 78.35
+            "brokerage": 3.83
         },
         {
             "exchange": "NSE",
@@ -36,7 +36,7 @@
             "close_amount": 565.0,
             "pnl_amount": 65.0,
             "pnl_percentage": 13.0,
-            "brokerage": 61.65
+            "brokerage": 1.77
         },
         {
             "exchange": "NSE",
@@ -55,7 +55,7 @@
             "close_amount": 14140.55,
             "pnl_amount": -5510.45,
             "pnl_percentage": -28.04,
-            "brokerage": 505.75
+            "brokerage": 56.71
         },
         {
             "exchange": "NSE",
@@ -74,7 +74,7 @@
             "close_amount": 84.06,
             "pnl_amount": 0.42,
             "pnl_percentage": 0.5,
-            "brokerage": 49.48
+            "brokerage": 0.28
         },
         {
             "exchange": "NSE",
@@ -93,7 +93,7 @@
             "close_amount": 9840.0,
             "pnl_amount": 2316.0,
             "pnl_percentage": 30.78,
-            "brokerage": 282.83
+            "brokerage": 28.75
         },
         {
             "exchange": "NSE",
@@ -112,7 +112,7 @@
             "close_amount": 8525.0,
             "pnl_amount": 1628.0,
             "pnl_percentage": 23.6,
-            "brokerage": 256.48
+            "brokerage": 25.57
         },
         {
             "exchange": "NSE",
@@ -131,7 +131,7 @@
             "close_amount": 193.0,
             "pnl_amount": 29.0,
             "pnl_percentage": 17.68,
-            "brokerage": 52.04
+            "brokerage": 0.59
         },
         {
             "exchange": "NSE",
@@ -150,7 +150,7 @@
             "close_amount": 482.5,
             "pnl_amount": 85.0,
             "pnl_percentage": 21.38,
-            "brokerage": 59.14
+            "brokerage": 1.46
         },
         {
             "exchange": "NSE",
@@ -169,7 +169,7 @@
             "close_amount": 4371.0,
             "pnl_amount": 67.2,
             "pnl_percentage": 1.56,
-            "brokerage": 164.92
+            "brokerage": 14.45
         },
         {
             "exchange": "NSE",
@@ -188,7 +188,7 @@
             "close_amount": 7285.0,
             "pnl_amount": 115.25,
             "pnl_percentage": 1.61,
-            "brokerage": 243.35
+            "brokerage": 24.07
         },
         {
             "exchange": "NSE",
@@ -207,7 +207,7 @@
             "close_amount": 10265.25,
             "pnl_amount": -3294.75,
             "pnl_percentage": -24.3,
-            "brokerage": 370.51
+            "brokerage": 39.94
         },
         {
             "exchange": "NSE",
@@ -226,7 +226,7 @@
             "close_amount": 168.95,
             "pnl_amount": 6.43,
             "pnl_percentage": 3.96,
-            "brokerage": 51.7
+            "brokerage": 0.55
         },
         {
             "exchange": "NSE",
@@ -245,7 +245,7 @@
             "close_amount": 1243.5,
             "pnl_amount": 255.0,
             "pnl_percentage": 25.8,
-            "brokerage": 77.49
+            "brokerage": 3.7
         },
         {
             "exchange": "NSE",
@@ -264,7 +264,7 @@
             "close_amount": 6104.0,
             "pnl_amount": 994.0,
             "pnl_percentage": 19.45,
-            "brokerage": 199.37
+            "brokerage": 18.61
         },
         {
             "exchange": "NSE",
@@ -283,7 +283,7 @@
             "close_amount": 20600.0,
             "pnl_amount": 5576.0,
             "pnl_percentage": 37.11,
-            "brokerage": 530.62
+            "brokerage": 58.93
         },
         {
             "exchange": "NSE",
@@ -302,7 +302,7 @@
             "close_amount": 4372.85,
             "pnl_amount": 2662.85,
             "pnl_percentage": 155.72,
-            "brokerage": 129.74
+            "brokerage": 9.93
         },
         {
             "exchange": "NSE",
@@ -321,7 +321,7 @@
             "close_amount": 3944.0,
             "pnl_amount": -292.0,
             "pnl_percentage": -6.89,
-            "brokerage": 158.2
+            "brokerage": 13.65
         },
         {
             "exchange": "NSE",
@@ -340,7 +340,7 @@
             "close_amount": 1300.0,
             "pnl_amount": 70.0,
             "pnl_percentage": 5.69,
-            "brokerage": 81.53
+            "brokerage": 4.21
         },
         {
             "exchange": "NSE",
@@ -359,7 +359,7 @@
             "close_amount": 650.0,
             "pnl_amount": 62.5,
             "pnl_percentage": 10.64,
-            "brokerage": 63.99
+            "brokerage": 2.06
         },
         {
             "exchange": "FON",
@@ -378,7 +378,7 @@
             "close_amount": 1547.5,
             "pnl_amount": 72.5,
             "pnl_percentage": 4.92,
-            "brokerage": 242.65
+            "brokerage": 48.79
         },
         {
             "exchange": "FON",
@@ -397,7 +397,7 @@
             "close_amount": 3877.5,
             "pnl_amount": 377.5,
             "pnl_percentage": 10.79,
-            "brokerage": 524.26
+            "brokerage": 51.19
         },
         {
             "exchange": "FON",
@@ -416,7 +416,7 @@
             "close_amount": 3391.25,
             "pnl_amount": 391.25,
             "pnl_percentage": 13.04,
-            "brokerage": 460.48
+            "brokerage": 50.69
         },
         {
             "exchange": "FON",
@@ -435,7 +435,7 @@
             "close_amount": 15100.0,
             "pnl_amount": 2600.0,
             "pnl_percentage": 20.8,
-            "brokerage": 1831.93
+            "brokerage": 62.7
         },
         {
             "exchange": "FON",
@@ -454,7 +454,7 @@
             "close_amount": 12830.0,
             "pnl_amount": 210.0,
             "pnl_percentage": 1.66,
-            "brokerage": 1692.9
+            "brokerage": 60.43
         },
         {
             "exchange": "FON",
@@ -473,7 +473,7 @@
             "close_amount": 1200.0,
             "pnl_amount": -48.75,
             "pnl_percentage": -3.9,
-            "brokerage": 205.55
+            "brokerage": 48.44
         },
         {
             "exchange": "FON",
@@ -492,7 +492,7 @@
             "close_amount": 1200.0,
             "pnl_amount": 450.0,
             "pnl_percentage": 60.0,
-            "brokerage": 173.29
+            "brokerage": 48.42
         },
         {
             "exchange": "FON",
@@ -511,7 +511,7 @@
             "close_amount": 627.5,
             "pnl_amount": -122.5,
             "pnl_percentage": -16.33,
-            "brokerage": 136.27
+            "brokerage": 47.85
         },
         {
             "exchange": "FON",
@@ -530,7 +530,7 @@
             "close_amount": 682.5,
             "pnl_amount": -67.5,
             "pnl_percentage": -9.0,
-            "brokerage": 139.83
+            "brokerage": 47.91
         },
         {
             "exchange": "FON",
@@ -549,7 +549,7 @@
             "close_amount": 600.0,
             "pnl_amount": -875.0,
             "pnl_percentage": -59.32,
-            "brokerage": 181.38
+            "brokerage": 47.85
         },
         {
             "exchange": "FON",
@@ -568,7 +568,7 @@
             "close_amount": 12100.0,
             "pnl_amount": 1190.0,
             "pnl_percentage": 10.91,
-            "brokerage": 1535.12
+            "brokerage": 59.65
         },
         {
             "exchange": "FON",
@@ -587,7 +587,7 @@
             "close_amount": 8842.5,
             "pnl_amount": 2792.5,
             "pnl_percentage": 46.16,
-            "brokerage": 1010.21
+            "brokerage": 56.24
         },
         {
             "exchange": "FON",
@@ -606,7 +606,7 @@
             "close_amount": 8750.0,
             "pnl_amount": 2700.0,
             "pnl_percentage": 44.63,
-            "brokerage": 1004.23
+            "brokerage": 56.15
         },
         {
             "exchange": "FON",
@@ -625,7 +625,7 @@
             "close_amount": 10052.5,
             "pnl_amount": 975.0,
             "pnl_percentage": 10.74,
-            "brokerage": 1284.22
+            "brokerage": 57.54
         },
         {
             "exchange": "FON",
@@ -644,7 +644,7 @@
             "close_amount": 10055.0,
             "pnl_amount": 977.5,
             "pnl_percentage": 10.77,
-            "brokerage": 1284.38
+            "brokerage": 57.55
         },
         {
             "exchange": "FON",
@@ -663,7 +663,7 @@
             "close_amount": 4792.5,
             "pnl_amount": 221.25,
             "pnl_percentage": 4.84,
-            "brokerage": 652.7
+            "brokerage": 52.14
         },
         {
             "exchange": "FON",
@@ -682,7 +682,7 @@
             "close_amount": 14373.75,
             "pnl_amount": 660.0,
             "pnl_percentage": 4.81,
-            "brokerage": 1863.45
+            "brokerage": 62.01
         },
         {
             "exchange": "FON",
@@ -701,7 +701,7 @@
             "close_amount": 8500.0,
             "pnl_amount": 0.0,
             "pnl_percentage": 0.0,
-            "brokerage": 1146.49
+            "brokerage": 55.97
         },
         {
             "exchange": "FON",
@@ -720,7 +720,7 @@
             "close_amount": 8500.0,
             "pnl_amount": 1250.0,
             "pnl_percentage": 17.24,
-            "brokerage": 1065.66
+            "brokerage": 55.93
         },
         {
             "exchange": "FON",
@@ -739,7 +739,7 @@
             "close_amount": 4596.25,
             "pnl_amount": 421.25,
             "pnl_percentage": 10.09,
-            "brokerage": 614.38
+            "brokerage": 51.93
         },
         {
             "exchange": "FON",
@@ -758,7 +758,7 @@
             "close_amount": 13792.5,
             "pnl_amount": 1267.5,
             "pnl_percentage": 10.12,
-            "brokerage": 1748.99
+            "brokerage": 61.39
         },
         {
             "exchange": "FON",
@@ -777,7 +777,7 @@
             "close_amount": 2257.5,
             "pnl_amount": -586.25,
             "pnl_percentage": -20.62,
-            "brokerage": 377.07
+            "brokerage": 49.55
         },
         {
             "exchange": "FON",
@@ -796,7 +796,7 @@
             "close_amount": 8812.5,
             "pnl_amount": 397.5,
             "pnl_percentage": 4.72,
-            "brokerage": 1161.2
+            "brokerage": 56.28
         },
         {
             "exchange": "FON",
@@ -815,7 +815,7 @@
             "close_amount": 13875.0,
             "pnl_amount": 1680.0,
             "pnl_percentage": 13.78,
-            "brokerage": 1732.99
+            "brokerage": 61.47
         },
         {
             "exchange": "FON",
@@ -834,7 +834,7 @@
             "close_amount": 1317.5,
             "pnl_amount": 67.5,
             "pnl_percentage": 5.4,
-            "brokerage": 213.22
+            "brokerage": 48.56
         },
         {
             "exchange": "FON",
@@ -853,7 +853,7 @@
             "close_amount": 2337.5,
             "pnl_amount": -162.5,
             "pnl_percentage": -6.5,
-            "brokerage": 360.01
+            "brokerage": 49.62
         },
         {
             "exchange": "FON",
@@ -872,7 +872,7 @@
             "close_amount": 14545.0,
             "pnl_amount": 2545.0,
             "pnl_percentage": 21.21,
-            "brokerage": 1763.71
+            "brokerage": 62.13
         },
         {
             "exchange": "FON",
@@ -891,7 +891,7 @@
             "close_amount": 3436.25,
             "pnl_amount": -63.75,
             "pnl_percentage": -1.82,
-            "brokerage": 495.73
+            "brokerage": 50.75
         },
         {
             "exchange": "FON",
@@ -910,7 +910,7 @@
             "close_amount": 3437.5,
             "pnl_amount": -62.5,
             "pnl_percentage": -1.79,
-            "brokerage": 495.81
+            "brokerage": 50.75
         },
         {
             "exchange": "FON",
@@ -929,7 +929,7 @@
             "close_amount": 6877.5,
             "pnl_amount": -122.5,
             "pnl_percentage": -1.75,
-            "brokerage": 944.57
+            "brokerage": 54.3
         },
         {
             "exchange": "FON",
@@ -948,7 +948,7 @@
             "close_amount": 498.75,
             "pnl_amount": 147.5,
             "pnl_percentage": 41.99,
-            "brokerage": 102.16
+            "brokerage": 47.71
         },
         {
             "exchange": "FON",
@@ -967,7 +967,7 @@
             "close_amount": 1561.25,
             "pnl_amount": -898.75,
             "pnl_percentage": -36.53,
-            "brokerage": 307.23
+            "brokerage": 48.84
         },
         {
             "exchange": "FON",
@@ -986,7 +986,7 @@
             "close_amount": 2135.0,
             "pnl_amount": -3840.0,
             "pnl_percentage": -64.27,
-            "brokerage": 571.63
+            "brokerage": 49.52
         },
         {
             "exchange": "FON",
@@ -1005,7 +1005,7 @@
             "close_amount": 2135.0,
             "pnl_amount": -1865.0,
             "pnl_percentage": -46.62,
-            "brokerage": 443.91
+            "brokerage": 49.46
         },
         {
             "exchange": "FON",
@@ -1024,7 +1024,7 @@
             "close_amount": 17565.0,
             "pnl_amount": 4215.0,
             "pnl_percentage": 31.57,
-            "brokerage": 2046.29
+            "brokerage": 65.2
         },
         {
             "exchange": "FON",
@@ -1043,7 +1043,7 @@
             "close_amount": 62.5,
             "pnl_amount": 45.0,
             "pnl_percentage": 41.86,
-            "brokerage": 58.19
+            "brokerage": 47.27
         },
         {
             "exchange": "FON",
@@ -1062,7 +1062,7 @@
             "close_amount": 1257.5,
             "pnl_amount": -980.0,
             "pnl_percentage": -43.8,
-            "brokerage": 273.2
+            "brokerage": 48.53
         },
         {
             "exchange": "FON",
@@ -1081,7 +1081,7 @@
             "close_amount": 2722.5,
             "pnl_amount": -2410.0,
             "pnl_percentage": -46.96,
-            "brokerage": 555.14
+            "brokerage": 50.08
         },
         {
             "exchange": "FON",
@@ -1100,7 +1100,7 @@
             "close_amount": 2723.75,
             "pnl_amount": -2408.75,
             "pnl_percentage": -46.93,
-            "brokerage": 555.22
+            "brokerage": 50.09
         },
         {
             "exchange": "FON",
@@ -1119,7 +1119,7 @@
             "close_amount": 5445.0,
             "pnl_amount": -4822.5,
             "pnl_percentage": -46.97,
-            "brokerage": 1063.23
+            "brokerage": 52.97
         },
         {
             "exchange": "FON",
@@ -1138,7 +1138,7 @@
             "close_amount": 7125.0,
             "pnl_amount": 2357.5,
             "pnl_percentage": 49.45,
-            "brokerage": 816.22
+            "brokerage": 54.48
         },
         {
             "exchange": "FON",
@@ -1157,7 +1157,7 @@
             "close_amount": 8710.0,
             "pnl_amount": 3745.0,
             "pnl_percentage": 75.43,
-            "brokerage": 931.48
+            "brokerage": 56.07
         },
         {
             "exchange": "FON",
@@ -1176,7 +1176,7 @@
             "close_amount": 1411.25,
             "pnl_amount": -340.0,
             "pnl_percentage": -19.41,
-            "brokerage": 251.7
+            "brokerage": 48.67
         },
         {
             "exchange": "FON",
@@ -1195,7 +1195,7 @@
             "close_amount": 1411.25,
             "pnl_amount": -341.25,
             "pnl_percentage": -19.47,
-            "brokerage": 251.78
+            "brokerage": 48.67
         },
         {
             "exchange": "FON",
@@ -1214,7 +1214,7 @@
             "close_amount": 4000.0,
             "pnl_amount": -1000.0,
             "pnl_percentage": -20.0,
-            "brokerage": 629.18
+            "brokerage": 51.36
         },
         {
             "exchange": "FON",
@@ -1233,7 +1233,7 @@
             "close_amount": 5100.0,
             "pnl_amount": 3385.0,
             "pnl_percentage": 197.38,
-            "brokerage": 487.89
+            "brokerage": 52.36
         },
         {
             "exchange": "FON",
@@ -1252,7 +1252,7 @@
             "close_amount": 2850.0,
             "pnl_amount": 350.0,
             "pnl_percentage": 14.0,
-            "brokerage": 393.15
+            "brokerage": 50.13
         },
         {
             "exchange": "FON",
@@ -1271,7 +1271,7 @@
             "close_amount": 750.0,
             "pnl_amount": -2750.0,
             "pnl_percentage": -78.57,
-            "brokerage": 322.02
+            "brokerage": 48.06
         },
         {
             "exchange": "FON",
@@ -1290,7 +1290,7 @@
             "close_amount": 1125.0,
             "pnl_amount": 125.0,
             "pnl_percentage": 12.5,
-            "brokerage": 184.61
+            "brokerage": 48.36
         },
         {
             "exchange": "FON",
@@ -1309,7 +1309,7 @@
             "close_amount": 1391.25,
             "pnl_amount": -817.5,
             "pnl_percentage": -37.01,
-            "brokerage": 279.99
+            "brokerage": 48.66
         },
         {
             "exchange": "FON",
@@ -1328,7 +1328,7 @@
             "close_amount": 1065.0,
             "pnl_amount": -845.0,
             "pnl_percentage": -44.24,
-            "brokerage": 239.58
+            "brokerage": 48.33
         },
         {
             "exchange": "FON",
@@ -1347,7 +1347,7 @@
             "close_amount": 325.0,
             "pnl_amount": -377.5,
             "pnl_percentage": -53.74,
-            "brokerage": 113.64
+            "brokerage": 47.55
         },
         {
             "exchange": "FON",
@@ -1366,7 +1366,7 @@
             "close_amount": 325.0,
             "pnl_amount": -380.0,
             "pnl_percentage": -53.9,
-            "brokerage": 113.8
+            "brokerage": 47.55
         },
         {
             "exchange": "FON",
@@ -1385,7 +1385,7 @@
             "close_amount": 6250.0,
             "pnl_amount": 250.0,
             "pnl_percentage": 4.17,
-            "brokerage": 839.33
+            "brokerage": 53.64
         },
         {
             "exchange": "FON",
@@ -1404,7 +1404,7 @@
             "close_amount": 7927.5,
             "pnl_amount": 897.5,
             "pnl_percentage": 12.77,
-            "brokerage": 1014.41
+            "brokerage": 55.35
         },
         {
             "exchange": "FON",
@@ -1423,7 +1423,7 @@
             "close_amount": 535.0,
             "pnl_amount": -330.0,
             "pnl_percentage": -38.15,
-            "brokerage": 137.73
+            "brokerage": 47.76
         },
         {
             "exchange": "FON",
@@ -1442,7 +1442,7 @@
             "close_amount": 372.5,
             "pnl_amount": 6.25,
             "pnl_percentage": 1.71,
-            "brokerage": 94.97
+            "brokerage": 47.58
         },
         {
             "exchange": "FON",
@@ -1461,7 +1461,7 @@
             "close_amount": 4250.0,
             "pnl_amount": -1000.0,
             "pnl_percentage": -19.05,
-            "brokerage": 661.51
+            "brokerage": 51.62
         },
         {
             "exchange": "FON",
@@ -1480,7 +1480,7 @@
             "close_amount": 8910.0,
             "pnl_amount": 1410.0,
             "pnl_percentage": 18.8,
-            "brokerage": 1108.34
+            "brokerage": 56.35
         },
         {
             "exchange": "FON",
@@ -1499,7 +1499,7 @@
             "close_amount": 7975.0,
             "pnl_amount": 60.0,
             "pnl_percentage": 0.76,
-            "brokerage": 1074.71
+            "brokerage": 55.43
         },
         {
             "exchange": "FON",
@@ -1518,7 +1518,7 @@
             "close_amount": 2260.0,
             "pnl_amount": 388.75,
             "pnl_percentage": 20.77,
-            "brokerage": 314.34
+            "brokerage": 49.52
         },
         {
             "exchange": "FON",
@@ -1537,7 +1537,7 @@
             "close_amount": 2260.0,
             "pnl_amount": 388.75,
             "pnl_percentage": 20.77,
-            "brokerage": 314.34
+            "brokerage": 49.52
         },
         {
             "exchange": "FON",
@@ -1556,7 +1556,7 @@
             "close_amount": 4525.0,
             "pnl_amount": 782.5,
             "pnl_percentage": 20.91,
-            "brokerage": 581.81
+            "brokerage": 51.85
         },
         {
             "exchange": "FON",
@@ -1575,7 +1575,7 @@
             "close_amount": 4950.0,
             "pnl_amount": -2550.0,
             "pnl_percentage": -34.0,
-            "brokerage": 852.27
+            "brokerage": 52.39
         },
         {
             "exchange": "FON",
@@ -1594,7 +1594,7 @@
             "close_amount": 1600.0,
             "pnl_amount": 725.0,
             "pnl_percentage": 82.86,
-            "brokerage": 207.24
+            "brokerage": 48.83
         },
         {
             "exchange": "FON",
@@ -1613,7 +1613,7 @@
             "close_amount": 0.0,
             "pnl_amount": -47.5,
             "pnl_percentage": -100.0,
-            "brokerage": 50.27
+            "brokerage": 47.2
         },
         {
             "exchange": "FON",
@@ -1632,7 +1632,7 @@
             "close_amount": 4760.0,
             "pnl_amount": 760.0,
             "pnl_percentage": 19.0,
-            "brokerage": 613.66
+            "brokerage": 52.09
         },
         {
             "exchange": "FON",
@@ -1651,7 +1651,7 @@
             "close_amount": 2018.75,
             "pnl_amount": 143.75,
             "pnl_percentage": 7.67,
-            "brokerage": 298.99
+            "brokerage": 49.28
         },
         {
             "exchange": "FON",
@@ -1670,7 +1670,7 @@
             "close_amount": 6060.0,
             "pnl_amount": 435.0,
             "pnl_percentage": 7.73,
-            "brokerage": 802.8
+            "brokerage": 53.44
         },
         {
             "exchange": "FON",
@@ -1689,7 +1689,7 @@
             "close_amount": 830.0,
             "pnl_amount": 330.0,
             "pnl_percentage": 66.0,
-            "brokerage": 133.2
+            "brokerage": 48.05
         },
         {
             "exchange": "FON",
@@ -1708,7 +1708,7 @@
             "close_amount": 34755.0,
             "pnl_amount": 4755.0,
             "pnl_percentage": 15.85,
-            "brokerage": 4234.52
+            "brokerage": 82.92
         },
         {
             "exchange": "FON",
@@ -1727,7 +1727,7 @@
             "close_amount": 3258.75,
             "pnl_amount": 766.25,
             "pnl_percentage": 30.74,
-            "brokerage": 419.1
+            "brokerage": 50.54
         },
         {
             "exchange": "FON",
@@ -1746,7 +1746,7 @@
             "close_amount": 3000.0,
             "pnl_amount": 500.0,
             "pnl_percentage": 20.0,
-            "brokerage": 402.85
+            "brokerage": 50.28
         },
         {
             "exchange": "FON",
@@ -1765,7 +1765,7 @@
             "close_amount": 10045.0,
             "pnl_amount": -8610.0,
             "pnl_percentage": -46.15,
-            "brokerage": 1903.06
+            "brokerage": 57.83
         },
         {
             "exchange": "FON",
@@ -1784,7 +1784,7 @@
             "close_amount": 10045.0,
             "pnl_amount": -3860.0,
             "pnl_percentage": -27.76,
-            "brokerage": 1595.9
+            "brokerage": 57.69
         },
         {
             "exchange": "FON",
@@ -1803,7 +1803,7 @@
             "close_amount": 17210.0,
             "pnl_amount": -740.0,
             "pnl_percentage": -4.12,
-            "brokerage": 2320.79
+            "brokerage": 64.98
         },
         {
             "exchange": "FON",
@@ -1822,7 +1822,7 @@
             "close_amount": 8605.0,
             "pnl_amount": 1605.0,
             "pnl_percentage": 22.93,
-            "brokerage": 1056.28
+            "brokerage": 56.03
         },
         {
             "exchange": "FON",
@@ -1841,7 +1841,7 @@
             "close_amount": 1435.0,
             "pnl_amount": 35.0,
             "pnl_percentage": 2.5,
-            "brokerage": 230.52
+            "brokerage": 48.68
         },
         {
             "exchange": "FON",
@@ -1860,7 +1860,7 @@
             "close_amount": 75.0,
             "pnl_amount": -450.0,
             "pnl_percentage": -85.71,
-            "brokerage": 86.0
+            "brokerage": 47.29
         },
         {
             "exchange": "FON",
@@ -1879,7 +1879,7 @@
             "close_amount": 4487.5,
             "pnl_amount": -527.5,
             "pnl_percentage": -10.52,
-            "brokerage": 661.67
+            "brokerage": 51.85
         },
         {
             "exchange": "FON",
@@ -1898,7 +1898,7 @@
             "close_amount": 4487.5,
             "pnl_amount": -12.5,
             "pnl_percentage": -0.28,
-            "brokerage": 628.37
+            "brokerage": 51.83
         },
         {
             "exchange": "FON",
@@ -1917,7 +1917,7 @@
             "close_amount": 8425.0,
             "pnl_amount": -260.0,
             "pnl_percentage": -2.99,
-            "brokerage": 1153.6
+            "brokerage": 55.9
         },
         {
             "exchange": "FON",
@@ -1936,7 +1936,7 @@
             "close_amount": 4912.5,
             "pnl_amount": 176.25,
             "pnl_percentage": 3.72,
-            "brokerage": 671.13
+            "brokerage": 52.26
         },
         {
             "exchange": "FON",
@@ -1955,7 +1955,7 @@
             "close_amount": 1035.0,
             "pnl_amount": 135.0,
             "pnl_percentage": 15.0,
-            "brokerage": 172.32
+            "brokerage": 48.26
         },
         {
             "exchange": "FON",
@@ -1974,7 +1974,7 @@
             "close_amount": 1813.75,
             "pnl_amount": 63.75,
             "pnl_percentage": 3.64,
-            "brokerage": 277.65
+            "brokerage": 49.07
         },
         {
             "exchange": "FON",
@@ -1993,7 +1993,7 @@
             "close_amount": 5310.0,
             "pnl_amount": 60.0,
             "pnl_percentage": 1.14,
-            "brokerage": 730.05
+            "brokerage": 52.68
         },
         {
             "exchange": "FON",
@@ -2012,7 +2012,7 @@
             "close_amount": 2968.75,
             "pnl_amount": 1343.75,
             "pnl_percentage": 82.69,
-            "brokerage": 344.25
+            "brokerage": 50.22
         },
         {
             "exchange": "FON",
@@ -2031,7 +2031,7 @@
             "close_amount": 8921.25,
             "pnl_amount": 4046.25,
             "pnl_percentage": 83.0,
-            "brokerage": 939.32
+            "brokerage": 56.28
         },
         {
             "exchange": "FON",
@@ -2050,7 +2050,7 @@
             "close_amount": 8921.25,
             "pnl_amount": 2921.25,
             "pnl_percentage": 48.69,
-            "brokerage": 1012.07
+            "brokerage": 56.32
         },
         {
             "exchange": "FON",
@@ -2069,7 +2069,7 @@
             "close_amount": 5927.5,
             "pnl_amount": 927.5,
             "pnl_percentage": 18.55,
-            "brokerage": 753.82
+            "brokerage": 53.29
         },
         {
             "exchange": "FON",
@@ -2088,7 +2088,7 @@
             "close_amount": 5927.5,
             "pnl_amount": 927.5,
             "pnl_percentage": 18.55,
-            "brokerage": 753.82
+            "brokerage": 53.29
         },
         {
             "exchange": "FON",
@@ -2107,7 +2107,7 @@
             "close_amount": 12000.0,
             "pnl_amount": 2000.0,
             "pnl_percentage": 20.0,
-            "brokerage": 1469.81
+            "brokerage": 59.52
         },
         {
             "exchange": "FON",
@@ -2126,7 +2126,7 @@
             "close_amount": 10007.5,
             "pnl_amount": 2007.5,
             "pnl_percentage": 25.09,
-            "brokerage": 1211.64
+            "brokerage": 57.47
         },
         {
             "exchange": "FON",
@@ -2145,7 +2145,7 @@
             "close_amount": 9490.0,
             "pnl_amount": -435.0,
             "pnl_percentage": -4.38,
-            "brokerage": 1302.65
+            "brokerage": 57.01
         },
         {
             "exchange": "FON",
@@ -2164,7 +2164,7 @@
             "close_amount": 9080.0,
             "pnl_amount": -640.0,
             "pnl_percentage": -6.58,
-            "brokerage": 1262.88
+            "brokerage": 56.59
         },
         {
             "exchange": "FON",
@@ -2183,7 +2183,7 @@
             "close_amount": 9080.0,
             "pnl_amount": 2080.0,
             "pnl_percentage": 29.71,
-            "brokerage": 1087.0
+            "brokerage": 56.51
         },
         {
             "exchange": "FON",
@@ -2202,7 +2202,7 @@
             "close_amount": 1497.5,
             "pnl_amount": 247.5,
             "pnl_percentage": 19.8,
-            "brokerage": 224.86
+            "brokerage": 48.74
         },
         {
             "exchange": "FON",
@@ -2221,7 +2221,7 @@
             "close_amount": 10491.25,
             "pnl_amount": 1741.25,
             "pnl_percentage": 19.9,
-            "brokerage": 1291.42
+            "brokerage": 57.97
         },
         {
             "exchange": "FON",
@@ -2240,7 +2240,7 @@
             "close_amount": 3200.0,
             "pnl_amount": 82.5,
             "pnl_percentage": 2.65,
-            "brokerage": 455.71
+            "brokerage": 50.5
         },
         {
             "exchange": "FON",
@@ -2259,7 +2259,7 @@
             "close_amount": 3523.75,
             "pnl_amount": 81.25,
             "pnl_percentage": 2.36,
-            "brokerage": 497.67
+            "brokerage": 50.83
         },
         {
             "exchange": "FON",
@@ -2278,7 +2278,7 @@
             "close_amount": 10571.25,
             "pnl_amount": 251.25,
             "pnl_percentage": 2.43,
-            "brokerage": 1398.11
+            "brokerage": 58.1
         },
         {
             "exchange": "FON",
@@ -2297,7 +2297,7 @@
             "close_amount": 2500.0,
             "pnl_amount": 625.0,
             "pnl_percentage": 33.33,
-            "brokerage": 330.1
+            "brokerage": 49.76
         },
         {
             "exchange": "FON",
@@ -2316,7 +2316,7 @@
             "close_amount": 1875.0,
             "pnl_amount": 750.0,
             "pnl_percentage": 66.67,
-            "brokerage": 241.19
+            "brokerage": 49.11
         },
         {
             "exchange": "FON",
@@ -2335,7 +2335,7 @@
             "close_amount": 1437.5,
             "pnl_amount": 178.75,
             "pnl_percentage": 14.2,
-            "brokerage": 221.55
+            "brokerage": 48.68
         },
         {
             "exchange": "FON",
@@ -2354,7 +2354,7 @@
             "close_amount": 185.0,
             "pnl_amount": -412.5,
             "pnl_percentage": -69.04,
-            "brokerage": 97.8
+            "brokerage": 47.4
         },
         {
             "exchange": "FON",
@@ -2373,7 +2373,7 @@
             "close_amount": 185.0,
             "pnl_amount": -227.5,
             "pnl_percentage": -55.15,
-            "brokerage": 85.84
+            "brokerage": 47.4
         },
         {
             "exchange": "FON",
@@ -2392,7 +2392,7 @@
             "close_amount": 3508.75,
             "pnl_amount": 383.75,
             "pnl_percentage": 12.28,
-            "brokerage": 476.16
+            "brokerage": 50.81
         },
         {
             "exchange": "FON",
@@ -2411,7 +2411,7 @@
             "close_amount": 2971.25,
             "pnl_amount": -278.75,
             "pnl_percentage": -8.58,
-            "brokerage": 449.49
+            "brokerage": 50.27
         },
         {
             "exchange": "FON",
@@ -2430,7 +2430,7 @@
             "close_amount": 3167.5,
             "pnl_amount": 367.5,
             "pnl_percentage": 13.13,
-            "brokerage": 433.08
+            "brokerage": 50.46
         },
         {
             "exchange": "FON",
@@ -2449,7 +2449,7 @@
             "close_amount": 5650.0,
             "pnl_amount": -4805.0,
             "pnl_percentage": -45.96,
-            "brokerage": 1088.61
+            "brokerage": 53.18
         },
         {
             "exchange": "FON",
@@ -2468,7 +2468,7 @@
             "close_amount": 2825.0,
             "pnl_amount": -325.0,
             "pnl_percentage": -10.32,
-            "brokerage": 433.57
+            "brokerage": 50.13
         },
         {
             "exchange": "FON",
@@ -2487,7 +2487,7 @@
             "close_amount": 2000.0,
             "pnl_amount": 250.0,
             "pnl_percentage": 14.29,
-            "brokerage": 289.69
+            "brokerage": 49.26
         },
         {
             "exchange": "FON",
@@ -2506,7 +2506,7 @@
             "close_amount": 6057.5,
             "pnl_amount": 57.5,
             "pnl_percentage": 0.96,
-            "brokerage": 826.89
+            "brokerage": 53.45
         },
         {
             "exchange": "FON",
@@ -2525,7 +2525,7 @@
             "close_amount": 6057.5,
             "pnl_amount": 100.0,
             "pnl_percentage": 1.68,
-            "brokerage": 824.14
+            "brokerage": 53.45
         },
         {
             "exchange": "FON",
@@ -2544,7 +2544,7 @@
             "close_amount": 8055.0,
             "pnl_amount": 25.0,
             "pnl_percentage": 0.31,
-            "brokerage": 1087.32
+            "brokerage": 55.51
         },
         {
             "exchange": "FON",
@@ -2563,7 +2563,7 @@
             "close_amount": 183.75,
             "pnl_amount": -186.25,
             "pnl_percentage": -50.34,
-            "brokerage": 83.01
+            "brokerage": 47.4
         },
         {
             "exchange": "FON",
@@ -2582,7 +2582,7 @@
             "close_amount": 783.75,
             "pnl_amount": -116.25,
             "pnl_percentage": -12.92,
-            "brokerage": 156.08
+            "brokerage": 48.01
         },
         {
             "exchange": "FON",
@@ -2601,7 +2601,7 @@
             "close_amount": 19020.0,
             "pnl_amount": 108.75,
             "pnl_percentage": 0.58,
-            "brokerage": 2499.99
+            "brokerage": 66.83
         },
         {
             "exchange": "FON",
@@ -2620,7 +2620,7 @@
             "close_amount": 2653.75,
             "pnl_amount": -796.25,
             "pnl_percentage": -23.08,
-            "brokerage": 441.89
+            "brokerage": 49.96
         },
         {
             "exchange": "FON",
@@ -2639,7 +2639,7 @@
             "close_amount": 5787.5,
             "pnl_amount": 25.0,
             "pnl_percentage": 0.43,
-            "brokerage": 794.07
+            "brokerage": 53.17
         },
         {
             "exchange": "FON",
@@ -2658,7 +2658,7 @@
             "close_amount": 1756.25,
             "pnl_amount": -185.0,
             "pnl_percentage": -9.53,
-            "brokerage": 286.3
+            "brokerage": 49.02
         },
         {
             "exchange": "FON",
@@ -2677,7 +2677,7 @@
             "close_amount": 1756.25,
             "pnl_amount": -186.25,
             "pnl_percentage": -9.59,
-            "brokerage": 286.38
+            "brokerage": 49.02
         },
         {
             "exchange": "FON",
@@ -2696,7 +2696,7 @@
             "close_amount": 0.0,
             "pnl_amount": -300.0,
             "pnl_percentage": -100.0,
-            "brokerage": 66.6
+            "brokerage": 47.21
         },
         {
             "exchange": "FON",
@@ -2715,7 +2715,7 @@
             "close_amount": 4443.75,
             "pnl_amount": 443.75,
             "pnl_percentage": 11.09,
-            "brokerage": 593.21
+            "brokerage": 51.77
         },
         {
             "exchange": "FON",
@@ -2734,7 +2734,7 @@
             "close_amount": 4196.25,
             "pnl_amount": 46.25,
             "pnl_percentage": 1.11,
-            "brokerage": 586.9
+            "brokerage": 51.53
         },
         {
             "exchange": "FON",
@@ -2753,7 +2753,7 @@
             "close_amount": 2627.5,
             "pnl_amount": -247.5,
             "pnl_percentage": -8.61,
-            "brokerage": 403.01
+            "brokerage": 49.92
         },
         {
             "exchange": "FON",
@@ -2772,7 +2772,7 @@
             "close_amount": 1278.75,
             "pnl_amount": -467.5,
             "pnl_percentage": -26.77,
-            "brokerage": 242.81
+            "brokerage": 48.53
         },
         {
             "exchange": "FON",
@@ -2791,7 +2791,7 @@
             "close_amount": 2097.5,
             "pnl_amount": -1027.5,
             "pnl_percentage": -32.88,
-            "brokerage": 384.91
+            "brokerage": 49.4
         },
         {
             "exchange": "FON",
@@ -2810,7 +2810,7 @@
             "close_amount": 4192.5,
             "pnl_amount": -2057.5,
             "pnl_percentage": -32.92,
-            "brokerage": 722.45
+            "brokerage": 51.59
         },
         {
             "exchange": "FON",
@@ -2829,7 +2829,7 @@
             "close_amount": 5137.5,
             "pnl_amount": 40.0,
             "pnl_percentage": 0.78,
-            "brokerage": 709.04
+            "brokerage": 52.5
         },
         {
             "exchange": "FON",
@@ -2848,7 +2848,7 @@
             "close_amount": 3068.75,
             "pnl_amount": -175.0,
             "pnl_percentage": -5.39,
-            "brokerage": 455.39
+            "brokerage": 50.37
         },
         {
             "exchange": "FON",
@@ -2867,7 +2867,7 @@
             "close_amount": 2136.25,
             "pnl_amount": -335.0,
             "pnl_percentage": -13.56,
-            "brokerage": 345.14
+            "brokerage": 49.41
         },
         {
             "exchange": "FON",
@@ -2886,7 +2886,7 @@
             "close_amount": 6.25,
             "pnl_amount": -868.75,
             "pnl_percentage": -99.29,
-            "brokerage": 104.19
+            "brokerage": 47.23
         },
         {
             "exchange": "FON",
@@ -2905,7 +2905,7 @@
             "close_amount": 2613.75,
             "pnl_amount": 177.5,
             "pnl_percentage": 7.29,
-            "brokerage": 373.75
+            "brokerage": 49.89
         },
         {
             "exchange": "FON",
@@ -2924,7 +2924,7 @@
             "close_amount": 13670.0,
             "pnl_amount": -4330.0,
             "pnl_percentage": -24.06,
-            "brokerage": 2095.11
+            "brokerage": 61.44
         },
         {
             "exchange": "FON",
@@ -2943,7 +2943,7 @@
             "close_amount": 7815.0,
             "pnl_amount": 315.0,
             "pnl_percentage": 4.2,
-            "brokerage": 1037.53
+            "brokerage": 55.26
         },
         {
             "exchange": "FON",
@@ -2962,7 +2962,7 @@
             "close_amount": 4121.25,
             "pnl_amount": -378.75,
             "pnl_percentage": -8.42,
-            "brokerage": 604.68
+            "brokerage": 51.46
         },
         {
             "exchange": "FON",
@@ -2981,7 +2981,7 @@
             "close_amount": 12255.0,
             "pnl_amount": -1245.0,
             "pnl_percentage": -9.22,
-            "brokerage": 1712.62
+            "brokerage": 59.89
         },
         {
             "exchange": "FON",
@@ -3000,7 +3000,7 @@
             "close_amount": 3027.5,
             "pnl_amount": 1925.0,
             "pnl_percentage": 174.6,
-            "brokerage": 314.26
+            "brokerage": 50.26
         },
         {
             "exchange": "FON",
@@ -3019,7 +3019,7 @@
             "close_amount": 5655.0,
             "pnl_amount": 3607.5,
             "pnl_percentage": 176.19,
-            "brokerage": 545.27
+            "brokerage": 52.92
         },
         {
             "exchange": "FON",
@@ -3038,7 +3038,7 @@
             "close_amount": 2082.5,
             "pnl_amount": 15.0,
             "pnl_percentage": 0.73,
-            "brokerage": 315.56
+            "brokerage": 49.35
         },
         {
             "exchange": "FON",
@@ -3057,7 +3057,7 @@
             "close_amount": 2875.0,
             "pnl_amount": 375.0,
             "pnl_percentage": 15.0,
-            "brokerage": 394.77
+            "brokerage": 50.16
         },
         {
             "exchange": "FON",
@@ -3076,7 +3076,7 @@
             "close_amount": 8500.0,
             "pnl_amount": 0.0,
             "pnl_percentage": 0.0,
-            "brokerage": 1146.49
+            "brokerage": 55.97
         },
         {
             "exchange": "FON",
@@ -3095,7 +3095,7 @@
             "close_amount": 1800.0,
             "pnl_amount": -1200.0,
             "pnl_percentage": -40.0,
-            "brokerage": 357.59
+            "brokerage": 49.09
         },
         {
             "exchange": "FON",
@@ -3114,7 +3114,7 @@
             "close_amount": 25225.0,
             "pnl_amount": 18225.0,
             "pnl_percentage": 260.36,
-            "brokerage": 2131.0
+            "brokerage": 72.67
         },
         {
             "exchange": "FON",
@@ -3133,7 +3133,7 @@
             "close_amount": 1501.25,
             "pnl_amount": -131.25,
             "pnl_percentage": -8.04,
-            "brokerage": 249.84
+            "brokerage": 48.75
         },
         {
             "exchange": "FON",
@@ -3152,7 +3152,7 @@
             "close_amount": 29940.0,
             "pnl_amount": 11940.0,
             "pnl_percentage": 66.33,
-            "brokerage": 3147.19
+            "brokerage": 77.73
         },
         {
             "exchange": "FON",
@@ -3171,7 +3171,7 @@
             "close_amount": 14850.0,
             "pnl_amount": 270.0,
             "pnl_percentage": 1.85,
-            "brokerage": 1950.26
+            "brokerage": 62.52
         },
         {
             "exchange": "FON",
@@ -3190,7 +3190,7 @@
             "close_amount": 14850.0,
             "pnl_amount": 4850.0,
             "pnl_percentage": 48.5,
-            "brokerage": 1654.1
+            "brokerage": 62.37
         },
         {
             "exchange": "FON",
@@ -3209,7 +3209,7 @@
             "close_amount": 950.0,
             "pnl_amount": -1800.0,
             "pnl_percentage": -65.45,
-            "brokerage": 286.46
+            "brokerage": 48.24
         }
     ],
     "load_timestamp": "2024-10-04 11:30:06.114242"
