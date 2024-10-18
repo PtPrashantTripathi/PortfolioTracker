@@ -37,7 +37,7 @@ charts or filled areas).
 
 (function ($) {
     var options = {
-        series: { stack: null } // or number/string
+        series: { stack: null }, // or number/string
     };
 
     function init(plot) {
@@ -54,7 +54,7 @@ charts or filled areas).
             return res;
         }
 
-        function addBottomPoints (s, datapoints) {
+        function addBottomPoints(s, datapoints) {
             var formattedPoints = [];
             for (var i = 0; i < datapoints.points.length; i += 2) {
                 formattedPoints.push(datapoints.points[i]);
@@ -67,8 +67,8 @@ charts or filled areas).
                 y: !s.bars.horizontal,
                 number: true,
                 required: false,
-                computeRange: s.yaxis.options.autoScale !== 'none',
-                defaultValue: 0
+                computeRange: s.yaxis.options.autoScale !== "none",
+                defaultValue: 0,
             });
             datapoints.points = formattedPoints;
             datapoints.pointsize = 3;
@@ -78,7 +78,11 @@ charts or filled areas).
             if (s.stack == null || s.stack === false) return;
 
             var needsBottom = s.bars.show || (s.lines.show && s.lines.fill);
-            var hasBottom = datapoints.pointsize > 2 && (s.bars.horizontal ? datapoints.format[2].x : datapoints.format[2].y);
+            var hasBottom =
+                datapoints.pointsize > 2 &&
+                (s.bars.horizontal
+                    ? datapoints.format[2].x
+                    : datapoints.format[2].y);
             // Series data is missing bottom points - need to format
             if (needsBottom && !hasBottom) {
                 addBottomPoints(s, datapoints);
@@ -92,14 +96,22 @@ charts or filled areas).
                 otherps = other.datapoints.pointsize,
                 otherpoints = other.datapoints.points,
                 newpoints = [],
-                px, py, intery, qx, qy, bottom,
+                px,
+                py,
+                intery,
+                qx,
+                qy,
+                bottom,
                 withlines = s.lines.show,
                 horizontal = s.bars.horizontal,
                 withsteps = withlines && s.lines.steps,
                 fromgap = true,
                 keyOffset = horizontal ? 1 : 0,
                 accumulateOffset = horizontal ? 0 : 1,
-                i = 0, j = 0, l, m;
+                i = 0,
+                j = 0,
+                l,
+                m;
 
             while (true) {
                 if (i >= points.length) break;
@@ -152,7 +164,11 @@ charts or filled areas).
                         // we got past point below, might need to
                         // insert interpolated extra point
                         if (withlines && i > 0 && points[i - ps] != null) {
-                            intery = py + (points[i - ps + accumulateOffset] - py) * (qx - px) / (points[i - ps + keyOffset] - px);
+                            intery =
+                                py +
+                                ((points[i - ps + accumulateOffset] - py) *
+                                    (qx - px)) /
+                                    (points[i - ps + keyOffset] - px);
                             newpoints.push(qx);
                             newpoints.push(intery + qy);
                             for (m = 2; m < ps; ++m) {
@@ -163,7 +179,8 @@ charts or filled areas).
                         }
 
                         j += otherps;
-                    } else { // px < qx
+                    } else {
+                        // px < qx
                         if (fromgap && withlines) {
                             // if we come from a gap, we just skip this point
                             i += ps;
@@ -176,8 +193,17 @@ charts or filled areas).
 
                         // we might be able to interpolate a point below,
                         // this can give us a better y
-                        if (withlines && j > 0 && otherpoints[j - otherps] != null) {
-                            bottom = qy + (otherpoints[j - otherps + accumulateOffset] - qy) * (px - qx) / (otherpoints[j - otherps + keyOffset] - qx);
+                        if (
+                            withlines &&
+                            j > 0 &&
+                            otherpoints[j - otherps] != null
+                        ) {
+                            bottom =
+                                qy +
+                                ((otherpoints[j - otherps + accumulateOffset] -
+                                    qy) *
+                                    (px - qx)) /
+                                    (otherpoints[j - otherps + keyOffset] - qx);
                         }
 
                         newpoints[l + accumulateOffset] += bottom;
@@ -193,10 +219,14 @@ charts or filled areas).
                 }
 
                 // maintain the line steps invariant
-                if (withsteps && l !== newpoints.length && l > 0 &&
+                if (
+                    withsteps &&
+                    l !== newpoints.length &&
+                    l > 0 &&
                     newpoints[l] !== null &&
                     newpoints[l] !== newpoints[l - ps] &&
-                    newpoints[l + 1] !== newpoints[l - ps + 1]) {
+                    newpoints[l + 1] !== newpoints[l - ps + 1]
+                ) {
                     for (m = 0; m < ps; ++m) {
                         newpoints[l + ps + m] = newpoints[l + m];
                     }
@@ -214,7 +244,7 @@ charts or filled areas).
     $.plot.plugins.push({
         init: init,
         options: options,
-        name: 'stack',
-        version: '1.2'
+        name: "stack",
+        version: "1.2",
     });
 })(jQuery);

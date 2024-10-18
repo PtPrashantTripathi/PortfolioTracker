@@ -24,22 +24,22 @@ handles this events by unhighlighting all of the previously highlighted points a
 the tooltip from webcharts).
 */
 
-(function($) {
-    'use strict';
+(function ($) {
+    "use strict";
 
     var options = {
         grid: {
             hoverable: false,
-            clickable: false
-        }
+            clickable: false,
+        },
     };
 
     var browser = $.plot.browser;
 
     var eventType = {
-        click: 'click',
-        hover: 'hover'
-    }
+        click: "click",
+        hover: "hover",
+    };
 
     function init(plot) {
         var lastMouseMoveEvent;
@@ -49,8 +49,16 @@ the tooltip from webcharts).
             var o = plot.getOptions();
 
             if (o.grid.hoverable || o.grid.clickable) {
-                eventHolder[0].addEventListener('touchevent', triggerCleanupEvent, false);
-                eventHolder[0].addEventListener('tap', generatePlothoverEvent, false);
+                eventHolder[0].addEventListener(
+                    "touchevent",
+                    triggerCleanupEvent,
+                    false,
+                );
+                eventHolder[0].addEventListener(
+                    "tap",
+                    generatePlothoverEvent,
+                    false,
+                );
             }
 
             if (o.grid.clickable) {
@@ -71,8 +79,11 @@ the tooltip from webcharts).
         }
 
         function shutdown(plot, eventHolder) {
-            eventHolder[0].removeEventListener('tap', generatePlothoverEvent);
-            eventHolder[0].removeEventListener('touchevent', triggerCleanupEvent);
+            eventHolder[0].removeEventListener("tap", generatePlothoverEvent);
+            eventHolder[0].removeEventListener(
+                "touchevent",
+                triggerCleanupEvent,
+            );
             eventHolder.unbind("mousemove", onMouseMove);
             eventHolder.unbind("mouseleave", onMouseLeave);
             eventHolder.unbind("click", onClick);
@@ -81,7 +92,7 @@ the tooltip from webcharts).
 
         function generatePlothoverEvent(e) {
             var o = plot.getOptions(),
-                newEvent = new CustomEvent('mouseevent');
+                newEvent = new CustomEvent("mouseevent");
 
             //transform from touch event to mouse event format
             newEvent.pageX = e.detail.changedTouches[0].pageX;
@@ -97,16 +108,22 @@ the tooltip from webcharts).
 
         function doTriggerClickHoverEvent(event, eventType, searchDistance) {
             var series = plot.getData();
-            if (event !== undefined &&
+            if (
+                event !== undefined &&
                 series.length > 0 &&
                 series[0].xaxis.c2p !== undefined &&
-                series[0].yaxis.c2p !== undefined) {
+                series[0].yaxis.c2p !== undefined
+            ) {
                 var eventToTrigger = "plot" + eventType;
                 var seriesFlag = eventType + "able";
-                triggerClickHoverEvent(eventToTrigger, event,
-                    function(i) {
+                triggerClickHoverEvent(
+                    eventToTrigger,
+                    event,
+                    function (i) {
                         return series[i][seriesFlag] !== false;
-                    }, searchDistance);
+                    },
+                    searchDistance,
+                );
             }
         }
 
@@ -119,10 +136,9 @@ the tooltip from webcharts).
         function onMouseLeave(e) {
             lastMouseMoveEvent = undefined;
             plot.getPlaceholder()[0].lastMouseMoveEvent = undefined;
-            triggerClickHoverEvent("plothover", e,
-                function(i) {
-                    return false;
-                });
+            triggerClickHoverEvent("plothover", e, function (i) {
+                return false;
+            });
         }
 
         function onClick(e) {
@@ -131,12 +147,17 @@ the tooltip from webcharts).
 
         function triggerCleanupEvent() {
             plot.unhighlight();
-            plot.getPlaceholder().trigger('plothovercleanup');
+            plot.getPlaceholder().trigger("plothovercleanup");
         }
 
         // trigger click or hover event (they send the same parameters
         // so we share their code)
-        function triggerClickHoverEvent(eventname, event, seriesFilter, searchDistance) {
+        function triggerClickHoverEvent(
+            eventname,
+            event,
+            seriesFilter,
+            searchDistance,
+        ) {
             var options = plot.getOptions(),
                 offset = plot.offset(),
                 page = browser.getPageXY(event),
@@ -144,27 +165,43 @@ the tooltip from webcharts).
                 canvasY = page.Y - offset.top,
                 pos = plot.c2p({
                     left: canvasX,
-                    top: canvasY
+                    top: canvasY,
                 }),
-                distance = searchDistance !== undefined ? searchDistance : options.grid.mouseActiveRadius;
+                distance =
+                    searchDistance !== undefined
+                        ? searchDistance
+                        : options.grid.mouseActiveRadius;
 
             pos.pageX = page.X;
             pos.pageY = page.Y;
 
-            var items = plot.findNearbyItems(canvasX, canvasY, seriesFilter, distance);
+            var items = plot.findNearbyItems(
+                canvasX,
+                canvasY,
+                seriesFilter,
+                distance,
+            );
             var item = items[0];
 
             for (let i = 1; i < items.length; ++i) {
-                if (item.distance === undefined ||
-                    items[i].distance < item.distance) {
+                if (
+                    item.distance === undefined ||
+                    items[i].distance < item.distance
+                ) {
                     item = items[i];
                 }
             }
 
             if (item) {
                 // fill in mouse pos for any listeners out there
-                item.pageX = parseInt(item.series.xaxis.p2c(item.datapoint[0]) + offset.left, 10);
-                item.pageY = parseInt(item.series.yaxis.p2c(item.datapoint[1]) + offset.top, 10);
+                item.pageX = parseInt(
+                    item.series.xaxis.p2c(item.datapoint[0]) + offset.left,
+                    10,
+                );
+                item.pageY = parseInt(
+                    item.series.yaxis.p2c(item.datapoint[1]) + offset.top,
+                    10,
+                );
             } else {
                 item = null;
             }
@@ -173,10 +210,16 @@ the tooltip from webcharts).
                 // clear auto-highlights
                 for (let i = 0; i < highlights.length; ++i) {
                     var h = highlights[i];
-                    if ((h.auto === eventname &&
-                        !(item && h.series === item.series &&
-                            h.point[0] === item.datapoint[0] &&
-                            h.point[1] === item.datapoint[1])) || !item) {
+                    if (
+                        (h.auto === eventname &&
+                            !(
+                                item &&
+                                h.series === item.series &&
+                                h.point[0] === item.datapoint[0] &&
+                                h.point[1] === item.datapoint[1]
+                            )) ||
+                        !item
+                    ) {
                         unhighlight(h.series, h.point);
                     }
                 }
@@ -204,7 +247,7 @@ the tooltip from webcharts).
                 highlights.push({
                     series: s,
                     point: point,
-                    auto: auto
+                    auto: auto,
                 });
 
                 plot.triggerRedrawOverlay();
@@ -240,9 +283,11 @@ the tooltip from webcharts).
         function indexOfHighlight(s, p) {
             for (var i = 0; i < highlights.length; ++i) {
                 var h = highlights[i];
-                if (h.series === s &&
+                if (
+                    h.series === s &&
                     h.point[0] === p[0] &&
-                    h.point[1] === p[1]) {
+                    h.point[1] === p[1]
+                ) {
                     return i;
                 }
             }
@@ -261,14 +306,16 @@ the tooltip from webcharts).
 
         function drawOverlay(plot, octx, overlay) {
             var plotOffset = plot.getPlotOffset(),
-                i, hi;
+                i,
+                hi;
 
             octx.save();
             octx.translate(plotOffset.left, plotOffset.top);
             for (i = 0; i < highlights.length; ++i) {
                 hi = highlights[i];
 
-                if (hi.series.bars.show) drawBarHighlight(hi.series, hi.point, octx);
+                if (hi.series.bars.show)
+                    drawBarHighlight(hi.series, hi.point, octx);
                 else drawPointHighlight(hi.series, hi.point, octx, plot);
             }
             octx.restore();
@@ -279,13 +326,25 @@ the tooltip from webcharts).
                 y = point[1],
                 axisx = series.xaxis,
                 axisy = series.yaxis,
-                highlightColor = (typeof series.highlightColor === "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString();
+                highlightColor =
+                    typeof series.highlightColor === "string"
+                        ? series.highlightColor
+                        : $.color
+                              .parse(series.color)
+                              .scale("a", 0.5)
+                              .toString();
 
-            if (x < axisx.min || x > axisx.max || y < axisy.min || y > axisy.max) {
+            if (
+                x < axisx.min ||
+                x > axisx.max ||
+                y < axisy.min ||
+                y > axisy.max
+            ) {
                 return;
             }
 
-            var pointRadius = series.points.radius + series.points.lineWidth / 2;
+            var pointRadius =
+                series.points.radius + series.points.lineWidth / 2;
             octx.lineWidth = pointRadius;
             octx.strokeStyle = highlightColor;
             var radius = 1.5 * pointRadius;
@@ -294,9 +353,13 @@ the tooltip from webcharts).
 
             octx.beginPath();
             var symbol = series.points.symbol;
-            if (symbol === 'circle') {
+            if (symbol === "circle") {
                 octx.arc(x, y, radius, 0, 2 * Math.PI, false);
-            } else if (typeof symbol === 'string' && plot.drawSymbol && plot.drawSymbol[symbol]) {
+            } else if (
+                typeof symbol === "string" &&
+                plot.drawSymbol &&
+                plot.drawSymbol[symbol]
+            ) {
                 plot.drawSymbol[symbol](octx, x, y, radius, false);
             }
 
@@ -305,7 +368,13 @@ the tooltip from webcharts).
         }
 
         function drawBarHighlight(series, point, octx) {
-            var highlightColor = (typeof series.highlightColor === "string") ? series.highlightColor : $.color.parse(series.color).scale('a', 0.5).toString(),
+            var highlightColor =
+                    typeof series.highlightColor === "string"
+                        ? series.highlightColor
+                        : $.color
+                              .parse(series.color)
+                              .scale("a", 0.5)
+                              .toString(),
                 fillStyle = highlightColor,
                 barLeft;
 
@@ -325,12 +394,26 @@ the tooltip from webcharts).
             octx.strokeStyle = highlightColor;
 
             var fillTowards = series.bars.fillTowards || 0,
-                bottom = fillTowards > series.yaxis.min ? Math.min(series.yaxis.max, fillTowards) : series.yaxis.min;
+                bottom =
+                    fillTowards > series.yaxis.min
+                        ? Math.min(series.yaxis.max, fillTowards)
+                        : series.yaxis.min;
 
-            $.plot.drawSeries.drawBar(point[0], point[1], point[2] || bottom, barLeft, barLeft + barWidth,
-                function() {
+            $.plot.drawSeries.drawBar(
+                point[0],
+                point[1],
+                point[2] || bottom,
+                barLeft,
+                barLeft + barWidth,
+                function () {
                     return fillStyle;
-                }, series.xaxis, series.yaxis, octx, series.bars.horizontal, series.bars.lineWidth);
+                },
+                series.xaxis,
+                series.yaxis,
+                octx,
+                series.bars.horizontal,
+                series.bars.lineWidth,
+            );
         }
 
         function initHover(plot, options) {
@@ -353,7 +436,7 @@ the tooltip from webcharts).
     $.plot.plugins.push({
         init: init,
         options: options,
-        name: 'hover',
-        version: '0.1'
+        name: "hover",
+        version: "0.1",
     });
 })(jQuery);

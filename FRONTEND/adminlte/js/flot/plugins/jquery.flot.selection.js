@@ -93,11 +93,11 @@ The plugin allso adds the following methods to the plot object:
 (function ($) {
     function init(plot) {
         var selection = {
-            first: {x: -1, y: -1},
-            second: {x: -1, y: -1},
+            first: { x: -1, y: -1 },
+            second: { x: -1, y: -1 },
             show: false,
-            currentMode: 'xy',
-            active: false
+            currentMode: "xy",
+            active: false,
         };
 
         var SNAPPING_CONSTANT = $.plot.uiConstants.SNAPPING_CONSTANT;
@@ -113,7 +113,9 @@ The plugin allso adds the following methods to the plot object:
             if (selection.active) {
                 updateSelection(e);
 
-                plot.getPlaceholder().trigger("plotselecting", [ getSelection() ]);
+                plot.getPlaceholder().trigger("plotselecting", [
+                    getSelection(),
+                ]);
             }
         }
 
@@ -123,19 +125,26 @@ The plugin allso adds the following methods to the plot object:
             if (e.which !== 1 || o.selection.mode === null) return;
 
             // reinitialize currentMode
-            selection.currentMode = 'xy';
+            selection.currentMode = "xy";
 
             // cancel out any text selections
             document.body.focus();
 
             // prevent text selection and drag in old-school browsers
-            if (document.onselectstart !== undefined && savedhandlers.onselectstart == null) {
+            if (
+                document.onselectstart !== undefined &&
+                savedhandlers.onselectstart == null
+            ) {
                 savedhandlers.onselectstart = document.onselectstart;
-                document.onselectstart = function () { return false; };
+                document.onselectstart = function () {
+                    return false;
+                };
             }
             if (document.ondrag !== undefined && savedhandlers.ondrag == null) {
                 savedhandlers.ondrag = document.ondrag;
-                document.ondrag = function () { return false; };
+                document.ondrag = function () {
+                    return false;
+                };
             }
 
             setSelectionPos(selection.first, e);
@@ -161,8 +170,8 @@ The plugin allso adds the following methods to the plot object:
                 triggerSelectedEvent();
             } else {
                 // this counts as a clear
-                plot.getPlaceholder().trigger("plotunselected", [ ]);
-                plot.getPlaceholder().trigger("plotselecting", [ null ]);
+                plot.getPlaceholder().trigger("plotunselected", []);
+                plot.getPlaceholder().trigger("plotselecting", [null]);
             }
 
             return false;
@@ -174,22 +183,23 @@ The plugin allso adds the following methods to the plot object:
             if (!selection.show) return null;
 
             var r = {},
-                c1 = {x: selection.first.x, y: selection.first.y},
-                c2 = {x: selection.second.x, y: selection.second.y};
+                c1 = { x: selection.first.x, y: selection.first.y },
+                c2 = { x: selection.second.x, y: selection.second.y };
 
-            if (selectionDirection(plot) === 'x') {
+            if (selectionDirection(plot) === "x") {
                 c1.y = 0;
                 c2.y = plot.height();
             }
 
-            if (selectionDirection(plot) === 'y') {
+            if (selectionDirection(plot) === "y") {
                 c1.x = 0;
                 c2.x = plot.width();
             }
 
             $.each(plot.getAxes(), function (name, axis) {
                 if (axis.used) {
-                    var p1 = axis.c2p(c1[axis.direction]), p2 = axis.c2p(c2[axis.direction]);
+                    var p1 = axis.c2p(c1[axis.direction]),
+                        p2 = axis.c2p(c2[axis.direction]);
                     r[name] = { from: Math.min(p1, p2), to: Math.max(p1, p2) };
                 }
             });
@@ -199,22 +209,29 @@ The plugin allso adds the following methods to the plot object:
         function triggerSelectedEvent() {
             var r = getSelection();
 
-            plot.getPlaceholder().trigger("plotselected", [ r ]);
+            plot.getPlaceholder().trigger("plotselected", [r]);
 
             // backwards-compat stuff, to be removed in future
             if (r.xaxis && r.yaxis) {
-                plot.getPlaceholder().trigger("selected", [ { x1: r.xaxis.from, y1: r.yaxis.from, x2: r.xaxis.to, y2: r.yaxis.to } ]);
+                plot.getPlaceholder().trigger("selected", [
+                    {
+                        x1: r.xaxis.from,
+                        y1: r.yaxis.from,
+                        x2: r.xaxis.to,
+                        y2: r.yaxis.to,
+                    },
+                ]);
             }
         }
 
         function clamp(min, value, max) {
-            return value < min ? min : (value > max ? max : value);
+            return value < min ? min : value > max ? max : value;
         }
 
         function selectionDirection(plot) {
             var o = plot.getOptions();
 
-            if (o.selection.mode === 'smart') {
+            if (o.selection.mode === "smart") {
                 return selection.currentMode;
             } else {
                 return o.selection.mode;
@@ -225,15 +242,15 @@ The plugin allso adds the following methods to the plot object:
             if (selection.first) {
                 var delta = {
                     x: pos.x - selection.first.x,
-                    y: pos.y - selection.first.y
+                    y: pos.y - selection.first.y,
                 };
 
                 if (Math.abs(delta.x) < SNAPPING_CONSTANT) {
-                    selection.currentMode = 'y';
+                    selection.currentMode = "y";
                 } else if (Math.abs(delta.y) < SNAPPING_CONSTANT) {
-                    selection.currentMode = 'x';
+                    selection.currentMode = "x";
                 } else {
-                    selection.currentMode = 'xy';
+                    selection.currentMode = "xy";
                 }
             }
         }
@@ -241,8 +258,16 @@ The plugin allso adds the following methods to the plot object:
         function setSelectionPos(pos, e) {
             var offset = plot.getPlaceholder().offset();
             var plotOffset = plot.getPlotOffset();
-            pos.x = clamp(0, e.pageX - offset.left - plotOffset.left, plot.width());
-            pos.y = clamp(0, e.pageY - offset.top - plotOffset.top, plot.height());
+            pos.x = clamp(
+                0,
+                e.pageX - offset.left - plotOffset.left,
+                plot.width(),
+            );
+            pos.y = clamp(
+                0,
+                e.pageY - offset.top - plotOffset.top,
+                plot.height(),
+            );
 
             if (pos !== selection.first) updateMode(pos);
 
@@ -268,17 +293,21 @@ The plugin allso adds the following methods to the plot object:
         function clearSelection(preventEvent) {
             if (selection.show) {
                 selection.show = false;
-                selection.currentMode = '';
+                selection.currentMode = "";
                 plot.triggerRedrawOverlay();
                 if (!preventEvent) {
-                    plot.getPlaceholder().trigger("plotunselected", [ ]);
+                    plot.getPlaceholder().trigger("plotunselected", []);
                 }
             }
         }
 
         // function taken from markings support in Flot
         function extractRange(ranges, coord) {
-            var axis, from, to, key, axes = plot.getAxes();
+            var axis,
+                from,
+                to,
+                key,
+                axes = plot.getAxes();
 
             for (var k in axes) {
                 axis = axes[k];
@@ -344,15 +373,17 @@ The plugin allso adds the following methods to the plot object:
 
         function selectionIsSane() {
             var minSize = plot.getOptions().selection.minSize;
-            return Math.abs(selection.second.x - selection.first.x) >= minSize &&
-                Math.abs(selection.second.y - selection.first.y) >= minSize;
+            return (
+                Math.abs(selection.second.x - selection.first.x) >= minSize &&
+                Math.abs(selection.second.y - selection.first.y) >= minSize
+            );
         }
 
         plot.clearSelection = clearSelection;
         plot.setSelection = setSelection;
         plot.getSelection = getSelection;
 
-        plot.hooks.bindEvents.push(function(plot, eventHolder) {
+        plot.hooks.bindEvents.push(function (plot, eventHolder) {
             var o = plot.getOptions();
             if (o.selection.mode != null) {
                 plot.addEventHandler("dragstart", onDragStart, eventHolder, 0);
@@ -364,10 +395,13 @@ The plugin allso adds the following methods to the plot object:
         function drawSelectionDecorations(ctx, x, y, w, h, oX, oY, mode) {
             var spacing = 3;
             var fullEarWidth = 15;
-            var earWidth = Math.max(0, Math.min(fullEarWidth, w / 2 - 2, h / 2 - 2));
-            ctx.fillStyle = '#ffffff';
+            var earWidth = Math.max(
+                0,
+                Math.min(fullEarWidth, w / 2 - 2, h / 2 - 2),
+            );
+            ctx.fillStyle = "#ffffff";
 
-            if (mode === 'xy') {
+            if (mode === "xy") {
                 ctx.beginPath();
                 ctx.moveTo(x, y + earWidth);
                 ctx.lineTo(x - 3, y + earWidth);
@@ -408,7 +442,7 @@ The plugin allso adds the following methods to the plot object:
             x = oX;
             y = oY;
 
-            if (mode === 'x') {
+            if (mode === "x") {
                 ctx.beginPath();
                 ctx.moveTo(x, y + fullEarWidth);
                 ctx.lineTo(x, y - fullEarWidth);
@@ -425,7 +459,7 @@ The plugin allso adds the following methods to the plot object:
                 ctx.fill();
             }
 
-            if (mode === 'y') {
+            if (mode === "y") {
                 ctx.beginPath();
 
                 ctx.moveTo(x - fullEarWidth, y);
@@ -455,7 +489,8 @@ The plugin allso adds the following methods to the plot object:
 
                 var c = $.color.parse(o.selection.color);
                 var visualization = o.selection.visualization;
-                var displaySelectionDecorations = o.selection.displaySelectionDecorations;
+                var displaySelectionDecorations =
+                    o.selection.displaySelectionDecorations;
 
                 var scalingFactor = 1;
 
@@ -464,10 +499,10 @@ The plugin allso adds the following methods to the plot object:
                     scalingFactor = 0.8;
                 }
 
-                ctx.strokeStyle = c.scale('a', scalingFactor).toString();
+                ctx.strokeStyle = c.scale("a", scalingFactor).toString();
                 ctx.lineWidth = 1;
                 ctx.lineJoin = o.selection.shape;
-                ctx.fillStyle = c.scale('a', 0.4).toString();
+                ctx.fillStyle = c.scale("a", 0.4).toString();
 
                 var x = Math.min(selection.first.x, selection.second.x) + 0.5,
                     oX = x,
@@ -476,12 +511,12 @@ The plugin allso adds the following methods to the plot object:
                     w = Math.abs(selection.second.x - selection.first.x) - 1,
                     h = Math.abs(selection.second.y - selection.first.y) - 1;
 
-                if (selectionDirection(plot) === 'x') {
+                if (selectionDirection(plot) === "x") {
                     h += y;
                     y = 0;
                 }
 
-                if (selectionDirection(plot) === 'y') {
+                if (selectionDirection(plot) === "y") {
                     w += x;
                     x = 0;
                 }
@@ -494,7 +529,16 @@ The plugin allso adds the following methods to the plot object:
                     ctx.clearRect(x, y, w, h);
 
                     if (displaySelectionDecorations) {
-                        drawSelectionDecorations(ctx, x, y, w, h, oX, oY, selectionDirection(plot));
+                        drawSelectionDecorations(
+                            ctx,
+                            x,
+                            y,
+                            w,
+                            h,
+                            oX,
+                            oY,
+                            selectionDirection(plot),
+                        );
                     }
                 }
 
@@ -518,10 +562,10 @@ The plugin allso adds the following methods to the plot object:
                 displaySelectionDecorations: true, // true or false (currently only relevant for the focus visualization)
                 color: "#888888",
                 shape: "round", // one of "round", "miter", or "bevel"
-                minSize: 5 // minimum number of pixels
-            }
+                minSize: 5, // minimum number of pixels
+            },
         },
-        name: 'selection',
-        version: '1.1'
+        name: "selection",
+        version: "1.1",
     });
 })(jQuery);

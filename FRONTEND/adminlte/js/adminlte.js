@@ -7,10 +7,12 @@
     typeof exports === "object" && typeof module !== "undefined"
         ? factory(exports, require("jquery"))
         : typeof define === "function" && define.amd
-        ? define(["exports", "jquery"], factory)
-        : ((global =
-              typeof globalThis !== "undefined" ? globalThis : global || self),
-          factory((global.adminlte = {}), global.jQuery));
+          ? define(["exports", "jquery"], factory)
+          : ((global =
+                typeof globalThis !== "undefined"
+                    ? globalThis
+                    : global || self),
+            factory((global.adminlte = {}), global.jQuery));
 })(this, function (exports, $) {
     "use strict";
 
@@ -70,10 +72,10 @@
             this._settings = $__default["default"].extend(
                 {},
                 Default$c,
-                settings
+                settings,
             );
             this._overlay = $__default["default"](
-                this._settings.overlayTemplate
+                this._settings.overlayTemplate,
             );
 
             if (element.hasClass(CLASS_NAME_CARD$1)) {
@@ -82,7 +84,7 @@
 
             if (this._settings.source === "") {
                 throw new Error(
-                    "Source url was not defined. Please specify a url in your CardRefresh source option."
+                    "Source url was not defined. Please specify a url in your CardRefresh source option.",
                 );
             }
         }
@@ -115,20 +117,20 @@
 
                         _this._settings.onLoadDone.call(
                             $__default["default"](_this),
-                            response
+                            response,
                         );
 
                         _this._removeOverlay();
                     },
                     this._settings.responseType !== "" &&
-                        this._settings.responseType
+                        this._settings.responseType,
                 )
                 .fail(function (jqXHR, textStatus, errorThrown) {
                     _this._removeOverlay();
 
                     if (_this._settings.loadErrorTemplate) {
                         var msg = $__default["default"](
-                            _this._settings.errorTemplate
+                            _this._settings.errorTemplate,
                         ).text(errorThrown);
 
                         _this._parent
@@ -141,11 +143,11 @@
                         $__default["default"](_this),
                         jqXHR,
                         textStatus,
-                        errorThrown
+                        errorThrown,
                     );
                 });
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_LOADED)
+                $__default["default"].Event(EVENT_LOADED),
             );
         };
 
@@ -153,7 +155,7 @@
             this._parent.append(this._overlay);
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_OVERLAY_ADDED)
+                $__default["default"].Event(EVENT_OVERLAY_ADDED),
             );
         };
 
@@ -161,7 +163,7 @@
             this._parent.find(this._overlay).remove();
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_OVERLAY_REMOVED)
+                $__default["default"].Event(EVENT_OVERLAY_REMOVED),
             );
         }; // Private
 
@@ -185,14 +187,14 @@
             var _options = $__default["default"].extend(
                 {},
                 Default$c,
-                $__default["default"](this).data()
+                $__default["default"](this).data(),
             );
 
             if (!data) {
                 data = new CardRefresh($__default["default"](this), _options);
                 $__default["default"](this).data(
                     DATA_KEY$e,
-                    typeof config === "string" ? data : config
+                    typeof config === "string" ? data : config,
                 );
             }
 
@@ -220,9 +222,9 @@
 
             CardRefresh._jQueryInterface.call(
                 $__default["default"](this),
-                "load"
+                "load",
             );
-        }
+        },
     );
     $__default["default"](function () {
         $__default["default"](SELECTOR_DATA_REFRESH).each(function () {
@@ -298,7 +300,7 @@
             this._settings = $__default["default"].extend(
                 {},
                 Default$b,
-                settings
+                settings,
             );
         }
 
@@ -323,14 +325,14 @@
                         " " +
                         this._settings.collapseTrigger +
                         " ." +
-                        this._settings.collapseIcon
+                        this._settings.collapseIcon,
                 )
                 .addClass(this._settings.expandIcon)
                 .removeClass(this._settings.collapseIcon);
 
             this._element.trigger(
                 $__default["default"].Event(EVENT_COLLAPSED$4),
-                this._parent
+                this._parent,
             );
         };
 
@@ -353,14 +355,14 @@
                         " " +
                         this._settings.collapseTrigger +
                         " ." +
-                        this._settings.expandIcon
+                        this._settings.expandIcon,
                 )
                 .addClass(this._settings.collapseIcon)
                 .removeClass(this._settings.expandIcon);
 
             this._element.trigger(
                 $__default["default"].Event(EVENT_EXPANDED$3),
-                this._parent
+                this._parent,
             );
         };
 
@@ -369,7 +371,7 @@
 
             this._element.trigger(
                 $__default["default"].Event(EVENT_REMOVED$1),
-                this._parent
+                this._parent,
             );
         };
 
@@ -387,7 +389,7 @@
                 .find(
                     this._settings.maximizeTrigger +
                         " ." +
-                        this._settings.maximizeIcon
+                        this._settings.maximizeIcon,
                 )
                 .addClass(this._settings.minimizeIcon)
                 .removeClass(this._settings.maximizeIcon);
@@ -403,7 +405,7 @@
                     var $element = $__default["default"](this);
                     $element.addClass(CLASS_NAME_MAXIMIZED);
                     $__default["default"]("html").addClass(
-                        CLASS_NAME_MAXIMIZED
+                        CLASS_NAME_MAXIMIZED,
                     );
 
                     if ($element.hasClass(CLASS_NAME_COLLAPSED$1)) {
@@ -415,7 +417,7 @@
 
             this._element.trigger(
                 $__default["default"].Event(EVENT_MAXIMIZED),
-                this._parent
+                this._parent,
             );
         };
 
@@ -424,7 +426,7 @@
                 .find(
                     this._settings.maximizeTrigger +
                         " ." +
-                        this._settings.minimizeIcon
+                        this._settings.minimizeIcon,
                 )
                 .addClass(this._settings.maximizeIcon)
                 .removeClass(this._settings.minimizeIcon);
@@ -436,14 +438,14 @@
                         this._parent[0].style.height +
                         " !important; width: " +
                         this._parent[0].style.width +
-                        " !important; transition: all .15s;"
+                        " !important; transition: all .15s;",
                 )
                 .delay(10)
                 .queue(function () {
                     var $element = $__default["default"](this);
                     $element.removeClass(CLASS_NAME_MAXIMIZED);
                     $__default["default"]("html").removeClass(
-                        CLASS_NAME_MAXIMIZED
+                        CLASS_NAME_MAXIMIZED,
                     );
                     $element.css({
                         height: "inherit",
@@ -459,7 +461,7 @@
 
             this._element.trigger(
                 $__default["default"].Event(EVENT_MINIMIZED),
-                this._parent
+                this._parent,
             );
         };
 
@@ -499,21 +501,21 @@
             var _options = $__default["default"].extend(
                 {},
                 Default$b,
-                $__default["default"](this).data()
+                $__default["default"](this).data(),
             );
 
             if (!data) {
                 data = new CardWidget($__default["default"](this), _options);
                 $__default["default"](this).data(
                     DATA_KEY$d,
-                    typeof config === "string" ? data : config
+                    typeof config === "string" ? data : config,
                 );
             }
 
             if (
                 typeof config === "string" &&
                 /collapse|expand|remove|toggle|maximize|minimize|toggleMaximize/.test(
-                    config
+                    config,
                 )
             ) {
                 data[config]();
@@ -539,9 +541,9 @@
 
             CardWidget._jQueryInterface.call(
                 $__default["default"](this),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     $__default["default"](document).on(
         "click",
@@ -553,9 +555,9 @@
 
             CardWidget._jQueryInterface.call(
                 $__default["default"](this),
-                "remove"
+                "remove",
             );
-        }
+        },
     );
     $__default["default"](document).on(
         "click",
@@ -567,9 +569,9 @@
 
             CardWidget._jQueryInterface.call(
                 $__default["default"](this),
-                "toggleMaximize"
+                "toggleMaximize",
             );
-        }
+        },
     );
     /**
      * jQuery API
@@ -662,11 +664,11 @@
             }
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_COLLAPSED$3)
+                $__default["default"].Event(EVENT_COLLAPSED$3),
             );
             setTimeout(function () {
                 $__default["default"](_this._element).trigger(
-                    $__default["default"].Event(EVENT_COLLAPSED_DONE$1)
+                    $__default["default"].Event(EVENT_COLLAPSED_DONE$1),
                 );
             }, this._config.animationSpeed);
         };
@@ -694,7 +696,7 @@
                             .delay(300)
                             .queue(function () {
                                 $html.removeClass(
-                                    CLASS_NAME_CONTROL_SIDEBAR_ANIMATE
+                                    CLASS_NAME_CONTROL_SIDEBAR_ANIMATE,
                                 );
                                 $__default["default"](this).dequeue();
                             });
@@ -709,7 +711,7 @@
             this._fixScrollHeight();
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_EXPANDED$2)
+                $__default["default"].Event(EVENT_EXPANDED$2),
             );
         };
 
@@ -748,7 +750,7 @@
                     .hide();
                 $__default["default"](this._config.target).css(
                     "display",
-                    "block"
+                    "block",
                 );
             } else {
                 $__default["default"](SELECTOR_CONTROL_SIDEBAR).hide();
@@ -815,7 +817,7 @@
                 bottom: Math.abs(
                     heights.window +
                         $__default["default"](window).scrollTop() -
-                        heights.scroll
+                        heights.scroll,
                 ),
                 top: $__default["default"](window).scrollTop(),
             };
@@ -832,7 +834,7 @@
                     ", " +
                     this._config.target +
                     " " +
-                    SELECTOR_CONTROL_SIDEBAR_CONTENT$1
+                    SELECTOR_CONTROL_SIDEBAR_CONTENT$1,
             );
 
             if (positions.top === 0 && positions.bottom === 0) {
@@ -842,7 +844,7 @@
                 });
                 $controlsidebarContent.css(
                     "height",
-                    heights.window - (heights.header + heights.footer)
+                    heights.window - (heights.header + heights.footer),
                 );
             } else if (positions.bottom <= heights.footer) {
                 if (footerFixed === false) {
@@ -852,7 +854,7 @@
                         .css("top", top >= 0 ? top : 0);
                     $controlsidebarContent.css(
                         "height",
-                        heights.window - (heights.footer - positions.bottom)
+                        heights.window - (heights.footer - positions.bottom),
                     );
                 } else {
                     $controlSidebar.css("bottom", heights.footer);
@@ -862,7 +864,7 @@
                     $controlSidebar.css("top", heights.header - positions.top);
                     $controlsidebarContent.css(
                         "height",
-                        heights.window - (heights.header - positions.top)
+                        heights.window - (heights.header - positions.top),
                     );
                 } else {
                     $controlSidebar.css("top", heights.header);
@@ -886,7 +888,7 @@
         _proto._fixHeight = function _fixHeight() {
             var $body = $__default["default"]("body");
             var $controlSidebar = $__default["default"](
-                this._config.target + " " + SELECTOR_CONTROL_SIDEBAR_CONTENT$1
+                this._config.target + " " + SELECTOR_CONTROL_SIDEBAR_CONTENT$1,
             );
 
             if (!$body.hasClass(CLASS_NAME_LAYOUT_FIXED$1)) {
@@ -934,7 +936,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$a,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
@@ -966,14 +968,14 @@
 
             ControlSidebar._jQueryInterface.call(
                 $__default["default"](this),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     $__default["default"](document).ready(function () {
         ControlSidebar._jQueryInterface.call(
             $__default["default"](SELECTOR_DATA_TOGGLE$4),
-            "_init"
+            "_init",
         );
     });
     /**
@@ -1026,7 +1028,7 @@
                 .first()
                 .toggleClass(CLASS_NAME_DIRECT_CHAT_OPEN);
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_TOGGLED)
+                $__default["default"].Event(EVENT_TOGGLED),
             );
         }; // Static
 
@@ -1061,9 +1063,9 @@
 
             DirectChat._jQueryInterface.call(
                 $__default["default"](this),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     /**
      * jQuery API
@@ -1178,7 +1180,7 @@
                 var _config = $__default["default"].extend(
                     {},
                     Default$9,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
@@ -1200,14 +1202,14 @@
      */
 
     $__default["default"](
-        SELECTOR_DROPDOWN_MENU + " " + SELECTOR_DROPDOWN_TOGGLE
+        SELECTOR_DROPDOWN_MENU + " " + SELECTOR_DROPDOWN_TOGGLE,
     ).on("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
 
         Dropdown._jQueryInterface.call(
             $__default["default"](this),
-            "toggleSubmenu"
+            "toggleSubmenu",
         );
     });
     $__default["default"](SELECTOR_NAVBAR + " " + SELECTOR_DROPDOWN_TOGGLE).on(
@@ -1226,10 +1228,10 @@
             setTimeout(function () {
                 Dropdown._jQueryInterface.call(
                     $__default["default"](this),
-                    "fixPosition"
+                    "fixPosition",
                 );
             }, 1);
-        }
+        },
     );
     /**
      * jQuery API
@@ -1279,25 +1281,24 @@
         var _proto = ExpandableTable.prototype;
 
         _proto.init = function init() {
-            $__default["default"](SELECTOR_DATA_TOGGLE$2).each(function (
-                _,
-                $header
-            ) {
-                var $type =
-                    $__default["default"]($header).attr(SELECTOR_ARIA_ATTR);
-                var $body = $__default["default"]($header)
-                    .next(SELECTOR_EXPANDABLE_BODY)
-                    .children()
-                    .first()
-                    .children();
+            $__default["default"](SELECTOR_DATA_TOGGLE$2).each(
+                function (_, $header) {
+                    var $type =
+                        $__default["default"]($header).attr(SELECTOR_ARIA_ATTR);
+                    var $body = $__default["default"]($header)
+                        .next(SELECTOR_EXPANDABLE_BODY)
+                        .children()
+                        .first()
+                        .children();
 
-                if ($type === "true") {
-                    $body.show();
-                } else if ($type === "false") {
-                    $body.hide();
-                    $body.parent().parent().addClass("d-none");
-                }
-            });
+                    if ($type === "true") {
+                        $body.show();
+                    } else if ($type === "false") {
+                        $body.hide();
+                        $body.parent().parent().addClass("d-none");
+                    }
+                },
+            );
         };
 
         _proto.toggleRow = function toggleRow() {
@@ -1326,7 +1327,7 @@
                 });
                 $element.attr(SELECTOR_ARIA_ATTR, "false");
                 $element.trigger(
-                    $__default["default"].Event(EVENT_COLLAPSED$2)
+                    $__default["default"].Event(EVENT_COLLAPSED$2),
                 );
             } else if ($type === "false") {
                 $element.next(SELECTOR_EXPANDABLE_BODY).removeClass("d-none");
@@ -1337,7 +1338,7 @@
         }; // Static
 
         ExpandableTable._jQueryInterface = function _jQueryInterface(
-            operation
+            operation,
         ) {
             return this.each(function () {
                 var data = $__default["default"](this).data(DATA_KEY$9);
@@ -1366,7 +1367,7 @@
     $__default["default"](SELECTOR_TABLE).ready(function () {
         ExpandableTable._jQueryInterface.call(
             $__default["default"](this),
-            "init"
+            "init",
         );
     });
     $__default["default"](document).on(
@@ -1375,9 +1376,9 @@
         function () {
             ExpandableTable._jQueryInterface.call(
                 $__default["default"](this),
-                "toggleRow"
+                "toggleRow",
             );
-        }
+        },
     );
     /**
      * jQuery API
@@ -1425,7 +1426,7 @@
             this.options = $__default["default"].extend(
                 {},
                 Default$8,
-                _options
+                _options,
             );
         } // Public
 
@@ -1491,13 +1492,13 @@
             var _options = $__default["default"].extend(
                 {},
                 Default$8,
-                typeof config === "object" ? config : data
+                typeof config === "object" ? config : data,
             );
 
             var plugin = new Fullscreen($__default["default"](this), _options);
             $__default["default"](this).data(
                 DATA_KEY$8,
-                typeof config === "object" ? config : data
+                typeof config === "object" ? config : data,
             );
 
             if (
@@ -1523,14 +1524,14 @@
         function () {
             Fullscreen._jQueryInterface.call(
                 $__default["default"](this),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     $__default["default"](document).on(EVENT_FULLSCREEN_CHANGE, function () {
         Fullscreen._jQueryInterface.call(
             $__default["default"](SELECTOR_DATA_WIDGET$2),
-            "toggleIcon"
+            "toggleIcon",
         );
     });
     /**
@@ -1639,7 +1640,7 @@
             title,
             link,
             uniqueName,
-            autoOpen
+            autoOpen,
         ) {
             var _this = this;
 
@@ -1662,7 +1663,7 @@
                 title +
                 "</a></li>";
             $__default["default"](SELECTOR_TAB_NAVBAR_NAV).append(
-                unescape(escape(newNavItem))
+                unescape(escape(newNavItem)),
             );
             var newTabItem =
                 '<div class="tab-pane fade" id="' +
@@ -1673,7 +1674,7 @@
                 link +
                 '"></iframe></div>';
             $__default["default"](SELECTOR_TAB_CONTENT).append(
-                unescape(escape(newTabItem))
+                unescape(escape(newTabItem)),
             );
 
             if (autoOpen) {
@@ -1769,8 +1770,8 @@
                             .attr(
                                 "src",
                                 $__default["default"](tabId + " iframe").attr(
-                                    "src"
-                                )
+                                    "src",
+                                ),
                             )
                             .ready(function () {
                                 if (_this2._config.loadingScreen) {
@@ -1790,7 +1791,7 @@
                 } else {
                     $__default["default"](tabId + " iframe").attr(
                         "src",
-                        $__default["default"](tabId + " iframe").attr("src")
+                        $__default["default"](tabId + " iframe").attr("src"),
                     );
                 }
             }
@@ -1807,7 +1808,7 @@
 
             if (this._config.autoItemActive) {
                 this._setItemActive(
-                    $__default["default"](tabId + " iframe").attr("src")
+                    $__default["default"](tabId + " iframe").attr("src"),
                 );
             }
         };
@@ -1819,10 +1820,10 @@
                 $__default["default"](SELECTOR_TAB_EMPTY).show();
             } else if (type == "all-other") {
                 $__default["default"](
-                    SELECTOR_TAB_NAVBAR_NAV_ITEM + ":not(.active)"
+                    SELECTOR_TAB_NAVBAR_NAV_ITEM + ":not(.active)",
                 ).remove();
                 $__default["default"](
-                    SELECTOR_TAB_PANE + ":not(.active)"
+                    SELECTOR_TAB_PANE + ":not(.active)",
                 ).remove();
             } else if (type == "only-this") {
                 var $navClose = $__default["default"](element);
@@ -1839,7 +1840,7 @@
                     $__default["default"](SELECTOR_TAB_CONTENT).children()
                         .length ==
                     $__default["default"](
-                        SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING
+                        SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING,
                     ).length
                 ) {
                     $__default["default"](SELECTOR_TAB_EMPTY).show();
@@ -1849,12 +1850,12 @@
                         $navItemParent
                             .children()
                             .eq(prevNavItemIndex)
-                            .find("a.nav-link")
+                            .find("a.nav-link"),
                     );
                 }
             } else {
                 var _$navItem = $__default["default"](
-                    SELECTOR_TAB_NAVBAR_NAV_ITEM + ".active"
+                    SELECTOR_TAB_NAVBAR_NAV_ITEM + ".active",
                 );
 
                 var _$navItemParent = _$navItem.parent();
@@ -1869,7 +1870,7 @@
                     $__default["default"](SELECTOR_TAB_CONTENT).children()
                         .length ==
                     $__default["default"](
-                        SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING
+                        SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING,
                     ).length
                 ) {
                     $__default["default"](SELECTOR_TAB_EMPTY).show();
@@ -1880,7 +1881,7 @@
                         _$navItemParent
                             .children()
                             .eq(_prevNavItemIndex)
-                            .find("a.nav-link")
+                            .find("a.nav-link"),
                     );
                 }
             }
@@ -1889,17 +1890,17 @@
         _proto.toggleFullscreen = function toggleFullscreen() {
             if (
                 $__default["default"]("body").hasClass(
-                    CLASS_NAME_FULLSCREEN_MODE
+                    CLASS_NAME_FULLSCREEN_MODE,
                 )
             ) {
                 $__default["default"](SELECTOR_DATA_TOGGLE_FULLSCREEN + " i")
                     .removeClass(this._config.iconMinimize)
                     .addClass(this._config.iconMaximize);
                 $__default["default"]("body").removeClass(
-                    CLASS_NAME_FULLSCREEN_MODE
+                    CLASS_NAME_FULLSCREEN_MODE,
                 );
                 $__default["default"](
-                    SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING
+                    SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING,
                 ).height("100%");
                 $__default["default"](SELECTOR_CONTENT_WRAPPER).height("100%");
                 $__default["default"](SELECTOR_CONTENT_IFRAME).height("100%");
@@ -1908,7 +1909,7 @@
                     .removeClass(this._config.iconMaximize)
                     .addClass(this._config.iconMinimize);
                 $__default["default"]("body").addClass(
-                    CLASS_NAME_FULLSCREEN_MODE
+                    CLASS_NAME_FULLSCREEN_MODE,
                 );
             }
 
@@ -1949,14 +1950,14 @@
 
         _proto._navScroll = function _navScroll(offset) {
             var leftPos = $__default["default"](
-                SELECTOR_TAB_NAVBAR_NAV
+                SELECTOR_TAB_NAVBAR_NAV,
             ).scrollLeft();
             $__default["default"](SELECTOR_TAB_NAVBAR_NAV).animate(
                 {
                     scrollLeft: leftPos + offset,
                 },
                 250,
-                "linear"
+                "linear",
             );
         };
 
@@ -1971,7 +1972,7 @@
 
             if (
                 $__default["default"](SELECTOR_CONTENT_WRAPPER).hasClass(
-                    CLASS_NAME_IFRAME_MODE$1
+                    CLASS_NAME_IFRAME_MODE$1,
                 )
             ) {
                 $__default["default"](document).on(
@@ -1983,7 +1984,7 @@
                         e.preventDefault();
 
                         _this3.openTabSidebar(e.target);
-                    }
+                    },
                 );
 
                 if (this._config.useNavbarItems) {
@@ -1996,7 +1997,7 @@
                             e.preventDefault();
 
                             _this3.openTabSidebar(e.target);
-                        }
+                        },
                     );
                 }
             }
@@ -2010,7 +2011,7 @@
                     _this3.onTabClick(e.target);
 
                     _this3.switchTab(e.target);
-                }
+                },
             );
             $__default["default"](document).on(
                 "click",
@@ -2021,7 +2022,7 @@
                     _this3.onTabClick(e.target);
 
                     _this3.switchTab(e.target);
-                }
+                },
             );
             $__default["default"](document).on(
                 "click",
@@ -2038,9 +2039,9 @@
                         target.attributes["data-type"]
                             ? target.attributes["data-type"].nodeValue
                             : null,
-                        target
+                        target,
                     );
-                }
+                },
             );
             $__default["default"](document).on(
                 "click",
@@ -2049,7 +2050,7 @@
                     e.preventDefault();
 
                     _this3.toggleFullscreen();
-                }
+                },
             );
             var mousedown = false;
             var mousedownInterval = null;
@@ -2072,7 +2073,7 @@
                     mousedownInterval = setInterval(function () {
                         _this3._navScroll(scrollOffset);
                     }, 250);
-                }
+                },
             );
             $__default["default"](document).on(
                 "mousedown",
@@ -2093,7 +2094,7 @@
                     mousedownInterval = setInterval(function () {
                         _this3._navScroll(scrollOffset);
                     }, 250);
-                }
+                },
             );
             $__default["default"](document).on("mouseup", function () {
                 if (mousedown) {
@@ -2108,19 +2109,19 @@
             $__default["default"](
                 SELECTOR_SIDEBAR_MENU_ITEM +
                     ", " +
-                    SELECTOR_HEADER_DROPDOWN_ITEM
+                    SELECTOR_HEADER_DROPDOWN_ITEM,
             ).removeClass("active");
             $__default["default"](SELECTOR_HEADER_MENU_ITEM)
                 .parent()
                 .removeClass("active");
             var $headerMenuItem = $__default["default"](
-                SELECTOR_HEADER_MENU_ITEM + '[href$="' + href + '"]'
+                SELECTOR_HEADER_MENU_ITEM + '[href$="' + href + '"]',
             );
             var $headerDropdownItem = $__default["default"](
-                SELECTOR_HEADER_DROPDOWN_ITEM + '[href$="' + href + '"]'
+                SELECTOR_HEADER_DROPDOWN_ITEM + '[href$="' + href + '"]',
             );
             var $sidebarMenuItem = $__default["default"](
-                SELECTOR_SIDEBAR_MENU_ITEM + '[href$="' + href + '"]'
+                SELECTOR_SIDEBAR_MENU_ITEM + '[href$="' + href + '"]',
             );
             $headerMenuItem.each(function (i, e) {
                 $__default["default"](e).parent().addClass("active");
@@ -2144,7 +2145,7 @@
 
             if (
                 $__default["default"]("body").hasClass(
-                    CLASS_NAME_FULLSCREEN_MODE
+                    CLASS_NAME_FULLSCREEN_MODE,
                 )
             ) {
                 var windowHeight = $__default["default"](window).height();
@@ -2155,16 +2156,16 @@
                         ", " +
                         SELECTOR_TAB_LOADING +
                         ", " +
-                        SELECTOR_CONTENT_IFRAME
+                        SELECTOR_CONTENT_IFRAME,
                 ).height(windowHeight - navbarHeight);
                 $__default["default"](SELECTOR_CONTENT_WRAPPER).height(
-                    windowHeight
+                    windowHeight,
                 );
             } else {
                 var contentWrapperHeight = parseFloat(
                     $__default["default"](SELECTOR_CONTENT_WRAPPER).css(
-                        "height"
-                    )
+                        "height",
+                    ),
                 );
 
                 var _navbarHeight =
@@ -2173,12 +2174,12 @@
                 if (tabEmpty == true) {
                     setTimeout(function () {
                         $__default["default"](
-                            SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING
+                            SELECTOR_TAB_EMPTY + ", " + SELECTOR_TAB_LOADING,
                         ).height(contentWrapperHeight - _navbarHeight);
                     }, 50);
                 } else {
                     $__default["default"](SELECTOR_CONTENT_IFRAME).height(
-                        contentWrapperHeight - _navbarHeight
+                        contentWrapperHeight - _navbarHeight,
                     );
                 }
             }
@@ -2195,23 +2196,23 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$7,
-                    typeof config === "object" ? config : data
+                    typeof config === "object" ? config : data,
                 );
 
                 localStorage.setItem(
                     "AdminLTE:IFrame:Options",
-                    JSON.stringify(_options)
+                    JSON.stringify(_options),
                 );
                 var plugin = new IFrame($__default["default"](this), _options);
                 $__default["default"](this).data(
                     DATA_KEY$7,
-                    typeof config === "object" ? config : data
+                    typeof config === "object" ? config : data,
                 );
 
                 if (
                     typeof config === "string" &&
                     /createTab|openTabSidebar|switchTab|removeActiveTab/.test(
-                        config
+                        config,
                     )
                 ) {
                     plugin[config]();
@@ -2219,7 +2220,7 @@
             } else {
                 new IFrame(
                     $__default["default"](this),
-                    JSON.parse(localStorage.getItem("AdminLTE:IFrame:Options"))
+                    JSON.parse(localStorage.getItem("AdminLTE:IFrame:Options")),
                 )._initFrameElement();
             }
         };
@@ -2233,7 +2234,7 @@
 
     $__default["default"](window).on("load", function () {
         IFrame._jQueryInterface.call(
-            $__default["default"](SELECTOR_DATA_TOGGLE$1)
+            $__default["default"](SELECTOR_DATA_TOGGLE$1),
         );
     });
     /**
@@ -2315,7 +2316,7 @@
                 extra === "control_sidebar"
             ) {
                 controlSidebar = $__default["default"](
-                    SELECTOR_CONTROL_SIDEBAR_CONTENT
+                    SELECTOR_CONTROL_SIDEBAR_CONTENT,
                 ).outerHeight();
             }
 
@@ -2350,17 +2351,17 @@
                 if (max === heights.controlSidebar) {
                     $contentSelector.css(
                         this._config.panelAutoHeightMode,
-                        max + offset
+                        max + offset,
                     );
                 } else if (max === heights.window) {
                     $contentSelector.css(
                         this._config.panelAutoHeightMode,
-                        max + offset - heights.header - heights.footer
+                        max + offset - heights.header - heights.footer,
                     );
                 } else {
                     $contentSelector.css(
                         this._config.panelAutoHeightMode,
-                        max + offset - heights.header
+                        max + offset - heights.header,
                     );
                 }
 
@@ -2369,9 +2370,9 @@
                         this._config.panelAutoHeightMode,
                         parseFloat(
                             $contentSelector.css(
-                                this._config.panelAutoHeightMode
-                            )
-                        ) + heights.footer
+                                this._config.panelAutoHeightMode,
+                            ),
+                        ) + heights.footer,
                     );
                 }
             }
@@ -2395,7 +2396,7 @@
             } else {
                 $__default["default"](SELECTOR_SIDEBAR$1).css(
                     "overflow-y",
-                    "auto"
+                    "auto",
                 );
             }
         };
@@ -2403,7 +2404,7 @@
         _proto.fixLoginRegisterHeight = function fixLoginRegisterHeight() {
             var $body = $__default["default"]("body");
             var $selector = $__default["default"](
-                SELECTOR_LOGIN_BOX + ", " + SELECTOR_REGISTER_BOX
+                SELECTOR_LOGIN_BOX + ", " + SELECTOR_REGISTER_BOX,
             );
 
             if ($body.hasClass(CLASS_NAME_IFRAME_MODE)) {
@@ -2436,7 +2437,7 @@
             ) {
                 setInterval(
                     this.fixLoginRegisterHeight,
-                    this._config.loginRegisterAutoHeight
+                    this._config.loginRegisterAutoHeight,
                 );
             }
 
@@ -2444,19 +2445,19 @@
                 "collapsed.lte.treeview expanded.lte.treeview",
                 function () {
                     _this.fixLayoutHeight();
-                }
+                },
             );
             $__default["default"](SELECTOR_MAIN_SIDEBAR).on(
                 "mouseenter mouseleave",
                 function () {
                     if (
                         $__default["default"]("body").hasClass(
-                            CLASS_NAME_SIDEBAR_COLLAPSED$1
+                            CLASS_NAME_SIDEBAR_COLLAPSED$1,
                         )
                     ) {
                         _this.fixLayoutHeight();
                     }
-                }
+                },
             );
             $__default["default"](SELECTOR_PUSHMENU_BTN).on(
                 "collapsed.lte.pushmenu shown.lte.pushmenu",
@@ -2464,7 +2465,7 @@
                     setTimeout(function () {
                         _this.fixLayoutHeight();
                     }, 300);
-                }
+                },
             );
             $__default["default"](SELECTOR_CONTROL_SIDEBAR_BTN)
                 .on("collapsed.lte.controlsidebar", function () {
@@ -2478,7 +2479,7 @@
             });
             setTimeout(function () {
                 $__default["default"]("body.hold-transition").removeClass(
-                    "hold-transition"
+                    "hold-transition",
                 );
             }, 50);
             setTimeout(function () {
@@ -2522,7 +2523,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$6,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
@@ -2554,12 +2555,12 @@
     $__default["default"](SELECTOR_SIDEBAR$1 + " a")
         .on("focusin", function () {
             $__default["default"](SELECTOR_MAIN_SIDEBAR).addClass(
-                CLASS_NAME_SIDEBAR_FOCUSED
+                CLASS_NAME_SIDEBAR_FOCUSED,
             );
         })
         .on("focusout", function () {
             $__default["default"](SELECTOR_MAIN_SIDEBAR).removeClass(
-                CLASS_NAME_SIDEBAR_FOCUSED
+                CLASS_NAME_SIDEBAR_FOCUSED,
             );
         });
     /**
@@ -2618,7 +2619,7 @@
             this._options = $__default["default"].extend(
                 {},
                 Default$5,
-                options
+                options,
             );
 
             if ($__default["default"](SELECTOR_OVERLAY).length === 0) {
@@ -2653,12 +2654,12 @@
             if (this._options.enableRemember) {
                 localStorage.setItem(
                     "remember" + EVENT_KEY$2,
-                    CLASS_NAME_OPEN$3
+                    CLASS_NAME_OPEN$3,
                 );
             }
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_SHOWN)
+                $__default["default"].Event(EVENT_SHOWN),
             );
         };
 
@@ -2682,16 +2683,16 @@
             if (this._options.enableRemember) {
                 localStorage.setItem(
                     "remember" + EVENT_KEY$2,
-                    CLASS_NAME_COLLAPSED
+                    CLASS_NAME_COLLAPSED,
                 );
             }
 
             $__default["default"](this._element).trigger(
-                $__default["default"].Event(EVENT_COLLAPSED$1)
+                $__default["default"].Event(EVENT_COLLAPSED$1),
             );
             setTimeout(function () {
                 $__default["default"](_this._element).trigger(
-                    $__default["default"].Event(EVENT_COLLAPSED_DONE)
+                    $__default["default"].Event(EVENT_COLLAPSED_DONE),
                 );
             }, this._options.animationSpeed);
         };
@@ -2699,7 +2700,7 @@
         _proto.toggle = function toggle() {
             if (
                 $__default["default"](SELECTOR_BODY).hasClass(
-                    CLASS_NAME_COLLAPSED
+                    CLASS_NAME_COLLAPSED,
                 )
             ) {
                 this.expand();
@@ -2751,7 +2752,7 @@
                         .delay(50)
                         .queue(function () {
                             $__default["default"](this).removeClass(
-                                "hold-transition"
+                                "hold-transition",
                             );
                             $__default["default"](this).dequeue();
                         });
@@ -2765,7 +2766,7 @@
                     .delay(50)
                     .queue(function () {
                         $__default["default"](this).removeClass(
-                            "hold-transition"
+                            "hold-transition",
                         );
                         $__default["default"](this).dequeue();
                     });
@@ -2803,7 +2804,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$5,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
@@ -2836,19 +2837,19 @@
 
             if ($__default["default"](button).data("widget") !== "pushmenu") {
                 button = $__default["default"](button).closest(
-                    SELECTOR_TOGGLE_BUTTON$1
+                    SELECTOR_TOGGLE_BUTTON$1,
                 );
             }
 
             PushMenu._jQueryInterface.call(
                 $__default["default"](button),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     $__default["default"](window).on("load", function () {
         PushMenu._jQueryInterface.call(
-            $__default["default"](SELECTOR_TOGGLE_BUTTON$1)
+            $__default["default"](SELECTOR_TOGGLE_BUTTON$1),
         );
     });
     /**
@@ -2916,7 +2917,7 @@
             this.options = $__default["default"].extend(
                 {},
                 Default$4,
-                _options
+                _options,
             );
             this.items = [];
         } // Public
@@ -2932,25 +2933,25 @@
 
             if (
                 $__default["default"](SELECTOR_DATA_WIDGET$1).next(
-                    SELECTOR_SEARCH_RESULTS
+                    SELECTOR_SEARCH_RESULTS,
                 ).length === 0
             ) {
                 $__default["default"](SELECTOR_DATA_WIDGET$1).after(
                     $__default["default"]("<div />", {
                         class: CLASS_NAME_SEARCH_RESULTS,
-                    })
+                    }),
                 );
             }
 
             if (
                 $__default["default"](SELECTOR_SEARCH_RESULTS).children(
-                    SELECTOR_SEARCH_LIST_GROUP
+                    SELECTOR_SEARCH_LIST_GROUP,
                 ).length === 0
             ) {
                 $__default["default"](SELECTOR_SEARCH_RESULTS).append(
                     $__default["default"]("<div />", {
                         class: CLASS_NAME_LIST_GROUP,
-                    })
+                    }),
                 );
             }
 
@@ -2983,7 +2984,7 @@
                 return item.name.toLowerCase().includes(searchValue);
             });
             var endResults = $__default["default"](
-                searchResults.slice(0, this.options.maxResults)
+                searchResults.slice(0, this.options.maxResults),
             );
             $__default["default"](SELECTOR_SEARCH_RESULTS_GROUP).empty();
 
@@ -2995,8 +2996,8 @@
                         _this2._renderItem(
                             escape(result.name),
                             encodeURI(result.link),
-                            result.path
-                        )
+                            result.path,
+                        ),
                     );
                 });
             }
@@ -3128,7 +3129,7 @@
 
         _proto._addNotFound = function _addNotFound() {
             $__default["default"](SELECTOR_SEARCH_RESULTS_GROUP).append(
-                this._renderItem(this.options.notFoundText, "#", [])
+                this._renderItem(this.options.notFoundText, "#", []),
             );
         }; // Static
 
@@ -3142,16 +3143,16 @@
             var _options = $__default["default"].extend(
                 {},
                 Default$4,
-                typeof config === "object" ? config : data
+                typeof config === "object" ? config : data,
             );
 
             var plugin = new SidebarSearch(
                 $__default["default"](this),
-                _options
+                _options,
             );
             $__default["default"](this).data(
                 DATA_KEY$4,
-                typeof config === "object" ? config : data
+                typeof config === "object" ? config : data,
             );
 
             if (
@@ -3179,9 +3180,9 @@
 
             SidebarSearch._jQueryInterface.call(
                 $__default["default"](SELECTOR_DATA_WIDGET$1),
-                "toggle"
+                "toggle",
             );
-        }
+        },
     );
     $__default["default"](document).on(
         "keyup",
@@ -3208,10 +3209,10 @@
             setTimeout(function () {
                 SidebarSearch._jQueryInterface.call(
                     $__default["default"](SELECTOR_DATA_WIDGET$1),
-                    "search"
+                    "search",
                 );
             }, 100);
-        }
+        },
     );
     $__default["default"](document).on(
         "keydown",
@@ -3238,12 +3239,12 @@
                     $focused.next().focus();
                 }
             }
-        }
+        },
     );
     $__default["default"](window).on("load", function () {
         SidebarSearch._jQueryInterface.call(
             $__default["default"](SELECTOR_DATA_WIDGET$1),
-            "init"
+            "init",
         );
     });
     /**
@@ -3292,7 +3293,7 @@
             this._config = $__default["default"].extend(
                 {},
                 Default$3,
-                _options
+                _options,
             );
         } // Public
 
@@ -3305,7 +3306,7 @@
                 .fadeIn()
                 .addClass(CLASS_NAME_OPEN$1);
             $__default["default"](
-                this._config.target + " " + SELECTOR_SEARCH_INPUT
+                this._config.target + " " + SELECTOR_SEARCH_INPUT,
             ).focus();
         };
 
@@ -3316,7 +3317,7 @@
 
             if (this._config.resetOnClose) {
                 $__default["default"](
-                    this._config.target + " " + SELECTOR_SEARCH_INPUT
+                    this._config.target + " " + SELECTOR_SEARCH_INPUT,
                 ).val("");
             }
         };
@@ -3324,7 +3325,7 @@
         _proto.toggle = function toggle() {
             if (
                 $__default["default"](this._config.target).hasClass(
-                    CLASS_NAME_OPEN$1
+                    CLASS_NAME_OPEN$1,
                 )
             ) {
                 this.close();
@@ -3340,7 +3341,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$3,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
@@ -3375,7 +3376,7 @@
             }
 
             NavbarSearch._jQueryInterface.call(button, "toggle");
-        }
+        },
     );
     /**
      * jQuery API
@@ -3449,7 +3450,7 @@
             this._prepareContainer();
 
             $__default["default"]("body").trigger(
-                $__default["default"].Event(EVENT_INIT)
+                $__default["default"].Event(EVENT_INIT),
             );
         } // Public
 
@@ -3457,7 +3458,7 @@
 
         _proto.create = function create() {
             var toast = $__default["default"](
-                '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"/>'
+                '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"/>',
             );
             toast.data("autohide", this._config.autohide);
             toast.data("animation", this._config.fade);
@@ -3471,7 +3472,7 @@
             }
 
             var toastHeader = $__default["default"](
-                '<div class="toast-header">'
+                '<div class="toast-header">',
             );
 
             if (this._config.image != null) {
@@ -3491,7 +3492,7 @@
                 toastHeader.append(
                     $__default["default"]("<i />")
                         .addClass("mr-2")
-                        .addClass(this._config.icon)
+                        .addClass(this._config.icon),
                 );
             }
 
@@ -3499,21 +3500,21 @@
                 toastHeader.append(
                     $__default["default"]("<strong />")
                         .addClass("mr-auto")
-                        .html(this._config.title)
+                        .html(this._config.title),
                 );
             }
 
             if (this._config.subtitle != null) {
                 toastHeader.append(
                     $__default["default"]("<small />").html(
-                        this._config.subtitle
-                    )
+                        this._config.subtitle,
+                    ),
                 );
             }
 
             if (this._config.close == true) {
                 var toastClose = $__default["default"](
-                    '<button data-dismiss="toast" />'
+                    '<button data-dismiss="toast" />',
                 )
                     .attr("type", "button")
                     .addClass("ml-2 mb-1 close")
@@ -3532,8 +3533,8 @@
             if (this._config.body != null) {
                 toast.append(
                     $__default["default"]('<div class="toast-body" />').html(
-                        this._config.body
-                    )
+                        this._config.body,
+                    ),
                 );
             }
 
@@ -3572,7 +3573,7 @@
             if ($__default["default"](this._getContainerId()).length === 0) {
                 var container = $__default["default"]("<div />").attr(
                     "id",
-                    this._getContainerId().replace("#", "")
+                    this._getContainerId().replace("#", ""),
                 );
 
                 if (this._config.position == POSITION_TOP_RIGHT) {
@@ -3592,7 +3593,7 @@
                 $__default["default"](this._getContainerId()).addClass("fixed");
             } else {
                 $__default["default"](this._getContainerId()).removeClass(
-                    "fixed"
+                    "fixed",
                 );
             }
         }; // Static
@@ -3602,7 +3603,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$2,
-                    config
+                    config,
                 );
 
                 var toast = new Toasts($__default["default"](this), _options);
@@ -3710,16 +3711,16 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default$1,
-                    typeof config === "object" ? config : data
+                    typeof config === "object" ? config : data,
                 );
 
                 var plugin = new TodoList(
                     $__default["default"](this),
-                    _options
+                    _options,
                 );
                 $__default["default"](this).data(
                     DATA_KEY$1,
-                    typeof config === "object" ? config : data
+                    typeof config === "object" ? config : data,
                 );
 
                 if (config === "init") {
@@ -3737,7 +3738,7 @@
 
     $__default["default"](window).on("load", function () {
         TodoList._jQueryInterface.call(
-            $__default["default"](SELECTOR_DATA_TOGGLE)
+            $__default["default"](SELECTOR_DATA_TOGGLE),
         );
     });
     /**
@@ -3806,7 +3807,7 @@
                     SELECTOR_OPEN +
                     " " +
                     SELECTOR_TREEVIEW_MENU +
-                    SELECTOR_OPEN
+                    SELECTOR_OPEN,
             ).css("display", "block");
 
             this._setupListeners();
@@ -3831,7 +3832,7 @@
                 .slideDown(this._config.animationSpeed, function () {
                     parentLi.addClass(CLASS_NAME_OPEN);
                     $__default["default"](_this._element).trigger(
-                        expandedEvent
+                        expandedEvent,
                     );
                 });
 
@@ -3849,7 +3850,7 @@
                 .stop()
                 .slideUp(this._config.animationSpeed, function () {
                     $__default["default"](_this2._element).trigger(
-                        collapsedEvent
+                        collapsedEvent,
                     );
                     treeviewMenu
                         .find(SELECTOR_OPEN + " > " + SELECTOR_TREEVIEW_MENU)
@@ -3857,7 +3858,7 @@
                     treeviewMenu
                         .find(SELECTOR_OPEN)
                         .removeClass(
-                            CLASS_NAME_IS_OPENING + " " + CLASS_NAME_OPEN
+                            CLASS_NAME_IS_OPENING + " " + CLASS_NAME_OPEN,
                         );
                 });
         };
@@ -3902,18 +3903,18 @@
                 "" + elementId + this._config.trigger,
                 function (event) {
                     _this3.toggle(event);
-                }
+                },
             );
         };
 
         _proto._expandSidebar = function _expandSidebar() {
             if (
                 $__default["default"]("body").hasClass(
-                    CLASS_NAME_SIDEBAR_COLLAPSED
+                    CLASS_NAME_SIDEBAR_COLLAPSED,
                 )
             ) {
                 $__default["default"](
-                    this._config.sidebarButtonSelector
+                    this._config.sidebarButtonSelector,
                 ).PushMenu("expand");
             }
         }; // Static
@@ -3925,7 +3926,7 @@
                 var _options = $__default["default"].extend(
                     {},
                     Default,
-                    $__default["default"](this).data()
+                    $__default["default"](this).data(),
                 );
 
                 if (!data) {
