@@ -88,7 +88,7 @@ function loadHoldingTrandsChart(data) {
     };
     const chart = new ApexCharts(
         document.getElementById("holdingTrandsChart"),
-        options
+        options,
     );
     chart.render();
     return chart;
@@ -130,7 +130,7 @@ function updateFinancialSummary(data) {
         },
         {
             value: `${pnlIcon} ${parseNum(
-                (pnlValue * 100) / latest_data.holding
+                (pnlValue * 100) / latest_data.holding,
             )}%`,
             label: "Overall Return",
             colorClass: pnlClass,
@@ -143,7 +143,7 @@ function updateFinancialSummary(data) {
 
 async function main() {
     const { data, load_timestamp } = await fetchApiData(
-        "holding_trands_data.json"
+        "holding_trands_data.json",
     );
     loadHoldingTrandsChart(data);
     updateFinancialSummary(data);

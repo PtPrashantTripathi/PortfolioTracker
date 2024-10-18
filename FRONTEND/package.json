@@ -1,0 +1,33 @@
+{
+    "name": "portfoliotracker",
+    "version": "0.5.19",
+    "description": "A complete ETL for stock exchanges with PNL calculation and financial analysis tools.",
+    "main": "index.html",
+    "scripts": {
+        "build": "node esbuild.config.js",
+        "serve": "npm http-server .",
+        "start": "npm run build && npm run serve",
+        "lint": "eslint --ext .ts --fix **/*.ts",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md,html}\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PtPrashantTripathi/PortfolioTracker.git"
+    },
+    "keywords": [
+        "FrontEnd"
+    ],
+    "author": {
+        "name": "ptprashanttripathi",
+        "email": "ptprashanttripathi@outlook.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PtPrashantTripathi/PortfolioTracker/issues"
+    },
+    "homepage": "https://github.com/PtPrashantTripathi/PortfolioTracker#readme",
+    "devDependencies": {
+        "esbuild": "^0.24.0",
+        "prettier": "^3.3.3"
+    }
+}

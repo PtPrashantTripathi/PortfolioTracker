@@ -14,11 +14,11 @@ function updateProfitLossDataSummary(data) {
     // Function to calculate profit/loss summary
     const investedValue = data.reduce(
         (sum, record) => sum + record.open_amount,
-        0
+        0,
     );
     const soldValue = data.reduce(
         (sum, record) => sum + record.close_amount,
-        0
+        0,
     );
     const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
 
@@ -61,7 +61,7 @@ function processProfitLossData(data) {
         record.close_datetime = new Date(record.close_datetime);
         record.days = Math.floor(
             (record.close_datetime - record.open_datetime) /
-                (1000 * 60 * 60 * 24)
+                (1000 * 60 * 60 * 24),
         );
 
         if (record.segment === "FO") {
@@ -75,7 +75,7 @@ function processProfitLossData(data) {
     // Group the data by segment, exchange, and symbol
     const groupedData = Object.groupBy(
         data,
-        (item) => `${item.segment}-${item.exchange}-${item.symbol}`
+        (item) => `${item.segment}-${item.exchange}-${item.symbol}`,
     );
 
     // Transform the grouped data into the desired format
@@ -83,15 +83,15 @@ function processProfitLossData(data) {
         const group = groupedData[key];
         const totalQuantity = group.reduce(
             (sum, item) => sum + item.quantity,
-            0
+            0,
         );
         const totalOpenAmount = group.reduce(
             (sum, item) => sum + item.open_amount,
-            0
+            0,
         );
         const totalCloseAmount = group.reduce(
             (sum, item) => sum + item.close_amount,
-            0
+            0,
         );
 
         return {
@@ -100,10 +100,10 @@ function processProfitLossData(data) {
             symbol: group[0].symbol,
 
             min_datetime: new Date(
-                Math.min(...group.map((item) => new Date(item.open_datetime)))
+                Math.min(...group.map((item) => new Date(item.open_datetime))),
             ),
             max_datetime: new Date(
-                Math.max(...group.map((item) => new Date(item.close_datetime)))
+                Math.max(...group.map((item) => new Date(item.close_datetime))),
             ),
             quantity: totalQuantity,
             open_amount: totalOpenAmount,
@@ -143,13 +143,13 @@ function loadProfitLossDataTable(data) {
             createCell(priceFormat(record.sell_price)),
             createCell(
                 priceFormat(record.pnl),
-                pnlFlag ? ["text-danger"] : ["text-success"]
+                pnlFlag ? ["text-danger"] : ["text-success"],
             ),
             createCell(
                 `${pnlFlag ? "" : "+"}${parseNum(
-                    (record.pnl * 100) / (record.avg_price * record.quantity)
+                    (record.pnl * 100) / (record.avg_price * record.quantity),
                 )}%`,
-                pnlFlag ? ["text-danger"] : ["text-success"]
+                pnlFlag ? ["text-danger"] : ["text-success"],
             ),
             createCell(priceFormat(record.brokerage)),
             createCell(calcDays(record.min_datetime, record.max_datetime)),
@@ -160,7 +160,7 @@ function loadProfitLossDataTable(data) {
 
 async function main() {
     const { data: profit_loss_data, load_timestamp } = await fetchApiData(
-        "profit_loss_data.json"
+        "profit_loss_data.json",
     );
     loadProfitLossDataTable(profit_loss_data);
     updateProfitLossDataSummary(profit_loss_data);
