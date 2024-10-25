@@ -1,7 +1,6 @@
 "use strict";
 
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
     var pkg = grunt.file.readJSON("package.json");
 
     // Project configuration.
@@ -12,32 +11,39 @@ module.exports = function(grunt) {
         // Task configuration.
         uglify: {
             options: {
-                banner: "<%= banner %>"
+                banner: "<%= banner %>",
             },
             dist: {
                 src: "<%= concat.dist.dest %>",
-                dest: "<%= pkg.name %>-.js"
+                dest: "<%= pkg.name %>-.js",
             },
             nodeps: {
                 src: "<%= concat.nodeps.dest %>",
-                dest: "<%= pkg.name %>-nodeps-.js"
-            }
+                dest: "<%= pkg.name %>-nodeps-.js",
+            },
         },
         replace: {
             dist: {
                 options: {
-                    patterns: [{
-                        match: "VERSION",
-                        replacement: "<%= pkg.version %>"
-                    }]
+                    patterns: [
+                        {
+                            match: "VERSION",
+                            replacement: "<%= pkg.version %>",
+                        },
+                    ],
                 },
-                files: [{
-                    expand: true,
-                    flatten: true,
-                    src: ["<%= concat.dist.dest %>", "<%= concat.nodeps.dest %>"],
-                    dest: "./"
-                }]
-            }
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: [
+                            "<%= concat.dist.dest %>",
+                            "<%= concat.nodeps.dest %>",
+                        ],
+                        dest: "./",
+                    },
+                ],
+            },
         },
         concat: {
             dist: {
@@ -47,8 +53,8 @@ module.exports = function(grunt) {
                     "dev/raphael.core.js",
                     "dev/raphael.svg.js",
                     "dev/raphael.vml.js",
-                    "dev/raphael.amd.js"
-                ]
+                    "dev/raphael.amd.js",
+                ],
             },
             nodeps: {
                 dest: "<%= pkg.name %>-nodeps.js",
@@ -56,10 +62,10 @@ module.exports = function(grunt) {
                     "dev/raphael.core.js",
                     "dev/raphael.svg.js",
                     "dev/raphael.vml.js",
-                    "dev/raphael.amd.js"
-                ]
-            }
-        }
+                    "dev/raphael.amd.js",
+                ],
+            },
+        },
     });
 
     // These plugins provide necessary tasks.

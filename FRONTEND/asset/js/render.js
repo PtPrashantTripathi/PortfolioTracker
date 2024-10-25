@@ -27,7 +27,7 @@ export function calcDays(date1, date2 = new Date()) {
     const firstDate = new Date(date1);
     const secondDate = new Date(date2);
     const differenceInDays = Math.abs(
-        Math.floor((secondDate - firstDate) / (1000 * 60 * 60 * 24))
+        Math.floor((secondDate - firstDate) / (1000 * 60 * 60 * 24)),
     );
     return differenceInDays;
 }
@@ -79,7 +79,7 @@ export function renderSummary(elementId, summaryItems) {
                     </a>
                 </div>
             </div>
-        `
+        `,
         )
         .join("");
 }
@@ -97,7 +97,7 @@ export async function fetchApiData(name) {
         // Validate HTTP response status
         if (!apiResponse.ok) {
             throw new Error(
-                `HTTP error!\napi_path: ${apiPath}\nstatus: ${apiResponse.status}`
+                `HTTP error!\napi_path: ${apiPath}\nstatus: ${apiResponse.status}`,
             );
         }
 
@@ -136,7 +136,7 @@ export function updated_header_footer(last_updated_on) {
 
     // Set structured data for last modified date
     const jsonLdScript = document.querySelector(
-        "script[type='application/ld+json']"
+        "script[type='application/ld+json']",
     );
     jsonLdScript.textContent = JSON.stringify({
         "@context": "https://schema.org",
@@ -169,7 +169,7 @@ export function updated_header_footer(last_updated_on) {
                     hour12: true,
                     timeZone: "Asia/Calcutta",
                     timeZoneName: "short",
-                }
+                },
             )}
         </div>
     </div>

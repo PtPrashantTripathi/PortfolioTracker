@@ -19,23 +19,31 @@ formatters and transformers to and from logarithmic representation.
 */
 
 (function ($) {
-    'use strict';
+    "use strict";
 
     var options = {
-        xaxis: {}
+        xaxis: {},
     };
 
     /*tick generators and formatters*/
-    var PREFERRED_LOG_TICK_VALUES = computePreferedLogTickValues(Number.MAX_VALUE, 10),
-        EXTENDED_LOG_TICK_VALUES = computePreferedLogTickValues(Number.MAX_VALUE, 4);
+    var PREFERRED_LOG_TICK_VALUES = computePreferedLogTickValues(
+            Number.MAX_VALUE,
+            10,
+        ),
+        EXTENDED_LOG_TICK_VALUES = computePreferedLogTickValues(
+            Number.MAX_VALUE,
+            4,
+        );
 
     function computePreferedLogTickValues(endLimit, rangeStep) {
         var log10End = Math.floor(Math.log(endLimit) * Math.LOG10E) - 1,
             log10Start = -log10End,
-            val, range, vals = [];
+            val,
+            range,
+            vals = [];
 
         for (var power = log10Start; power <= log10End; power++) {
-            range = parseFloat('1e' + power);
+            range = parseFloat("1e" + power);
             for (var mult = 1; mult < 9; mult += rangeStep) {
                 val = range * mult;
                 vals.push(val);
@@ -61,7 +69,11 @@ formatters and transformers to and from logarithmic representation.
             max = axis.max;
 
         if (!noTicks) {
-            noTicks = 0.3 * Math.sqrt(axis.direction === "x" ? surface.width : surface.height);
+            noTicks =
+                0.3 *
+                Math.sqrt(
+                    axis.direction === "x" ? surface.width : surface.height,
+                );
         }
 
         PREFERRED_LOG_TICK_VALUES.some(function (val, i) {
@@ -86,7 +98,10 @@ formatters and transformers to and from logarithmic representation.
             maxIdx = PREFERRED_LOG_TICK_VALUES.length - 1;
         }
 
-        if (maxIdx - minIdx <= noTicks / 4 && logTickValues.length !== EXTENDED_LOG_TICK_VALUES.length) {
+        if (
+            maxIdx - minIdx <= noTicks / 4 &&
+            logTickValues.length !== EXTENDED_LOG_TICK_VALUES.length
+        ) {
             //try with multiple of 5 for tick values
             logTickValues = EXTENDED_LOG_TICK_VALUES;
             minIdx *= 2;
@@ -95,26 +110,34 @@ formatters and transformers to and from logarithmic representation.
 
         var lastDisplayed = null,
             inverseNoTicks = 1 / noTicks,
-            tickValue, pixelCoord, tick;
+            tickValue,
+            pixelCoord,
+            tick;
 
         // Count the number of tick values would appear, if we can get at least
         // nTicks / 4 accept them.
         if (maxIdx - minIdx >= noTicks / 4) {
             for (var idx = maxIdx; idx >= minIdx; idx--) {
                 tickValue = logTickValues[idx];
-                pixelCoord = (Math.log(tickValue) - Math.log(min)) / (Math.log(max) - Math.log(min));
+                pixelCoord =
+                    (Math.log(tickValue) - Math.log(min)) /
+                    (Math.log(max) - Math.log(min));
                 tick = tickValue;
 
                 if (lastDisplayed === null) {
                     lastDisplayed = {
                         pixelCoord: pixelCoord,
-                        idealPixelCoord: pixelCoord
+                        idealPixelCoord: pixelCoord,
                     };
                 } else {
-                    if (Math.abs(pixelCoord - lastDisplayed.pixelCoord) >= inverseNoTicks) {
+                    if (
+                        Math.abs(pixelCoord - lastDisplayed.pixelCoord) >=
+                        inverseNoTicks
+                    ) {
                         lastDisplayed = {
                             pixelCoord: pixelCoord,
-                            idealPixelCoord: lastDisplayed.idealPixelCoord - inverseNoTicks
+                            idealPixelCoord:
+                                lastDisplayed.idealPixelCoord - inverseNoTicks,
                         };
                     } else {
                         tick = null;
@@ -129,7 +152,7 @@ formatters and transformers to and from logarithmic representation.
             ticks.reverse();
         } else {
             var tickSize = plot.computeTickSize(min, max, noTicks),
-                customAxis = {min: min, max: max, tickSize: tickSize};
+                customAxis = { min: min, max: max, tickSize: tickSize };
             ticks = $.plot.linearTickGenerator(customAxis);
         }
 
@@ -149,14 +172,15 @@ formatters and transformers to and from logarithmic representation.
             }
 
             if (max < min) {
-                axis.max = axis.datamax !== null ? axis.datamax : axis.options.max;
+                axis.max =
+                    axis.datamax !== null ? axis.datamax : axis.options.max;
                 axis.options.offset.below = 0;
                 axis.options.offset.above = 0;
             }
         }
 
         return min;
-    }
+    };
 
     /**
     - logTickFormatter(value, axis, precision)
@@ -166,28 +190,32 @@ formatters and transformers to and from logarithmic representation.
     with e representation
     */
     var logTickFormatter = function (value, axis, precision) {
-        var tenExponent = value > 0 ? Math.floor(Math.log(value) / Math.LN10) : 0;
+        var tenExponent =
+            value > 0 ? Math.floor(Math.log(value) / Math.LN10) : 0;
 
         if (precision) {
-            if ((tenExponent >= -4) && (tenExponent <= 7)) {
+            if (tenExponent >= -4 && tenExponent <= 7) {
                 return $.plot.defaultTickFormatter(value, axis, precision);
             } else {
                 return $.plot.expRepTickFormatter(value, axis, precision);
             }
         }
-        if ((tenExponent >= -4) && (tenExponent <= 7)) {
+        if (tenExponent >= -4 && tenExponent <= 7) {
             //if we have float numbers, return a limited length string(ex: 0.0009 is represented as 0.000900001)
-            var formattedValue = tenExponent < 0 ? value.toFixed(-tenExponent) : value.toFixed(tenExponent + 2);
-            if (formattedValue.indexOf('.') !== -1) {
-                var lastZero = formattedValue.lastIndexOf('0');
+            var formattedValue =
+                tenExponent < 0
+                    ? value.toFixed(-tenExponent)
+                    : value.toFixed(tenExponent + 2);
+            if (formattedValue.indexOf(".") !== -1) {
+                var lastZero = formattedValue.lastIndexOf("0");
 
                 while (lastZero === formattedValue.length - 1) {
                     formattedValue = formattedValue.slice(0, -1);
-                    lastZero = formattedValue.lastIndexOf('0');
+                    lastZero = formattedValue.lastIndexOf("0");
                 }
 
                 //delete the dot if is last
-                if (formattedValue.indexOf('.') === formattedValue.length - 1) {
+                if (formattedValue.indexOf(".") === formattedValue.length - 1) {
                     formattedValue = formattedValue.slice(0, -1);
                 }
             }
@@ -212,15 +240,15 @@ formatters and transformers to and from logarithmic representation.
 
     var invertedTransform = function (v) {
         return -v;
-    }
+    };
 
     var invertedLogTransform = function (v) {
         return -logTransform(v);
-    }
+    };
 
     var invertedLogInverseTransform = function (v) {
         return logInverseTransform(-v);
-    }
+    };
 
     /**
     - setDataminRange(plot, axis)
@@ -231,7 +259,7 @@ formatters and transformers to and from logarithmic representation.
     values less than or equal to 0.
     */
     function setDataminRange(plot, axis) {
-        if (axis.options.mode === 'log' && axis.datamin <= 0) {
+        if (axis.options.mode === "log" && axis.datamin <= 0) {
             if (axis.datamin === null) {
                 axis.datamin = 0.1;
             } else {
@@ -243,15 +271,20 @@ formatters and transformers to and from logarithmic representation.
     function processAxisOffset(plot, axis) {
         var series = plot.getData(),
             range = series
-                .filter(function(series) {
+                .filter(function (series) {
                     return series.xaxis === axis || series.yaxis === axis;
                 })
-                .map(function(series) {
-                    return plot.computeRangeForDataSeries(series, null, isValid);
+                .map(function (series) {
+                    return plot.computeRangeForDataSeries(
+                        series,
+                        null,
+                        isValid,
+                    );
                 }),
-            min = axis.direction === 'x'
-                ? Math.min(0.1, range && range[0] ? range[0].xmin : 0.1)
-                : Math.min(0.1, range && range[0] ? range[0].ymin : 0.1);
+            min =
+                axis.direction === "x"
+                    ? Math.min(0.1, range && range[0] ? range[0].xmin : 0.1)
+                    : Math.min(0.1, range && range[0] ? range[0].ymin : 0.1);
 
         axis.min = min;
 
@@ -266,16 +299,20 @@ formatters and transformers to and from logarithmic representation.
         plot.hooks.processOptions.push(function (plot) {
             $.each(plot.getAxes(), function (axisName, axis) {
                 var opts = axis.options;
-                if (opts.mode === 'log') {
+                if (opts.mode === "log") {
                     axis.tickGenerator = function (axis) {
                         var noTicks = 11;
                         return logTickGenerator(plot, axis, noTicks);
                     };
-                    if (typeof axis.options.tickFormatter !== 'function') {
+                    if (typeof axis.options.tickFormatter !== "function") {
                         axis.options.tickFormatter = logTickFormatter;
                     }
-                    axis.options.transform = opts.inverted ? invertedLogTransform : logTransform;
-                    axis.options.inverseTransform = opts.inverted ? invertedLogInverseTransform : logInverseTransform;
+                    axis.options.transform = opts.inverted
+                        ? invertedLogTransform
+                        : logTransform;
+                    axis.options.inverseTransform = opts.inverted
+                        ? invertedLogInverseTransform
+                        : logInverseTransform;
                     axis.options.autoScaleMargin = 0;
                     plot.hooks.setRange.push(setDataminRange);
                 } else if (opts.inverted) {
@@ -289,8 +326,8 @@ formatters and transformers to and from logarithmic representation.
     $.plot.plugins.push({
         init: init,
         options: options,
-        name: 'log',
-        version: '0.1'
+        name: "log",
+        version: "0.1",
     });
 
     $.plot.logTicksGenerator = logTickGenerator;

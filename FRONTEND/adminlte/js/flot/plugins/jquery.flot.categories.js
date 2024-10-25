@@ -46,11 +46,11 @@ as "categories" on the axis object, e.g. plot.getAxes().xaxis.categories.
 (function ($) {
     var options = {
         xaxis: {
-            categories: null
+            categories: null,
         },
         yaxis: {
-            categories: null
-        }
+            categories: null,
+        },
     };
 
     function processRawData(plot, series, data, datapoints) {
@@ -71,12 +71,31 @@ as "categories" on the axis object, e.g. plot.getAxes().xaxis.categories.
             // FIXME: auto-detection should really not be defined here
             var s = series;
             format = [];
-            format.push({ x: true, number: true, required: true, computeRange: true});
-            format.push({ y: true, number: true, required: true, computeRange: true });
+            format.push({
+                x: true,
+                number: true,
+                required: true,
+                computeRange: true,
+            });
+            format.push({
+                y: true,
+                number: true,
+                required: true,
+                computeRange: true,
+            });
 
             if (s.bars.show || (s.lines.show && s.lines.fill)) {
-                var autoScale = !!((s.bars.show && s.bars.zero) || (s.lines.show && s.lines.zero));
-                format.push({ y: true, number: true, required: false, defaultValue: 0, computeRange: autoScale });
+                var autoScale = !!(
+                    (s.bars.show && s.bars.zero) ||
+                    (s.lines.show && s.lines.zero)
+                );
+                format.push({
+                    y: true,
+                    number: true,
+                    required: false,
+                    defaultValue: 0,
+                    computeRange: autoScale,
+                });
                 if (s.bars.horizontal) {
                     delete format[format.length - 1].y;
                     format[format.length - 1].x = true;
@@ -119,7 +138,9 @@ as "categories" on the axis object, e.g. plot.getAxes().xaxis.categories.
             }
         }
 
-        res.sort(function (a, b) { return a[0] - b[0]; });
+        res.sort(function (a, b) {
+            return a[0] - b[0];
+        });
 
         return res;
     }
@@ -131,7 +152,8 @@ as "categories" on the axis object, e.g. plot.getAxes().xaxis.categories.
 
         if (!series[axis].categories) {
             // parse options
-            var c = {}, o = series[axis].options.categories || {};
+            var c = {},
+                o = series[axis].options.categories || {};
             if ($.isArray(o)) {
                 for (var i = 0; i < o.length; ++i) {
                     c[o[i]] = i;
@@ -196,7 +218,7 @@ as "categories" on the axis object, e.g. plot.getAxes().xaxis.categories.
     $.plot.plugins.push({
         init: init,
         options: options,
-        name: 'categories',
-        version: '1.0'
+        name: "categories",
+        version: "1.0",
     });
 })(jQuery);

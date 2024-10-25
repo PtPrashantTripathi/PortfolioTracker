@@ -26,12 +26,12 @@ function loadCurrentHoldingDataTable(data) {
     const currentHoldingData = Object.entries(
         Object.groupBy(
             data,
-            (item) => `${item.segment}-${item.exchange}-${item.symbol}`
-        )
+            (item) => `${item.segment}-${item.exchange}-${item.symbol}`,
+        ),
     ).map(([key, group]) => {
         const total_quantity = group.reduce(
             (sum, item) => sum + item.quantity,
-            0
+            0,
         );
         const total_amount = group.reduce((sum, item) => sum + item.amount, 0);
         const close_price = group[0].close_price;
@@ -50,7 +50,7 @@ function loadCurrentHoldingDataTable(data) {
             close_amount,
             pnl_amount: close_amount - total_amount,
             min_datetime: new Date(
-                Math.min(...group.map((item) => new Date(item.datetime)))
+                Math.min(...group.map((item) => new Date(item.datetime))),
             ),
             history: group,
         };
@@ -64,7 +64,7 @@ function loadCurrentHoldingDataTable(data) {
             createCell(
                 `${
                     record.segment === "EQ" ? record.symbol : record.scrip_name
-                } (${record.segment})`
+                } (${record.segment})`,
             ),
             createCell(parseNum(record.total_quantity)),
             createCell(priceFormat(record.avg_price)),
@@ -74,9 +74,9 @@ function loadCurrentHoldingDataTable(data) {
             createCell(priceFormat(record.pnl_amount), [pnlClass]),
             createCell(
                 `${record.pnl_amount >= 0 ? "+" : ""}${parseNum(
-                    (record.pnl_amount * 100) / record.total_amount
+                    (record.pnl_amount * 100) / record.total_amount,
                 )}%`,
-                [pnlClass]
+                [pnlClass],
             ),
             createCell(calcDays(record.min_datetime)),
         ];
@@ -90,7 +90,7 @@ function updateFinancialSummary(data) {
     const investedValue = data.reduce((sum, record) => sum + record.amount, 0);
     const currentValue = data.reduce(
         (sum, record) => sum + record.close_amount,
-        0
+        0,
     );
     const pnlValue = data.reduce((sum, record) => sum + record.pnl_amount, 0);
 
@@ -131,7 +131,7 @@ function updateFinancialSummary(data) {
 
 async function main() {
     const { data, load_timestamp } = await fetchApiData(
-        "current_holding_data.json"
+        "current_holding_data.json",
     );
     loadCurrentHoldingDataTable(data);
     updateFinancialSummary(data);

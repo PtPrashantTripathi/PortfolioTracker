@@ -11,13 +11,13 @@ import {
 function loadDividendChart(data) {
     const yearWiseData = Object.groupBy(data, (item) => item.financial_year);
     const financialYears = Object.keys(yearWiseData).sort((a, b) =>
-        a.localeCompare(b)
+        a.localeCompare(b),
     );
     const dividendAmounts = financialYears.map((financial_year) =>
         yearWiseData[financial_year].reduce(
             (sum, item) => sum + item.dividend_amount,
-            0
-        )
+            0,
+        ),
     );
 
     const options = {
@@ -81,7 +81,7 @@ function loadDividendChart(data) {
 
     const chart = new ApexCharts(
         document.getElementById("dividendBarChart"),
-        options
+        options,
     );
     chart.render();
     return chart;
@@ -90,27 +90,27 @@ function loadDividendChart(data) {
 function loadDividendDataTable(data) {
     // Extract unique fy and sort them in ascending order
     const uniqueFY = Array.from(
-        new Set(data.map((item) => item.financial_year))
+        new Set(data.map((item) => item.financial_year)),
     ).sort((a, b) => a.localeCompare(b));
 
     const headers = ["Stock Name", ...uniqueFY, "Total"];
 
     // Group data by 'symbol' and 'segment'
     const stockWiseData = Object.entries(
-        Object.groupBy(data, (item) => `${item.symbol} (${item.segment})`)
+        Object.groupBy(data, (item) => `${item.symbol} (${item.segment})`),
     ).map(([symbol, symbolGroup]) => ({
         symbol,
         dividend_amount: symbolGroup.reduce(
             (sum, item) => sum + item.dividend_amount,
-            0
+            0,
         ),
         data: Object.entries(
-            Object.groupBy(symbolGroup, (item) => item.financial_year)
+            Object.groupBy(symbolGroup, (item) => item.financial_year),
         ).map(([financial_year, fyGroup]) => ({
             financial_year,
             dividend_amount: fyGroup.reduce(
                 (sum, item) => sum + item.dividend_amount,
-                0
+                0,
             ),
         })),
     }));
@@ -124,22 +124,22 @@ function loadDividendDataTable(data) {
         // Add dividend amounts for each unique year
         uniqueFY.forEach((fy) => {
             const financialYearData = record.data.find(
-                (subRecord) => subRecord.financial_year === fy
+                (subRecord) => subRecord.financial_year === fy,
             );
             // Find data for the specific year
             result.push(
                 financialYearData
                     ? createCell(
                           priceFormat(financialYearData.dividend_amount),
-                          ["text-success"]
+                          ["text-success"],
                       )
-                    : createCell("-", ["text-info"])
+                    : createCell("-", ["text-info"]),
             );
         });
 
         // Add the total dividend amount for the symbol
         result.push(
-            createCell(priceFormat(record.dividend_amount), ["text-success"])
+            createCell(priceFormat(record.dividend_amount), ["text-success"]),
         );
         return result;
     });
@@ -152,7 +152,7 @@ function updateDividendSummary(data) {
     // Calculate the sum of dividend_amount
     const totalDividendAmount = data.reduce(
         (sum, item) => sum + item.dividend_amount,
-        0
+        0,
     );
     document.getElementById("totalDividend").textContent =
         priceFormat(totalDividendAmount);

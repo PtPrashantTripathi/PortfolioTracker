@@ -1,5 +1,5 @@
 (function ($) {
-    'use strict';
+    "use strict";
     var saturated = {
         saturate: function (a) {
             if (a === Infinity) {
@@ -12,8 +12,10 @@
 
             return a;
         },
-        delta: function(min, max, noTicks) {
-            return ((max - min) / noTicks) === Infinity ? (max / noTicks - min / noTicks) : (max - min) / noTicks
+        delta: function (min, max, noTicks) {
+            return (max - min) / noTicks === Infinity
+                ? max / noTicks - min / noTicks
+                : (max - min) / noTicks;
         },
         multiply: function (a, b) {
             return saturated.saturate(a * b);
@@ -34,9 +36,9 @@
             }
         },
         // round to nearby lower multiple of base
-        floorInBase: function(n, base) {
+        floorInBase: function (n, base) {
             return base * Math.floor(n / base);
-        }
+        },
     };
 
     $.plot.saturated = saturated;
