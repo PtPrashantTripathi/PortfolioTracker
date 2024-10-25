@@ -4696,13 +4696,11 @@ if ((version[0] <= 2 && version[1] < 17) || version[0] >= 3) {
                             return data[option]();
                         } else {
                             if (option === "date") {
-                                data.isDateUpdateThroughDateOptionFromClientCode =
-                                    true;
+                                data.isDateUpdateThroughDateOptionFromClientCode = true;
                             }
 
                             var ret = data[option](argument);
-                            data.isDateUpdateThroughDateOptionFromClientCode =
-                                false;
+                            data.isDateUpdateThroughDateOptionFromClientCode = false;
                             return ret;
                         }
                     }

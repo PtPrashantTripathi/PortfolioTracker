@@ -65,11 +65,5 @@
             "data_type": "float64"
         }
     ],
-    "order_by": [
-        "date",
-        "segment",
-        "exchange",
-        "symbol",
-        "scrip_name"
-    ]
+    "order_by": ["date", "segment", "exchange", "symbol", "scrip_name"]
 }

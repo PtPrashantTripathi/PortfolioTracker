@@ -6391,16 +6391,14 @@ function _typeof(t) {
                     c.getPlaceholder().trigger("plotselected", [t]),
                         t.xaxis &&
                             t.yaxis &&
-                            c
-                                .getPlaceholder()
-                                .trigger("selected", [
-                                    {
-                                        x1: t.xaxis.from,
-                                        y1: t.yaxis.from,
-                                        x2: t.xaxis.to,
-                                        y2: t.yaxis.to,
-                                    },
-                                ]);
+                            c.getPlaceholder().trigger("selected", [
+                                {
+                                    x1: t.xaxis.from,
+                                    y1: t.yaxis.from,
+                                    x2: t.xaxis.to,
+                                    y2: t.yaxis.to,
+                                },
+                            ]);
                 }
                 function l(t, e, n) {
                     return e < t ? t : n < e ? n : e;

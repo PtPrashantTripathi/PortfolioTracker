@@ -2743,8 +2743,7 @@
                 vim.lastEditInputState = inputState;
                 vim.lastEditActionCommand = actionCommand;
                 macroModeState.lastInsertModeChanges.changes = [];
-                macroModeState.lastInsertModeChanges.expectCursorActivityForChange =
-                    false;
+                macroModeState.lastInsertModeChanges.expectCursorActivityForChange = false;
                 macroModeState.lastInsertModeChanges.visualBlock =
                     vim.visualBlock
                         ? vim.sel.head.line - vim.sel.anchor.line

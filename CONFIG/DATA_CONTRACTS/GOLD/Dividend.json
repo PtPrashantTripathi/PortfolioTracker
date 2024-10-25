@@ -21,10 +21,5 @@
             "data_type": "float64"
         }
     ],
-    "order_by": [
-        "financial_year",
-        "date",
-        "segment",
-        "symbol"
-    ]
+    "order_by": ["financial_year", "date", "segment", "symbol"]
 }

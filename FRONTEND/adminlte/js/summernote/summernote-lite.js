@@ -4912,8 +4912,7 @@
                                                               ) + 1,
                                                       },
                                                       {
-                                                          isSkipPaddingBlankHTML:
-                                                              true,
+                                                          isSkipPaddingBlankHTML: true,
                                                       },
                                                   )
                                                 : null;
