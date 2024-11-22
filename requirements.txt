@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 StockETL==0.5.19
+=======
+StockETL>=0.5.19
+>>>>>>> 2425424 (commit)
 black>=23.7.0
 jupyter>=1.1.1
 matplotlib>=3.9.2
