@@ -1,48 +1,6 @@
 {
     "data": [
         {
-            "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
-            "symbol": "BAJAJHFL",
-            "exchange": "NSE",
-            "segment": "EQ",
-            "datetime": "2024-09-13 00:00:00",
-            "side": "BUY",
-            "quantity": 214.0,
-            "price": 70.0,
-            "amount": 14980.0,
-            "close_price": 131.37,
-            "close_amount": 28113.18,
-            "pnl_amount": 13133.18
-        },
-        {
-            "scrip_name": "INDIAN RAILWAY CATERING AND TO",
-            "symbol": "IRCTC",
-            "exchange": "NSE",
-            "segment": "EQ",
-            "datetime": "2024-06-04 12:19:21",
-            "side": "BUY",
-            "quantity": 3.0,
-            "price": 896.2,
-            "amount": 2688.6,
-            "close_price": 808.9,
-            "close_amount": 2426.7,
-            "pnl_amount": -261.9
-        },
-        {
-            "scrip_name": "KPIT TECHNOLOGIES LTD",
-            "symbol": "KPITTECH",
-            "exchange": "NSE",
-            "segment": "EQ",
-            "datetime": "2024-06-13 13:58:03",
-            "side": "BUY",
-            "quantity": 2.0,
-            "price": 1500.0,
-            "amount": 3000.0,
-            "close_price": 1387.05,
-            "close_amount": 2774.1,
-            "pnl_amount": -225.9
-        },
-        {
             "scrip_name": "TATA MOTORS",
             "symbol": "TATAMOTORS",
             "exchange": "NSE",
@@ -52,9 +10,9 @@
             "quantity": 14.0,
             "price": 75.1,
             "amount": 1051.4,
-            "close_price": 863.45,
-            "close_amount": 12088.3,
-            "pnl_amount": 11036.9
+            "close_price": 773.85,
+            "close_amount": 10833.9,
+            "pnl_amount": 9782.5
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -66,9 +24,9 @@
             "quantity": 5.0,
             "price": 83.8,
             "amount": 419.0,
-            "close_price": 863.45,
-            "close_amount": 4317.25,
-            "pnl_amount": 3898.25
+            "close_price": 773.85,
+            "close_amount": 3869.25,
+            "pnl_amount": 3450.25
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -80,9 +38,9 @@
             "quantity": 15.0,
             "price": 104.0,
             "amount": 1560.0,
-            "close_price": 863.45,
-            "close_amount": 12951.75,
-            "pnl_amount": 11391.75
+            "close_price": 773.85,
+            "close_amount": 11607.75,
+            "pnl_amount": 10047.75
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -94,9 +52,9 @@
             "quantity": 26.0,
             "price": 295.0,
             "amount": 7670.0,
-            "close_price": 863.45,
-            "close_amount": 22449.7,
-            "pnl_amount": 14779.7
+            "close_price": 773.85,
+            "close_amount": 20120.1,
+            "pnl_amount": 12450.1
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -108,9 +66,9 @@
             "quantity": 40.0,
             "price": 385.0,
             "amount": 15400.0,
-            "close_price": 863.45,
-            "close_amount": 34538.0,
-            "pnl_amount": 19138.0
+            "close_price": 773.85,
+            "close_amount": 30954.0,
+            "pnl_amount": 15554.0
         },
         {
             "scrip_name": "TATA POWER",
@@ -122,9 +80,9 @@
             "quantity": 53.0,
             "price": 90.0,
             "amount": 4770.0,
-            "close_price": 419.35,
-            "close_amount": 22225.55,
-            "pnl_amount": 17455.55
+            "close_price": 408.05,
+            "close_amount": 21626.65,
+            "pnl_amount": 16856.65
         },
         {
             "scrip_name": "TATA POWER",
@@ -136,9 +94,9 @@
             "quantity": 33.0,
             "price": 90.0,
             "amount": 2970.0,
-            "close_price": 419.35,
-            "close_amount": 13838.55,
-            "pnl_amount": 10868.55
+            "close_price": 408.05,
+            "close_amount": 13465.65,
+            "pnl_amount": 10495.65
         },
         {
             "scrip_name": "TATA POWER",
@@ -150,149 +108,9 @@
             "quantity": 64.0,
             "price": 224.75,
             "amount": 14384.0,
-            "close_price": 419.35,
-            "close_amount": 26838.4,
-            "pnl_amount": 12454.4
-        },
-        {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-05-24 00:00:00",
-            "side": "BUY",
-            "quantity": 20.51,
-            "price": 48.77,
-            "amount": 1000.27,
-            "close_price": 52.8,
-            "close_amount": 1082.93,
-            "pnl_amount": 82.66
-        },
-        {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-07-02 00:00:00",
-            "side": "BUY",
-            "quantity": 19.29,
-            "price": 51.84,
-            "amount": 999.99,
-            "close_price": 52.8,
-            "close_amount": 1018.51,
-            "pnl_amount": 18.52
-        },
-        {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-08-02 00:00:00",
-            "side": "BUY",
-            "quantity": 18.61,
-            "price": 53.74,
-            "amount": 1000.1,
-            "close_price": 52.8,
-            "close_amount": 982.61,
-            "pnl_amount": -17.49
-        },
-        {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-09-02 00:00:00",
-            "side": "BUY",
-            "quantity": 18.2,
-            "price": 54.94,
-            "amount": 999.91,
-            "close_price": 52.8,
-            "close_amount": 960.96,
-            "pnl_amount": -38.95
-        },
-        {
-            "scrip_name": "MIRAE ASSET TAX SAVER FUND - D",
-            "symbol": "MIRAE_ASSET_ELSS_TAX_SAVER_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-10-03 00:00:00",
-            "side": "BUY",
-            "quantity": 18.22,
-            "price": 54.89,
-            "amount": 1000.1,
-            "close_price": 52.8,
-            "close_amount": 962.02,
-            "pnl_amount": -38.08
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-05-24 00:00:00",
-            "side": "BUY",
-            "quantity": 2.33,
-            "price": 428.89,
-            "amount": 999.31,
-            "close_price": 466.56,
-            "close_amount": 1087.08,
-            "pnl_amount": 87.77
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-07-02 00:00:00",
-            "side": "BUY",
-            "quantity": 2.2,
-            "price": 455.11,
-            "amount": 1001.24,
-            "close_price": 466.56,
-            "close_amount": 1026.43,
-            "pnl_amount": 25.19
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-08-02 00:00:00",
-            "side": "BUY",
-            "quantity": 2.11,
-            "price": 474.32,
-            "amount": 1000.82,
-            "close_price": 466.56,
-            "close_amount": 984.44,
-            "pnl_amount": -16.38
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-09-02 00:00:00",
-            "side": "BUY",
-            "quantity": 2.08,
-            "price": 481.11,
-            "amount": 1000.71,
-            "close_price": 466.56,
-            "close_amount": 970.44,
-            "pnl_amount": -30.27
-        },
-        {
-            "scrip_name": "SBI MAGNUM TAX GAIN SCHEME - D",
-            "symbol": "SBI_LONG_TERM_EQUITY_FUND_DIRECT_PLAN_GROWTH",
-            "exchange": "BMF",
-            "segment": "MF",
-            "datetime": "2024-10-03 00:00:00",
-            "side": "BUY",
-            "quantity": 2.07,
-            "price": 482.09,
-            "amount": 997.93,
-            "close_price": 466.56,
-            "close_amount": 965.78,
-            "pnl_amount": -32.15
+            "close_price": 408.05,
+            "close_amount": 26115.2,
+            "pnl_amount": 11731.2
         }
     ],
     "load_timestamp": "2024-10-04 11:30:06.114242"
