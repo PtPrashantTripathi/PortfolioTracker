@@ -1,8 +1,6 @@
 {
     "data": [
         {
-<<<<<<< HEAD
-=======
             "scrip_name": "BAJAJ HOUSING FINANCE LIMITED",
             "symbol": "BAJAJHFL",
             "exchange": "NSE",
@@ -45,7 +43,6 @@
             "pnl_amount": -383.1
         },
         {
->>>>>>> 2425424 (commit)
             "scrip_name": "TATA MOTORS",
             "symbol": "TATAMOTORS",
             "exchange": "NSE",
@@ -55,15 +52,9 @@
             "quantity": 14.0,
             "price": 75.1,
             "amount": 1051.4,
-<<<<<<< HEAD
-            "close_price": 773.85,
-            "close_amount": 10833.9,
-            "pnl_amount": 9782.5
-=======
             "close_price": 791.0,
             "close_amount": 11074.0,
             "pnl_amount": 10022.6
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -75,15 +66,9 @@
             "quantity": 5.0,
             "price": 83.8,
             "amount": 419.0,
-<<<<<<< HEAD
-            "close_price": 773.85,
-            "close_amount": 3869.25,
-            "pnl_amount": 3450.25
-=======
             "close_price": 791.0,
             "close_amount": 3955.0,
             "pnl_amount": 3536.0
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -95,15 +80,9 @@
             "quantity": 15.0,
             "price": 104.0,
             "amount": 1560.0,
-<<<<<<< HEAD
-            "close_price": 773.85,
-            "close_amount": 11607.75,
-            "pnl_amount": 10047.75
-=======
             "close_price": 791.0,
             "close_amount": 11865.0,
             "pnl_amount": 10305.0
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -115,15 +94,9 @@
             "quantity": 26.0,
             "price": 295.0,
             "amount": 7670.0,
-<<<<<<< HEAD
-            "close_price": 773.85,
-            "close_amount": 20120.1,
-            "pnl_amount": 12450.1
-=======
             "close_price": 791.0,
             "close_amount": 20566.0,
             "pnl_amount": 12896.0
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -135,15 +108,9 @@
             "quantity": 40.0,
             "price": 385.0,
             "amount": 15400.0,
-<<<<<<< HEAD
-            "close_price": 773.85,
-            "close_amount": 30954.0,
-            "pnl_amount": 15554.0
-=======
             "close_price": 791.0,
             "close_amount": 31640.0,
             "pnl_amount": 16240.0
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA POWER",
@@ -155,15 +122,9 @@
             "quantity": 53.0,
             "price": 90.0,
             "amount": 4770.0,
-<<<<<<< HEAD
-            "close_price": 408.05,
-            "close_amount": 21626.65,
-            "pnl_amount": 16856.65
-=======
             "close_price": 413.75,
             "close_amount": 21928.75,
             "pnl_amount": 17158.75
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA POWER",
@@ -175,15 +136,9 @@
             "quantity": 33.0,
             "price": 90.0,
             "amount": 2970.0,
-<<<<<<< HEAD
-            "close_price": 408.05,
-            "close_amount": 13465.65,
-            "pnl_amount": 10495.65
-=======
             "close_price": 413.75,
             "close_amount": 13653.75,
             "pnl_amount": 10683.75
->>>>>>> 2425424 (commit)
         },
         {
             "scrip_name": "TATA POWER",
@@ -195,11 +150,6 @@
             "quantity": 64.0,
             "price": 224.75,
             "amount": 14384.0,
-<<<<<<< HEAD
-            "close_price": 408.05,
-            "close_amount": 26115.2,
-            "pnl_amount": 11731.2
-=======
             "close_price": 413.75,
             "close_amount": 26480.0,
             "pnl_amount": 12096.0
@@ -385,7 +335,6 @@
             "close_price": 449.67,
             "close_amount": 971.29,
             "pnl_amount": -27.58
->>>>>>> 2425424 (commit)
         }
     ],
     "load_timestamp": "2024-10-04 11:30:06.114242"

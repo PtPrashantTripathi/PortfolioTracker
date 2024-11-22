@@ -97,8 +97,6 @@
             "segment": "EQ",
             "symbol": "TATAPOWER",
             "dividend_amount": 300.0
-<<<<<<< HEAD
-=======
         },
         {
             "financial_year": "FY2024-25",
@@ -120,7 +118,6 @@
             "segment": "EQ",
             "symbol": "IRCTC",
             "dividend_amount": 12.0
->>>>>>> 2425424 (commit)
         }
     ],
     "load_timestamp": "2024-10-04 11:30:06.114242"

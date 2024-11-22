@@ -360,8 +360,6 @@
             "pnl_amount": 62.5,
             "pnl_percentage": 10.64,
             "brokerage": 2.06
-<<<<<<< HEAD
-=======
         },
         {
             "exchange": "FON",
@@ -3801,7 +3799,6 @@
             "pnl_amount": -1800.0,
             "pnl_percentage": -65.45,
             "brokerage": 48.24
->>>>>>> 2425424 (commit)
         }
     ],
     "load_timestamp": "2024-10-04 11:30:06.114242"
