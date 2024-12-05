@@ -8,13 +8,6 @@ rm -rf DATA/SILVER
 rm -rf DATA/GOLD
 rm -rf DATA/API
 
-# Check if the environment variable PROJECT_DIR doesn't exist and if .env exists
-if [ -z "$PROJECT_DIR" ] && [ -f ".env" ]; then
-    # Copy sample.env to .env
-    cp sample.env .env
-    echo "Environment Variable Setup Done"
-fi
-
 # Disable Debugging
 export PYDEVD_DISABLE_FILE_VALIDATION=1
 
