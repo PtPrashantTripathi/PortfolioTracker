@@ -25,11 +25,15 @@ concurrency:
 
 jobs:
   deploy:
+    # Define environment variables
+    env:
+      PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
+      USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
+
     # Environment configuration for GitHub Pages deployment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
 
     # Use the latest stable Ubuntu runner
     runs-on: ubuntu-latest

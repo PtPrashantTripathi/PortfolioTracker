@@ -1,7 +1,7 @@
-from importlib.metadata import distribution, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, distribution
 
 # Load the existing requirements.txt file
-with open("requirements.txt", "r") as file:
+with open("requirements.txt") as file:
     requirements = file.readlines()
 
 updated_requirements = []

@@ -16,7 +16,6 @@ jobs:
 
     # Define environment variables
     env:
-      name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
       USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
