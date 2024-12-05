@@ -84,14 +84,14 @@ export function renderSummary(elementId, summaryItems) {
         .join("");
 }
 
-export async function fetchApiData(name) {
+export async function fetchApiData(file_name) {
     try {
-        if (name === undefined) {
-            throw new Error("Parameter 'name' is required");
+        if (file_name === undefined) {
+            throw new Error("Parameter 'file_name' is required");
         }
         // IMPORTANT: Do not modify this variable `apiPath`. It will be automatically updated during production deployment
         // via the GitHub Actions workflow defined in ./.github/workflows/deploy_github_pages.yml
-        const apiPath = `../DATA/API/${name}`;
+        const apiPath = `../DATA/API/ptprashanttripathi/${file_name}`;
         const apiResponse = await fetch(apiPath);
 
         // Validate HTTP response status
