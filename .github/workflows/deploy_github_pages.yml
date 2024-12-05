@@ -1,8 +1,8 @@
 # Workflow for deploying static content to GitHub Pages
-name: Deploy Github Pages
+name: Deploy GitHub Pages
 
 on:
-  # Trigger workflow on pushes to the 'main' branch, limited to changes in 'FRONTEND' or workflow files
+  # Trigger workflow on pushes to the 'main' branch for changes in 'FRONTEND' or workflow files
   push:
     branches:
       - main
@@ -12,50 +12,55 @@ on:
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
-# Set permissions for the GITHUB_TOKEN to read content and deploy to GitHub Pages
 permissions:
-  contents: read  # Read access to repository content
-  pages: write    # Write access to GitHub Pages
-  id-token: write # ID token for secure Pages deployment
+  contents: read     # Read access to repository content
+  pages: write       # Write access to GitHub Pages
+  id-token: write    # ID token for secure Pages deployment
 
-# Ensure only one deployment runs at a time and do not cancel in-progress jobs
+# Prevent overlapping deployments to GitHub Pages
 concurrency:
   group: pages-deployments
   cancel-in-progress: false
 
 jobs:
   deploy:
-    # Environment configuration for GitHub Pages deployment
+    # Define environment for GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    # Use the latest stable Ubuntu runner
+    # Use the latest Ubuntu runner
     runs-on: ubuntu-latest
 
     steps:
       # Step 1: Checkout the repository
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1  # Limit fetch to improve job speed
+          fetch-depth: 1  # Optimize fetch to speed up the job
 
-      # Step 2: Setup Pages for deployment
+      # Step 2: Setup GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      # Step 3: Replace local API path with the live API URL in 'render.js'
+      # Step 3: Update API Path in 'render.js'
       - name: Update API Path in render.js
         run: |
           echo "Replacing local API path with live URL..."
-          sed -i 's|../DATA/API/ptprashanttripathi|https://raw.githubusercontent.com/${{ github.repository }}/${{ github.event.repository.default_branch }}/DATA/API/${{ github.repository_owner }}|' ./FRONTEND/asset/js/render.js
+          REPO_URL="https://raw.githubusercontent.com"
+          REPO_NAME="${{ github.repository }}"
+          DEFAULT_BRANCH="${{ github.event.repository.default_branch }}"
+          REPO_OWNER_LOWER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          
+          # Use sed to update the file
+          sed -i "s|../DATA/API/ptprashanttripathi|${REPO_URL}/${REPO_NAME}/${DEFAULT_BRANCH}/DATA/API/${REPO_OWNER_LOWER}|" ./FRONTEND/asset/js/render.js
 
-      # Step 4: Upload static site content from 'FRONTEND' directory as an artifact
-      - name: Upload static site content
+      # Step 4: Upload static site content from the 'FRONTEND' directory
+      - name: Upload Static Site Content
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './FRONTEND/'  # Path to frontend static files
-          retention-days: 5    # Retain artifacts for 5 days
+          path: './FRONTEND/'  # Path to the static files
+          retention-days: 5   # Retain artifacts for 5 days
 
       # Step 5: Deploy the uploaded artifact to GitHub Pages
       - name: Deploy to GitHub Pages
