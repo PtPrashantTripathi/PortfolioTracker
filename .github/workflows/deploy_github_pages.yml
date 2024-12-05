@@ -29,6 +29,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
 
     # Use the latest stable Ubuntu runner
     runs-on: ubuntu-latest
