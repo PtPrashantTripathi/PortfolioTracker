@@ -19,6 +19,7 @@ jobs:
       name: python
       RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
       PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
+      USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
 
     steps:
       # Step 1: Checkout the repository
@@ -46,7 +47,7 @@ jobs:
       - name: Run Jupyter notebooks
         run: |
           echo "Running all Jupyter notebooks..."
-          bash ./PIPELINES/all_runner.sh
+          bash ./SCRIPTS/all_runner.sh
 
       # Step 6: Create a pull request with the data updates
       - name: Create Pull Request

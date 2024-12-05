@@ -41,5 +41,7 @@
             "data_type": "datetime64[ns]"
         }
     ],
-    "order_by": ["datetime"]
+    "order_by": [
+        "datetime"
+    ]
 }
