@@ -118,9 +118,7 @@ class MetaData:
                 .replace("\\", "/")
                 + "/"
             )
-        object_path = (
-            f"/{layer}/{data_source}/{object_name}/{stage.title()}"
-        )
+        object_path = f"/{layer}/{data_source}/{object_name}/{stage.title()}"
         if layer == "Silver":
             object_path = f"/{layer}/{data_source}/{stage.title()}/{object_name}"
         elif layer == "Gold":
@@ -258,7 +256,6 @@ class MetaData:
                     "layer",
                     "data_source",
                     "object_name",
-                    
                     "stage",
                     "YYYY",
                     "MM",
@@ -268,7 +265,6 @@ class MetaData:
                     "created",
                     "layer",
                     "stage",
-                    
                     "data_source",
                     "object_name",
                     "field_name_c",

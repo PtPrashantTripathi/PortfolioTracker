@@ -20,7 +20,6 @@ STRUCT_TYPE = StructType(
         StructField("created", StringType(), True),
         StructField("layer", StringType(), True),
         StructField("stage", StringType(), True),
-        
         StructField("data_source", StringType(), True),
         StructField("object_name", StringType(), True),
         StructField("status", StringType(), True),
@@ -58,7 +57,6 @@ class DataQuality(DataReport):
                 "created": self.landing_date,
                 "layer": self.layer,
                 "stage": self.stage,
-                
                 "data_source": self.data_source,
                 "object_name": self.object_name,
                 "status": self.status,

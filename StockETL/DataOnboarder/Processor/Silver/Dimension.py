@@ -59,11 +59,9 @@ class SilverDimensionProcessor(BaseProcessor):
         """Transform Silver Dimension"""
         # field_name_list = [field.field_name for field in self.contract.contract_fields]
         valid_df = self.drop_generated_primary_keys(self.get_valid())
-        transform_df = (
-            valid_df
-            .withColumn("InsertedTimestamp", F.lit(self.current_timestamp))
-            .withColumn("UpdatedTimestamp", F.lit(self.current_timestamp))
-        )
+        transform_df = valid_df.withColumn(
+            "InsertedTimestamp", F.lit(self.current_timestamp)
+        ).withColumn("UpdatedTimestamp", F.lit(self.current_timestamp))
         transform_df = self.custom_udf_func(transform_df, "TRANSFORM")
         return self.persist_transformed(transform_df)
 

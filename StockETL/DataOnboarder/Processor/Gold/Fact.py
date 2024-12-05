@@ -55,11 +55,9 @@ class GoldFactProcessor(BaseProcessor):
     def transform(self) -> DataFrame:
         """Transform Gold Fact"""
         valid_df = self.drop_generated_primary_keys(self.get_valid())
-        transform_df = (
-            valid_df
-            .withColumn("InsertedTimestamp", F.current_timestamp())
-            .withColumn("UpdatedTimestamp", F.current_timestamp())
-        )
+        transform_df = valid_df.withColumn(
+            "InsertedTimestamp", F.current_timestamp()
+        ).withColumn("UpdatedTimestamp", F.current_timestamp())
         transform_df = self.custom_udf_func(transform_df, "TRANSFORM")
         return self.persist_transformed(transform_df)
 

@@ -86,7 +86,6 @@ class DataReport:
                 StructField("created", StringType(), True),
                 StructField("layer", StringType(), True),
                 StructField("stage", StringType(), True),
-                
                 StructField("data_source", StringType(), True),
                 StructField("object_name", StringType(), True),
                 StructField("status", StringType(), True),
@@ -107,7 +106,6 @@ class DataReport:
                 "created": self.meta_data["landing_date"],
                 "layer": self.meta_data["layer"],
                 "stage": self.meta_data["stage"],
-                
                 "data_source": self.meta_data["data_source"],
                 "object_name": self.meta_data["object_name"],
                 "uuid": str(self.meta_data["job_id"]),
@@ -144,7 +142,6 @@ class DataReport:
                 StructField("created", StringType(), True),
                 StructField("layer", StringType(), True),
                 StructField("stage", StringType(), True),
-                
                 StructField("data_source", StringType(), True),
                 StructField("object_name", StringType(), True),
                 StructField("field_name", StringType(), True),
@@ -206,7 +203,7 @@ class DataReport:
         result_df["file_ingest"] = self.meta_data["file_ingest"]
         result_df["layer"] = self.meta_data["layer"]
         result_df["stage"] = self.meta_data["stage"]
-        
+
         contract_df = pd.json_normalize(
             self.contract.dict(),
             "contract_fields",
@@ -217,7 +214,6 @@ class DataReport:
                 "contract_object_name",
                 "contract_name",
                 "contract_description",
-                
             ],
         )
         result_df = result_df.merge(
@@ -228,7 +224,6 @@ class DataReport:
                 "object_name",
                 "layer",
                 "stage",
-                
                 "field_name_c",
             ],
             right_on=[
@@ -236,7 +231,6 @@ class DataReport:
                 "contract_object_name",
                 "contract_layer",
                 "contract_stage",
-                
                 "field_name",
             ],
         )

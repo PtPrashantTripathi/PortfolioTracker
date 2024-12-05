@@ -21,7 +21,6 @@ STRUCT_TYPE = StructType(
         StructField("created", StringType(), True),
         StructField("layer", StringType(), True),
         StructField("stage", StringType(), True),
-        
         StructField("data_source", StringType(), True),
         StructField("object_name", StringType(), True),
         StructField("field_name", StringType(), True),
@@ -104,7 +103,7 @@ class DataCatalog(DataReport):
         result_df["file_ingest"] = file_ingest
         result_df["layer"] = self.layer
         result_df["stage"] = self.stage
-        
+
         contract_df = pd.json_normalize(
             self.contract.dict(),
             "contract_fields",
@@ -125,7 +124,6 @@ class DataCatalog(DataReport):
                 "object_name",
                 "layer",
                 "stage",
-                
                 "field_name_c",
             ],
             right_on=[
@@ -133,7 +131,6 @@ class DataCatalog(DataReport):
                 "contract_object_name",
                 "contract_layer",
                 "contract_stage",
-                
                 "field_name",
             ],
         )

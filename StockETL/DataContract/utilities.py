@@ -5,8 +5,8 @@ from typing import Union
 
 import pandas as pd
 
-from ..common.CustomLogger import logging, get_logger, with_debug_logging
 from . import Contract, ContractField
+from ..common.CustomLogger import logging, get_logger, with_debug_logging
 
 logger = get_logger("Utilities - CreateContract", level=logging.DEBUG)
 
@@ -253,7 +253,6 @@ class CreateContract:
         columns_dont_keep = [
             "Owner email",
             "Department",
-            
             "Source",
             "Data Name",
             "Scope",
@@ -265,7 +264,6 @@ class CreateContract:
             "Type of Load",
             "owner_email",
             "department",
-            
             "source",
             "data_name",
             "scope",

@@ -1,10 +1,11 @@
 import os
 import json
-from typing import Any, List, Optional, Union
+from typing import Any, List, Union, Optional
 from datetime import datetime
-from StockETL.DataContract.datatypes import DataType
+
 from StockETL.common import Functions
 from StockETL.common.CustomLogger import get_logger, with_logging
+from StockETL.DataContract.datatypes import DataType
 
 __doc__ = "Contract Module to integrate with StockETL"
 logger = get_logger(name="StockETL - DataContract")

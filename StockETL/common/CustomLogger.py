@@ -102,7 +102,7 @@ def with_logging(_func=None, *, logger_module=None):
             try:
                 result = func(*args, **kwargs)
                 duration = time.time() - start_time
-                msg =  f"FINISH {func.__qualname__} - {duration:.2f} seconds"
+                msg = f"FINISH {func.__qualname__} - {duration:.2f} seconds"
                 logger.info(msg)
                 return result
             except Exception as e:

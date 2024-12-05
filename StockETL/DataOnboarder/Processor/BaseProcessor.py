@@ -358,9 +358,7 @@ class BaseProcessor(ABC):
 
     @with_logging(logger_module=logger)
     def prepare_snapshot_sql(self):
-        partition_columns = (
-            self.meta_data["database"].get("partition_by").split(",")
-        )
+        partition_columns = self.meta_data["database"].get("partition_by").split(",")
         columns_list = list(
             filter(
                 lambda x: x.field_name.lower() not in partition_columns,

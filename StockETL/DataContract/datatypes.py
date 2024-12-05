@@ -1,8 +1,9 @@
-import numpy as np
 import warnings
-from typing import Optional, Dict, Union, Type
+from typing import Dict, Type, Union, Optional
 from functools import lru_cache
 from dataclasses import dataclass
+
+import numpy as np
 
 __all__ = [
     "StringType",

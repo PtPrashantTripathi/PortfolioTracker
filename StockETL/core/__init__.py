@@ -7,11 +7,8 @@ from pydantic import Field, BaseModel, ConfigDict, field_validator
 from pyspark.sql import DataFrame
 
 from .common import Constants, Functions, CustomSpark
-from .common.CustomLogger import (
-    get_logger,
-    with_logging,
-)
 from .DataContract import ContractBroker
+from .common.CustomLogger import get_logger, with_logging
 from .DataReport.BaseReport import DataReport
 from .DataOnboarder.Processor.Gold import Fact as GoldFact
 from .DataOnboarder.Processor.Gold import Dimension as GoldDimension
@@ -69,10 +66,10 @@ MDL_PATH = "/mnt/adls"
 logger = get_logger("")
 
 
-class (BaseModel):
+class(BaseModel):
     """ Data On-Boarder Framework main function."""
 
-    
+
     layer: Optional[str] = Constants.Layer.BRONZE.value
     stage: Optional[str] = None
     data_source: str
@@ -269,7 +266,7 @@ class (BaseModel):
             self.environment = __envs_dict(environment_list[0])
         # Generate runtime meta_data
         self.meta_data = Functions.Helper.MetaData.generate_metadata_for_runtime(
-            
+
             stage=self.stage,
             layer=self.layer,
             data_source=self.data_source,
