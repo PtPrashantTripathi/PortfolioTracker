@@ -1,0 +1,257 @@
+{
+    "data": [
+        {
+            "financial_year": "FY2021-22",
+            "date": "2022-01-24",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 2.4
+        },
+        {
+            "financial_year": "FY2021-22",
+            "date": "2022-02-08",
+            "segment": "EQ",
+            "symbol": "GRAVITA",
+            "dividend_amount": 30.0
+        },
+        {
+            "financial_year": "FY2021-22",
+            "date": "2022-02-10",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 25.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-04-05",
+            "segment": "EQ",
+            "symbol": "WIPRO",
+            "dividend_amount": 50.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-06-15",
+            "segment": "EQ",
+            "symbol": "TATAPOWER",
+            "dividend_amount": 52.5
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-08-04",
+            "segment": "EQ",
+            "symbol": "LLOYDSENGG",
+            "dividend_amount": 20.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-08-12",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 37.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-08-18",
+            "segment": "EQ",
+            "symbol": "TRIDENT",
+            "dividend_amount": 36.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-08-22",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 2.4
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-09-22",
+            "segment": "EQ",
+            "symbol": "HFCL",
+            "dividend_amount": 5.4
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-09-22",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 2.4
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2022-11-01",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 1.8
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2023-01-24",
+            "segment": "EQ",
+            "symbol": "WIPRO",
+            "dividend_amount": 15.0
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2023-02-07",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 2.4
+        },
+        {
+            "financial_year": "FY2022-23",
+            "date": "2023-02-10",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 29.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-06-01",
+            "segment": "EQ",
+            "symbol": "TRIDENT",
+            "dividend_amount": 36.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-06-07",
+            "segment": "EQ",
+            "symbol": "TATAPOWER",
+            "dividend_amount": 60.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-07-17",
+            "segment": "EQ",
+            "symbol": "LLOYDSENGG",
+            "dividend_amount": 40.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-07-28",
+            "segment": "EQ",
+            "symbol": "TATAMOTORS",
+            "dividend_amount": 20.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-08-14",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 53.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-08-21",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 4.8
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-09-04",
+            "segment": "EQ",
+            "symbol": "GRAVITA",
+            "dividend_amount": 43.5
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-09-22",
+            "segment": "EQ",
+            "symbol": "HFCL",
+            "dividend_amount": 6.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2023-11-17",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 4.2
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2024-01-24",
+            "segment": "EQ",
+            "symbol": "WIPRO",
+            "dividend_amount": 15.0
+        },
+        {
+            "financial_year": "FY2023-24",
+            "date": "2024-02-09",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 42.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-05-14",
+            "segment": "EQ",
+            "symbol": "GRAVITA",
+            "dividend_amount": 52.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-05-28",
+            "segment": "EQ",
+            "symbol": "TRIDENT",
+            "dividend_amount": 36.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-06-11",
+            "segment": "EQ",
+            "symbol": "TATAMOTORS",
+            "dividend_amount": 60.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-07-04",
+            "segment": "EQ",
+            "symbol": "TATAPOWER",
+            "dividend_amount": 60.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-07-19",
+            "segment": "EQ",
+            "symbol": "LLOYDSENGG",
+            "dividend_amount": 21.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-07-29",
+            "segment": "EQ",
+            "symbol": "DEEPAKNTR",
+            "dividend_amount": 7.5
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-08-09",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 92.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-08-23",
+            "segment": "EQ",
+            "symbol": "KPEL",
+            "dividend_amount": 18.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-09-17",
+            "segment": "EQ",
+            "symbol": "KNRCON",
+            "dividend_amount": 2.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2024-09-23",
+            "segment": "EQ",
+            "symbol": "HFCL",
+            "dividend_amount": 6.0
+        }
+    ],
+    "load_timestamp": "2024-12-19 15:34:56.406525"
+}
