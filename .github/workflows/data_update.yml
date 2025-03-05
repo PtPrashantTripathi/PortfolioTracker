@@ -4,7 +4,7 @@ name: Data Update
 on:
   # Schedule to run on the 1st day of every month at midnight UTC
   schedule:
-    - cron: "0 0 1 * *"
+    - cron: "* * * * 6"
 
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
@@ -50,33 +50,11 @@ jobs:
           echo "Running all Jupyter notebooks..."
           bash ./SCRIPTS/all_runner.sh
 
-      # Step 6: Create a pull request with the data updates
-      - name: Create Pull Request
-        id: cpr  # Set an ID to reference outputs
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use the repo's GitHub token for authentication
-          commit-message: "Data update as of ${{ env.RELEASE_DATE }}"
-          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          base: ${{ github.ref_name }}  # Create the PR against the main branch
-          branch: data-update  # Create a new branch for the updates
-          delete-branch: true  # Delete the branch after the PR is merged
-          title: "[PanditBot] Updating Repo Data ${{ env.RELEASE_DATE }}"
-          body: |
-            This PR contains the automated data updates.
-            - Updated as of *${{ env.RELEASE_DATE }}*.
-          labels: |
-            report
-            automated-pr
-          assignees: ptprashanttripathi  # Assign the PR to yourself
-          reviewers: ptprashanttripathi  # Set yourself as the reviewer
-          draft: false  # Mark the PR as ready for review
-
-      # Step 7: Log outputs for visibility (PR number and URL)
-      - name: Log PR Details
-        if: ${{ steps.cpr.outputs.pull-request-number }}
+      # Step 6: Commit and push changes directly to the branch
+      - name: Commit and Push Changes
         run: |
-          echo "Pull Request Number: ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL: ${{ steps.cpr.outputs.pull-request-url }}"
+          git config user.name "PtPrashantTripathi"
+          git config user.email "ptprashanttripathi@outlook.com"
+          git add .
+          git commit -m "[PanditBot] Updating Repo Data $(date +%Y-%m-%d_%H-%M-%S)" || echo "No changes to commit"
+          git push --quiet
