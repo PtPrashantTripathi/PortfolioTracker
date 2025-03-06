@@ -4,9 +4,82 @@ import json
 from pathlib import Path
 import os
 from datetime import datetime
-from typing import List, Union, Dict
+from typing import Callable, Any, List, Union, Dict, Optional, Literal
+import pandas as pd
+from StockETL.globalpath import GlobalPath
 
-__all__ = ["Reader"]
+__all__ = ["Writer", "Reader"]
+
+
+class Writer:
+    """
+    A class for writing data to files with functionalities such as
+    writing data to a file, converting data to a specific format, and aligning with data contracts.
+    """
+
+    def __init__(
+        self,
+        data: Union[pd.DataFrame, Dict[Union[str, Path], pd.DataFrame]],
+        file_path: Union[str, Path, Callable[..., Union[str, Path]]],
+        file_format: str = "csv",
+        index: Optional[Union[bool, str]] = None,
+        orient: Literal[
+            "split", "records", "index", "columns", "values", "table"
+        ] = "records",
+    ):
+        self.data = data
+        self.file_path = file_path
+        self.file_format = file_format
+        self.index = index
+        self.orient = orient
+        self.validate_data()
+
+    def validate_data(self):
+        """Validates input data format."""
+        if isinstance(self.data, pd.DataFrame):
+            self.data = {0: self.data}  # Convert single DataFrame into a dictionary
+        elif not isinstance(self.data, dict):
+            raise TypeError(
+                "Data must be a pandas DataFrame or a dictionary of DataFrames"
+            )
+        for _, df in self.data.items():
+            if not isinstance(df, pd.DataFrame):
+                raise TypeError("Values in the dictionary must be pandas DataFrames.")
+
+    def resolve_file_path(self, key: Union[str, Path]) -> Union[str, Path]:
+        """Resolves the file path based on whether file_path is callable."""
+        if callable(self.file_path):
+            resolved_path = self.file_path(key)
+        else:
+            resolved_path = self.file_path if len(self.data) == 1 else key
+
+        if not isinstance(resolved_path, (str, Path)):
+            raise TypeError(
+                f"Generated file path must be a string or Path, got ({type(resolved_path)})"
+            )
+        return resolved_path
+
+    def write_file(self, df: pd.DataFrame, file_path: Union[str, Path]):
+        """Writes the DataFrame to the specified file format."""
+        try:
+            print(f"Writing data to => {file_path}")
+            if self.file_format == "csv":
+                df.to_csv(file_path, index=self.index)
+            elif self.file_format == "json":
+                df.to_json(file_path, orient=self.orient)
+            elif self.file_format == "excel":
+                df.to_excel(file_path, index=self.index)
+            else:
+                raise ValueError(f"Unsupported file format: {self.file_format}")
+        except Exception as e:
+            print(f"Error writing {file_path} => {e}")
+            raise e
+
+    def write(self):
+        """Processes and writes each DataFrame in the dictionary to its respective file path."""
+        for key, df in self.data.items():
+            file_path = self.resolve_file_path(key)
+            self.write_file(df, file_path)
 
 
 class Reader:
@@ -119,7 +192,6 @@ class Reader:
         # Load Schema from the JSON file
         with open(data_contract_path, encoding="utf-8") as schema_file:
             schema = json.load(schema_file)
-            print(f"Schema loaded from => {data_contract_path}")
 
         # Extract schema definitions and column order from the JSON
         data_schema = schema.get("data_schema", [])
@@ -148,7 +220,9 @@ class Reader:
         df = df[all_columns]
 
         # Reorder DataFrame columns according to the order specified by the schema
-        order_by = list(dict.fromkeys(order_by + all_columns))
+        order_by = order_by + [
+            col_name for col_name in all_columns if col_name not in order_by
+        ]
         df = df.sort_values(by=order_by).reset_index(drop=True)
 
         # Round numerical values to 2 decimal places
@@ -182,7 +256,7 @@ class Reader:
         self.fix_punctuation_from_columns = fix_punctuation_from_columns
         self.engine = {"xlsx": "openpyxl", "xls": "xlrd", "xlsb": "pyxlsb"}
 
-    def read(self)->Dict[Union[str, Path], pd.DataFrame]:
+    def read(self) -> Dict[Union[str, Path], pd.DataFrame]:
         """Returns the dictionary of DataFrames without merging."""
         dataframes = {}
 
@@ -232,7 +306,7 @@ class Reader:
                     df = self.align_with_schema(df, self.schema)
 
                 # Drops entire rows where all values are NaN.
-                df.dropna(how="all", axis=0, inplace=True)    
+                df.dropna(how="all", axis=0, inplace=True)
 
                 dataframes[str(file_path)] = df
 
@@ -248,3 +322,59 @@ class Reader:
             df = self.align_with_schema(df, self.schema)
         return df
 
+
+
+# ETL setps starts from here
+# STEP 1 : SOURCE -> BRONZE : TradeHistory
+Writer(
+    Reader(
+        GlobalPath(f"DATA/SOURCE/TradeHistory"),
+        file_pattern=f"trade_*.xlsx",
+        sheet_name_regex="trade",
+        global_header_regex="date",
+        schema=GlobalPath("CONFIG/DATA_CONTRACTS/BRONZE/TradeHistory.json"),
+        skipfooter=1,
+    ).read(),
+    file_path=lambda input_path: str(input_path)
+    .replace("SOURCE", "BRONZE")
+    .replace("xlsx", "csv"),
+    file_format="csv",
+).write()
+
+# STEP 2 : SOURCE -> BRONZE : Symbols
+Writer(
+    Reader(
+        GlobalPath("DATA/SOURCE/Symbol"),
+        file_pattern="*.csv",
+        schema=GlobalPath("CONFIG/DATA_CONTRACTS/BRONZE/Symbol.json"),
+    ).combined_read(),
+    file_path=GlobalPath("DATA/BRONZE/Symbol/Symbol_data.csv"),
+    file_format="csv",
+).write()
+
+# setp 3 : bronze to silver symbol 
+def silver_symbol_transformer_logic(df: pd.DataFrame) -> pd.DataFrame:
+    df.loc[df["instrument_type"] == "Equity", "scrip_code"] = "IN" + df.loc[
+        df["instrument_type"] == "Equity", "scrip_code"
+    ].astype(str)
+    df.loc[df["instrument_type"] == "Mutual Fund", "scrip_code"] = df.loc[
+        df["instrument_type"] == "Mutual Fund", "isin"
+    ]
+    df.loc[df["instrument_type"] == "Mutual Fund", "symbol"] = (
+        df.loc[df["instrument_type"] == "Mutual Fund", "scrip_name"]
+        .apply(Reader.replace_punctuation_from_string)
+        .str.upper()
+    )
+    df["scrip_code"] = df["scrip_code"].astype(str).str.strip().str.upper()
+    return df
+
+Writer(
+    silver_symbol_transformer_logic(
+        Reader(
+            GlobalPath("DATA/BRONZE/Symbol/Symbol_data.csv"),
+            schema=GlobalPath("CONFIG/DATA_CONTRACTS/SILVER/Symbol.json"),
+        ).combined_read()
+    ),
+    file_path=GlobalPath("DATA/SILVER/Symbol/Symbol_data.csv"),
+    file_format="csv",
+).write()

@@ -65,6 +65,6 @@ repos:
       hooks:
           - id: json-formatter
             name: JSON Formatter
-            entry: ./SCRIPTS/format_json
+            entry: ./SCRIPTS/format_json.py
             language: python
             files: \.json$
