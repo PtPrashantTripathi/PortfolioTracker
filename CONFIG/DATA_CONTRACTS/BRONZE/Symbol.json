@@ -18,7 +18,8 @@
         },
         {
             "col_name": "isin",
-            "data_type": "string"
+            "data_type": "string",
+            "nullable": false
         },
         {
             "col_name": "isin_reinvestment",
