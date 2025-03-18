@@ -63,8 +63,7 @@ repos:
 
     - repo: local
       hooks:
-          - id: json-formatter
-            name: JSON Formatter
-            entry: ./SCRIPTS/format_json
-            language: python
-            files: \.json$
+        - id: json-formatter
+          name: JSON Formatter
+          entry: ./SCRIPTS/format_json.py
+          language: python
