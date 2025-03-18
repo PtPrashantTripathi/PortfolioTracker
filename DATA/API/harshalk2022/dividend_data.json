@@ -251,7 +251,14 @@
             "segment": "EQ",
             "symbol": "HFCL",
             "dividend_amount": 6.0
+        },
+        {
+            "financial_year": "FY2024-25",
+            "date": "2025-02-04",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 50.0
         }
     ],
-    "load_timestamp": "2024-12-19 15:34:56.406525"
+    "load_timestamp": "2025-03-18 12:40:20.579114"
 }
