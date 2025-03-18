@@ -248,9 +248,9 @@
             "quantity": 10.0,
             "price": 612.3,
             "amount": 6123.0,
-            "close_price": 1486.8,
-            "close_amount": 14868.0,
-            "pnl_amount": 8745.0
+            "close_price": 1250.25,
+            "close_amount": 12502.5,
+            "pnl_amount": 6379.5
         },
         {
             "scrip_name": "KPIT TECHNOLOGIES LIMITED",
@@ -262,9 +262,9 @@
             "quantity": 10.0,
             "price": 641.1,
             "amount": 6411.0,
-            "close_price": 1486.8,
-            "close_amount": 14868.0,
-            "pnl_amount": 8457.0
+            "close_price": 1250.25,
+            "close_amount": 12502.5,
+            "pnl_amount": 6091.5
         },
         {
             "scrip_name": "LLOYDS ENGG WORK LIMITED",
@@ -556,9 +556,9 @@
             "quantity": 2.0,
             "price": 477.05,
             "amount": 954.1,
-            "close_price": 788.1,
-            "close_amount": 1576.2,
-            "pnl_amount": 622.1
+            "close_price": 676.6,
+            "close_amount": 1353.2,
+            "pnl_amount": 399.1
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -570,9 +570,9 @@
             "quantity": 8.0,
             "price": 483.8,
             "amount": 3870.4,
-            "close_price": 788.1,
-            "close_amount": 6304.8,
-            "pnl_amount": 2434.4
+            "close_price": 676.6,
+            "close_amount": 5412.8,
+            "pnl_amount": 1542.4
         },
         {
             "scrip_name": "TATA POWER CO LTD",
@@ -584,9 +584,9 @@
             "quantity": 20.0,
             "price": 214.65,
             "amount": 4293.0,
-            "close_price": 422.15,
-            "close_amount": 8443.0,
-            "pnl_amount": 4150.0
+            "close_price": 357.9,
+            "close_amount": 7158.0,
+            "pnl_amount": 2865.0
         },
         {
             "scrip_name": "TATA POWER CO LTD",
@@ -598,9 +598,9 @@
             "quantity": 10.0,
             "price": 227.9,
             "amount": 2279.0,
-            "close_price": 422.15,
-            "close_amount": 4221.5,
-            "pnl_amount": 1942.5
+            "close_price": 357.9,
+            "close_amount": 3579.0,
+            "pnl_amount": 1300.0
         },
         {
             "scrip_name": "TRIDENT LIMITED",
@@ -869,5 +869,5 @@
             "pnl_amount": 414.1
         }
     ],
-    "load_timestamp": "2024-12-19 15:34:56.406525"
+    "load_timestamp": "2025-03-18 12:40:20.579114"
 }

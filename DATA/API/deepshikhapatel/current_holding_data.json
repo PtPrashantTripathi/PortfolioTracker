@@ -10,9 +10,9 @@
             "quantity": 1.0,
             "price": 250.8,
             "amount": 250.8,
-            "close_price": 422.15,
-            "close_amount": 422.15,
-            "pnl_amount": 171.35
+            "close_price": 357.9,
+            "close_amount": 357.9,
+            "pnl_amount": 107.1
         },
         {
             "scrip_name": "TATA POWER",
@@ -24,9 +24,9 @@
             "quantity": 2.0,
             "price": 226.8,
             "amount": 453.6,
-            "close_price": 422.15,
-            "close_amount": 844.3,
-            "pnl_amount": 390.7
+            "close_price": 357.9,
+            "close_amount": 715.8,
+            "pnl_amount": 262.2
         },
         {
             "scrip_name": "TCS LTD",
@@ -38,9 +38,9 @@
             "quantity": 1.0,
             "price": 3415.9,
             "amount": 3415.9,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 854.95
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 733.01
         },
         {
             "scrip_name": "ADANI PORTS LTD",
@@ -220,9 +220,9 @@
             "quantity": 4.0,
             "price": 17.3,
             "amount": 69.2,
-            "close_price": 8.36,
-            "close_amount": 33.44,
-            "pnl_amount": -35.76
+            "close_price": 7.77,
+            "close_amount": 31.08,
+            "pnl_amount": -38.12
         },
         {
             "scrip_name": "INDIAN RAILWAY FINANCE",
@@ -234,9 +234,9 @@
             "quantity": 1.0,
             "price": 142.8,
             "amount": 142.8,
-            "close_price": 149.3,
-            "close_amount": 149.3,
-            "pnl_amount": 6.5
+            "close_price": 153.35,
+            "close_amount": 153.35,
+            "pnl_amount": 10.55
         },
         {
             "scrip_name": "INDIAN RAILWAY FINANCE",
@@ -248,9 +248,9 @@
             "quantity": 15.0,
             "price": 148.9,
             "amount": 2233.5,
-            "close_price": 149.3,
-            "close_amount": 2239.5,
-            "pnl_amount": 6.0
+            "close_price": 153.35,
+            "close_amount": 2300.25,
+            "pnl_amount": 66.75
         },
         {
             "scrip_name": "INDIAN RAILWAY FINANCE",
@@ -262,9 +262,9 @@
             "quantity": 25.0,
             "price": 149.1,
             "amount": 3727.5,
-            "close_price": 149.3,
-            "close_amount": 3732.5,
-            "pnl_amount": 5.0
+            "close_price": 153.35,
+            "close_amount": 3833.75,
+            "pnl_amount": 106.25
         },
         {
             "scrip_name": "INDIAN RAILWAY FINANCE",
@@ -276,9 +276,9 @@
             "quantity": 2.0,
             "price": 147.95,
             "amount": 295.9,
-            "close_price": 149.3,
-            "close_amount": 298.6,
-            "pnl_amount": 2.7
+            "close_price": 153.35,
+            "close_amount": 306.7,
+            "pnl_amount": 10.8
         },
         {
             "scrip_name": "I T C LTD",
@@ -290,9 +290,9 @@
             "quantity": 100.0,
             "price": 431.0,
             "amount": 43100.0,
-            "close_price": 476.75,
-            "close_amount": 47675.0,
-            "pnl_amount": 4575.0
+            "close_price": 469.59,
+            "close_amount": 46959.0,
+            "pnl_amount": 3859.0
         },
         {
             "scrip_name": "I T C LTD",
@@ -304,9 +304,9 @@
             "quantity": 120.0,
             "price": 430.9,
             "amount": 51708.0,
-            "close_price": 476.75,
-            "close_amount": 57210.0,
-            "pnl_amount": 5502.0
+            "close_price": 469.59,
+            "close_amount": 56350.8,
+            "pnl_amount": 4642.8
         },
         {
             "scrip_name": "I T C LTD",
@@ -318,9 +318,9 @@
             "quantity": 12.0,
             "price": 426.2,
             "amount": 5114.4,
-            "close_price": 476.75,
-            "close_amount": 5721.0,
-            "pnl_amount": 606.6
+            "close_price": 469.59,
+            "close_amount": 5635.08,
+            "pnl_amount": 520.68
         },
         {
             "scrip_name": "I T C LTD",
@@ -332,9 +332,9 @@
             "quantity": 6.0,
             "price": 424.6,
             "amount": 2547.6,
-            "close_price": 476.75,
-            "close_amount": 2860.5,
-            "pnl_amount": 312.9
+            "close_price": 469.59,
+            "close_amount": 2817.54,
+            "pnl_amount": 269.94
         },
         {
             "scrip_name": "SBI CARDS",
@@ -346,9 +346,9 @@
             "quantity": 19.0,
             "price": 755.0,
             "amount": 14345.0,
-            "close_price": 700.6,
-            "close_amount": 13311.4,
-            "pnl_amount": -1033.6
+            "close_price": 667.51,
+            "close_amount": 12682.69,
+            "pnl_amount": -1662.31
         },
         {
             "scrip_name": "SBI CARDS AND PAYMENT SERVICES",
@@ -360,9 +360,9 @@
             "quantity": 19.0,
             "price": 735.0,
             "amount": 13965.0,
-            "close_price": 700.6,
-            "close_amount": 13311.4,
-            "pnl_amount": -653.6
+            "close_price": 667.51,
+            "close_amount": 12682.69,
+            "pnl_amount": -1282.31
         },
         {
             "scrip_name": "SYNCOM FORMU (BSE INDONEXT)",
@@ -374,9 +374,9 @@
             "quantity": 7.0,
             "price": 13.5,
             "amount": 94.5,
-            "close_price": 20.11,
-            "close_amount": 140.77,
-            "pnl_amount": 46.27
+            "close_price": 19.66,
+            "close_amount": 137.62,
+            "pnl_amount": 43.12
         },
         {
             "scrip_name": "SYNCOM FORMU (BSE INDONEXT)",
@@ -388,9 +388,9 @@
             "quantity": 100.0,
             "price": 14.1,
             "amount": 1410.0,
-            "close_price": 20.11,
-            "close_amount": 2011.0,
-            "pnl_amount": 601.0
+            "close_price": 19.66,
+            "close_amount": 1966.0,
+            "pnl_amount": 556.0
         },
         {
             "scrip_name": "SYNCOM FORMU (BSE INDONEXT)",
@@ -402,9 +402,9 @@
             "quantity": 3.0,
             "price": 14.86,
             "amount": 44.58,
-            "close_price": 20.11,
-            "close_amount": 60.33,
-            "pnl_amount": 15.75
+            "close_price": 19.66,
+            "close_amount": 58.98,
+            "pnl_amount": 14.4
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -416,9 +416,9 @@
             "quantity": 5.0,
             "price": 1007.55,
             "amount": 5037.75,
-            "close_price": 788.1,
-            "close_amount": 3940.5,
-            "pnl_amount": -1097.25
+            "close_price": 676.6,
+            "close_amount": 3383.0,
+            "pnl_amount": -1654.75
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -430,9 +430,9 @@
             "quantity": 5.0,
             "price": 1009.05,
             "amount": 5045.25,
-            "close_price": 788.1,
-            "close_amount": 3940.5,
-            "pnl_amount": -1104.75
+            "close_price": 676.6,
+            "close_amount": 3383.0,
+            "pnl_amount": -1662.25
         },
         {
             "scrip_name": "TATA MOTORS",
@@ -444,9 +444,9 @@
             "quantity": 4.0,
             "price": 944.6,
             "amount": 3778.4,
-            "close_price": 788.1,
-            "close_amount": 3152.4,
-            "pnl_amount": -626.0
+            "close_price": 676.6,
+            "close_amount": 2706.4,
+            "pnl_amount": -1072.0
         },
         {
             "scrip_name": "TATA POWER",
@@ -458,9 +458,9 @@
             "quantity": 19.0,
             "price": 237.2,
             "amount": 4506.8,
-            "close_price": 422.15,
-            "close_amount": 8020.85,
-            "pnl_amount": 3514.05
+            "close_price": 357.9,
+            "close_amount": 6800.1,
+            "pnl_amount": 2293.3
         },
         {
             "scrip_name": "TATA POWER",
@@ -472,9 +472,9 @@
             "quantity": 10.0,
             "price": 251.15,
             "amount": 2511.5,
-            "close_price": 422.15,
-            "close_amount": 4221.5,
-            "pnl_amount": 1710.0
+            "close_price": 357.9,
+            "close_amount": 3579.0,
+            "pnl_amount": 1067.5
         },
         {
             "scrip_name": "TATA POWER",
@@ -486,9 +486,9 @@
             "quantity": 2.0,
             "price": 211.05,
             "amount": 422.1,
-            "close_price": 422.15,
-            "close_amount": 844.3,
-            "pnl_amount": 422.2
+            "close_price": 357.9,
+            "close_amount": 715.8,
+            "pnl_amount": 293.7
         },
         {
             "scrip_name": "TATA POWER",
@@ -500,9 +500,9 @@
             "quantity": 1.0,
             "price": 233.95,
             "amount": 233.95,
-            "close_price": 422.15,
-            "close_amount": 422.15,
-            "pnl_amount": 188.2
+            "close_price": 357.9,
+            "close_amount": 357.9,
+            "pnl_amount": 123.95
         },
         {
             "scrip_name": "TATA POWER",
@@ -514,9 +514,9 @@
             "quantity": 10.0,
             "price": 250.15,
             "amount": 2501.5,
-            "close_price": 422.15,
-            "close_amount": 4221.5,
-            "pnl_amount": 1720.0
+            "close_price": 357.9,
+            "close_amount": 3579.0,
+            "pnl_amount": 1077.5
         },
         {
             "scrip_name": "TATA POWER",
@@ -528,9 +528,9 @@
             "quantity": 1.0,
             "price": 249.5,
             "amount": 249.5,
-            "close_price": 422.15,
-            "close_amount": 422.15,
-            "pnl_amount": 172.65
+            "close_price": 357.9,
+            "close_amount": 357.9,
+            "pnl_amount": 108.4
         },
         {
             "scrip_name": "TATA POWER",
@@ -542,9 +542,9 @@
             "quantity": 2.0,
             "price": 254.0,
             "amount": 508.0,
-            "close_price": 422.15,
-            "close_amount": 844.3,
-            "pnl_amount": 336.3
+            "close_price": 357.9,
+            "close_amount": 715.8,
+            "pnl_amount": 207.8
         },
         {
             "scrip_name": "TATA POWER",
@@ -556,9 +556,9 @@
             "quantity": 2.0,
             "price": 328.25,
             "amount": 656.5,
-            "close_price": 422.15,
-            "close_amount": 844.3,
-            "pnl_amount": 187.8
+            "close_price": 357.9,
+            "close_amount": 715.8,
+            "pnl_amount": 59.3
         },
         {
             "scrip_name": "TATA POWER",
@@ -570,9 +570,9 @@
             "quantity": 2.0,
             "price": 406.6,
             "amount": 813.2,
-            "close_price": 422.15,
-            "close_amount": 844.3,
-            "pnl_amount": 31.1
+            "close_price": 357.9,
+            "close_amount": 715.8,
+            "pnl_amount": -97.4
         },
         {
             "scrip_name": "TATA POWER",
@@ -584,9 +584,9 @@
             "quantity": 10.0,
             "price": 415.65,
             "amount": 4156.5,
-            "close_price": 422.15,
-            "close_amount": 4221.5,
-            "pnl_amount": 65.0
+            "close_price": 357.9,
+            "close_amount": 3579.0,
+            "pnl_amount": -577.5
         },
         {
             "scrip_name": "TCS LTD",
@@ -598,9 +598,9 @@
             "quantity": 1.0,
             "price": 3295.3,
             "amount": 3295.3,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 975.55
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 853.61
         },
         {
             "scrip_name": "TCS LTD",
@@ -612,9 +612,9 @@
             "quantity": 1.0,
             "price": 3298.95,
             "amount": 3298.95,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 971.9
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 849.96
         },
         {
             "scrip_name": "TCS LTD",
@@ -626,9 +626,9 @@
             "quantity": 1.0,
             "price": 3293.5,
             "amount": 3293.5,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 977.35
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 855.41
         },
         {
             "scrip_name": "TCS LTD",
@@ -640,9 +640,9 @@
             "quantity": 1.0,
             "price": 3618.5,
             "amount": 3618.5,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 652.35
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 530.41
         },
         {
             "scrip_name": "TCS LTD",
@@ -654,9 +654,9 @@
             "quantity": 1.0,
             "price": 3808.25,
             "amount": 3808.25,
-            "close_price": 4270.85,
-            "close_amount": 4270.85,
-            "pnl_amount": 462.6
+            "close_price": 4148.91,
+            "close_amount": 4148.91,
+            "pnl_amount": 340.66
         },
         {
             "scrip_name": "TCS LTD",
@@ -668,9 +668,9 @@
             "quantity": 4.0,
             "price": 3986.7,
             "amount": 15946.8,
-            "close_price": 4270.85,
-            "close_amount": 17083.4,
-            "pnl_amount": 1136.6
+            "close_price": 4148.91,
+            "close_amount": 16595.64,
+            "pnl_amount": 648.84
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -682,9 +682,9 @@
             "quantity": 3.94,
             "price": 126.86,
             "amount": 499.83,
-            "close_price": 151.12,
-            "close_amount": 595.41,
-            "pnl_amount": 95.58
+            "close_price": 148.85,
+            "close_amount": 586.47,
+            "pnl_amount": 86.64
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -696,9 +696,9 @@
             "quantity": 3.87,
             "price": 129.26,
             "amount": 500.24,
-            "close_price": 151.12,
-            "close_amount": 584.83,
-            "pnl_amount": 84.59
+            "close_price": 148.85,
+            "close_amount": 576.05,
+            "pnl_amount": 75.81
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -710,9 +710,9 @@
             "quantity": 7.36,
             "price": 135.94,
             "amount": 1000.52,
-            "close_price": 151.12,
-            "close_amount": 1112.24,
-            "pnl_amount": 111.72
+            "close_price": 148.85,
+            "close_amount": 1095.54,
+            "pnl_amount": 95.02
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -724,9 +724,9 @@
             "quantity": 3.49,
             "price": 143.35,
             "amount": 500.29,
-            "close_price": 151.12,
-            "close_amount": 527.41,
-            "pnl_amount": 27.12
+            "close_price": 148.85,
+            "close_amount": 519.49,
+            "pnl_amount": 19.2
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -738,9 +738,9 @@
             "quantity": 3.25,
             "price": 153.76,
             "amount": 499.72,
-            "close_price": 151.12,
-            "close_amount": 491.14,
-            "pnl_amount": -8.58
+            "close_price": 148.85,
+            "close_amount": 483.76,
+            "pnl_amount": -15.96
         },
         {
             "scrip_name": "DSP BLACKROCK TAX SAVER FUND -",
@@ -752,9 +752,9 @@
             "quantity": 3.25,
             "price": 154.01,
             "amount": 500.53,
-            "close_price": 151.12,
-            "close_amount": 491.14,
-            "pnl_amount": -9.39
+            "close_price": 148.85,
+            "close_amount": 483.76,
+            "pnl_amount": -16.77
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -766,9 +766,9 @@
             "quantity": 6.77,
             "price": 147.62,
             "amount": 999.39,
-            "close_price": 232.19,
-            "close_amount": 1571.93,
-            "pnl_amount": 572.54
+            "close_price": 227.47,
+            "close_amount": 1539.97,
+            "pnl_amount": 540.58
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -780,9 +780,9 @@
             "quantity": 6.57,
             "price": 152.31,
             "amount": 1000.68,
-            "close_price": 232.19,
-            "close_amount": 1525.49,
-            "pnl_amount": 524.81
+            "close_price": 227.47,
+            "close_amount": 1494.48,
+            "pnl_amount": 493.8
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -794,9 +794,9 @@
             "quantity": 12.32,
             "price": 162.31,
             "amount": 1999.66,
-            "close_price": 232.19,
-            "close_amount": 2860.58,
-            "pnl_amount": 860.92
+            "close_price": 227.47,
+            "close_amount": 2802.43,
+            "pnl_amount": 802.77
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -808,9 +808,9 @@
             "quantity": 18.14,
             "price": 165.4,
             "amount": 3000.36,
-            "close_price": 232.19,
-            "close_amount": 4211.93,
-            "pnl_amount": 1211.57
+            "close_price": 227.47,
+            "close_amount": 4126.31,
+            "pnl_amount": 1125.95
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -822,9 +822,9 @@
             "quantity": 17.93,
             "price": 167.3,
             "amount": 2999.69,
-            "close_price": 232.19,
-            "close_amount": 4163.17,
-            "pnl_amount": 1163.48
+            "close_price": 227.47,
+            "close_amount": 4078.54,
+            "pnl_amount": 1078.85
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -836,9 +836,9 @@
             "quantity": 29.98,
             "price": 166.77,
             "amount": 4999.76,
-            "close_price": 232.19,
-            "close_amount": 6961.06,
-            "pnl_amount": 1961.3
+            "close_price": 227.47,
+            "close_amount": 6819.55,
+            "pnl_amount": 1819.79
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -850,9 +850,9 @@
             "quantity": 30.4,
             "price": 164.46,
             "amount": 4999.58,
-            "close_price": 232.19,
-            "close_amount": 7058.58,
-            "pnl_amount": 2059.0
+            "close_price": 227.47,
+            "close_amount": 6915.09,
+            "pnl_amount": 1915.51
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -864,9 +864,9 @@
             "quantity": 15.06,
             "price": 165.97,
             "amount": 2499.51,
-            "close_price": 232.19,
-            "close_amount": 3496.78,
-            "pnl_amount": 997.27
+            "close_price": 227.47,
+            "close_amount": 3425.7,
+            "pnl_amount": 926.19
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -878,9 +878,9 @@
             "quantity": 29.95,
             "price": 166.97,
             "amount": 5000.75,
-            "close_price": 232.19,
-            "close_amount": 6954.09,
-            "pnl_amount": 1953.34
+            "close_price": 227.47,
+            "close_amount": 6812.73,
+            "pnl_amount": 1811.98
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -892,9 +892,9 @@
             "quantity": 14.13,
             "price": 176.9,
             "amount": 2499.6,
-            "close_price": 232.19,
-            "close_amount": 3280.84,
-            "pnl_amount": 781.24
+            "close_price": 227.47,
+            "close_amount": 3214.15,
+            "pnl_amount": 714.55
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -906,9 +906,9 @@
             "quantity": 2.33,
             "price": 214.81,
             "amount": 500.51,
-            "close_price": 232.19,
-            "close_amount": 541.0,
-            "pnl_amount": 40.49
+            "close_price": 227.47,
+            "close_amount": 530.01,
+            "pnl_amount": 29.5
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -920,9 +920,9 @@
             "quantity": 2.34,
             "price": 214.03,
             "amount": 500.83,
-            "close_price": 232.19,
-            "close_amount": 543.32,
-            "pnl_amount": 42.49
+            "close_price": 227.47,
+            "close_amount": 532.28,
+            "pnl_amount": 31.45
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -934,9 +934,9 @@
             "quantity": 4.56,
             "price": 219.42,
             "amount": 1000.56,
-            "close_price": 232.19,
-            "close_amount": 1058.79,
-            "pnl_amount": 58.23
+            "close_price": 227.47,
+            "close_amount": 1037.26,
+            "pnl_amount": 36.7
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -948,9 +948,9 @@
             "quantity": 2.2,
             "price": 227.49,
             "amount": 500.48,
-            "close_price": 232.19,
-            "close_amount": 510.82,
-            "pnl_amount": 10.34
+            "close_price": 227.47,
+            "close_amount": 500.43,
+            "pnl_amount": -0.05
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -962,9 +962,9 @@
             "quantity": 4.18,
             "price": 239.38,
             "amount": 1000.61,
-            "close_price": 232.19,
-            "close_amount": 970.55,
-            "pnl_amount": -30.06
+            "close_price": 227.47,
+            "close_amount": 950.82,
+            "pnl_amount": -49.79
         },
         {
             "scrip_name": "HDFC INDEX FUND - NIFTY PLAN -",
@@ -976,10 +976,10 @@
             "quantity": 2.08,
             "price": 240.43,
             "amount": 500.09,
-            "close_price": 232.19,
-            "close_amount": 482.96,
-            "pnl_amount": -17.13
+            "close_price": 227.47,
+            "close_amount": 473.14,
+            "pnl_amount": -26.95
         }
     ],
-    "load_timestamp": "2024-10-04 11:30:06.114242"
+    "load_timestamp": "2025-03-18 12:39:30.456605"
 }
