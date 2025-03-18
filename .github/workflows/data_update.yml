@@ -1,60 +1,56 @@
-# Continuous Integration workflow for automated monthly data updates
+# Continuous Integration workflow for automated weekly data updates
 name: Data Update
 
 on:
-  # Schedule to run on the 1st day of every month at midnight UTC
+  # Schedule to run every Saturday at midnight UTC
   schedule:
-    - cron: "* * * * 6"
+    - cron: "0 0 * * 6"
 
   # Allow manual trigger from the Actions tab
   workflow_dispatch:
 
 jobs:
   update:
-    # Use the latest Ubuntu runner
-    runs-on: ubuntu-latest
-
-    # Define environment variables
-    env:
-      RELEASE_DATE: ""  # Placeholder for release date, set dynamically during the job
-      PROJECT_DIR: ${{ github.workspace }}  # Set project directory to the current GitHub workspace
-      USERNAME: ${{ github.repository_owner }} # Set USERNAME to the current GitHub Repository owner
+    name: Update Data
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
 
     steps:
       # Step 1: Checkout the repository
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1  # Fetch only the latest commit for efficiency
 
       # Step 2: Set up Python environment
-      - name: Set up Python
+      - name: Set Up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"  # Use the latest stable Python 3.x version
 
-      # Step 3: Set the release date for the update
-      - name: Set release date
-        run: |
-          echo "RELEASE_DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
-
-      # Step 4: Install dependencies from the requirements file
-      - name: Install dependencies
+      # Step 3: Install dependencies
+      - name: Install Dependencies
         run: |
           echo "Installing Python dependencies..."
-          pip install --upgrade --upgrade-strategy only-if-needed -r requirements.txt # Install required dependencies
+          python -m pip install --upgrade pip setuptools wheel  # Ensure latest package tools
+          pip install --upgrade --upgrade-strategy only-if-needed -r requirements.txt
 
-      # Step 5: Execute Jupyter notebooks via a custom script
-      - name: Run Jupyter notebooks
+      # Step 4: Execute Jupyter notebooks via a script
+      - name: Run Jupyter Notebooks
         run: |
           echo "Running all Jupyter notebooks..."
           bash ./SCRIPTS/all_runner.sh
 
-      # Step 6: Commit and push changes directly to the branch
+      # Step 5: Commit and push changes if there are any
       - name: Commit and Push Changes
         run: |
-          git config user.name "PtPrashantTripathi"
-          git config user.email "ptprashanttripathi@outlook.com"
-          git add .
-          git commit -m "[PanditBot] Updating Repo Data $(date +%Y-%m-%d_%H-%M-%S)" || echo "No changes to commit"
-          git push --quiet
+          git config --global user.name "PtPrashantTripathi - AutoBot"
+          git config --global user.email "ptprashanttripathi@outlook.com"
+          # Check for changes
+          if ! git diff --quiet; then
+            echo "Changes detected. Committing..."
+            git add .
+            git commit -m "[PanditBot] Auto-update - $(date +%Y-%m-%d_%H-%M-%S)"
+            git push --quiet
+          else
+            echo "No changes detected. Skipping commit."
+          fi
