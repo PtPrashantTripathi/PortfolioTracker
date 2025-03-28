@@ -18,6 +18,7 @@ class StockInfo:
     Base class for models that include stock information.
 
     Attributes:
+        username (str): The name of the stock holder.
         scrip_name (str): The name of the stock.
         symbol (Optional[str]): The symbol or stock id of the stock.
         exchange (Optional[str]): The exchange where the stock is traded.
@@ -27,12 +28,14 @@ class StockInfo:
 
     def __init__(
         self,
+        username: str,
         scrip_name: str,
         symbol: Optional[str] = None,
         exchange: Optional[str] = None,
         segment: Optional[str] = None,
         expiry_date: Optional[datetime] = None,
     ):
+        self.username = username
         self.scrip_name = scrip_name
         self.symbol = symbol
         self.exchange = exchange
@@ -63,7 +66,8 @@ class StockInfo:
 
     def __repr__(self):
         return (
-            f"StockInfo(scrip_name={self.scrip_name}, "
+            f"StockInfo(username={self.username}, "
+            f"scrip_name={self.scrip_name}, "
             f"symbol={self.symbol}, "
             f"exchange={self.exchange}, "
             f"segment={self.segment}"
@@ -566,17 +570,17 @@ class Stock:
 
 class Portfolio:
     """
-    Represents a portfolio of stocks.
+    Represents a portfolios of mutipal portfolios of stocks.
 
     Attributes:
-        stocks (Dict[str, Stock]): A dictionary mapping stock names to Stock objects.
+        portfolios (Dict[str, Dict[str, Stock]]): A dictionary mapping.
     """
 
     def __init__(self):
         """
         Portfolio Constructor.
         """
-        self.stocks: Dict[str, Stock] = {}
+        self.portfolios: Dict[str, Dict[str, Stock]] = {}
 
     def trade(self, data: Dict):
         """
@@ -586,6 +590,7 @@ class Portfolio:
             record (Dict): The trade record to be processed.
         """
         stock_info = StockInfo(
+            username=data["username"],
             scrip_name=data["scrip_name"],
             symbol=data["symbol"],
             exchange=data["exchange"],
@@ -594,11 +599,16 @@ class Portfolio:
         )
 
         # Initialize stock if not exists
-        if stock_info.scrip_name not in self.stocks:
-            self.stocks[stock_info.scrip_name] = Stock(stock_info=stock_info)
+        if stock_info.username not in self.portfolios:
+            self.portfolios[stock_info.username] = {}
+
+        if stock_info.scrip_name not in self.portfolios[stock_info.username]:
+            self.portfolios[stock_info.username][stock_info.scrip_name] = Stock(
+                stock_info=stock_info
+            )
 
         # Execute trade
-        self.stocks[stock_info.scrip_name].trade(
+        self.portfolios[stock_info.username][stock_info.scrip_name].trade(
             TradeRecord(
                 stock_info=stock_info,
                 date_time=data["datetime"],
@@ -613,8 +623,9 @@ class Portfolio:
         """
         Checks all stocks in the portfolio for expiry and processes them if expired.
         """
-        for stock in self.stocks.values():
-            stock.check_expired()
+        for portfolio in self.portfolios.values():
+            for stock in portfolio.values():
+                stock.check_expired()
 
     def get_holding_history(self) -> List[Dict]:
         """
@@ -625,6 +636,7 @@ class Portfolio:
         """
         return [
             {
+                "username": holding.stock_info.username,
                 "scrip_name": holding.stock_info.scrip_name,
                 "symbol": holding.stock_info.symbol,
                 "exchange": holding.stock_info.exchange,
@@ -634,7 +646,8 @@ class Portfolio:
                 "avg_price": holding.avg_price,
                 "holding_amount": holding.holding_amount,
             }
-            for stock in self.stocks.values()
+            for stocks in self.portfolios.values()
+            for stock in stocks.values()
             for holding in stock.holding_records
         ]
 
@@ -647,6 +660,7 @@ class Portfolio:
         """
         return [
             {
+                "username": position.stock_info.username,
                 "scrip_name": position.stock_info.scrip_name,
                 "symbol": position.stock_info.symbol,
                 "exchange": position.stock_info.exchange,
@@ -657,7 +671,8 @@ class Portfolio:
                 "price": position.price,
                 "amount": position.amount,
             }
-            for stock in self.stocks.values()
+            for stocks in self.portfolios.values()
+            for stock in stocks.values()
             for position in stock.open_positions
         ]
 
@@ -670,6 +685,7 @@ class Portfolio:
         """
         return [
             {
+                "username": position.close_position.stock_info.username,
                 "scrip_name": position.close_position.stock_info.scrip_name,
                 "symbol": position.close_position.stock_info.symbol,
                 "exchange": position.close_position.stock_info.exchange,
@@ -688,7 +704,8 @@ class Portfolio:
                 "pnl_percentage": position.pnl_percentage,
                 "brokerage": position.brokerage.total,
             }
-            for stock in self.stocks.values()
+            for stocks in self.portfolios.values()
+            for stock in stocks.values()
             for position in stock.closed_positions
         ]
 
@@ -696,6 +713,7 @@ class Portfolio:
 if __name__ == "__main__":
     trade_history = [
         {
+            "username": "ptprashanttripathi",
             "datetime": "2020-01-01 00:00:00",
             "exchange": "NSE",
             "segment": "EQ",
@@ -708,6 +726,7 @@ if __name__ == "__main__":
             "expiry_date": "",
         },
         {
+            "username": "ptprashanttripathi",
             "datetime": "2021-01-01 00:00:00",
             "exchange": "NSE",
             "segment": "EQ",
@@ -720,6 +739,7 @@ if __name__ == "__main__":
             "expiry_date": "",
         },
         # {
+        #     "username": "ptprashanttripathi",
         #     "datetime": "2021-01-01 01:00:00",
         #     "exchange": "NSE",
         #     "segment": "EQ",
