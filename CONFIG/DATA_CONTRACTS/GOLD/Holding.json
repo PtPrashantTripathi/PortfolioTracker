@@ -1,6 +1,10 @@
 {
     "data_schema": [
         {
+            "col_name": "username",
+            "data_type": "string"
+        },
+        {
             "col_name": "date",
             "data_type": "datetime64[ns]"
         },
@@ -66,6 +70,7 @@
         }
     ],
     "order_by": [
+        "username",
         "date",
         "segment",
         "exchange",

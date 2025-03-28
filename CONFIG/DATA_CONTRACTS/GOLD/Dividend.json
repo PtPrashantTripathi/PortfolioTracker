@@ -1,6 +1,10 @@
 {
     "data_schema": [
         {
+            "col_name": "username",
+            "data_type": "string"
+        },
+        {
             "col_name": "financial_year",
             "data_type": "string"
         },
@@ -22,6 +26,7 @@
         }
     ],
     "order_by": [
+        "username",
         "financial_year",
         "date",
         "segment",

@@ -1,8 +1,8 @@
 {
     "data_schema": [
         {
-            "col_name":"username",
-            "data_type":"string"
+            "col_name": "username",
+            "data_type": "string"
         },
         {
             "col_name": "datetime",
