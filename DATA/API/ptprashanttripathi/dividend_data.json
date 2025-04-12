@@ -132,7 +132,14 @@
             "segment": "EQ",
             "symbol": "IRCTC",
             "dividend_amount": 9.0
+        },
+        {
+            "financial_year": "FY2025-26",
+            "date": "2025-04-03",
+            "segment": "EQ",
+            "symbol": "UNITDSPR",
+            "dividend_amount": 120.0
         }
     ],
-    "load_timestamp": "2025-04-05 01:01:05.697359"
+    "load_timestamp": "2025-04-12 01:02:16.644989"
 }
