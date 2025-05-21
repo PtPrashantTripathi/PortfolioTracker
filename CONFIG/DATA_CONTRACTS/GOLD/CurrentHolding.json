@@ -1,6 +1,10 @@
 {
     "data_schema": [
         {
+            "col_name": "username",
+            "data_type": "string"
+        },
+        {
             "col_name": "scrip_name",
             "data_type": "string"
         },
@@ -38,6 +42,7 @@
         }
     ],
     "order_by": [
+        "username",
         "segment",
         "exchange",
         "symbol",

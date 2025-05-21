@@ -1,6 +1,10 @@
 {
     "data_schema": [
         {
+            "col_name": "username",
+            "data_type": "string"
+        },
+        {
             "col_name": "datetime",
             "data_type": "datetime64[ns]"
         },
@@ -42,6 +46,7 @@
         }
     ],
     "order_by": [
+        "username",
         "datetime"
     ]
 }
