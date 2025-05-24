@@ -659,7 +659,27 @@
             "pnl_amount": -780.0,
             "pnl_percentage": -100.0,
             "brokerage": 47.22
+        },
+        {
+            "username": "",
+            "exchange": "FON",
+            "segment": "FO",
+            "symbol": "NIFTY",
+            "scrip_name": "NIFTY-CE-26000-22MAY2025",
+            "position": "EXPIRED",
+            "quantity": 1050.0,
+            "open_datetime": "2025-05-14 15:27:53",
+            "open_side": "BUY",
+            "open_price": 3.6,
+            "open_amount": 3780.0,
+            "close_datetime": "2025-05-22 15:30:00",
+            "close_side": "EXPIRED",
+            "close_price": 0.0,
+            "close_amount": 0.0,
+            "pnl_amount": -3780.0,
+            "pnl_percentage": -100.0,
+            "brokerage": 47.32
         }
     ],
-    "load_timestamp": "2025-05-21 20:51:59.440112"
+    "load_timestamp": "2025-05-24 01:04:02.717069"
 }
