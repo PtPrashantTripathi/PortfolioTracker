@@ -11,9 +11,9 @@
             "quantity": 14.0,
             "price": 75.1,
             "amount": 1051.4,
-            "close_price": 595.05,
-            "close_amount": 8330.7,
-            "pnl_amount": 7279.3
+            "close_price": 719.5,
+            "close_amount": 10073.0,
+            "pnl_amount": 9021.6
         },
         {
             "username": "",
@@ -26,9 +26,9 @@
             "quantity": 5.0,
             "price": 83.8,
             "amount": 419.0,
-            "close_price": 595.05,
-            "close_amount": 2975.25,
-            "pnl_amount": 2556.25
+            "close_price": 719.5,
+            "close_amount": 3597.5,
+            "pnl_amount": 3178.5
         },
         {
             "username": "",
@@ -41,9 +41,9 @@
             "quantity": 15.0,
             "price": 104.0,
             "amount": 1560.0,
-            "close_price": 595.05,
-            "close_amount": 8925.75,
-            "pnl_amount": 7365.75
+            "close_price": 719.5,
+            "close_amount": 10792.5,
+            "pnl_amount": 9232.5
         },
         {
             "username": "",
@@ -56,9 +56,9 @@
             "quantity": 26.0,
             "price": 295.0,
             "amount": 7670.0,
-            "close_price": 595.05,
-            "close_amount": 15471.3,
-            "pnl_amount": 7801.3
+            "close_price": 719.5,
+            "close_amount": 18707.0,
+            "pnl_amount": 11037.0
         },
         {
             "username": "",
@@ -71,9 +71,9 @@
             "quantity": 40.0,
             "price": 385.0,
             "amount": 15400.0,
-            "close_price": 595.05,
-            "close_amount": 23802.0,
-            "pnl_amount": 8402.0
+            "close_price": 719.5,
+            "close_amount": 28780.0,
+            "pnl_amount": 13380.0
         },
         {
             "username": "",
@@ -86,9 +86,9 @@
             "quantity": 53.0,
             "price": 90.0,
             "amount": 4770.0,
-            "close_price": 364.45,
-            "close_amount": 19315.85,
-            "pnl_amount": 14545.85
+            "close_price": 392.8,
+            "close_amount": 20818.4,
+            "pnl_amount": 16048.4
         },
         {
             "username": "",
@@ -101,9 +101,9 @@
             "quantity": 33.0,
             "price": 90.0,
             "amount": 2970.0,
-            "close_price": 364.45,
-            "close_amount": 12026.85,
-            "pnl_amount": 9056.85
+            "close_price": 392.8,
+            "close_amount": 12962.4,
+            "pnl_amount": 9992.4
         },
         {
             "username": "",
@@ -116,9 +116,9 @@
             "quantity": 64.0,
             "price": 224.75,
             "amount": 14384.0,
-            "close_price": 364.45,
-            "close_amount": 23324.8,
-            "pnl_amount": 8940.8
+            "close_price": 392.8,
+            "close_amount": 25139.2,
+            "pnl_amount": 10755.2
         },
         {
             "username": "",
@@ -131,9 +131,9 @@
             "quantity": 100.19,
             "price": 49.9,
             "amount": 4999.48,
-            "close_price": 48.57,
-            "close_amount": 4866.23,
-            "pnl_amount": -133.25
+            "close_price": 53.76,
+            "close_amount": 5386.21,
+            "pnl_amount": 386.73
         },
         {
             "username": "",
@@ -146,9 +146,9 @@
             "quantity": 96.39,
             "price": 51.87,
             "amount": 4999.75,
-            "close_price": 48.57,
-            "close_amount": 4681.66,
-            "pnl_amount": -318.09
+            "close_price": 53.76,
+            "close_amount": 5181.93,
+            "pnl_amount": 182.18
         },
         {
             "username": "",
@@ -161,9 +161,9 @@
             "quantity": 11.39,
             "price": 439.12,
             "amount": 5001.58,
-            "close_price": 426.55,
-            "close_amount": 4858.4,
-            "pnl_amount": -143.18
+            "close_price": 467.91,
+            "close_amount": 5329.49,
+            "pnl_amount": 327.91
         },
         {
             "username": "",
@@ -176,10 +176,10 @@
             "quantity": 11.1,
             "price": 450.41,
             "amount": 4999.55,
-            "close_price": 426.55,
-            "close_amount": 4734.7,
-            "pnl_amount": -264.85
+            "close_price": 467.91,
+            "close_amount": 5193.8,
+            "pnl_amount": 194.25
         }
     ],
-    "load_timestamp": "2025-05-24 01:04:02.717069"
+    "load_timestamp": "2025-05-31 01:05:45.193557"
 }
