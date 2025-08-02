@@ -159,7 +159,31 @@
             "segment": "EQ",
             "symbol": "UNITDSPR",
             "dividend_amount": 120.0
+        },
+        {
+            "username": "",
+            "financial_year": "FY2025-26",
+            "date": "2025-06-04",
+            "segment": "EQ",
+            "symbol": "TATAMOTORS",
+            "dividend_amount": 600.0
+        },
+        {
+            "username": "",
+            "financial_year": "FY2025-26",
+            "date": "2025-06-20",
+            "segment": "EQ",
+            "symbol": "TATAPOWER",
+            "dividend_amount": 337.5
+        },
+        {
+            "username": "",
+            "financial_year": "FY2025-26",
+            "date": "2025-07-28",
+            "segment": "EQ",
+            "symbol": "KPITTECH",
+            "dividend_amount": 12.0
         }
     ],
-    "load_timestamp": "2025-07-26 01:12:17.639652"
+    "load_timestamp": "2025-08-02 01:12:29.389350"
 }
