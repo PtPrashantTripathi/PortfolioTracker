@@ -14,22 +14,15 @@ repos:
           - id: check-added-large-files
           - id: check-case-conflict
           - id: check-merge-conflict
-          - id: check-json
-          - id: check-yaml
           - id: check-toml
           - id: debug-statements
           - id: end-of-file-fixer
           - id: trailing-whitespace
 
     - repo: https://github.com/python-jsonschema/check-jsonschema
-      rev: 0.31.2
+      rev: 0.33.2
       hooks:
           - id: check-github-workflows
-
-    # - repo: https://github.com/codespell-project/codespell
-    #   rev: "v2.3.0"
-    #   hooks:
-    #       - id: codespell
 
     - repo: https://github.com/psf/black
       rev: 25.1.0
@@ -39,7 +32,7 @@ repos:
           - id: black-jupyter
 
     - repo: https://github.com/pycqa/isort
-      rev: 6.0.0
+      rev: 6.0.1
       hooks:
           - id: isort
             args: ["--order-by-type", "--length-sort", "black"]
@@ -48,22 +41,22 @@ repos:
     - repo: https://github.com/nbQA-dev/nbQA
       rev: 1.9.1
       hooks:
-        - id: nbqa-black
-          additional_dependencies: [jupytext]  # optional, only if you're using Jupytext
-          args: ["--nbqa-shell"]
-        - id: nbqa-pyupgrade
-          args: ["--py37-plus"]
-        - id: nbqa-isort
-          args: ["--float-to-top"]
+          - id: nbqa-black
+            additional_dependencies: [jupytext] # optional, only if you're using Jupytext
+            args: ["--nbqa-shell"]
+          - id: nbqa-pyupgrade
+            args: ["--py37-plus"]
+          - id: nbqa-isort
+            args: ["--float-to-top"]
 
     - repo: https://github.com/asottile/pyupgrade
-      rev: v3.19.1
+      rev: v3.20.0
       hooks:
           - id: pyupgrade
 
-    - repo: local
+    - repo: https://github.com/kynan/nbstripout
+      rev: 0.8.1 # or latest stable tag
       hooks:
-        - id: json-formatter
-          name: JSON Formatter
-          entry: ./SCRIPTS/format_json.py
-          language: python
+          - id: nbstripout
+            name: Strip Jupyter notebook outputs
+            types: [jupyter]
