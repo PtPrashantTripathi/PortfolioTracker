@@ -1,4 +1,4 @@
-from . import version, portfolio, globalpath, datetimeutils
+from StockETL import version, portfolio, globalpath, datetimeutils
 
 __doc__ = f"""StockETL v{version.VERSION}
 https://github.com/PtPrashantTripathi/PortfolioTracker
