@@ -1,0 +1,85 @@
+{
+    "data_schema": [
+        {
+            "col_name": "username",
+            "data_type": "string"
+        },
+        {
+            "col_name": "exchange",
+            "data_type": "string"
+        },
+        {
+            "col_name": "segment",
+            "data_type": "string"
+        },
+        {
+            "col_name": "symbol",
+            "data_type": "string"
+        },
+        {
+            "col_name": "scrip_name",
+            "data_type": "string"
+        },
+        {
+            "col_name": "position",
+            "data_type": "string"
+        },
+        {
+            "col_name": "quantity",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "open_datetime",
+            "data_type": "datetime64[ns]"
+        },
+        {
+            "col_name": "open_side",
+            "data_type": "string"
+        },
+        {
+            "col_name": "open_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "open_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "close_datetime",
+            "data_type": "datetime64[ns]"
+        },
+        {
+            "col_name": "close_side",
+            "data_type": "string"
+        },
+        {
+            "col_name": "close_price",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "close_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "pnl_amount",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "pnl_percentage",
+            "data_type": "float64"
+        },
+        {
+            "col_name": "brokerage",
+            "data_type": "float64"
+        }
+    ],
+    "order_by": [
+        "username",
+        "segment",
+        "exchange",
+        "symbol",
+        "scrip_name",
+        "close_datetime",
+        "open_datetime"
+    ]
+}
