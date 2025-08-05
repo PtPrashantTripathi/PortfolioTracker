@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import json
 from pathlib import Path
@@ -39,7 +40,7 @@ def main():
     """
     # Check if file paths are passed as command-line arguments
     if len(sys.argv) > 1:
-        file_paths = [Path(file_path) for file_path in sys.argv[1:]]
+        file_paths = [Path(str(file_path).strip()) for file_path in sys.argv[1:]]
     else:
         # Default to all .json files in the current directory if no arguments are provided
         file_paths = Path().rglob("*.json")
