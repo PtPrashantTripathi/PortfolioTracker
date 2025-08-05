@@ -1,3 +1,5 @@
+import "./css/style.css";
+
 import Breadcrumb from "./components/breadcrumb";
 import Footer from "./components/footer";
 import Navigation from "./components/navigation";

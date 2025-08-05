@@ -30,9 +30,7 @@ const ProfitAndLoss: React.FC = () => {
                                     broker. Please confirm with your broker for
                                     accurate rates.
                                 </span>
-                                <a
-                                    href="javascript:void(0)"
-                                    className="btn btn-sm btn-secondary float-right">
+                                <a className="btn btn-sm btn-secondary float-right">
                                     View All Orders
                                 </a>
                             </div>

@@ -19,7 +19,7 @@ const Home: React.FC = () => {
                                     <h3 className="card-title">
                                         Portfolio Performance
                                     </h3>
-                                    <a href="">View Report</a>
+                                    <a>View Report</a>
                                 </div>
                             </div>
                             <div className="card-body">
