@@ -28,7 +28,7 @@ jobs:
             - name: Set Up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: "3.x" # Use the latest stable Python 3.x version
+                  python-version: "3.13" # Use the latest stable Python 3.x version
 
             # Step 3: Install dependencies
             - name: Install Dependencies
