@@ -1,63 +1,63 @@
-from typing import Optional
-from datetime import time, datetime
+import datetime as dt
+from typing import Annotated
+
+from pydantic import BaseModel, BeforeValidator
 
 
-class StockInfo:
-    """
-    Base class for models that include stock information.
+def parse_expiry_date(value: dt.datetime | str = None):
+    """Validates and parses the expiry date."""
+    try:
+        # Handle empty strings or NaN values often found in data imports
+        if value is None or str(value).lower() in ("nan", "", "none"):
+            return None
 
-    Attributes:
-        username (str): The name of the owner
-        scrip_name (str): The name of the stock.
-        symbol (Optional[str]): The symbol or stock id of the stock.
-        exchange (Optional[str]): The exchange where the stock is traded.
-        segment (Optional[str]): The market segment of the stock.
-        expiry_date (Optional[datetime]): The expiry date for options or futures.
-    """
+        # If it's already a datetime object, just return it
+        if isinstance(value, dt.datetime):
+            return value
 
-    def __init__(
-        self,
-        username: str,
-        scrip_name: str,
-        symbol: Optional[str] = None,
-        exchange: Optional[str] = None,
-        segment: Optional[str] = None,
-        expiry_date: Optional[datetime] = None,
-    ):
-        self.username = username
-        self.scrip_name = scrip_name
-        self.symbol = symbol
-        self.exchange = exchange
-        self.segment = segment
-        self.expiry_date = self.parse_expiry_date(expiry_date)
-
-    def parse_expiry_date(self, value):
-        """
-        Validates and parses the expiry date.
-
-        Args:
-            value: The input value for expiry_date.
-
-        Returns:
-            The parsed datetime object or None if invalid.
-
-        Raises:
-            ValueError: If the expiry date format is invalid.
-        """
-        try:
-            if str(value) in ("nan", ""):
-                return None
-            return datetime.combine(
-                datetime.strptime(str(value), "%Y-%m-%d").date(), time(15, 30)
-            )
-        except ValueError as e:
-            raise ValueError("Invalid expiry_date format") from e
-
-    def __repr__(self):
-        return (
-            f"StockInfo(scrip_name={self.scrip_name}, "
-            f"symbol={self.symbol}, "
-            f"exchange={self.exchange}, "
-            f"segment={self.segment}"
-            f"expiry_date={self.expiry_date})"
+        # Parse the date string and combine with specific time (15:30)
+        return dt.datetime.combine(
+            dt.datetime.strptime(str(value).split(" ")[0], "%Y-%m-%d").date(),
+            dt.time(15, 30),
         )
+    except ValueError as e:
+        raise ValueError("Invalid expiry_date format. Expected YYYY-MM-DD") from e
+
+
+class StockInfo(BaseModel):
+    """Base class for models that include stock information."""
+
+    # The name of the owner
+    username: str
+    # The name of the stock.
+    scrip_name: str
+    # The symbol or stock id of the stock.
+    symbol: str = None
+    # The exchange where the stock is traded.
+    exchange: str = None
+    # The market segment of the stock.
+    segment: str = None
+    # The expiry date for options or futures.
+    expiry_date: Annotated[dt.datetime | None, BeforeValidator(parse_expiry_date)] = (
+        None
+    )
+
+
+if __name__ == "__main__":
+    # Example Usage:
+    data = {
+        "username": "investor_01",
+        "datetime": "2021-01-01 01:00:00",
+        "exchange": "NSE",
+        "segment": "EQ",
+        "symbol": "TATAMOTORS",
+        "scrip_name": "TATAMOTORS",
+        "side": "SELL",
+        "quantity": 5,
+        "price": 150,
+        "amount": 750,
+        "expiry_date": "2021-01-01",
+    }
+
+    stock = StockInfo(**data)
+    print(stock)

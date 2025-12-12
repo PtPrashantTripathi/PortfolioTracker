@@ -1,5 +1,6 @@
-from typing import List, Union, Optional
-from datetime import datetime
+import datetime as dt
+
+from pydantic import BaseModel
 
 from StockETL.portfolio.stock_info import StockInfo
 from StockETL.portfolio.trade_record import TradeRecord
@@ -7,37 +8,16 @@ from StockETL.portfolio.holding_record import HoldingRecord
 from StockETL.portfolio.trade_position import TradePosition
 
 
-class Stock:
-    """
-    Represents a stock, including open and closed positions and holding records.
+class Stock(BaseModel):
+    """Represents a stock, including open and closed positions and holding records."""
 
-    Attributes:
-        stock_info (StockInfo): The Information of the stock.
-        holding_quantity (Union[float, int]): The total quantity of the stock held.
-        holding_amount (Union[float, int]): The total amount of the stock held.
-        avg_price (Union[float, int]): The average price of the stock held.
-        open_positions (List[TradePosition]): List of open trade positions.
-        closed_positions (List[TradePosition]): List of closed trade positions.
-        holding_records (List[HoldingRecord]): List of holding records.
-    """
-
-    def __init__(
-        self,
-        stock_info: StockInfo,
-        holding_quantity: Union[float, int] = 0,
-        holding_amount: Union[float, int] = 0,
-        avg_price: Union[float, int] = 0,
-        open_positions: List[TradeRecord] = None,
-        closed_positions: List[TradePosition] = None,
-        holding_records: List[HoldingRecord] = None,
-    ):
-        self.stock_info = stock_info
-        self.holding_quantity = holding_quantity
-        self.holding_amount = holding_amount
-        self.avg_price = avg_price
-        self.open_positions = open_positions or []
-        self.closed_positions = closed_positions or []
-        self.holding_records = holding_records or []
+    stock_info: StockInfo  # The Information of the stock.
+    holding_quantity: float | int = 0  # The total quantity of the stock held.
+    holding_amount: float | int = 0  # The total amount of the stock held.
+    avg_price: float | int = 0  # The average price of the stock held.
+    open_positions: list[TradeRecord] = []  # List of open trade positions.
+    closed_positions: list[TradePosition] = []  # List of closed trade positions.
+    holding_records: list[HoldingRecord] = []  # List of holding records.
 
     def trade(self, trade_record: TradeRecord):
         """
@@ -47,19 +27,22 @@ class Stock:
             trade_record (TradeRecord): The trade record to be processed.
         """
         # Iterate through open positions to close trades if possible
-        for op in self.open_positions:
+        for open_position in self.open_positions:
             if (
                 trade_record.quantity > 0
-                and op.quantity > 0
-                and op.side != trade_record.side
+                and open_position.quantity > 0
+                and open_position.side != trade_record.side
             ):
                 # Record closed position
-                cp = self.update_position(op.copy(), trade_record.copy())
+                cp = self.update_position(
+                    open_position.model_copy(deep=True),
+                    trade_record.model_copy(deep=True),
+                )
                 self.closed_positions.append(cp)
 
                 # Update current position quantity and amount after deduction of quantity
-                op.quantity -= cp.close_position.quantity
-                op.amount = op.quantity * op.price
+                open_position.quantity -= cp.close_position.quantity
+                open_position.amount = open_position.quantity * open_position.price
 
                 # Reduce the remaining trade quantity
                 trade_record.quantity -= cp.close_position.quantity
@@ -74,7 +57,7 @@ class Stock:
             self.open_positions.append(trade_record)
 
         # Update holding records
-        updated_holding_record = self.calc_holding(trade_record.date_time)
+        updated_holding_record = self.calc_holding(trade_record.datetime)
         self.holding_records.append(updated_holding_record)
 
     def update_position(self, open_position: TradeRecord, close_position: TradeRecord):
@@ -114,7 +97,7 @@ class Stock:
             ).round(2),
         )
 
-    def calc_holding(self, date_time: Optional[datetime] = None) -> HoldingRecord:
+    def calc_holding(self, datetime: dt.datetime | None = None) -> HoldingRecord:
         """
         Calculates the current holding and updates holding metrics.
 
@@ -142,7 +125,7 @@ class Stock:
 
         return HoldingRecord(
             stock_info=self.stock_info,
-            date_time=date_time or datetime.now(),
+            datetime=datetime or dt.datetime.now(),
             holding_quantity=self.holding_quantity,
             avg_price=self.avg_price,
             holding_amount=self.holding_amount,
@@ -155,16 +138,39 @@ class Stock:
         if (
             self.holding_quantity != 0
             and self.stock_info.expiry_date is not None
-            and datetime.today() > self.stock_info.expiry_date
+            and dt.datetime.today() > self.stock_info.expiry_date
         ):
             print(f"{self.stock_info.scrip_name} => {self.holding_quantity} expired")
             self.trade(
                 TradeRecord(
                     stock_info=self.stock_info,
-                    date_time=self.stock_info.expiry_date,
+                    datetime=self.stock_info.expiry_date,
                     side="EXPIRED",
                     quantity=abs(self.holding_quantity),
                     price=0,
                     amount=0,
                 )
             )
+
+
+if __name__ == "__main__":
+    from pprint import pprint
+
+    # Example Usage:
+    data = {
+        "username": "investor_01",
+        "datetime": "2021-01-01 01:00:00",
+        "exchange": "NSE",
+        "segment": "EQ",
+        "symbol": "TATAMOTORS",
+        "scrip_name": "TATAMOTORS",
+        "side": "SELL",
+        "quantity": 5,
+        "price": 150,
+        "amount": 750,
+        "expiry_date": "2021-01-01",
+    }
+    stock_info = StockInfo(**data)
+    test = Stock(stock_info=stock_info)
+    test.trade(TradeRecord(stock_info=stock_info, **data))
+    pprint(test.__dict__, compact=True, sort_dicts=False)

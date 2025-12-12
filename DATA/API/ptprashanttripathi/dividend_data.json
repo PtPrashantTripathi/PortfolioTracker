@@ -160,7 +160,28 @@
             "financial_year": "FY2025-26",
             "segment": "EQ",
             "symbol": "KPITTECH"
+        },
+        {
+            "date": "2025-08-01",
+            "dividend_amount": 240.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "UNITDSPR"
+        },
+        {
+            "date": "2025-08-22",
+            "dividend_amount": 3.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "IRCTC"
+        },
+        {
+            "date": "2025-11-21",
+            "dividend_amount": 15.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "IRCTC"
         }
     ],
-    "load_timestamp": "2025-08-05 18:59:08.232685"
+    "load_timestamp": "2025-11-22 17:03:45.653522"
 }

@@ -37,7 +37,7 @@
         },
         {
             "date": "2022-08-04",
-            "dividend_amount": 15.0,
+            "dividend_amount": 20.0,
             "financial_year": "FY2022-23",
             "segment": "EQ",
             "symbol": "LLOYDSENGG"
@@ -121,7 +121,7 @@
         },
         {
             "date": "2023-07-17",
-            "dividend_amount": 30.0,
+            "dividend_amount": 40.0,
             "financial_year": "FY2023-24",
             "segment": "EQ",
             "symbol": "LLOYDSENGG"
@@ -281,6 +281,20 @@
             "symbol": "KPEL"
         },
         {
+            "date": "2025-05-08",
+            "dividend_amount": 63.5,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "GRAVITA"
+        },
+        {
+            "date": "2025-05-27",
+            "dividend_amount": 50.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "TRIDENT"
+        },
+        {
             "date": "2025-06-04",
             "dividend_amount": 60.0,
             "financial_year": "FY2025-26",
@@ -295,12 +309,75 @@
             "symbol": "TATAPOWER"
         },
         {
+            "date": "2025-07-11",
+            "dividend_amount": 5.75,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "IDFCFIRSTB"
+        },
+        {
             "date": "2025-07-28",
             "dividend_amount": 120.0,
             "financial_year": "FY2025-26",
             "segment": "EQ",
             "symbol": "KPITTECH"
+        },
+        {
+            "date": "2025-07-28",
+            "dividend_amount": 75.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "WIPRO"
+        },
+        {
+            "date": "2025-08-04",
+            "dividend_amount": 7.5,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "DEEPAKNTR"
+        },
+        {
+            "date": "2025-08-11",
+            "dividend_amount": 54.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "KPEL"
+        },
+        {
+            "date": "2025-08-14",
+            "dividend_amount": 26.25,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "LLOYDSENGG"
+        },
+        {
+            "date": "2025-09-08",
+            "dividend_amount": 3.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "HFCL"
+        },
+        {
+            "date": "2025-09-12",
+            "dividend_amount": 18.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "KPEL"
+        },
+        {
+            "date": "2025-09-15",
+            "dividend_amount": 2.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "KNRCON"
+        },
+        {
+            "date": "2025-11-14",
+            "dividend_amount": 45.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "KPEL"
         }
     ],
-    "load_timestamp": "2025-08-05 18:59:08.232685"
+    "load_timestamp": "2025-11-22 17:03:45.653522"
 }

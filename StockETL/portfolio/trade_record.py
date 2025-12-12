@@ -1,71 +1,59 @@
-import copy
-from typing import Self, Union
-from datetime import datetime
+import datetime as dt
+from typing import Self, Annotated
 
-from StockETL.portfolio.brokerage import Brokerage
+from pydantic import BaseModel, BeforeValidator
+from pydantic_core.core_schema import ValidationInfo
+
+from StockETL.portfolio.brokerage import Brokerage, get_brokerage_rates
 from StockETL.portfolio.stock_info import StockInfo
 
 
-class TradeRecord:
-    """
-    Represents a trade record.
+def fix_amount(value, info: ValidationInfo):
+    """Calculates amount if it is 0 using quantity and price."""
+    if value == 0:
+        qty = info.data.get("quantity", 0)
+        prc = info.data.get("price", 0)
+        return qty * prc
+    return value
 
-    Attributes:
-        stock_info (StockInfo): The Information of the stock.
-        date_time (datetime): The date_time of the trade.
-        side (str): The side of the trade ("BUY" or "SELL").
-        quantity (Union[float, int]): The quantity of stock traded.
-        price (Union[float, int]): The price at which the trade occurred.
-        amount (Union[float, int]): The total amount of the trade.
-    """
 
-    def __init__(
-        self,
-        stock_info: StockInfo,
-        date_time: datetime,
-        side: str,
-        quantity: Union[float, int] = 0,
-        price: Union[float, int] = 0,
-        amount: Union[float, int] = 0,
-    ):
-        self.stock_info = stock_info
-        self.date_time = self.parse_datetime(date_time)
-        self.side = side
-        self.quantity = quantity
-        self.price = price
-        self.amount = quantity * price if amount == 0 else amount
+def parse_datetime(value):
+    """Validates and parses the datetime."""
+    try:
+        if value is None or str(value).lower() in ("nan", "", "none"):
+            return None
+        if isinstance(value, dt.datetime):
+            return value
+        return dt.datetime.strptime(str(value), "%Y-%m-%d %H:%M:%S")
+    except ValueError as e:
+        raise ValueError("Invalid DateTime format. Expected YYYY-MM-DD HH:MM:SS") from e
 
-    def parse_datetime(self, value):
-        """
-        Validates and parses the datetime.
 
-        Args:
-            value: The input value for datetime.
+# --- TradeRecord Model ---
+class TradeRecord(BaseModel):
+    """Represents a trade record."""
 
-        Returns:
-            The parsed datetime object or None if invalid.
+    # The Information of the stock.
+    stock_info: StockInfo
+    # The datetime of the trade.
+    datetime: Annotated[dt.datetime, BeforeValidator(parse_datetime)]
+    # The side of the trade ("BUY" or "SELL").
+    side: str
+    # The quantity of stock traded.
+    quantity: float | int = 0
+    # The price at which the trade occurred.
+    price: float | int = 0
+    # The total amount of the trade.
+    amount: Annotated[float | int, BeforeValidator(fix_amount)] = 0
 
-        Raises:
-            ValueError: If the expiry date format is invalid.
-        """
-        try:
-            if str(value) in ("nan", ""):
-                return None
-            return datetime.strptime(str(value), "%Y-%m-%d %H:%M:%S")
-        except ValueError as e:
-            raise ValueError("Invalid DateTime format") from e
-
-    def copy(self):
-        """Make a copy of the current instance"""
-        return copy.deepcopy(self)
-
-    def calculate_brokerage(self, close_position: Self) -> Self:
+    def calculate_brokerage(self, close_position: Self) -> Brokerage:
         """Calculate brokerage"""
 
-        brokerage = Brokerage()
-        brokerage_rates = brokerage.get_brokerage_rates(close_position.stock_info)
+        brokerage_rates = get_brokerage_rates(close_position.stock_info)
 
         # BROKERAGE CHARGES
+        brokerage = Brokerage()
+
         if close_position.stock_info.segment in ["FO"]:
             brokerage.brokerage_charges = 40
         else:
@@ -114,12 +102,22 @@ class TradeRecord:
         )
         return brokerage
 
-    def __repr__(self):
-        return (
-            f"TradeRecord(stock_info={self.stock_info}, "
-            f"date_time={self.date_time}, "
-            f"side={self.side}, "
-            f"amount={self.amount}, "
-            f"quantity={self.quantity}, "
-            f"price={self.price}, "
-        )
+
+if __name__ == "__main__":
+    # Example Usage:
+    data = {
+        "username": "investor_01",
+        "datetime": "2021-01-01 01:00:00",
+        "exchange": "NSE",
+        "segment": "EQ",
+        "symbol": "TATAMOTORS",
+        "scrip_name": "TATAMOTORS",
+        "side": "SELL",
+        "quantity": 5,
+        "price": 150,
+        "amount": 750,
+        "expiry_date": "2021-01-01",
+    }
+    stock_info = StockInfo(**data)
+    test = TradeRecord(stock_info=stock_info, **data)
+    print(test)

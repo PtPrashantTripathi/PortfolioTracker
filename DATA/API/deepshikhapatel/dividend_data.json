@@ -274,6 +274,13 @@
             "symbol": "IRFC"
         },
         {
+            "date": "2025-05-28",
+            "dividend_amount": 1868.3,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "ITC"
+        },
+        {
             "date": "2025-06-04",
             "dividend_amount": 84.0,
             "financial_year": "FY2025-26",
@@ -281,12 +288,54 @@
             "symbol": "TATAMOTORS"
         },
         {
+            "date": "2025-06-04",
+            "dividend_amount": 300.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "TCS"
+        },
+        {
+            "date": "2025-06-13",
+            "dividend_amount": 56.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "ADANIPORTS"
+        },
+        {
             "date": "2025-06-20",
             "dividend_amount": 139.5,
             "financial_year": "FY2025-26",
             "segment": "EQ",
             "symbol": "TATAPOWER"
+        },
+        {
+            "date": "2025-07-16",
+            "dividend_amount": 110.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "TCS"
+        },
+        {
+            "date": "2025-09-12",
+            "dividend_amount": 105.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "BECTORFOOD"
+        },
+        {
+            "date": "2025-10-15",
+            "dividend_amount": 110.0,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "TCS"
+        },
+        {
+            "date": "2025-10-24",
+            "dividend_amount": 45.15,
+            "financial_year": "FY2025-26",
+            "segment": "EQ",
+            "symbol": "IRFC"
         }
     ],
-    "load_timestamp": "2025-08-05 18:59:08.232685"
+    "load_timestamp": "2025-11-22 17:03:45.653522"
 }

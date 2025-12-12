@@ -20,6 +20,7 @@ __all__ = [
 if __name__ == "__main__":
     trade_history = [
         {
+            "username": "investor_01",
             "datetime": "2020-01-01 00:00:00",
             "exchange": "NSE",
             "segment": "EQ",
@@ -32,6 +33,7 @@ if __name__ == "__main__":
             "expiry_date": "",
         },
         {
+            "username": "investor_01",
             "datetime": "2021-01-01 00:00:00",
             "exchange": "NSE",
             "segment": "EQ",
@@ -44,6 +46,7 @@ if __name__ == "__main__":
             "expiry_date": "",
         },
         {
+            "username": "investor_01",
             "datetime": "2021-01-01 01:00:00",
             "exchange": "NSE",
             "segment": "EQ",

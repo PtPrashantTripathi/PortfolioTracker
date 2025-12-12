@@ -1,39 +1,21 @@
-from typing import Dict, List
-
 from StockETL.portfolio.stock import Stock
 from StockETL.portfolio.stock_info import StockInfo
 from StockETL.portfolio.trade_record import TradeRecord
 
 
 class Portfolio:
-    """
-    Represents a portfolio of stocks.
+    """Represents a portfolio of stocks."""
 
-    Attributes:
-        stocks (Dict[str, Stock]): A dictionary mapping stock names to Stock objects.
-    """
+    userdata: dict[str, dict[str, Stock]] = {}
 
-    def __init__(self):
-        """
-        Portfolio Constructor.
-        """
-        self.userdata: Dict[str, Dict[str, Stock]] = {}
-
-    def trade(self, data: Dict):
+    def trade(self, data: dict):
         """
         Processes a trade record for a specific stock in the portfolio.
 
         Args:
             record (Dict): The trade record to be processed.
         """
-        stock_info = StockInfo(
-            username=data["username"],
-            scrip_name=data["scrip_name"],
-            symbol=data["symbol"],
-            exchange=data["exchange"],
-            segment=data["segment"],
-            expiry_date=data["expiry_date"],
-        )
+        stock_info = StockInfo(**data)
         # Initialize stock if not exists
         if stock_info.username not in self.userdata:
             self.userdata[stock_info.username] = {}
@@ -45,14 +27,7 @@ class Portfolio:
 
         # Execute trade
         self.userdata[stock_info.username][stock_info.scrip_name].trade(
-            TradeRecord(
-                stock_info=stock_info,
-                date_time=data["datetime"],
-                side=data["side"],
-                amount=data["amount"],
-                quantity=data["quantity"],
-                price=data["price"],
-            )
+            TradeRecord(stock_info=stock_info, **data)
         )
 
     def check_expired_stocks(self):
@@ -63,7 +38,7 @@ class Portfolio:
             for stock in stocks.values():
                 stock.check_expired()
 
-    def get_holding_history(self) -> List[Dict]:
+    def get_holding_history(self) -> list[dict]:
         """
         Retrieves a list of holding records for all stocks in the portfolio.
 
@@ -81,7 +56,7 @@ class Portfolio:
                             "symbol": holding.stock_info.symbol,
                             "exchange": holding.stock_info.exchange,
                             "segment": holding.stock_info.segment,
-                            "datetime": holding.date_time,
+                            "datetime": holding.datetime,
                             "holding_quantity": holding.holding_quantity,
                             "avg_price": holding.avg_price,
                             "holding_amount": holding.holding_amount,
@@ -90,7 +65,7 @@ class Portfolio:
 
         return data
 
-    def get_current_holding(self) -> List[Dict]:
+    def get_current_holding(self) -> list[dict]:
         """
         Retrieves a list of open positions and their PnL details.
 
@@ -109,7 +84,7 @@ class Portfolio:
                             "exchange": position.stock_info.exchange,
                             "segment": position.stock_info.segment,
                             "quantity": position.quantity,
-                            "datetime": position.date_time,
+                            "datetime": position.datetime,
                             "side": position.side,
                             "price": position.price,
                             "amount": position.amount,
@@ -118,7 +93,7 @@ class Portfolio:
 
         return data
 
-    def get_pnl(self) -> List[Dict]:
+    def get_pnl(self) -> list[dict]:
         """
         Retrieves a list of closed positions and their PnL details.
 
@@ -137,11 +112,11 @@ class Portfolio:
                             "exchange": position.close_position.stock_info.exchange,
                             "segment": position.close_position.stock_info.segment,
                             "quantity": position.close_position.quantity,
-                            "open_datetime": position.open_position.date_time,
+                            "open_datetime": position.open_position.datetime,
                             "open_side": position.open_position.side,
                             "open_price": position.open_position.price,
                             "open_amount": position.open_position.amount,
-                            "close_datetime": position.close_position.date_time,
+                            "close_datetime": position.close_position.datetime,
                             "close_side": position.close_position.side,
                             "close_price": position.close_position.price,
                             "close_amount": position.close_position.amount,
