@@ -66,7 +66,11 @@ class GlobalPath:
         return Path(project_dir).resolve()
 
     @staticmethod
-    def ensure_exists(full_path):
+    def relative(full_path: Path):
+        return str(full_path.relative_to(GlobalPath.root_path()))
+
+    @staticmethod
+    def ensure_exists(full_path: Path):
         """
         Ensures that the directory for the given path exists, creating it if necessary.
 
