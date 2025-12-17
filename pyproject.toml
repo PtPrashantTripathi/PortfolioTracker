@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "StockETL"
-version = "0.5.19"
+version = "0.8.11"
 description = "A complete ETL for stock exchanges with PNL calculation and financial analysis tools."
 license = { file = "LICENSE" }
 
