@@ -26,8 +26,5 @@
             "data_type": "string"
         }
     ],
-    "order_by": [
-        "instrument_type",
-        "scrip_name"
-    ]
+    "order_by": ["instrument_type", "scrip_name"]
 }

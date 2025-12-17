@@ -17,9 +17,5 @@
             "data_type": "float64"
         }
     ],
-    "order_by": [
-        "symbol",
-        "date",
-        "event"
-    ]
+    "order_by": ["symbol", "date", "event"]
 }

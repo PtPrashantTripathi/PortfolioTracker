@@ -45,8 +45,5 @@
             "data_type": "datetime64[ns]"
         }
     ],
-    "order_by": [
-        "username",
-        "datetime"
-    ]
+    "order_by": ["username", "datetime"]
 }
